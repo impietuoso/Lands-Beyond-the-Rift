@@ -144,11 +144,11 @@ TextureImporter:
       name: Pawn_Run_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 56
-        width: 58
-        height: 77
-      alignment: 0
+        x: 73
+        y: 57
+        width: 56
+        height: 75
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -166,11 +166,11 @@ TextureImporter:
       name: Pawn_Run_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 56
-        width: 68
-        height: 79
-      alignment: 0
+        x: 257
+        y: 57
+        width: 66
+        height: 77
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -188,11 +188,11 @@ TextureImporter:
       name: Pawn_Run_2
       rect:
         serializedVersion: 2
-        x: 450
-        y: 56
-        width: 64
-        height: 74
-      alignment: 0
+        x: 451
+        y: 57
+        width: 62
+        height: 72
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -210,11 +210,11 @@ TextureImporter:
       name: Pawn_Run_3
       rect:
         serializedVersion: 2
-        x: 646
-        y: 56
-        width: 50
-        height: 76
-      alignment: 0
+        x: 647
+        y: 57
+        width: 48
+        height: 74
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -232,11 +232,11 @@ TextureImporter:
       name: Pawn_Run_4
       rect:
         serializedVersion: 2
-        x: 835
-        y: 56
-        width: 52
-        height: 79
-      alignment: 0
+        x: 836
+        y: 57
+        width: 50
+        height: 77
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -254,11 +254,11 @@ TextureImporter:
       name: Pawn_Run_5
       rect:
         serializedVersion: 2
-        x: 1028
-        y: 56
-        width: 55
-        height: 71
-      alignment: 0
+        x: 1029
+        y: 57
+        width: 53
+        height: 69
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d4317103101e7bb4998cf0425f4f9d4f
     internalID: 0
     vertices: []
     indices: 
@@ -284,7 +284,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":54.0,"y":74.0},"gridSpriteOffset":{"x":68.0,"y":61.0},"gridSpritePadding":{"x":140.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":7,"pivotUnitMode":1,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Pawn_Run_0: 3948441758208983171
       Pawn_Run_1: 2305471599192555470
