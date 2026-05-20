@@ -6,13 +6,13 @@ using UnityEngine;
 namespace TurnBasedRPG.Data
 {
     public class LoadSave : MonoBehaviour {
-        public SaveFile save;
         public List<PartyMember> initialParty;
         public List<PartyMember> availableCharacters;
-        public ListInventory<Item> initialItens;
+        public ListInventory<Item> initialItems;
         public List<EnemyEncounter> encounters;
         public SaveView views;
         public ListView encounterListView;
+        public SaveFile save;
 
         public void Awake() {
             encounterListView.SetData(encounters);
@@ -24,7 +24,7 @@ namespace TurnBasedRPG.Data
                 save = new SaveFile {
                     currentParty = new ObservableList<PartyMember>(),
                     players = new ObservableList<PartyMember>(),
-                    inventory = initialItens
+                    inventory = initialItems
                 };
 
                 foreach (var character in initialParty)

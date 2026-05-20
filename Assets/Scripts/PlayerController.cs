@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb;
     public Animator anim;
     private bool facingRight = true;
+    public Interactor interactor;
 
     public void Update() {
         if(rb) rb.linearVelocity = axis.normalized * moveSpeed;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Interact(InputAction.CallbackContext context) {
         if(context.action.WasPressedThisFrame()) {
-            Debug.Log("Interagiu!");
+            interactor.TryInteract();
         }
     }
     

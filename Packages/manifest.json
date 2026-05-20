@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.drafts.savedata": "git@github.com:bydrafts/savedata.git",
     "com.impietuoso.inventory": "git@github.com:impietuoso/Inventory-System.git",
     "com.unity.2d.animation": "13.0.4",
     "com.unity.2d.aseprite": "3.0.1",

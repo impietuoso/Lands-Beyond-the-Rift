@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.drafts.savedata": {
+      "version": "git@github.com:bydrafts/savedata.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "4e376328b6096170cea778a8dbf192a6240c782b"
+    },
     "com.impietuoso.inventory": {
       "version": "git@github.com:impietuoso/Inventory-System.git",
       "depth": 0,
