@@ -100,9 +100,9 @@ public class CharacterPhase : ICombatPhase {
 public class CombatEvents : ICombatPhase {
     public IEnumerator Execute(CombatManager cm) {
         cm.combatUI.ResetSelections();
-        while (cm.combatEvents.TryDequeue(out var _event)) {
-            yield return _event.Execute(cm);
-        }
+        while (cm.combatEvents.TryDequeue(out var e))
+            yield return e.Execute(cm);
+        cm.actionFlags.Clear();
     }
 }
 

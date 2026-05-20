@@ -14,19 +14,3 @@ public class ApplyStatusEffect : ISkillEffect {
         } else args.statusEffects.Add(status);
     }
 }
-
-public class ApplyStatusEffectEvent : ICombatPhase {
-    public Character target;
-    public StatusSO status;
-
-    public ApplyStatusEffectEvent(Character target, StatusSO stats) {
-        this.target = target;
-        this.status = stats;
-    }
-
-    public IEnumerator Execute(CombatManager cm) {
-        yield return null;
-        Debug.Log(status.status.statusName + " was apply to " + target.characterName);
-        target?.StatusEffectList.Apply(status);
-    }
-}

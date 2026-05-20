@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// ReSharper disable once InconsistentNaming
 [CreateAssetMenu(menuName = "Scriptable/Status", fileName = "New Status")]
 public class StatusSO : ScriptableObject {
     public Sprite statusIcon;
@@ -9,7 +10,7 @@ public class StatusSO : ScriptableObject {
     public Color statusPopupColor;
 
     public Status Clone() {
-        var clone = UnityEngine.Object.Instantiate(this).status;
+        var clone = Instantiate(this).status;
         clone.source = this;
         return clone;
     }

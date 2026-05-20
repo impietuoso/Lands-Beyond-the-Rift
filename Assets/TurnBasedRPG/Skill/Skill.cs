@@ -19,9 +19,10 @@ public class Skill : ScriptableObject {
     [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
     
     public bool Available(Character user) {
-        foreach (var status in user.StatusEffectList.StatusList) {
-            if (status.Value is Silence) return false;
-        }
+        //TODO checksilence
+        // foreach (var status in user.StatusEffectList.StatusList) {
+        //     if (status.Value is Silence) return false;
+        // }
         
         if (user.derivedStats.mana.currentValue < cost) return false;
 

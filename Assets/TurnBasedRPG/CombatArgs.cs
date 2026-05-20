@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CombatArgs {
+public class CombatArgs
+{
     public object source;
     public Character user;
     public Character target;
@@ -24,8 +26,11 @@ public class CombatArgs {
     public CombatResult result;
     public List<StatusSO> statusEffects = new();
     public Action<CombatArgs> OnResolve;
-    
-    public void Resolve() {
+
+    public CombatManager cm => CombatManager.instance;
+
+    public void Resolve()
+    {
         if (result != null) return;
         user?.OnAttack?.Invoke(this);
         target?.OnDefend?.Invoke(this);
@@ -38,23 +43,29 @@ public class CombatArgs {
         int previousShield = target?.derivedStats.shield.currentValue ?? 0;
         float currentCriticalChance = Random.Range(0f, 100f);
 
-        if (!ignoreArmor) {
+        if (!ignoreArmor)
+        {
             damage = Mathf.Max(damage - (target?.derivedStats.armor.currentValue ?? 0), 0);
         }
 
-        if (!miss) {
+        if (!miss)
+        {
             if (currentCriticalChance <= criticalChance) damage *= 2;
-            if (!ignoreShield) {
+            if (!ignoreShield)
+            {
                 var currentShield = target?.derivedStats.shield.currentValue ?? 0;
                 target?.derivedStats.shield.AddClampedBaseValue(-damage);
                 damage = Mathf.Max(damage - currentShield, 0);
             }
-        } else {
+        }
+        else
+        {
             damage = 0;
         }
 
-        if (skillElement) {
-            if (target?.element.weak.Contains(skillElement)??false)
+        if (skillElement)
+        {
+            if (target?.element.weak.Contains(skillElement) ?? false)
                 damage = (int)(damage * 1.2f);
             else if (skillElement.weak.Contains(target?.element))
                 damage = (int)(damage * 0.8f);
@@ -68,20 +79,23 @@ public class CombatArgs {
 
         var resist = false;
 
-        foreach (var effect in statusEffects) {
-            if (effect.statusType != StatusType.debuff) target?.StatusEffectList.Apply(effect);
-            else {
-                if (CombatManager.instance.combatEvents.Any(e => e is ApplyStatusEffectEvent
-                        asf && asf.status == effect && asf.target == target)) {
-                    continue;
-                }
+        foreach (var effect in statusEffects)
+        {
+            if (effect.statusType != StatusType.Debuff) target?.StatusEffectList.Apply(effect);
+            else
+            {
+                var flag = (target, effect);
+                if (!cm.actionFlags.Add(flag)) continue;
+
                 var applyChance = Random.Range(0, 100);
-                if (applyChance <= 100 - target?.derivedStats.resistance.currentValue) {
-                    var applyStatusEvent = new ApplyStatusEffectEvent(target, effect);
-                    CombatManager.instance.combatEvents.Enqueue(applyStatusEvent);
+                if (applyChance <= 100 - target?.derivedStats.resistance.currentValue)
+                {
+                    var apply = ApplyStatusEffect(target, effect);
+                    cm.combatEvents.Enqueue(new GenericCombatEvent(apply));
                     resist = false;
                     Debug.Log(effect.status + " was add to queue " + target?.characterName + ".");
-                } else
+                }
+                else
                     resist = true;
             }
         }
@@ -103,9 +117,17 @@ public class CombatArgs {
 
         if (result.miss) Debug.Log("Miss");
     }
+
+    private static IEnumerator ApplyStatusEffect(Character tgt, StatusSO effect)
+    {
+        yield return null;
+        Debug.Log(effect.status.statusName + " was apply to " + tgt.characterName);
+        tgt.StatusEffectList.Apply(effect);
+    }
 }
 
-public class CombatResult {
+public class CombatResult
+{
     public int deltaHp;
     public int deltaMp;
     public int deltaShield;

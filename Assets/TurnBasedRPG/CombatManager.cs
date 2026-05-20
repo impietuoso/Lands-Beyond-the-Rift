@@ -24,6 +24,7 @@ public class CombatManager : MonoBehaviour {
     [Header("Combat Phases")]
     public EnemyBehaviour enemyBehaviour = new();
     public Queue<ICombatPhase> combatEvents = new();
+    public HashSet<object> actionFlags = new();
     public List<ICombatPhase> setupPhases = new();
     public List<ICombatPhase> loopPhases = new();
     public List<ICombatPhase> endPhases = new();
