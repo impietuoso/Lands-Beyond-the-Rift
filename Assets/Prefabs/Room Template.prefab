@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3982487027621778937}
   - component: {fileID: 1286598820029263407}
   m_Layer: 0
-  m_Name: fog wave
+  m_Name: fog 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2271,7 +2271,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4b8356ddb32c2249b1d4db179979c9c, type: 2}
+  - {fileID: 2100000, guid: 9b410a1d4a06a154099bb65f78f9212f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2351,10 +2351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963b3ab7849d47e6ab4896a0addbf331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilemapRoom
+  <StartingRoom>k__BackingField: 0
   <MinimapBuilder>k__BackingField: {fileID: 7720916658204743293}
   <Entities>k__BackingField: {fileID: 3798628270943874069}
   <Fog1>k__BackingField: {fileID: 791252675748625393}
   <Fog2>k__BackingField: {fileID: 1286598820029263407}
+  <Collider>k__BackingField: {fileID: 5967999212699433155}
 --- !u!114 &7720916658204743293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2381,7 +2383,7 @@ GameObject:
   m_Layer: 0
   m_Name: entities
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9328,7 +9330,7 @@ GameObject:
   - component: {fileID: 4512240076818261529}
   - component: {fileID: 791252675748625393}
   m_Layer: 0
-  m_Name: fog
+  m_Name: fog 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11587,7 +11589,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9000bb805a6560340bda429297bb07b0, type: 2}
+  - {fileID: 2100000, guid: d5bb2773003d64f4498c871549845884, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
