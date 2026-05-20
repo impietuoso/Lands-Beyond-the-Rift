@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: Defense
+  m_EditorClassIdentifier: Assembly-CSharp::Skill
+  skillName: Defense
+  skillDescription: Common defense that reduces damage taken
+  cost: 0
+  icon: {fileID: 0}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  animation:
+    rid: 6720660525144342614
+  skillEffects:
+  - rid: 6720660525144342615
+  passiva:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 6720660525144342614
+      type: {class: SelfHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        damageDelay: 1
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 5181673948492790000, guid: 62fab3d899ecc34409b621fdf72e4399, type: 3}
+    - rid: 6720660525144342615
+      type: {class: DefenseSkill, ns: , asm: Assembly-CSharp}
+      data:
+        damageReduction: 0.4

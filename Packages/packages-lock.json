@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.impietuoso.inventory": {
+      "version": "git@github.com:impietuoso/Inventory-System.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f355873cfef16113aca699d92809f4d1735b3f8f"
+    },
     "com.unity.2d.animation": {
       "version": "13.0.4",
       "depth": 0,
