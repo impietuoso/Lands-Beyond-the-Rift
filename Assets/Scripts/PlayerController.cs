@@ -22,7 +22,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Interact(InputAction.CallbackContext context) {
-        Debug.Log("Interagiu!");
+        if(context.action.WasPressedThisFrame()) {
+            Debug.Log("Interagiu!");
+        }
+    }
+    
+    public void Attack(InputAction.CallbackContext context) {
+        if(context.action.WasPressedThisFrame()) {
+          Debug.Log("Atacou!");
+          anim.SetTrigger("Attack");
+        }
     }
     
     public void Flip() {
