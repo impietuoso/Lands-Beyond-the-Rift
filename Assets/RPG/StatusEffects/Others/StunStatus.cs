@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
 [System.Serializable]
 public class StunStatus : Status {

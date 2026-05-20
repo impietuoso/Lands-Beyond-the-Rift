@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Drafts.Editor
+namespace TurnBasedRPG.Editor
 {
     public static class ParticleSystemSetTextureSheetSprites
     {

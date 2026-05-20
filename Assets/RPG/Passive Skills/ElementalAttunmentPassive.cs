@@ -1,10 +1,13 @@
-﻿public class ElementalAttunmentPassive : IPassiveSkill {
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+
+public class ElementalAttunmentPassive : IPassiveSkill {
     public Element element;
     public void Subscribe(Character character) {
-        character.element = element;
+        character.Element = element;
     }
 
     public void Unsubscribe(Character character) {
-        character.element = character.member.element;
+        character.Element = character.member.element;
     }
 }

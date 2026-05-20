@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
 [System.Serializable]
 public class CritStatus : Status {
@@ -24,7 +26,7 @@ public class CritStatus : Status {
     }
 
     private void OnAttack(CombatArgs args) {
-        args.criticalChance += bonusValue;
+        args.critChance += bonusValue;
     }
 
     private void OnTurnEnd(Character target) {

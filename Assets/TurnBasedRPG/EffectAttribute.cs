@@ -1,8 +1,10 @@
-using System;
-using UnityEngine;
+using TurnBasedRPG.Skill;
 
-public class EffectAttribute : TypeDropdownAttribute {
-    public EffectAttribute() : base(typeof(ISkillEffect)) {
+namespace TurnBasedRPG
+{
+    public class EffectAttribute : TypeDropdownAttribute {
+        public EffectAttribute() : base(typeof(ISkillEffect)) {
         
+        }
     }
 }

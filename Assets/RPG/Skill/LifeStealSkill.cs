@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TurnBasedRPG;
+using TurnBasedRPG.Skill;
 using UnityEngine;
 
 [Serializable]

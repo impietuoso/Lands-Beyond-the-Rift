@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
-public class ShowEquipmentTypeAtribute : PropertyAttribute {
+
+namespace TurnBasedRPG
+{
+    public class ShowEquipmentTypeAtribute : PropertyAttribute {
     
+    }
 }

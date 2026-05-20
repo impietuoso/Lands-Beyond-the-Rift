@@ -1,4 +1,7 @@
-﻿[System.Serializable]
+﻿using TurnBasedRPG;
+using TurnBasedRPG.StatusEffect;
+
+[System.Serializable]
 public class HitChanceStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);

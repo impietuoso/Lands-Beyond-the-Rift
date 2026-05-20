@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Skill;
 using UnityEngine;
 
 [Serializable]

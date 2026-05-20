@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skill;
+using UnityEngine;
 
 public class ApplySkillEffect : IPassiveSkill {
     public Element element;
@@ -13,7 +16,7 @@ public class ApplySkillEffect : IPassiveSkill {
     }
 
     public void ApplyEffect(CombatArgs args) {
-        if (element && args.skillElement != element) return;
+        if (element && args.element != element) return;
         effect.Prepare(args);
     }
 }

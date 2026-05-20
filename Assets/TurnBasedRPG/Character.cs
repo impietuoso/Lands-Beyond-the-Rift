@@ -1,106 +1,87 @@
-using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Inventory;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
-[Serializable]
-public class Character{
-    public Character(PartyMember member, string newTeam) {
-        stats = member.usedStats;
-        skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
-        equipment = member.equips.ToList();
-        characterName = member.charName;
-        profession = member.profession;
-        characterSprite = member.characterSprite;
-        uiSprite = member.uiSprite;
-        team = newTeam;
-        element = member.element;
-        this.member = member;
-        derivedStats = new();
+namespace TurnBasedRPG
+{
+    [Serializable]
+    public partial class Character
+    {
+        public Character(PartyMember member, string newTeam)
+        {
+            this.member = member;
+            team = newTeam;
+            Element = member.element;
 
-        foreach (var newEquip in member.equips) {
-            if (newEquip && newEquip.passiva!= null) {
-                passives.Add(newEquip.passiva);
+            GetSkills();
+            InitializeStats();
+            OnSetup?.Invoke(this);
+        }
+
+        public Character() { }
+
+        [Header("Advancement Info")]
+        public PartyMember member;
+        public string team;
+        public Element Element;
+        public List<Skill.Skill> basicAttack = new();
+        public List<Skill.Skill> skills = new();
+        public StatusEffectList StatusEffectList;
+
+        public IObservableList<Equipment> equipment => member.equips;
+        public string characterName => member.charName;
+        public Profession profession => member.profession;
+        public Sprite characterSprite => member.characterSprite;
+        public Sprite uiSprite => member.uiSprite;
+
+        public Action<Character> OnSetup;
+        public Action<Character> OnStartTurn;
+        public Action<Character> OnEndTurn;
+        public Action<CombatArgs> OnDefend;
+        public Action<CombatArgs> OnAttack;
+        public Action<CombatArgs> OnResolveDefend;
+        public Action<CombatArgs> OnResolveAttack;
+
+        public Observable<float> actionPoints = new();
+
+        public void SubscribePassives()
+        {
+            foreach (var e in member.equips.Where(i => i))
+                e.passiva?.Subscribe(this);
+
+            foreach (var s in member.equipedSkills.Where(i => i))
+                s.passiva?.Subscribe(this);
+        }
+
+        public void UnsubscribePassives()
+        {
+            foreach (var e in member.equips.Where(i => i))
+                e.passiva?.Unsubscribe(this);
+
+            foreach (var s in member.equipedSkills.Where(i => i))
+                s.passiva?.Unsubscribe(this);
+        }
+
+        private void GetSkills()
+        {
+            skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
+
+            foreach (var e in equipment)
+            {
+                if (e is Weapon w && w.basicAttack)
+                    if (!basicAttack.Contains(w.basicAttack))
+                        basicAttack.Add(w.basicAttack);
+
+                if (!skills.Contains(e.equipmentSkill))
+                    skills.Add(e.equipmentSkill);
             }
-        }
 
-        foreach (var Skill in member.equipedSkills) {
-            if (Skill && Skill.passiva!= null) {
-                passives.Add(Skill.passiva);
-            }
-        }
-        
-        UpdateCombatValues();
-    }
-    
-    public Character() {
-        
-    }
-    
-    public string characterName;
-    [Header("Base Stats")]
-    [SerializeField]
-    public BaseStats stats;
-    public List<Equipment> equipment;
-
-    [Header("Player Combat Info")]
-    public DerivedStats derivedStats;
-
-    [Header("Advancement Info")]
-    [SerializeField]
-    public int level = 1;
-    public Profession profession;
-    public List<Skill> basicAttack = new();
-    public List<Skill> skills = new();
-    public Sprite characterSprite;
-    public Sprite uiSprite;
-    public string team;
-    public StatusEffectList StatusEffectList;
-    public Element element;
-    public PartyMember member;
-
-    public Action<Character> OnSetup;
-    public Action<Character> OnStartTurn;
-    public Action<Character> OnEndTurn;
-    public Action<CombatArgs> OnDefend;
-    public Action<CombatArgs> OnAttack;
-    public Action<CombatArgs> OnResolveDefend;
-    public Action<CombatArgs> OnResolveAttack;
-
-    public List<IPassiveSkill> passives = new();
-
-    public Observable<float> actionPoints = new();
-
-    public void SubscribePassives() {
-        foreach (var passive in passives) {
-            passive.Subscribe(this);
-        }
-    }
-    
-    public void UnsubscribePassives() {
-        foreach (var passive in passives) {
-            passive.Unsubscribe(this);
-        }
-    }
-    
-    private void UpdateCombatValues() {
-        StatusEffectList = new StatusEffectList(this);
-        derivedStats.CalculateDeviredStats(stats, profession, equipment, level);
-        foreach (var equip in equipment) {
-            if (equip == null || equip.equipmentSkill == null)
-                continue;
-
-            if (equip is Weapon w) {
-                basicAttack.Add(w.basicAttack);
-            } else {
-                if (!skills.Contains(equip.equipmentSkill)) {
-                    skills.Add(equip.equipmentSkill);
-                }
-            }
-        }
-
-        if (basicAttack.Count == 0) {
-            basicAttack.Add(profession.basicAttack);
+            if (basicAttack.Count == 0)
+                basicAttack.Add(profession.BasicAttack);
         }
     }
 }

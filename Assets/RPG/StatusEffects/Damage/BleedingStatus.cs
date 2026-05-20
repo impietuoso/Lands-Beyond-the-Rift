@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
 [System.Serializable]
 public class BleedingStatus: Status {
@@ -27,7 +30,7 @@ public class BleedingStatus: Status {
     private void OnAttack(CombatArgs args) {
         CombatArgs newArgs = new();
         newArgs.skill = args.skill;
-        newArgs.skillElement = element;
+        newArgs.element = element;
         newArgs.source = this;
         newArgs.unavoidable = true;
         newArgs.ignoreShield = true;

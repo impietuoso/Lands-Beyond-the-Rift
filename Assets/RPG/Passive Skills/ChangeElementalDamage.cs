@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using UnityEngine;
 public class ChangeElementalDamage : IPassiveSkill {
     public Element element;
     public bool changeAttack = true;
@@ -19,7 +21,7 @@ public class ChangeElementalDamage : IPassiveSkill {
     }
 
     public void IncreaseDamage(CombatArgs args) {
-        if (args.skillElement  && args.skillElement == element) {
+        if (args.element  && args.element == element) {
             args.damage = (int)(args.damage * damageIncrease);
         }
     }

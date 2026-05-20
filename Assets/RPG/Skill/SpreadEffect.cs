@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using TurnBasedRPG;
+using TurnBasedRPG.Skill;
 using UnityEngine;
 [Serializable]
 public class SpreadEffect : ISkillEffect {
@@ -29,7 +31,7 @@ public class SpreadEffect : ISkillEffect {
     
     public bool ValidateTarget(Character user, Character target) {
         bool sameTeam = user.team == target.team;
-        bool alive = target.derivedStats.health.currentValue > 0;
+        bool alive = target.Health.Current > 0;
         bool notSelf = target != user;
         return sameTeam && alive && notSelf;
     }

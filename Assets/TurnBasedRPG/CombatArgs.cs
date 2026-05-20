@@ -1,139 +1,157 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using static Stat;
 
-public class CombatArgs
+namespace TurnBasedRPG
 {
-    public object source;
-    public Character user;
-    public Character target;
-    public Skill skill;
-    public bool unavoidable;
-    public bool ignoreShield;
-    public bool ignoreArmor;
-    public bool stopReactionAttacks;
-    public int damage;
-    public int heal;
-    public int mana;
-    public int manaHeal;
-    public int shield;
-    public int criticalChance;
-    public int hitChance;
-    public Element skillElement;
-    public CombatResult result;
-    public List<StatusSO> statusEffects = new();
-    public Action<CombatArgs> OnResolve;
-
-    public CombatManager cm => CombatManager.instance;
-
-    public void Resolve()
+    public class CombatArgs
     {
-        if (result != null) return;
-        user?.OnAttack?.Invoke(this);
-        target?.OnDefend?.Invoke(this);
-        float chance = Random.Range(0f, 100f);
+        public object source;
+        public Character user;
+        public Character target;
+        public Skill.Skill skill;
+        public Element element;
 
-        var miss = !unavoidable && chance > hitChance;
+        public bool unavoidable;
+        public bool ignoreShield;
+        public bool ignoreArmor;
+        public bool stopReactionAttacks;
+        public bool cannotCrit;
+        
+        public int damage;
+        public int heal;
+        public int mana;
+        public int manaHeal;
+        public int shield;
+        public int critChance;
+        public int hitChance;
+        
+        public CombatResult result;
+        public List<StatusSO> statusEffects = new();
+        public Action<CombatArgs> OnResolve;
 
-        int previousHp = target?.derivedStats.health.currentValue ?? 0;
-        int previousMp = target?.derivedStats.mana.currentValue ?? 0;
-        int previousShield = target?.derivedStats.shield.currentValue ?? 0;
-        float currentCriticalChance = Random.Range(0f, 100f);
+        public CombatManager cm => CombatManager.instance;
 
-        if (!ignoreArmor)
+        public void Resolve()
         {
-            damage = Mathf.Max(damage - (target?.derivedStats.armor.currentValue ?? 0), 0);
-        }
+            if (result != null) return;
+            if (target == null) throw new Exception("No Target");
 
-        if (!miss)
-        {
-            if (currentCriticalChance <= criticalChance) damage *= 2;
-            if (!ignoreShield)
+            // setup events
+            user?.OnAttack?.Invoke(this);
+            target.OnDefend?.Invoke(this);
+
+            // rng
+            hitChance += -target[Evade] + (user?[Hit] ?? 0);
+            var hitRoll = Random.Range(0, 100);
+            var critRoll = Random.Range(0, 100);
+            var hit = unavoidable || hitRoll < hitChance;
+            var crit = hit && !cannotCrit && user != null && critRoll < critChance;
+
+            // result info
+            result = new CombatResult
             {
-                var currentShield = target?.derivedStats.shield.currentValue ?? 0;
-                target?.derivedStats.shield.AddClampedBaseValue(-damage);
-                damage = Mathf.Max(damage - currentShield, 0);
+                Miss = !hit,
+                Crit = crit,
+            };
+
+            // armor reduction
+            if (!ignoreArmor) damage = Mathf.Max(damage - target[Armor], 0);
+
+            // damage stat
+            if (user != null) damage = (int)(damage * (user[Damage] + 100 / 100f));
+
+            // crit damage
+            if (crit)
+            {
+                var critDmg = user[CritDamage] / 100f;
+                damage = (int)(damage * critDmg);
             }
-        }
-        else
-        {
-            damage = 0;
-        }
 
-        if (skillElement)
-        {
-            if (target?.element.weak.Contains(skillElement) ?? false)
-                damage = (int)(damage * 1.2f);
-            else if (skillElement.weak.Contains(target?.element))
-                damage = (int)(damage * 0.8f);
-        }
+            if (!hit) damage = 0;
 
-        target?.derivedStats.health.AddClampedBaseValue(heal - damage);
-        target?.derivedStats.mana.AddClampedBaseValue(mana);
-        target?.derivedStats.shield.AddClampedBaseValue(shield);
-
-        user?.derivedStats.mana.AddClampedBaseValue(manaHeal);
-
-        var resist = false;
-
-        foreach (var effect in statusEffects)
-        {
-            if (effect.statusType != StatusType.Debuff) target?.StatusEffectList.Apply(effect);
+            // shield delta
+            if (hit && !ignoreShield)
+            {
+                result.Shield = target.Shield.Add(shield - damage);
+                if (result.Shield.Delta < 0) damage += result.Shield.Delta;
+            }
             else
-            {
-                var flag = (target, effect);
-                if (!cm.actionFlags.Add(flag)) continue;
+                result.Shield = new(target.Shield.Current);
 
-                var applyChance = Random.Range(0, 100);
-                if (applyChance <= 100 - target?.derivedStats.resistance.currentValue)
-                {
-                    var apply = ApplyStatusEffect(target, effect);
-                    cm.combatEvents.Enqueue(new GenericCombatEvent(apply));
-                    resist = false;
-                    Debug.Log(effect.status + " was add to queue " + target?.characterName + ".");
-                }
-                else
-                    resist = true;
+            // element bonus
+            if (hit && element)
+            {
+                if (target.Element.weak.Contains(element))
+                    damage = (int)(damage * 1.2f);
+                else if (element.weak.Contains(target.Element))
+                    damage = (int)(damage * 0.8f);
             }
+
+            // delta hp & mp
+            result.Health = target.Health.Add(heal - damage);
+            result.Mana = target.Mana.Add(mana);
+
+            // apply status effect
+            foreach (var effect in statusEffects)
+            {
+                if (effect.statusType != StatusType.Debuff)
+                    target.StatusEffectList.Apply(effect);
+                else
+                {
+                    var flag = (target, effect);
+                    if (!cm.actionFlags.Add(flag)) continue;
+                    
+                    var applyChance = Random.Range(0, 100);
+                    if (applyChance <= 100 - target[Resistance])
+                    {
+                        target.StatusEffectList.Apply(effect);
+                        Debug.Log($"{effect.status} applied to {target.member.charName}.");
+                    }
+                    else
+                        result.ResistStatus = true;
+                }
+            }
+
+            // resolve events
+            user?.OnResolveAttack?.Invoke(this);
+            target.OnResolveDefend?.Invoke(this);
+            OnResolve?.Invoke(this);
+
+            if (result.Miss) Debug.Log("Miss");
         }
 
-        result = new CombatResult();
-        result.deltaShield = (target?.derivedStats.shield.currentValue ?? 0) - previousShield;
-        result.deltaHp = (target?.derivedStats.health.currentValue ?? 0) - previousHp;
-        result.isCrit = currentCriticalChance <= criticalChance && !miss;
-        result.isFatal = target?.derivedStats.health.currentValue == 0 && result.deltaHp < 0;
-        result.isRevive = previousHp == 0 && target?.derivedStats.health.currentValue > 0;
-        result.miss = miss;
-        result.resistStatus = resist;
-        result.deltaMp = (target?.derivedStats.mana.currentValue ?? 0) - previousMp;
-
-        user?.OnResolveAttack?.Invoke(this);
-        target?.OnResolveDefend?.Invoke(this);
-
-        OnResolve?.Invoke(this);
-
-        if (result.miss) Debug.Log("Miss");
+        private static IEnumerator ApplyStatusEffect(Character tgt, StatusSO effect)
+        {
+            yield return null;
+            Debug.Log(effect.status.statusName + " was apply to " + tgt.characterName);
+            tgt.StatusEffectList.Apply(effect);
+        }
     }
 
-    private static IEnumerator ApplyStatusEffect(Character tgt, StatusSO effect)
+    public class CombatResult
     {
-        yield return null;
-        Debug.Log(effect.status.statusName + " was apply to " + tgt.characterName);
-        tgt.StatusEffectList.Apply(effect);
+        public ResourceStat.Result Health;
+        public ResourceStat.Result Mana;
+        public ResourceStat.Result Shield;
+        public bool Crit;
+        public bool Miss;
+        public bool ResistStatus;
+        public bool IsFatal => Health.Fatal;
+        public bool IsRevive => Health.Revive;
+        
+        [Obsolete]public int deltaHp;
+        [Obsolete] public int deltaMp;
+        [Obsolete]  public int deltaShield;
+        [Obsolete] public bool isCrit;
+        [Obsolete] public bool isFatal;
+        [Obsolete]public bool isRevive;
+        [Obsolete]public bool miss;
+       [Obsolete] public bool resistStatus;
     }
-}
-
-public class CombatResult
-{
-    public int deltaHp;
-    public int deltaMp;
-    public int deltaShield;
-    public bool isCrit;
-    public bool isFatal;
-    public bool isRevive;
-    public bool miss;
-    public bool resistStatus;
 }

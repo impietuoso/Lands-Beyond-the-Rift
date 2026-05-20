@@ -1,1 +1,4 @@
-﻿public enum StatusType { Buff, Debuff, Neutral };
+﻿namespace TurnBasedRPG.StatusEffect
+{
+    public enum StatusType { Buff, Debuff, Neutral };
+}

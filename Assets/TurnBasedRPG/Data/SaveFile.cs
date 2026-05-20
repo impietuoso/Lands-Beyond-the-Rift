@@ -1,7 +1,10 @@
-using System.Collections.ObjectModel;
+using TurnBasedRPG.Inventory;
 
-public class SaveFile {
-    public ObservableList<PartyMember> currentParty;
-    public ObservableList<PartyMember> players;
-    public ListInventory<Item> inventory;
+namespace TurnBasedRPG.Data
+{
+    public class SaveFile {
+        public ObservableList<PartyMember> currentParty;
+        public ObservableList<PartyMember> players;
+        public ListInventory<Item> inventory;
+    }
 }

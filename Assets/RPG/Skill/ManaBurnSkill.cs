@@ -1,4 +1,6 @@
 ﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.Skill;
 using UnityEngine;
 
 [Serializable]

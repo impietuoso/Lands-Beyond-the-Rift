@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Skill;
 using UnityEngine;
 
 [Serializable]
@@ -80,7 +82,7 @@ public class MultiHitAnimate : ISkillAnimation {
 
     public bool ValidateTarget(Character user, Character target) {
         bool sameTeam = user.team == target.team;
-        bool alive = target.derivedStats.health.currentValue > 0;
+        bool alive = target.Health.Current > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
 }

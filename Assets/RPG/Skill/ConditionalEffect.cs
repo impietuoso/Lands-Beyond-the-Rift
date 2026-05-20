@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Skill;
+using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
 [Serializable]
