@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.UI;
 using UnityEngine;
@@ -17,13 +18,12 @@ namespace TurnBasedRPG {
         [Header("Runtime")]
         public List<Character> allies = new();
         public List<Character> enemies = new();
-        [NonSerialized]
-        public List<Character> characterList = new();
-        [NonSerialized]
-        public Character currentCharacter;
-        [SerializeField]
-        public int turnCount = 0;
+        public IEnumerable<Character> everyone;
+        [NonSerialized] public List<Character> characterList = new();
+        [NonSerialized] public Character currentCharacter;
+        [SerializeField] public int turnCount = 0;
         public ListInventory<Consumable> consumables;
+
         [Header("Combat Phases")]
         public EnemyBehaviour enemyBehaviour = new();
         public Queue<ICombatPhase> combatEvents = new();
@@ -32,8 +32,8 @@ namespace TurnBasedRPG {
         public List<ICombatPhase> loopPhases = new();
         public List<ICombatPhase> endPhases = new();
         public Coroutine currentPhase;
-        [HideInInspector]
-        public bool combatWon;
+        [HideInInspector] public bool combatWon;
+
         [Header("Debug Variables")]
         public Skill selectedSkill;
         [NonSerialized]
@@ -50,25 +50,20 @@ namespace TurnBasedRPG {
             loopPhases.Add(new CheckResultPhase());
         }
 
-        public void StartCombat(EnemyEncounter newEnemies, IEnumerable<PartyMember> party) {
+        public void StartCombat(EnemyEncounter encounter, IEnumerable<PartyMember> party) {
             // Reset and clone allies
             allies.Clear();
-            foreach (var ally in party) {
-                if (ally == null) {
-                    continue;
-                }
+            enemies.Clear();
+            everyone = allies.Concat(enemies);
 
-                allies.Add(new(ally, "Player"));
+            foreach (var member in party) {
+                if(!member) continue;
+                allies.Add(new(this, member, "Player", allies, enemies));
             }
 
-            // Clone enemies
-            enemies.Clear();
-            foreach (var newEnemy in newEnemies.enemyList) {
-                if (newEnemy == null) {
-                    continue;
-                }
-
-                enemies.Add(new(newEnemy, "Enemy"));
+            foreach (var member in encounter.enemyList) {
+                if(!member) continue;
+                enemies.Add(new(this, member, "Enemy", enemies, allies));
             }
 
             currentPhase = StartCoroutine(CombatLoop());

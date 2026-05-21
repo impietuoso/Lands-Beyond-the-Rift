@@ -5,7 +5,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class HealPercent : ICombatEffect, ISingleLineDrawer {
+    public class HealPercent : ISkillEffect, ISingleLineDrawer {
         [Range(0f, 1f)] public float percent = 0.2f;
 
         public void Prepare(CombatArgs args) {

@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class ApplyEffect : ICombatEffect, ISingleLineDrawer {
+    public class ApplyEffect : ISkillEffect, ISingleLineDrawer {
         public StatusSO status;
         [Label("tgtUsr")] public bool targetUser;
 

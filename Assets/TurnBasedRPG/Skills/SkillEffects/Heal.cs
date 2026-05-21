@@ -3,7 +3,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class Heal : ICombatEffect {
+    public class Heal : ISkillEffect {
         public int amount;
         public AttributeScale scale;
 

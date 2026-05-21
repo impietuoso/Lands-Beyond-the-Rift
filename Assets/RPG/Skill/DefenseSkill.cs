@@ -2,10 +2,11 @@
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.SkillEffects;
 using UnityEngine;
 
-[Serializable]
-public class DefenseSkill : ISkillEffect {
+[Serializable, Obsolete]
+public class DefenseSkill : ISkillEffectOld {
     [Range(0f, 1f)]
     public float damageReduction;
 
@@ -23,4 +24,9 @@ public class DefenseSkill : ISkillEffect {
         target.OnStartTurn -= OnStartTurn;
         target.OnDefend -= OnDefend;
     }
+
+    public ISkillEffectOld GetUpgrade(Skill skill) => new Defense
+    {
+        damageReduction = damageReduction,
+    };
 }

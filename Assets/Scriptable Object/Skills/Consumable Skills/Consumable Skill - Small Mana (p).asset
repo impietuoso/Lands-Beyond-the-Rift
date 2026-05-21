@@ -20,7 +20,7 @@ MonoBehaviour:
   animation:
     rid: 6720660755266404458
   skillEffects:
-  - rid: 6720660755266404442
+  - rid: 5967445875509691309
   passiva:
     rid: -2
   references:
@@ -28,12 +28,11 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 6720660755266404442
-      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
+    - rid: 5967445875509691309
+      type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        useDamageDealt: 0
-        manaBurn: -60
-        damagePercentage: 0
+        amount: -60
+        tgtUser: 0
     - rid: 6720660755266404458
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:

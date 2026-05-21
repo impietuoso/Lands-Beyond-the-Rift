@@ -20,12 +20,12 @@ MonoBehaviour:
   animation:
     rid: 9169536824337498264
   skillEffects:
-  - rid: 9169536824337498274
-  - rid: 9169536824337498279
+  - rid: 5967445875509691205
+  - rid: 5967445875509691315
   - rid: 9169536824337498280
-  - rid: 9169536824337498281
-  - rid: 9169536824337498282
-  - rid: 9169536824337498283
+  - rid: 5967445875509691206
+  - rid: 5967445875509691207
+  - rid: 5967445875509691208
   passiva:
     rid: -2
   references:
@@ -33,6 +33,36 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691205
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 4
+          scale: 2
+        hitChance: 80
+        critChance: 30
+        damageRange: 0.2
+    - rid: 5967445875509691206
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: 77372ca0ea6690147911f39555834f8a, type: 2}
+        targetUser: 1
+    - rid: 5967445875509691207
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c7e184ed8a45fa3438d3608535875785, type: 2}
+        targetUser: 1
+    - rid: 5967445875509691208
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: dd31e747ea55043409809fe623937aa6, type: 2}
+        targetUser: 1
+    - rid: 5967445875509691315
+      type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        amount: 40
+        tgtUser: 0
     - rid: 9169536824337498264
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -44,40 +74,7 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498274
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
-      data:
-        baseDamage: 10
-        ignoreShield: 0
-        isPercentageDamage: 0
-        healthPercentage: 0.2
-        hitChance: 80
-        criticalChance: 30
-        statMultiplier: 2
-        damageStatScale: 4
-        damageRange: 0.2
-    - rid: 9169536824337498279
-      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
-      data:
-        useDamageDealt: 0
-        manaBurn: 40
-        damagePercentage: 0
     - rid: 9169536824337498280
       type: {class: ManaDrainSkill, ns: , asm: Assembly-CSharp}
       data:
         damagePercentage: 1
-    - rid: 9169536824337498281
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: 77372ca0ea6690147911f39555834f8a, type: 2}
-        targetUser: 1
-    - rid: 9169536824337498282
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: c7e184ed8a45fa3438d3608535875785, type: 2}
-        targetUser: 1
-    - rid: 9169536824337498283
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: dd31e747ea55043409809fe623937aa6, type: 2}
-        targetUser: 1

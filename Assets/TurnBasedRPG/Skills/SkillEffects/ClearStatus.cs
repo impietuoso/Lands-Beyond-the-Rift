@@ -6,7 +6,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class StatusRemoveAll : ICombatEffect, ISingleLineDrawer {
+    public class ClearStatus : ISkillEffect, ISingleLineDrawer {
         public StatusType type;
 
         public void Prepare(CombatArgs args) {

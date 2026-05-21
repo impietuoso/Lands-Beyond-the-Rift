@@ -6,7 +6,7 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-[Serializable]
+[Serializable, Obsolete]
 public class SelfHitAnimate : ISkillAnimation {
     public float damageDelay = 1;
     public GameObject castingParticle;

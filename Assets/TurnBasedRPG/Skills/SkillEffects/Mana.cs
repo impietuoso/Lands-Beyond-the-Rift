@@ -1,27 +1,14 @@
+using System;
 using TurnBasedRPG.DrawerHelpers;
+using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
-    public class Mana : ICombatEffect, IDamageModifier, ISingleLineDrawer {
+    [Preserve, Serializable]
+    public class Mana : ISkillEffect, ISingleLineDrawer {
         public int amount;
-        public bool tgtUser;
 
         public void Prepare(CombatArgs args) {
-            args.OnResolve += Add;
-        }
-
-        private void Add(CombatArgs args) {
-            var tgt = tgtUser ? args.user : args.target;
-            tgt.Mana.Current += amount;
-        }
-
-        public void ModifyArgs(CombatArgs args) {
-            args.OnResolve += AddOnHit;
-        }
-
-        private void AddOnHit(CombatArgs args) {
-            if(args.result.Miss) return;
-            var tgt = tgtUser ? args.user : args.target;
-            tgt.Mana.Current += amount;
+            args.mana += amount;
         }
     }
 }

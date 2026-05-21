@@ -9,7 +9,7 @@ using UnityEngine;
 using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
 [Serializable, Obsolete]
-public class HealSkill : ISkillEffect {
+public class HealSkill : ISkillEffectOld {
     public int healAmount;
     public bool isPercentageHeal;
     [Range(0f, 1f)]
@@ -34,7 +34,7 @@ public class HealSkill : ISkillEffect {
         args.hitChance = 100;
     }
 
-    public ICombatEffect GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(Skill skill) {
         if(isPercentageHeal) {
             return new HealPercent
             {

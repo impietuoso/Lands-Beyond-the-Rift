@@ -1,14 +1,15 @@
-using System.Linq;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.Skills;
-using TurnBasedRPG.Skills.SkillEffects;
 
 namespace Editor.Dev {
     public class upgrade_effects {
         [MenuItem("Tools/Dev/Upgrade Skill Effects")]
         public static void Upgrade() {
+            var missingUpgrades = new HashSet<Type>();
+
             var guids = AssetDatabase.FindAssets("t:Skill");
             foreach (var guid in guids) {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
@@ -17,11 +18,10 @@ namespace Editor.Dev {
 
                 for (var i = 0; i < skill.skillEffects.Count; i++) {
                     var oldEffect = skill.skillEffects[i];
-                    if(oldEffect == null) continue;
-                    if(oldEffect is ICombatEffect) continue;
-                    var upgrade = oldEffect.GetUpgrade(skill);
+                    var upgrade = oldEffect?.GetUpgrade(skill);
+                    if(upgrade == oldEffect) continue;
                     if(upgrade == null) {
-                        Debug.LogWarning($"skill: {skill.name} module {oldEffect.GetType().Name} missing", skill);
+                        missingUpgrades.Add(oldEffect.GetType());
                         continue;
                     }
 
@@ -29,6 +29,9 @@ namespace Editor.Dev {
                     EditorUtility.SetDirty(skill);
                 }
             }
+
+            foreach (var type in missingUpgrades)
+                Debug.LogWarning($"module {type.FullName} missing upgrade");
 
             AssetDatabase.SaveAssets();
             Debug.Log("Skill effect upgrade complete.");

@@ -20,9 +20,9 @@ MonoBehaviour:
   animation:
     rid: 3339743010432221417
   skillEffects:
-  - rid: 9169536824337498240
-  - rid: 9169536824337498241
-  - rid: 9169536824337498242
+  - rid: 5967445875509691295
+  - rid: 5967445875509691340
+  - rid: 5967445875509691341
   passiva:
     rid: -2
   references:
@@ -41,23 +41,15 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
         skillParticle: {fileID: 1601998662364245037, guid: 61ddfba2ee7db1b4cb5dcd0116c2cc89, type: 3}
-    - rid: 9169536824337498240
-      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
+    - rid: 5967445875509691295
+      type: {class: HealPercent, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        healAmount: 0
-        isPercentageHeal: 1
-        healthPercentage: 0.4
-        statMultiplier: 0
-        healStatScale: 1
-    - rid: 9169536824337498241
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+        percent: 0.4
+    - rid: 5967445875509691340
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
-    - rid: 9169536824337498242
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+        status: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
+    - rid: 5967445875509691341
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
+        status: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}

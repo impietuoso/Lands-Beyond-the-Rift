@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using static TurnBasedRPG.BattleStats.Stat;
@@ -26,7 +24,6 @@ namespace TurnBasedRPG {
         public int damage;
         public int heal;
         public int mana;
-        public int manaHeal;
         public int shield;
         public int critChance;
         public int hitChance;
@@ -101,9 +98,10 @@ namespace TurnBasedRPG {
             if(result.Miss) Debug.Log("Miss");
         }
 
+        public CombatArgs Chain() => Chain(source, target);
         public CombatArgs Chain(object src, Character tgt) => new()
         {
-            source = src,
+            source = src ?? source,
             skill = skill,
             element = element,
             user = user,
@@ -121,6 +119,14 @@ namespace TurnBasedRPG {
         public bool ResistStatus;
         public bool IsFatal => Health.Fatal;
         public bool IsRevive => Health.Revive;
+
+        public int TotalDamage
+        {
+            get {
+                var total = Health.Delta + Shield.Delta;
+                return total >= 0 ? 0 : -total;
+            }
+        }
 
         [Obsolete] public int deltaHp;
         [Obsolete] public int deltaMp;

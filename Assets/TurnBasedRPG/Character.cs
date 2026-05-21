@@ -5,15 +5,16 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
-namespace TurnBasedRPG
-{
+namespace TurnBasedRPG {
     [Serializable]
-    public partial class Character
-    {
-        public Character(PartyMember member, string newTeam)
-        {
+    public partial class Character {
+        public Character(CombatManager cm, PartyMember member, string teamName,
+            List<Character> allies, List<Character> enemies) {
+            this.cm = cm;
             this.member = member;
-            team = newTeam;
+            team = teamName;
+            Allies = allies;
+            Enemies = enemies;
             Element = member.element;
 
             GetSkills();
@@ -22,6 +23,9 @@ namespace TurnBasedRPG
         }
 
         public Character() { }
+        public CombatManager cm { get; }
+        public IReadOnlyList<Character> Allies { get; }
+        public IReadOnlyList<Character> Enemies { get; }
 
         [Header("Advancement Info")]
         public PartyMember member;
@@ -47,39 +51,29 @@ namespace TurnBasedRPG
 
         public Observable<float> actionPoints = new();
 
-        public void SubscribePassives()
-        {
+        public void SubscribePassives() {
             foreach (var e in member.equips.Where(i => i))
                 e.passiva?.Subscribe(this);
-
-            foreach (var s in member.equipedSkills.Where(i => i))
-                s.passiva?.Subscribe(this);
         }
 
-        public void UnsubscribePassives()
-        {
+        public void UnsubscribePassives() {
             foreach (var e in member.equips.Where(i => i))
                 e.passiva?.Unsubscribe(this);
-
-            foreach (var s in member.equipedSkills.Where(i => i))
-                s.passiva?.Unsubscribe(this);
         }
 
-        private void GetSkills()
-        {
+        private void GetSkills() {
             skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
 
-            foreach (var e in equipment)
-            {
-                if (e is Weapon w && w.basicAttack)
-                    if (!basicAttack.Contains(w.basicAttack))
+            foreach (var e in equipment) {
+                if(e is Weapon w && w.basicAttack)
+                    if(!basicAttack.Contains(w.basicAttack))
                         basicAttack.Add(w.basicAttack);
 
-                if (!skills.Contains(e.equipmentSkill))
+                if(!skills.Contains(e.equipmentSkill))
                     skills.Add(e.equipmentSkill);
             }
 
-            if (basicAttack.Count == 0)
+            if(basicAttack.Count == 0)
                 basicAttack.Add(profession.BasicAttack);
         }
     }

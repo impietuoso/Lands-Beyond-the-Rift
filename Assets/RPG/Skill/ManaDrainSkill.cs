@@ -1,14 +1,12 @@
 ﻿using System;
 using TurnBasedRPG;
-using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-[Serializable]
-public class ManaDrainSkill : ISkillEffect {
+[Serializable, Obsolete]
+public class ManaDrainSkill : ISkillEffectOld {
     //valor de mana é multiplicado por variavel fixa ou dano causado
-    [Range(0f, 1f)]
-    public float damagePercentage = 0.2f;
+    [Range(0f, 1f)] public float damagePercentage = 0.2f;
 
     public void Prepare(CombatArgs args) {
         args.OnResolve += Steal;

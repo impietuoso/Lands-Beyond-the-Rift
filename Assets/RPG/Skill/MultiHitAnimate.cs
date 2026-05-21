@@ -6,7 +6,7 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-[Serializable]
+[Serializable, Obsolete]
 public class MultiHitAnimate : ISkillAnimation {
     public bool singleTarget;
     public bool targetEnemy;

@@ -5,7 +5,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class StatusRemoval : ICombatEffect {
+    public class StatusRemoval : ISkillEffect {
         public StatusSO[] statuses;
 
         public void Prepare(CombatArgs args) {

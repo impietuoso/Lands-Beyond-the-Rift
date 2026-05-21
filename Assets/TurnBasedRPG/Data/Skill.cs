@@ -16,9 +16,9 @@ namespace TurnBasedRPG.Data {
         [Header("Config")]
         public Element element;
 
+        [SerializeReference, TypeInstance, Separator] public Targeting targeting;
         [SerializeReference, TypeInstance, Separator] public ISkillAnimation animation;
-        [SerializeReference, TypeInstance, Separator] public List<ISkillEffect> skillEffects;
-        [SerializeReference, TypeInstance, Separator] public IPassiveSkill passiva;
+        [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> skillEffects;
 
         public bool Available(Character user) {
             //TODO checksilence
@@ -34,7 +34,7 @@ namespace TurnBasedRPG.Data {
             return true;
         }
 
-        public virtual IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
+        public IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
             Debug.Log(user.characterName + " used " + skillName);
             return animation.Play(this, user, target, combatManager);
         }

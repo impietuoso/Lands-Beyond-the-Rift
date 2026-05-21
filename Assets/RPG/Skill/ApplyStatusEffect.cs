@@ -9,7 +9,7 @@ using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
 [Serializable, Obsolete]
-public class ApplyStatusEffect : ISkillEffect {
+public class ApplyStatusEffect : ISkillEffectOld {
     public StatusSO status;
     public bool targetUser;
     public void Prepare(CombatArgs args) {
@@ -20,7 +20,7 @@ public class ApplyStatusEffect : ISkillEffect {
         } else args.statusEffects.Add(status);
     }
 
-    public ICombatEffect GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(Skill skill) {
         return new ApplyEffect
         {
             status = status,

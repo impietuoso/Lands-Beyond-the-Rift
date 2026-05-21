@@ -20,7 +20,7 @@ MonoBehaviour:
   animation:
     rid: 6720660525144342614
   skillEffects:
-  - rid: 6720660525144342615
+  - rid: 5967445875509691317
   passiva:
     rid: -2
   references:
@@ -28,13 +28,13 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691317
+      type: {class: Defense, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damageReduction: 0.4
     - rid: 6720660525144342614
       type: {class: SelfHitAnimate, ns: , asm: Assembly-CSharp}
       data:
         damageDelay: 1
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 5181673948492790000, guid: 62fab3d899ecc34409b621fdf72e4399, type: 3}
-    - rid: 6720660525144342615
-      type: {class: DefenseSkill, ns: , asm: Assembly-CSharp}
-      data:
-        damageReduction: 0.4

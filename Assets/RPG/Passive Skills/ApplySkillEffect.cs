@@ -1,5 +1,4 @@
-﻿using Drafts;
-using TurnBasedRPG;
+﻿using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
@@ -8,7 +7,7 @@ using UnityEngine;
 public class ApplySkillEffect : IPassiveSkill {
     public Element element;
     [SerializeReference, TypeInstance]
-    public ISkillEffect effect;
+    public ISkillEffectOld effect;
     public void Subscribe(Character character) {
         character.OnAttack += ApplyEffect;
     }

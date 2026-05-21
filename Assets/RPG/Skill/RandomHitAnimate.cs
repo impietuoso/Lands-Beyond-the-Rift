@@ -7,7 +7,7 @@ using TurnBasedRPG.Skills;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
+[Serializable, Obsolete]
 public class RandomHitAnimate : ISkillAnimation {
     public bool targetEnemy;
     public bool targetDead;

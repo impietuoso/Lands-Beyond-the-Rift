@@ -20,9 +20,9 @@ MonoBehaviour:
   animation:
     rid: 9169536824337498264
   skillEffects:
-  - rid: 9169536824337498270
-  - rid: 9169536824337498269
-  - rid: 9169536824337498273
+  - rid: 5967445875509691336
+  - rid: 5967445875509691169
+  - rid: 5967445875509691170
   passiva:
     rid: -2
   references:
@@ -30,6 +30,20 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691169
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: f474c624095fd08458727abcd6639916, type: 2}
+        targetUser: 0
+    - rid: 5967445875509691170
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: dd31e747ea55043409809fe623937aa6, type: 2}
+        targetUser: 0
+    - rid: 5967445875509691336
+      type: {class: ClearStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        type: 1
     - rid: 9169536824337498264
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -41,19 +55,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498269
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: f474c624095fd08458727abcd6639916, type: 2}
-        targetUser: 0
-    - rid: 9169536824337498270
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 1
-        removeAll: 1
-        removedStatus: {fileID: 0}
-    - rid: 9169536824337498273
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: dd31e747ea55043409809fe623937aa6, type: 2}
-        targetUser: 0

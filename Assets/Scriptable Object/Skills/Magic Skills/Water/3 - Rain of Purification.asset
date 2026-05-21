@@ -20,8 +20,8 @@ MonoBehaviour:
   animation:
     rid: 3339743010432221421
   skillEffects:
-  - rid: 9169536824337498212
-  - rid: 6720660598503243869
+  - rid: 5967445875509691268
+  - rid: 5967445875509691328
   passiva:
     rid: -2
   references:
@@ -40,17 +40,11 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 6720660598503243869
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+    - rid: 5967445875509691268
+      type: {class: HealPercent, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        statusType: 1
-        removeAll: 1
-        removedStatus: {fileID: 0}
-    - rid: 9169536824337498212
-      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
+        percent: 0.4
+    - rid: 5967445875509691328
+      type: {class: ClearStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        healAmount: 0
-        isPercentageHeal: 1
-        healthPercentage: 0.4
-        statMultiplier: 0
-        healStatScale: 1
+        type: 1

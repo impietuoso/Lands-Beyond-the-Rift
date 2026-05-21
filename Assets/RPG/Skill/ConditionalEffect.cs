@@ -7,11 +7,11 @@ using TurnBasedRPG.Skills;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
-[Serializable]
-public class ConditionalEffect : ISkillEffect {
+[Serializable, Obsolete]
+public class ConditionalEffect : ISkillEffectOld {
     public StatusSO status;
-    [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
-    public List<ISkillEffect> effect;
+    [SerializeReference, TypeDropdown(typeof(ISkillEffectOld))]
+    public List<ISkillEffectOld> effect;
 
     public void Prepare(CombatArgs args) {
         if (args.target.StatusEffectList.Contain(status)) {

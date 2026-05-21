@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
@@ -8,7 +7,7 @@ using UnityEngine;
 using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
 [Obsolete, Serializable]
-public class DamageSkill : ISkillEffect {
+public class DamageSkill : ISkillEffectOld {
     public int baseDamage;
     public bool ignoreShield;
     public bool isPercentageDamage;
@@ -25,7 +24,7 @@ public class DamageSkill : ISkillEffect {
             finalDamage = Mathf.RoundToInt(args.target.Health.Max * healthPercentage);
         }
         else {
-            float rangedDamage = UnityEngine.Random.Range(1 - damageRange, 1 + damageRange);
+            var rangedDamage = UnityEngine.Random.Range(1 - damageRange, 1 + damageRange);
             var damageStat = damageStatScale;
             var damageStatValue = args.user[(Attribute)(int)damageStat] * statMultiplier;
             finalDamage = Mathf.RoundToInt((baseDamage + damageStatValue) * rangedDamage);
@@ -37,23 +36,13 @@ public class DamageSkill : ISkillEffect {
         args.hitChance = hitChance;
     }
 
-    public ICombatEffect GetUpgrade(Skill skill) {
-        // var statuses = new List<IDamageModifier>();
-        //
-        // for (var i = 0; i < effects.Count; i++) {
-        //     if(effects[i] is not ApplyStatusEffect a) continue;
-        //     statuses.Add(new ApplyStatus { status = a.status, targetUser = a.targetUser });
-        //     effects[i] = null;
-        // }
-
-        if(isPercentageDamage) {
+    public ISkillEffectOld GetUpgrade(Skill skill) {
+        if(isPercentageDamage)
             return new PercentDamage
             {
                 percent = healthPercentage,
                 hitChance = hitChance,
-                //modifiers = statuses.ToArray(),
             };
-        }
 
         return new Damage
         {
@@ -66,7 +55,6 @@ public class DamageSkill : ISkillEffect {
             hitChance = hitChance,
             critChance = criticalChance,
             damageRange = damageRange,
-            //modifiers = statuses.ToArray(),
         };
     }
 }

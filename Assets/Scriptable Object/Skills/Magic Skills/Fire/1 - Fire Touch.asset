@@ -20,8 +20,8 @@ MonoBehaviour:
   animation:
     rid: 3339743010432221417
   skillEffects:
-  - rid: 3339743010432221434
-  - rid: 7065366262496624904
+  - rid: 5967445875509691161
+  - rid: 5967445875509691162
   passiva:
     rid: -2
   references:
@@ -40,20 +40,19 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
         skillParticle: {fileID: 1601998662364245037, guid: 61ddfba2ee7db1b4cb5dcd0116c2cc89, type: 3}
-    - rid: 3339743010432221434
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
+    - rid: 5967445875509691161
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        baseDamage: 8
-        ignoreShield: 0
-        isPercentageDamage: 0
-        healthPercentage: 0
+        damage: 8
+        scale:
+          attribute: 1
+          scale: 1
         hitChance: 90
-        criticalChance: 20
-        statMultiplier: 1
-        damageStatScale: 1
+        critChance: 20
         damageRange: 0.25
-    - rid: 7065366262496624904
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+        modifiers: []
+    - rid: 5967445875509691162
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
         status: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
         targetUser: 0

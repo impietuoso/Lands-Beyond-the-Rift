@@ -5,7 +5,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class Defense : ICombatEffect, ISingleLineDrawer {
+    public class Defense : ISkillEffect, ISingleLineDrawer {
         [Range(0f, 1f)] public float damageReduction;
 
         public void Prepare(CombatArgs args) {

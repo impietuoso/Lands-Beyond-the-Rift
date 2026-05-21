@@ -4,8 +4,8 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-[Serializable]
-public class ManaHealSkill : ISkillEffect
+[Serializable, Obsolete]
+public class ManaHealSkill : ISkillEffectOld
 {
     //valor de mana é multiplicado por variavel fixa ou dano causado
     [Range(0f, 1f)]

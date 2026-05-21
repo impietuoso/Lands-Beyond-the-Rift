@@ -5,10 +5,10 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
-[Serializable]
-public class SpreadEffect : ISkillEffect {
-    [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
-    public ISkillEffect effect;
+[Serializable, Obsolete]
+public class SpreadEffect : ISkillEffectOld {
+    [SerializeReference, TypeDropdown(typeof(ISkillEffectOld))]
+    public ISkillEffectOld effect;
     public float spreadDelay;
 
     public void Prepare(CombatArgs args) {
