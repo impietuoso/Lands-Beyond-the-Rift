@@ -49,6 +49,7 @@ public class RandomHitAnimate : ISkillAnimation {
 
             CombatArgs args = new CombatArgs();
             args.skill = skill;
+            args.element = skill.element;
             args.target = targets[Random.Range(0, targets.Count)];
             args.user = user;
             args.source = this;

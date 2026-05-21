@@ -31,15 +31,11 @@ public class ReflectEffect : Status {
         var damageReflected = (int)(args.damage * reflectPercentage);
         args.damage -= protectFromDamage ? damageReflected : 0;
         
-        CombatArgs newArgs = new();
-        newArgs.skill = args.skill;
-        newArgs.source = this;
-        newArgs.unavoidable = true;
-        newArgs.target = args.user;
-        newArgs.damage = damageReflected;
-        newArgs.stopReactionAttacks = true;
-        var genericEvent = new GenericCombatEvent(ReflectDamage(newArgs));
-        CombatManager.instance.combatEvents.Enqueue(genericEvent);
+        var chain = args.Chain(this, args.user);
+        chain.unavoidable = true;
+        chain.damage = damageReflected;
+        var genericEvent = new GenericCombatEvent(ReflectDamage(chain));
+        args.cm.combatEvents.Enqueue(genericEvent);
     }
     
     public IEnumerator ReflectDamage (CombatArgs args) {

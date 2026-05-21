@@ -1,13 +1,11 @@
 using System;
-using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using UnityEngine;
 using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class Damage : ISkillEffect {
-        public Element element;
+    public class Damage : ICombatEffect {
         public int damage = 10;
         public AttributeScale scale;
         [Range(0, 100)] public int hitChance = 80;
@@ -20,7 +18,6 @@ namespace TurnBasedRPG.Skills.SkillEffects {
             var range = UnityEngine.Random.Range(1 - damageRange, 1 + damageRange);
             value = Mathf.RoundToInt(value * range);
 
-            args.element = element ? element : args.skill.element;
             args.damage = value;
             args.critChance = critChance;
             args.hitChance = hitChance;

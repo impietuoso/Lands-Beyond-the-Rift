@@ -14,7 +14,7 @@ public class ApplySkillEffect : IPassiveSkill {
     }
 
     public void Unsubscribe(Character character) {
-        character.OnAttack -=ApplyEffect;
+        character.OnAttack -= ApplyEffect;
     }
 
     public void ApplyEffect(CombatArgs args) {

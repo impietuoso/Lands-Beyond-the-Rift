@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.SkillEffects;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
@@ -16,5 +18,13 @@ public class ApplyStatusEffect : ISkillEffect {
             args.user?.StatusEffectList.Apply(status);
             Debug.Log(status.status.statusName + " was apply on " + args.user?.characterName + ".");
         } else args.statusEffects.Add(status);
+    }
+
+    public ICombatEffect GetUpgrade(Skill skill) {
+        return new ApplyEffect
+        {
+            status = status,
+            targetUser = targetUser,
+        };
     }
 }

@@ -24,8 +24,8 @@ namespace TurnBasedRPG.Editor.DrawerHelpers {
 
             var currValue = property.managedReferenceValue;
             var currType = currValue?.GetType();
-
-            var text = fieldInfo.FieldType.IsArray ? "" : label.text + ": ";
+            var isArrayElement = label.text.StartsWith("Element ");
+            var text = isArrayElement ? "" : label.text + ": ";
             text += currType?.Name ?? "null";
             label.text = " ";
 

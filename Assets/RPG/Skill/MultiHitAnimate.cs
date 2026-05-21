@@ -60,6 +60,7 @@ public class MultiHitAnimate : ISkillAnimation {
 
             CombatArgs args = new CombatArgs();
             args.skill = skill;
+            args.element = skill.element;
             args.target = target;
             args.user = user;
             args.source = this;

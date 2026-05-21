@@ -9,14 +9,7 @@ public class DefenseSkill : ISkillEffect {
     [Range(0f, 1f)]
     public float damageReduction;
 
-    public bool ValidateTarget(Character user, Character target) {
-        if (user == target) {
-            return true;
-        } else return false;
-    }
-
     public void Prepare(CombatArgs args) {
-        args.element = args.skill.element;
         args.user.OnStartTurn += OnStartTurn;
         args.user.OnDefend += OnDefend;
         args.unavoidable = true;

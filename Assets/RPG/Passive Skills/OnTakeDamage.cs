@@ -20,10 +20,8 @@ public class OnTakeDamage : IPassiveSkill {
 
     public void ConsequencesOfSeuActs(CombatArgs args) {
         if (element && args.element != element) return;
-        if (args.result.deltaHp >= 0) return;
+        if (args.result.Health.Delta >= 0) return;
         if (args.stopReactionAttacks) return;
-        
-        
         
         if (CombatManager.instance.combatEvents.Any(e => e is OnTakeDamageEvent
                 otd && otd.thisEvent == this && otd.args.target == args.target)) return;

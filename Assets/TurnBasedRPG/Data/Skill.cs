@@ -8,17 +8,17 @@ using UnityEngine;
 namespace TurnBasedRPG.Data {
     [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
     public class Skill : ScriptableObject {
-        [Header("Ui")] public string skillName;
+        public string skillName;
         [TextArea(3, 6)] public string skillDescription;
         public int cost;
         public Sprite icon;
 
         [Header("Config")]
         public Element element;
-        [SerializeReference, TypeInstance] public ISkillAnimation animation;
-        [SerializeReference, TypeInstance] public List<ISkillEffect> skillEffects;
-        [SerializeReference, TypeInstance] public ISkillEffect effect;
-        [SerializeReference, TypeInstance] public IPassiveSkill passiva;
+
+        [SerializeReference, TypeInstance, Separator] public ISkillAnimation animation;
+        [SerializeReference, TypeInstance, Separator] public List<ISkillEffect> skillEffects;
+        [SerializeReference, TypeInstance, Separator] public IPassiveSkill passiva;
 
         public bool Available(Character user) {
             //TODO checksilence

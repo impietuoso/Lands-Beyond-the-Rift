@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.SkillEffects;
 using UnityEngine;
 using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
@@ -15,12 +16,13 @@ public class HealSkill : ISkillEffect {
     public float healthPercentage = 0.2f;
     public float statMultiplier;
     public Attribute healStatScale;
-    
+
     public void Prepare(CombatArgs args) {
         int finalHeal = 0;
-        if (isPercentageHeal) {
+        if(isPercentageHeal) {
             finalHeal = Mathf.RoundToInt(args.target.Health.Max * healthPercentage);
-        } else {
+        }
+        else {
             var healStat = healStatScale;
             var healStatValue = args.user[(Attribute)(int)healStat] * statMultiplier;
 
@@ -30,5 +32,24 @@ public class HealSkill : ISkillEffect {
         args.heal = finalHeal;
         args.critChance = 0;
         args.hitChance = 100;
+    }
+
+    public ICombatEffect GetUpgrade(Skill skill) {
+        if(isPercentageHeal) {
+            return new HealPercent
+            {
+                percent = healthPercentage
+            };
+        }
+
+        return new Heal
+        {
+            amount = healAmount,
+            scale = new AttributeScale
+            {
+                attribute = healStatScale,
+                scale = statMultiplier
+            }
+        };
     }
 }

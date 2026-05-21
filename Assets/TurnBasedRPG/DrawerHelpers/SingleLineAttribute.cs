@@ -5,3 +5,4 @@ namespace TurnBasedRPG.DrawerHelpers {
 
     public interface ISingleLineDrawer { }
 }
+

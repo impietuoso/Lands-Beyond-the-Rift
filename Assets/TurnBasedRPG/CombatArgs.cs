@@ -10,6 +10,7 @@ using static TurnBasedRPG.BattleStats.Stat;
 
 namespace TurnBasedRPG {
     public class CombatArgs {
+
         public object source;
         public Character user;
         public Character target;
@@ -104,6 +105,7 @@ namespace TurnBasedRPG {
         {
             source = src,
             skill = skill,
+            element = element,
             user = user,
             target = tgt,
             stopReactionAttacks = true,

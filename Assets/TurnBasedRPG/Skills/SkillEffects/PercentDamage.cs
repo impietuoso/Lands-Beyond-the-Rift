@@ -1,13 +1,11 @@
 using System;
-using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using UnityEngine;
 using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class PercentDamage : ISkillEffect {
-        public Element element;
+    public class PercentDamage : ICombatEffect {
         [Range(0f, 1f)] public float percent = 0.25f;
         [Range(0, 100)] public int hitChance = 100;
         [SerializeReference, TypeInstance] public IDamageModifier[] modifiers;
@@ -18,8 +16,6 @@ namespace TurnBasedRPG.Skills.SkillEffects {
             args.hitChance = hitChance;
             args.ignoreArmor = true;
             args.cannotCrit = true;
-
-            if (element) args.element = element;
         }
     }
 }

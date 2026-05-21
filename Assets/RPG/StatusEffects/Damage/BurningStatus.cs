@@ -28,7 +28,7 @@ public class BurningStatus : Status {
     }
 
     private void OnTurnStart(Character target) {
-        CombatArgs args = new();
+        var args = new CombatArgs();
         args.element = element;
         args.source = this;
         args.unavoidable = true;

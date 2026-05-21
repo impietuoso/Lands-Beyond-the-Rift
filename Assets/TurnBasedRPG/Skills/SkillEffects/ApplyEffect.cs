@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
+using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 using UnityEngine.Scripting;
@@ -9,10 +10,9 @@ using Random = UnityEngine.Random;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class ApplyEffect : ISkillEffect {
+    public class ApplyEffect : ICombatEffect, ISingleLineDrawer {
         public StatusSO status;
-        public bool targetUser;
-        public bool applyOnce = true;
+        [Label("tgtUsr")] public bool targetUser;
 
         public void Prepare(CombatArgs args) {
             args.OnResolve += TryApply;
@@ -21,7 +21,7 @@ namespace TurnBasedRPG.Skills.SkillEffects {
         private void TryApply(CombatArgs args) {
             var target = targetUser ? args.user : args.target;
             var flag = (target, this);
-            if(applyOnce && !args.cm.actionFlags.Add(flag)) return;
+            if(!args.cm.actionFlags.Add(flag)) return;
             var applyIe = new GenericCombatEvent(Apply(target, status));
 
             if(status.statusType != StatusType.Debuff) {

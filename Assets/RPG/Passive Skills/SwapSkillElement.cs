@@ -4,6 +4,7 @@ using TurnBasedRPG.Data;
 public class SwapSkillElement : IPassiveSkill {
     public Element originalElement;
     public Element newElement;
+
     public void Subscribe(Character character) {
         character.OnAttack += SwapElement;
     }
@@ -13,7 +14,7 @@ public class SwapSkillElement : IPassiveSkill {
     }
 
     public void SwapElement(CombatArgs args) {
-        if (args.element  && args.element == originalElement) {
+        if(args.element && args.element == originalElement) {
             args.element = newElement;
         }
     }

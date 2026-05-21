@@ -35,7 +35,7 @@ public class PoisonStatus : Status {
     }
 
     private void OnTurnEnd(Character target) {
-        CombatArgs args = new();
+        var args = new CombatArgs();
         args.element = element;
         args.source = this;
         args.unavoidable = true;

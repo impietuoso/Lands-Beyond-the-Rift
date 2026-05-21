@@ -1,6 +1,5 @@
 ﻿using System;
 using TurnBasedRPG;
-using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 
 [Serializable]
