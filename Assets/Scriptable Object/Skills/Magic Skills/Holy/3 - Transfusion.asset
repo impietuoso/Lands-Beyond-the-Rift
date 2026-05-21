@@ -20,8 +20,8 @@ MonoBehaviour:
   animation:
     rid: 9169536824337498259
   skillEffects:
-  - rid: 9169536824337498260
-  - rid: 9169536824337498261
+  - rid: 5967445875509691280
+  - rid: 5967445875509691281
   passiva:
     rid: -2
   references:
@@ -29,6 +29,15 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691280
+      type: {class: HealPercent, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        percent: 0.6
+    - rid: 5967445875509691281
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: 2fbaa0cea176ba448a8c248f4f543653, type: 2}
+        targetUser: 1
     - rid: 9169536824337498259
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -40,16 +49,3 @@ MonoBehaviour:
         hitDelay: 1
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498260
-      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
-      data:
-        healAmount: 0
-        isPercentageHeal: 1
-        healthPercentage: 0.6
-        statMultiplier: 0
-        healStatScale: 4
-    - rid: 9169536824337498261
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: 2fbaa0cea176ba448a8c248f4f543653, type: 2}
-        targetUser: 1

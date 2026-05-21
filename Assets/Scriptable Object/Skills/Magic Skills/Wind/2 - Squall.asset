@@ -20,8 +20,8 @@ MonoBehaviour:
   animation:
     rid: 9169536697585893492
   skillEffects:
-  - rid: 9169536824337498188
-  - rid: 9169536824337498198
+  - rid: 5967445875509691194
+  - rid: 5967445875509691324
   passiva:
     rid: -2
   references:
@@ -29,6 +29,20 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691194
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 1
+          scale: 1
+        hitChance: 80
+        critChance: 30
+        damageRange: 0.2
+    - rid: 5967445875509691324
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c7e184ed8a45fa3438d3608535875785, type: 2}
     - rid: 9169536697585893492
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -40,21 +54,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498188
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
-      data:
-        baseDamage: 10
-        ignoreShield: 0
-        isPercentageDamage: 0
-        healthPercentage: 0.2
-        hitChance: 80
-        criticalChance: 30
-        statMultiplier: 1
-        damageStatScale: 1
-        damageRange: 0.2
-    - rid: 9169536824337498198
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 0
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: c7e184ed8a45fa3438d3608535875785, type: 2}

@@ -20,9 +20,9 @@ MonoBehaviour:
   animation:
     rid: 9169536824337498264
   skillEffects:
-  - rid: 9169536824337498274
-  - rid: 9169536824337498269
-  - rid: 9169536824337498275
+  - rid: 5967445875509691239
+  - rid: 5967445875509691240
+  - rid: 5967445875509691311
   passiva:
     rid: -2
   references:
@@ -30,6 +30,25 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691239
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 4
+          scale: 2
+        hitChance: 80
+        critChance: 30
+        damageRange: 0.2
+    - rid: 5967445875509691240
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c0a28ed87dfb4e84fb9a900d7706797a, type: 2}
+        targetUser: 0
+    - rid: 5967445875509691311
+      type: {class: ManaBurn, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damagePercent: 0.4
     - rid: 9169536824337498264
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -41,26 +60,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498269
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: c0a28ed87dfb4e84fb9a900d7706797a, type: 2}
-        targetUser: 0
-    - rid: 9169536824337498274
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
-      data:
-        baseDamage: 10
-        ignoreShield: 1
-        isPercentageDamage: 0
-        healthPercentage: 0.2
-        hitChance: 80
-        criticalChance: 30
-        statMultiplier: 2
-        damageStatScale: 4
-        damageRange: 0.2
-    - rid: 9169536824337498275
-      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
-      data:
-        useDamageDealt: 1
-        manaBurn: 0
-        damagePercentage: 0.4

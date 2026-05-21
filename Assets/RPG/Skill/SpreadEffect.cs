@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.DrawerHelpers;
+using TurnBasedRPG.Skills;
 using UnityEngine;
-[Serializable]
-public class SpreadEffect : ISkillEffect {
-    [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
-    public ISkillEffect effect;
+[Serializable, Obsolete]
+public class SpreadEffect : ISkillEffectOld {
+    [SerializeReference, TypeDropdown(typeof(ISkillEffectOld))]
+    public ISkillEffectOld effect;
     public float spreadDelay;
 
     public void Prepare(CombatArgs args) {
         foreach (var newTarget in CombatManager.instance.characterList) {
             if (ValidateTarget(args.target, newTarget)) {
-                CombatArgs newArgs = new();
-                newArgs.skill = args.skill;
-                newArgs.target = newTarget;
-                newArgs.user = args.user;
-                newArgs.source = args.source;
+                var newArgs = args.Chain(args.source, newTarget);
                 newArgs.unavoidable = true;
                 effect.Prepare(newArgs);
                 args.OnResolve += _=> CombatManager.instance.StartCoroutine(ResolveSpread(newArgs));
@@ -29,7 +29,7 @@ public class SpreadEffect : ISkillEffect {
     
     public bool ValidateTarget(Character user, Character target) {
         bool sameTeam = user.team == target.team;
-        bool alive = target.derivedStats.health.currentValue > 0;
+        bool alive = target.Health.Current > 0;
         bool notSelf = target != user;
         return sameTeam && alive && notSelf;
     }

@@ -20,8 +20,8 @@ MonoBehaviour:
   animation:
     rid: 3339743010432221460
   skillEffects:
-  - rid: 3339743010432221459
-  - rid: 7065366216047853730
+  - rid: 5967445875509691188
+  - rid: 5967445875509691316
   - rid: 7065366216047853729
   passiva:
     rid: -2
@@ -30,18 +30,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 3339743010432221459
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
-      data:
-        baseDamage: 0
-        ignoreShield: 0
-        isPercentageDamage: 1
-        healthPercentage: 1
-        hitChance: 100
-        criticalChance: 0
-        statMultiplier: 0
-        damageStatScale: 4
-        damageRange: 0
     - rid: 3339743010432221460
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -53,13 +41,17 @@ MonoBehaviour:
         hitDelay: 1
         castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
         skillParticle: {fileID: 8305007596641306061, guid: 378c3c9934689b3499afc6ba989d67b2, type: 3}
+    - rid: 5967445875509691188
+      type: {class: PercentDamage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        percent: 1
+        hitChance: 100
+    - rid: 5967445875509691316
+      type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        amount: 500
+        tgtUser: 0
     - rid: 7065366216047853729
       type: {class: ManaDrainSkill, ns: , asm: Assembly-CSharp}
       data:
         damagePercentage: 1
-    - rid: 7065366216047853730
-      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
-      data:
-        useDamageDealt: 0
-        manaBurn: 500
-        damagePercentage: 0

@@ -1,12 +1,35 @@
 ﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.SkillEffects;
 
-[Serializable]
-public class ShieldSkill : ISkillEffect {
+[Serializable, Obsolete]
+public class ShieldSkill : ISkillEffectOld {
     public int shieldValue;
     public bool usePercentageOfHealth;
-    public int healthPercentage;
 
     public void Prepare(CombatArgs args) {
-        args.shield = usePercentageOfHealth ? args.target.derivedStats.health.maxValue * healthPercentage : shieldValue;
+        if(usePercentageOfHealth)
+            args.shield += (int)(args.target.Health.Max * shieldValue / 100f);
+        else args.shield += shieldValue;
+    }
+
+    public ISkillEffectOld GetUpgrade(Skill skill) {
+        if(usePercentageOfHealth) {
+            return new PercentShield
+            {
+                percent = shieldValue / 100f,
+            };
+        }
+
+        return new Shield
+        {
+            value = shieldValue,
+            scale = new AttributeScale
+            {
+                scale = 0,
+            }
+        };
     }
 }

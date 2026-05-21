@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
 [System.Serializable]
 public class PoisonStatus : Status {
@@ -32,8 +35,8 @@ public class PoisonStatus : Status {
     }
 
     private void OnTurnEnd(Character target) {
-        CombatArgs args = new();
-        args.skillElement = element;
+        var args = new CombatArgs();
+        args.element = element;
         args.source = this;
         args.unavoidable = true;
         args.ignoreShield = true;

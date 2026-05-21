@@ -20,7 +20,7 @@ MonoBehaviour:
   animation:
     rid: 6720660755266404458
   skillEffects:
-  - rid: 6720660755266404472
+  - rid: 5967445875509691173
   passiva:
     rid: -2
   references:
@@ -28,6 +28,17 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691173
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 40
+        scale:
+          attribute: 0
+          scale: 0
+        hitChance: 100
+        critChance: 0
+        damageRange: 0.15
+        modifiers: []
     - rid: 6720660755266404458
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -39,15 +50,3 @@ MonoBehaviour:
         hitDelay: 1
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
-    - rid: 6720660755266404472
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
-      data:
-        baseDamage: 40
-        ignoreShield: 1
-        isPercentageDamage: 0
-        healthPercentage: 0
-        hitChance: 100
-        criticalChance: 0
-        statMultiplier: 0
-        damageStatScale: 0
-        damageRange: 0.15

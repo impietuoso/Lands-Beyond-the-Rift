@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+
 [Serializable]
 public class OnDealDamage : IPassiveSkill {
     public Element element;
@@ -16,7 +19,7 @@ public class OnDealDamage : IPassiveSkill {
     }
 
     public void ConsequencesOfSeuActs(CombatArgs args) {
-        if (element && args.skillElement != element) return;
+        if (element && args.element != element) return;
         if (args.result.deltaHp >= 0) return;
         if (args.stopReactionAttacks) return;
         

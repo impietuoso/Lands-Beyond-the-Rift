@@ -20,8 +20,8 @@ MonoBehaviour:
   animation:
     rid: 3339743010432221417
   skillEffects:
-  - rid: 7065366262496624913
-  - rid: 7065366262496624912
+  - rid: 5967445875509691339
+  - rid: 5967445875509691290
   passiva:
     rid: -2
   references:
@@ -40,14 +40,12 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
         skillParticle: {fileID: 0}
-    - rid: 7065366262496624912
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+    - rid: 5967445875509691290
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
         status: {fileID: 11400000, guid: 77372ca0ea6690147911f39555834f8a, type: 2}
         targetUser: 1
-    - rid: 7065366262496624913
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+    - rid: 5967445875509691339
+      type: {class: ClearStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        statusType: 1
-        removeAll: 1
-        removedStatus: {fileID: 0}
+        type: 1

@@ -20,10 +20,10 @@ MonoBehaviour:
   animation:
     rid: 9169536697585893492
   skillEffects:
-  - rid: 9169536697585893505
-  - rid: 9169536697585893506
-  - rid: 9169536697585893507
-  - rid: 9169536697585893508
+  - rid: 5967445875509691223
+  - rid: 5967445875509691322
+  - rid: 5967445875509691323
+  - rid: 5967445875509691224
   passiva:
     rid: -2
   references:
@@ -31,6 +31,23 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691223
+      type: {class: HealPercent, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        percent: 0.3
+    - rid: 5967445875509691224
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: 6e526d327d141f9469f737ceddc48ea4, type: 2}
+        targetUser: 0
+    - rid: 5967445875509691322
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
+    - rid: 5967445875509691323
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: 2fbaa0cea176ba448a8c248f4f543653, type: 2}
     - rid: 9169536697585893492
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -42,28 +59,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536697585893505
-      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
-      data:
-        healAmount: 0
-        isPercentageHeal: 1
-        healthPercentage: 0.3
-        statMultiplier: 1
-        healStatScale: 3
-    - rid: 9169536697585893506
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
-    - rid: 9169536697585893507
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: 2fbaa0cea176ba448a8c248f4f543653, type: 2}
-    - rid: 9169536697585893508
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: 6e526d327d141f9469f737ceddc48ea4, type: 2}
-        targetUser: 0

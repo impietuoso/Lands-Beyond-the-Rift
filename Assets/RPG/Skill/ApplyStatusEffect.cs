@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.SkillEffects;
+using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
-[Serializable]
-public class ApplyStatusEffect : ISkillEffect {
+[Serializable, Obsolete]
+public class ApplyStatusEffect : ISkillEffectOld {
     public StatusSO status;
     public bool targetUser;
     public void Prepare(CombatArgs args) {
@@ -13,20 +19,12 @@ public class ApplyStatusEffect : ISkillEffect {
             Debug.Log(status.status.statusName + " was apply on " + args.user?.characterName + ".");
         } else args.statusEffects.Add(status);
     }
-}
 
-public class ApplyStatusEffectEvent : ICombatPhase {
-    public Character target;
-    public StatusSO status;
-
-    public ApplyStatusEffectEvent(Character target, StatusSO stats) {
-        this.target = target;
-        this.status = stats;
-    }
-
-    public IEnumerator Execute(CombatManager cm) {
-        yield return null;
-        Debug.Log(status.status.statusName + " was apply to " + target.characterName);
-        target?.StatusEffectList.Apply(status);
+    public ISkillEffectOld GetUpgrade(Skill skill) {
+        return new ApplyEffect
+        {
+            status = status,
+            targetUser = targetUser,
+        };
     }
 }

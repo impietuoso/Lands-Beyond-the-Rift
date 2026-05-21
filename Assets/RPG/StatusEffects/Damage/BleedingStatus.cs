@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
 [System.Serializable]
 public class BleedingStatus: Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
     public int damage = 10;
-    public Element element;
     
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
@@ -19,21 +21,15 @@ public class BleedingStatus: Status {
     }
 
     public override void Stack(Character target, Status other) {
-        if (other is BurningStatus otherStatus) {
-            this.duration = otherStatus.duration;
-        }
+        if (other is BurningStatus otherStatus)
+            duration = otherStatus.duration;
     }
     
     private void OnAttack(CombatArgs args) {
-        CombatArgs newArgs = new();
-        newArgs.skill = args.skill;
-        newArgs.skillElement = element;
-        newArgs.source = this;
+        CombatArgs newArgs = args.Chain(this, args.user);
         newArgs.unavoidable = true;
         newArgs.ignoreShield = true;
         newArgs.ignoreArmor = true;
-        newArgs.stopReactionAttacks = true;
-        newArgs.target = args.user;
         newArgs.damage = damage;
         newArgs.Resolve();
         Debug.Log(newArgs.target.characterName + " takes " + damage + " bleed damage.");

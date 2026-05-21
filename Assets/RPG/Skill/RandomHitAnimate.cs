@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
+[Serializable, Obsolete]
 public class RandomHitAnimate : ISkillAnimation {
     public bool targetEnemy;
     public bool targetDead;
@@ -46,6 +49,7 @@ public class RandomHitAnimate : ISkillAnimation {
 
             CombatArgs args = new CombatArgs();
             args.skill = skill;
+            args.element = skill.element;
             args.target = targets[Random.Range(0, targets.Count)];
             args.user = user;
             args.source = this;
@@ -65,7 +69,7 @@ public class RandomHitAnimate : ISkillAnimation {
     
     public bool ValidateTarget(Character user, Character target) {
         bool sameTeam = user.team == target.team;
-        bool alive = target.derivedStats.health.currentValue > 0;
+        bool alive = target.Health.Current > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
 }

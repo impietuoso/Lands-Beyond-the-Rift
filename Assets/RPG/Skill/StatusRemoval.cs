@@ -1,35 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.SkillEffects;
+using TurnBasedRPG.StatusEffect;
 
-[Serializable]
-public class StatusRemoval : ISkillEffect {
+[Serializable, Obsolete]
+public class StatusRemoval : ISkillEffectOld {
     public StatusType statusType;
     public bool removeAll;
     public StatusSO removedStatus;
 
     public void Prepare(CombatArgs args) {
         var statusList = args.target.StatusEffectList.StatusList;
-        if (removeAll) {
+        if(removeAll) {
             var toRemove = new List<StatusSO>();
 
             foreach (var kvp in statusList) {
-                if (kvp.Key.statusType == statusType) {
+                if(kvp.Key.statusType == statusType) {
                     toRemove.Add(kvp.Key);
                 }
             }
 
             foreach (var so in toRemove) {
                 args.target.StatusEffectList.Remove(so);
-            } 
-        } else {
+            }
+        }
+        else {
             StatusSO so = null;
             foreach (var kvp in statusList) {
-                if (kvp.Key.status == removedStatus.status) {
+                if(kvp.Key.status == removedStatus.status) {
                     so = kvp.Key;
                 }
             }
+
             if(so.status != null) args.target.StatusEffectList.Remove(so);
         }
-        
+    }
+
+    public ISkillEffectOld GetUpgrade(Skill skill) {
+        if(removeAll) {
+            return new ClearStatus
+            {
+                type = statusType,
+            };
+        }
+
+        return new RemoveStatus
+        {
+            status = removedStatus
+        };
     }
 }

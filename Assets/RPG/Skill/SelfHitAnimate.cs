@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 
-[Serializable]
+[Serializable, Obsolete]
 public class SelfHitAnimate : ISkillAnimation {
     public float damageDelay = 1;
     public GameObject castingParticle;
@@ -38,6 +41,7 @@ public class SelfHitAnimate : ISkillAnimation {
         Debug.Log(user.characterName + " Defends!");
         CombatArgs args = new CombatArgs();
         args.skill = skill;
+        args.element = skill.element;
         args.user = user;
         args.target = user;
         args.source = this;

@@ -21,8 +21,8 @@ MonoBehaviour:
   animation:
     rid: 9169536824337498264
   skillEffects:
-  - rid: 9169536824337498277
-  - rid: 9169536824337498278
+  - rid: 5967445875509691310
+  - rid: 5967445875509691192
   passiva:
     rid: -2
   references:
@@ -30,6 +30,18 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691192
+      type: {class: Heal, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        amount: 40
+        scale:
+          attribute: 0
+          scale: 0
+    - rid: 5967445875509691310
+      type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        amount: 20
+        tgtUser: 0
     - rid: 9169536824337498264
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -41,17 +53,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498277
-      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
-      data:
-        useDamageDealt: 0
-        manaBurn: 20
-        damagePercentage: 0
-    - rid: 9169536824337498278
-      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
-      data:
-        healAmount: 40
-        isPercentageHeal: 0
-        healthPercentage: 0.2
-        statMultiplier: 0
-        healStatScale: 0

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.StatusEffect;
+using UnityEngine;
 
 [System.Serializable]
 public class BurningStatus : Status {
@@ -25,8 +28,8 @@ public class BurningStatus : Status {
     }
 
     private void OnTurnStart(Character target) {
-        CombatArgs args = new();
-        args.skillElement = element;
+        var args = new CombatArgs();
+        args.element = element;
         args.source = this;
         args.unavoidable = true;
         args.ignoreShield = true;

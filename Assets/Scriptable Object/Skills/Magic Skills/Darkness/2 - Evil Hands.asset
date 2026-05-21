@@ -20,9 +20,9 @@ MonoBehaviour:
   animation:
     rid: 9169536824337498264
   skillEffects:
-  - rid: 9169536824337498265
-  - rid: 9169536824337498267
-  - rid: 9169536824337498268
+  - rid: 5967445875509691271
+  - rid: 5967445875509691272
+  - rid: 5967445875509691273
   passiva:
     rid: -2
   references:
@@ -30,6 +30,27 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967445875509691271
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 4
+          scale: 1.5
+        hitChance: 80
+        critChance: 30
+        damageRange: 0.2
+        modifiers: []
+    - rid: 5967445875509691272
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
+        targetUser: 0
+    - rid: 5967445875509691273
+      type: {class: ApplyEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c0a28ed87dfb4e84fb9a900d7706797a, type: 2}
+        targetUser: 0
     - rid: 9169536824337498264
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -41,25 +62,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498265
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
-      data:
-        baseDamage: 10
-        ignoreShield: 0
-        isPercentageDamage: 0
-        healthPercentage: 0.2
-        hitChance: 80
-        criticalChance: 30
-        statMultiplier: 1.5
-        damageStatScale: 4
-        damageRange: 0.2
-    - rid: 9169536824337498267
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
-        targetUser: 0
-    - rid: 9169536824337498268
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: c0a28ed87dfb4e84fb9a900d7706797a, type: 2}
-        targetUser: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG;
+using TurnBasedRPG.StatusEffect;
 
 [System.Serializable]
 public class HitChanceStatus : Status {

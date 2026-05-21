@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.DamageModifiers;
 using UnityEngine;
 
-[Serializable]
-public class LifeStealSkill : ISkillEffect {
+[Serializable, Obsolete]
+public class LifeStealSkill : ISkillEffectOld {
     [Range(0f, 1f)]
     public float damagePercentage = 0.2f;
 
@@ -14,15 +15,17 @@ public class LifeStealSkill : ISkillEffect {
     }
 
     public void Steal(CombatArgs args) {
-        args.OnResolve -= Steal;
         var stealHeal = args.result.deltaHp * damagePercentage;
         if (stealHeal == 0) return;
-        CombatArgs newArgs = new CombatArgs();
-        newArgs.skill = args.skill;
-        newArgs.heal = (int)stealHeal;
-        newArgs.user = args.user;
-        newArgs.target = args.user;
-        newArgs.source = this;
-        newArgs.Resolve();
+        var chain = args.Chain(this, args.user);
+        chain.heal = (int)stealHeal;
+        chain.Resolve();
+    }
+
+    public ISkillEffectOld GetUpgrade(Skill skill) {
+        return new LifeSteal
+        {
+            percent = damagePercentage,
+        };
     }
 }

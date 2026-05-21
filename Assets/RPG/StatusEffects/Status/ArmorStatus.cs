@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.StatusEffect;
 
-[System.Serializable]
+[Serializable, Obsolete]
 public class ArmorStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
@@ -8,12 +10,12 @@ public class ArmorStatus : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.derivedStats.armor.AddBonus(this, multiplier);
+        target.Stats.Armor.AddBonus(this, multiplier);
         target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.derivedStats.armor.RemoveBonus(this);
+        target.Stats.Armor.RemoveBonus(this);
         target.OnEndTurn -= OnTurnEnd;
     }
 

@@ -20,16 +20,24 @@ MonoBehaviour:
   animation:
     rid: 9169536697585893492
   skillEffects:
-  - rid: 9169536824337498202
-  - rid: 9169536824337498204
-  - rid: 9169536824337498205
-  passiva:
-    rid: -2
+  - rid: 5967445875509691354
+  - rid: 5967445875509691334
+  - rid: 5967445875509691335
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 5967445875509691334
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
+    - rid: 5967445875509691335
+      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
+    - rid: 5967445875509691354
+      type: {class: PercentShield, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        percent: 0
     - rid: 9169536697585893492
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -41,21 +49,3 @@ MonoBehaviour:
         hitDelay: 0
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498202
-      type: {class: ShieldSkill, ns: , asm: Assembly-CSharp}
-      data:
-        shieldValue: 0
-        usePercentageOfHealth: 1
-        healthPercentage: 40
-    - rid: 9169536824337498204
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
-    - rid: 9169536824337498205
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
