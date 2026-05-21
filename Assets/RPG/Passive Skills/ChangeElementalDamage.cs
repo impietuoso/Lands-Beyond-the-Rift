@@ -1,6 +1,8 @@
 ﻿using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using UnityEngine;
+
+
 public class ChangeElementalDamage : IPassiveSkill {
     public Element element;
     public bool changeAttack = true;

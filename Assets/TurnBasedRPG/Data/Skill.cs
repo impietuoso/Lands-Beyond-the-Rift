@@ -27,16 +27,13 @@ namespace TurnBasedRPG.Data {
             // }
 
             if(user.Mana.Current < cost) return false;
-
-            if(CombatManager.instance.combatUI.characters.All
-                   (c => !animation.ValidateTarget(user, c.owner))) return false;
-
-            return true;
+            var hasTargets = targeting.EligibleTargets(user).Any();
+            return hasTargets;
         }
 
-        public IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
+        public IEnumerator UseSkill(SkillArgs cast) {
             Debug.Log(user.characterName + " used " + skillName);
-            return animation.Play(this, user, target, combatManager);
+            return animation.Play(this, user, target, target.cm);
         }
     }
 }

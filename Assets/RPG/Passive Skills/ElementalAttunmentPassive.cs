@@ -1,6 +1,7 @@
 ﻿using TurnBasedRPG;
 using TurnBasedRPG.Data;
 
+
 public class ElementalAttunmentPassive : IPassiveSkill {
     public Element element;
     public void Subscribe(Character character) {

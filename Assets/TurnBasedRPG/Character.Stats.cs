@@ -10,6 +10,8 @@ namespace TurnBasedRPG
         [field: SerializeField] public ResourceStat Shield { get; private set; } = new ();
         [field: SerializeField] public ResourceStat Mana { get; private set; } = new ();
         [field: SerializeField] public StatsSummary Stats { get; private set; }
+        [field: SerializeField] public BoolStat Stun { get; private set; }
+        [field: SerializeField] public BoolStat Silence { get; private set; }
 
         public int this[Attribute a] => member[a];
         public int this[Stat s] => Stats[s];

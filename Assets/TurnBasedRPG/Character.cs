@@ -22,7 +22,6 @@ namespace TurnBasedRPG {
             OnSetup?.Invoke(this);
         }
 
-        public Character() { }
         public CombatManager cm { get; }
         public IReadOnlyList<Character> Allies { get; }
         public IReadOnlyList<Character> Enemies { get; }
@@ -31,15 +30,13 @@ namespace TurnBasedRPG {
         public PartyMember member;
         public string team;
         public Element Element;
-        public List<Skill> basicAttack = new();
+        public Skill basicAttack;
         public List<Skill> skills = new();
         public StatusEffectList StatusEffectList;
 
         public IObservableList<Equipment> equipment => member.equips;
         public string characterName => member.charName;
         public Profession profession => member.profession;
-        public Sprite characterSprite => member.characterSprite;
-        public Sprite uiSprite => member.uiSprite;
 
         public Action<Character> OnSetup;
         public Action<Character> OnStartTurn;
@@ -48,6 +45,7 @@ namespace TurnBasedRPG {
         public Action<CombatArgs> OnAttack;
         public Action<CombatArgs> OnResolveDefend;
         public Action<CombatArgs> OnResolveAttack;
+        public Action<string, int> PlayAnimation;
 
         public Observable<float> actionPoints = new();
 
@@ -64,17 +62,12 @@ namespace TurnBasedRPG {
         private void GetSkills() {
             skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
 
-            foreach (var e in equipment) {
-                if(e is Weapon w && w.basicAttack)
-                    if(!basicAttack.Contains(w.basicAttack))
-                        basicAttack.Add(w.basicAttack);
-
+            foreach (var e in equipment)
                 if(!skills.Contains(e.equipmentSkill))
                     skills.Add(e.equipmentSkill);
-            }
 
-            if(basicAttack.Count == 0)
-                basicAttack.Add(profession.BasicAttack);
+            basicAttack = equipment.OfType<Weapon>().FirstOrDefault()?.basicAttack;
+            basicAttack ??= profession.BasicAttack;
         }
     }
 }

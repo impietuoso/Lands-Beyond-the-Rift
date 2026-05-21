@@ -1,6 +1,7 @@
 ﻿using TurnBasedRPG;
 using TurnBasedRPG.StatusEffect;
 
+
 [System.Serializable]
 public class Silence : Status {
     public override Observable<int> DisplayValue => duration;

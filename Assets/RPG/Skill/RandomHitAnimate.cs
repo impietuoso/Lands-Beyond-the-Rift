@@ -5,6 +5,7 @@ using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using UnityEngine;
+
 using Random = UnityEngine.Random;
 
 [Serializable, Obsolete]

@@ -2,6 +2,7 @@
 using TurnBasedRPG;
 using TurnBasedRPG.StatusEffect;
 
+
 [Serializable, Obsolete]
 public class SpeedStatus : Status {
     public override Observable<int> DisplayValue => duration;

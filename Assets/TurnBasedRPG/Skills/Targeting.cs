@@ -11,7 +11,7 @@ namespace TurnBasedRPG.Skills {
         public TargetGroup group = TargetGroup.Enemy;
         public TargetArea area = TargetArea.One;
         [SerializeReference, TypeInstance] public ITargetFilter filter = new Any();
-        
+
         public bool SkipSelection(Character user, Data.Skill skill) => group == TargetGroup.Self;
         public bool ValidateTarget(Character user, Character target) => filter.Match(user, target);
 
@@ -23,16 +23,19 @@ namespace TurnBasedRPG.Skills {
             _ => throw new ArgumentOutOfRangeException()
         };
 
-        public IEnumerable<Character> EligibleTargets(Character user) => group switch
-        {
-            TargetGroup.Driven => throw new Exception(),
-            TargetGroup.Self => new[] { user },
-            TargetGroup.Enemy => user.Enemies,
-            TargetGroup.Ally => user.Allies,
-            TargetGroup.Enemies => user.Enemies,
-            TargetGroup.Allies => user.Allies,
-            TargetGroup.Everyone => user.cm.everyone,
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        public IEnumerable<Character> EligibleTargets(Character user) {
+            var r = group switch
+            {
+                TargetGroup.Driven => throw new Exception(),
+                TargetGroup.Self => new[] { user },
+                TargetGroup.Enemy => user.Enemies,
+                TargetGroup.Ally => user.Allies,
+                TargetGroup.Enemies => user.Enemies,
+                TargetGroup.Allies => user.Allies,
+                TargetGroup.Everyone => user.cm.everyone,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            return r.Where(t => filter.Match(user, t));
+        }
     }
 }

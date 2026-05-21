@@ -44,7 +44,13 @@ namespace TurnBasedRPG.Controller
         }
 
         public void StartBattle(EnemyEncounterView encounter) {
-            CombatManager.instance.StartCombat(encounter.Data, save.currentParty);
+            var config = new CombatConfig
+            {
+                Allies = save.currentParty,
+                Enemies = encounter.Data.enemyList,
+                Items = save.inventory.slots,
+            };
+            CombatManager.instance.StartCombat(config);
         }
     }
 }

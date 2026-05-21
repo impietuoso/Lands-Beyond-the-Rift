@@ -3,6 +3,7 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
+
 [System.Serializable]
 public class BleedingStatus: Status {
     public override Observable<int> DisplayValue => duration;

@@ -4,6 +4,7 @@ using System.Linq;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 
+
 [Serializable]
 public class OnDealDamage : IPassiveSkill {
     public Element element;
