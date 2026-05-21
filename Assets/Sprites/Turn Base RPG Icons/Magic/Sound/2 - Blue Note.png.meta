@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: b356de0023feaed45a1a38ba96fc2b98
+guid: ae56614a82333a541b0fd3e44a9a8e18
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -378744708701864251
-    second: shouting_0
-  - first:
-      213: 7918730945047279618
-    second: shouting_1
-  - first:
-      213: -5213632879717979506
-    second: shouting_2
-  - first:
-      213: -4968304705242167429
-    second: shouting_3
-  - first:
-      213: 6590967993917570600
-    second: shouting_4
+      213: -8755366322287612941
+    second: tune-pitch_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -138,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shouting_0
+      name: tune-pitch_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 18
-        width: 189
-        height: 368
+        x: 12
+        y: 72
+        width: 482
+        height: 393
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,96 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ce3441b1bd6ebaf0800000000000000
-      internalID: -378744708701864251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shouting_1
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 77
-        width: 139
-        height: 268
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 208bf6bd6dbf4ed60800000000000000
-      internalID: 7918730945047279618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shouting_2
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 105
-        width: 248
-        height: 374
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e8aec17d48475a7b0800000000000000
-      internalID: -5213632879717979506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shouting_3
-      rect:
-        serializedVersion: 2
-        x: 286
-        y: 77
-        width: 139
-        height: 268
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b77832c91390d0bb0800000000000000
-      internalID: -4968304705242167429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shouting_4
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 18
-        width: 190
-        height: 368
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 82efc635872d77b50800000000000000
-      internalID: 6590967993917570600
+      spriteID: 3fbe0a1c7b0be7680800000000000000
+      internalID: -8755366322287612941
       vertices: []
       indices: 
       edges: []
@@ -251,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -261,11 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shouting_0: -378744708701864251
-      shouting_1: 7918730945047279618
-      shouting_2: -5213632879717979506
-      shouting_3: -4968304705242167429
-      shouting_4: 6590967993917570600
+      tune-pitch_0: -8755366322287612941
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

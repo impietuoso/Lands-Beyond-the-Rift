@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Claw Strike
   skillDescription: 
   cost: 5
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2b49aff96265d914599a293e70063b99, type: 3}
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
   animation:
     rid: 9169537124653858816
