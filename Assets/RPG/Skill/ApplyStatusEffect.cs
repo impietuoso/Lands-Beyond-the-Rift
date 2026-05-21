@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using TurnBasedRPG;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
-[Serializable]
+[Serializable, Obsolete]
 public class ApplyStatusEffect : ISkillEffect {
     public StatusSO status;
     public bool targetUser;

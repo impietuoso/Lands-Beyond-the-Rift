@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.Inventory;
 using TurnBasedRPG.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +9,7 @@ using UnityEngine.SceneManagement;
 namespace TurnBasedRPG {
     public class CombatManager : MonoBehaviour {
         public static CombatManager instance;
-        public Skill.Skill basicDefense;
+        public Skill basicDefense;
         public CombatUI combatUI;
         public GameObject menuPanel;
         public GameObject gameoverPanel;
@@ -36,7 +35,7 @@ namespace TurnBasedRPG {
         [HideInInspector]
         public bool combatWon;
         [Header("Debug Variables")]
-        public Skill.Skill selectedSkill;
+        public Skill selectedSkill;
         [NonSerialized]
         public Character selectedTarget;
         public readonly Character skipTurnFlag = new();
@@ -105,7 +104,7 @@ namespace TurnBasedRPG {
             combatUI.actionsPanel.SetActive(false);
         }
 
-        public void UsingSkillOnTarget(Character user, Skill.Skill skill, Character target) {
+        public void UsingSkillOnTarget(Character user, Skill skill, Character target) {
             selectedSkill = skill;
             selectedTarget = target;
         }

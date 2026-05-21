@@ -1,20 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using static Stat;
+using static TurnBasedRPG.BattleStats.Stat;
 
-namespace TurnBasedRPG
-{
-    public class CombatArgs
-    {
+namespace TurnBasedRPG {
+    public class CombatArgs {
         public object source;
         public Character user;
         public Character target;
-        public Skill.Skill skill;
+        public Skill skill;
         public Element element;
 
         public bool unavoidable;
@@ -22,7 +21,7 @@ namespace TurnBasedRPG
         public bool ignoreArmor;
         public bool stopReactionAttacks;
         public bool cannotCrit;
-        
+
         public int damage;
         public int heal;
         public int mana;
@@ -30,17 +29,16 @@ namespace TurnBasedRPG
         public int shield;
         public int critChance;
         public int hitChance;
-        
+
         public CombatResult result;
         public List<StatusSO> statusEffects = new();
         public Action<CombatArgs> OnResolve;
 
         public CombatManager cm => CombatManager.instance;
 
-        public void Resolve()
-        {
-            if (result != null) return;
-            if (target == null) throw new Exception("No Target");
+        public void Resolve() {
+            if(result != null) return;
+            if(target == null) throw new Exception("No Target");
 
             // setup events
             user?.OnAttack?.Invoke(this);
@@ -61,35 +59,32 @@ namespace TurnBasedRPG
             };
 
             // armor reduction
-            if (!ignoreArmor) damage = Mathf.Max(damage - target[Armor], 0);
+            if(!ignoreArmor) damage = Mathf.Max(damage - target[Armor], 0);
 
             // damage stat
-            if (user != null) damage = (int)(damage * (user[Damage] + 100 / 100f));
+            if(user != null) damage = (int)(damage * (user[Damage] + 100 / 100f));
 
             // crit damage
-            if (crit)
-            {
+            if(crit) {
                 var critDmg = user[CritDamage] / 100f;
                 damage = (int)(damage * critDmg);
             }
 
-            if (!hit) damage = 0;
+            if(!hit) damage = 0;
 
             // shield delta
-            if (hit && !ignoreShield)
-            {
+            if(hit && !ignoreShield) {
                 result.Shield = target.Shield.Add(shield - damage);
-                if (result.Shield.Delta < 0) damage += result.Shield.Delta;
+                if(result.Shield.Delta < 0) damage += result.Shield.Delta;
             }
             else
                 result.Shield = new(target.Shield.Current);
 
             // element bonus
-            if (hit && element)
-            {
-                if (target.Element.weak.Contains(element))
+            if(hit && element) {
+                if(target.Element.weak.Contains(element))
                     damage = (int)(damage * 1.2f);
-                else if (element.weak.Contains(target.Element))
+                else if(element.weak.Contains(target.Element))
                     damage = (int)(damage * 0.8f);
             }
 
@@ -97,45 +92,25 @@ namespace TurnBasedRPG
             result.Health = target.Health.Add(heal - damage);
             result.Mana = target.Mana.Add(mana);
 
-            // apply status effect
-            foreach (var effect in statusEffects)
-            {
-                if (effect.statusType != StatusType.Debuff)
-                    target.StatusEffectList.Apply(effect);
-                else
-                {
-                    var flag = (target, effect);
-                    if (!cm.actionFlags.Add(flag)) continue;
-                    
-                    var applyChance = Random.Range(0, 100);
-                    if (applyChance <= 100 - target[Resistance])
-                    {
-                        target.StatusEffectList.Apply(effect);
-                        Debug.Log($"{effect.status} applied to {target.member.charName}.");
-                    }
-                    else
-                        result.ResistStatus = true;
-                }
-            }
-
             // resolve events
             user?.OnResolveAttack?.Invoke(this);
             target.OnResolveDefend?.Invoke(this);
             OnResolve?.Invoke(this);
 
-            if (result.Miss) Debug.Log("Miss");
+            if(result.Miss) Debug.Log("Miss");
         }
 
-        private static IEnumerator ApplyStatusEffect(Character tgt, StatusSO effect)
+        public CombatArgs Chain(object src, Character tgt) => new()
         {
-            yield return null;
-            Debug.Log(effect.status.statusName + " was apply to " + tgt.characterName);
-            tgt.StatusEffectList.Apply(effect);
-        }
+            source = src,
+            skill = skill,
+            user = user,
+            target = tgt,
+            stopReactionAttacks = true,
+        };
     }
 
-    public class CombatResult
-    {
+    public class CombatResult {
         public ResourceStat.Result Health;
         public ResourceStat.Result Mana;
         public ResourceStat.Result Shield;
@@ -144,14 +119,14 @@ namespace TurnBasedRPG
         public bool ResistStatus;
         public bool IsFatal => Health.Fatal;
         public bool IsRevive => Health.Revive;
-        
-        [Obsolete]public int deltaHp;
+
+        [Obsolete] public int deltaHp;
         [Obsolete] public int deltaMp;
-        [Obsolete]  public int deltaShield;
+        [Obsolete] public int deltaShield;
         [Obsolete] public bool isCrit;
         [Obsolete] public bool isFatal;
-        [Obsolete]public bool isRevive;
-        [Obsolete]public bool miss;
-       [Obsolete] public bool resistStatus;
+        [Obsolete] public bool isRevive;
+        [Obsolete] public bool miss;
+        [Obsolete] public bool resistStatus;
     }
 }

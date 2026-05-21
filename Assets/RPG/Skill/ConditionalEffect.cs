@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using TurnBasedRPG;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.DrawerHelpers;
+using TurnBasedRPG.Skills;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 

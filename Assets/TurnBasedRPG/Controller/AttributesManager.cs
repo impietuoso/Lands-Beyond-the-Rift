@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using TMPro;
+using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public class AttributesManager : MonoBehaviour {
         public PartyMemberView memberView;

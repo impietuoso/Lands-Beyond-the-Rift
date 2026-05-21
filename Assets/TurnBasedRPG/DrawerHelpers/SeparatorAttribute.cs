@@ -1,5 +1,5 @@
 using UnityEngine;
 
-namespace Drafts {
+namespace TurnBasedRPG.DrawerHelpers {
     public class SeparatorAttribute : PropertyAttribute { }
 }

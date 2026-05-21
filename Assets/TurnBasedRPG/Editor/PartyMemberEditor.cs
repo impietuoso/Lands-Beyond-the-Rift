@@ -1,4 +1,5 @@
-﻿using TurnBasedRPG.Data;
+﻿using TurnBasedRPG.BattleStats;
+using TurnBasedRPG.Data;
 using UnityEditor;
 
 namespace TurnBasedRPG.Editor {

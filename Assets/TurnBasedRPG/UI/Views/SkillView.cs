@@ -1,10 +1,11 @@
 ﻿using TMPro;
+using TurnBasedRPG.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace TurnBasedRPG.UI.Views
 {
-    public class SkillView : DataView<Skill.Skill> {
+    public class SkillView : DataView<Skill> {
         public TextMeshProUGUI skillNameText;
         public TextMeshProUGUI descriptionText;
         public TextMeshProUGUI costText;

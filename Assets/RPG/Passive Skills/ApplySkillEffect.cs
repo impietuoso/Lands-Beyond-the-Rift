@@ -1,11 +1,13 @@
-﻿using TurnBasedRPG;
+﻿using Drafts;
+using TurnBasedRPG;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.DrawerHelpers;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 
 public class ApplySkillEffect : IPassiveSkill {
     public Element element;
-    [SerializeReference, Effect]
+    [SerializeReference, TypeInstance]
     public ISkillEffect effect;
     public void Subscribe(Character character) {
         character.OnAttack += ApplyEffect;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using TurnBasedRPG.BattleStats;
 using UnityEngine;
 
 namespace TurnBasedRPG

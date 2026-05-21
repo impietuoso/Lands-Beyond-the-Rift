@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
-using TurnBasedRPG.Inventory;
+using TurnBasedRPG.BattleStats;
+using TurnBasedRPG.DrawerHelpers;
 using UnityEngine;
+using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
 namespace TurnBasedRPG.Data
 {
@@ -13,8 +15,8 @@ namespace TurnBasedRPG.Data
         public Profession profession;
         public Element element; 
         [ShowEquipmentTypeAtribute] public ObservableList<Equipment> equips;
-        public ObservableList<Skill.Skill> equipedSkills;
-        public ObservableList<Skill.Skill> learnedSkills;
+        public ObservableList<Skill> equipedSkills;
+        public ObservableList<Skill> learnedSkills;
         public Sprite characterSprite;
         public Sprite uiSprite;
 

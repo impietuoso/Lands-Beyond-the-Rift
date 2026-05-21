@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace TurnBasedRPG.Inventory
+namespace TurnBasedRPG.Data
 {
     [CreateAssetMenu(menuName = "Scriptable/Item/Consumable", fileName = "New Consumable")]
     public class Consumable : Item {
-        public Skill.Skill skillEffect;
+        public Skill skillEffect;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using TurnBasedRPG;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 
 [Serializable]

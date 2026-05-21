@@ -1,18 +1,20 @@
-﻿using UnityEngine;
+﻿using TurnBasedRPG.BattleStats;
+using TurnBasedRPG.DrawerHelpers;
+using UnityEngine;
 
-namespace TurnBasedRPG.Inventory
+namespace TurnBasedRPG.Data
 {
     [CreateAssetMenu(menuName = "Scriptable/Item/Equipment", fileName = "New Equipment")]
     public class Equipment : Item, IStats {
         public EquipmentType _equipmentType;
         public Tag _category;
         public StatsBase _bonusValue;
-        public Skill.Skill _equipmentSkill;
+        public Skill _equipmentSkill;
         [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill _passiva;
 
         public EquipmentType Type;
         public Tag Category;
-        public Skill.Skill equipmentSkill;
+        public Skill equipmentSkill;
         [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
         
         public string BonusText() {

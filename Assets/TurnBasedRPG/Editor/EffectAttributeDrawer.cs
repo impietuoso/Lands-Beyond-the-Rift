@@ -1,6 +1,8 @@
 using System;
+using TurnBasedRPG.DrawerHelpers;
 using UnityEditor;
 using UnityEngine;
+using TypeCache = UnityEditor.TypeCache;
 
 namespace TurnBasedRPG.Editor
 {

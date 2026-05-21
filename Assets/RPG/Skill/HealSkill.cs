@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TurnBasedRPG;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 using UnityEngine;
+using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
-[Serializable]
+[Serializable, Obsolete]
 public class HealSkill : ISkillEffect {
     public int healAmount;
     public bool isPercentageHeal;
     [Range(0f, 1f)]
     public float healthPercentage = 0.2f;
     public float statMultiplier;
-    public StatName healStatScale;
+    public Attribute healStatScale;
     
     public void Prepare(CombatArgs args) {
         int finalHeal = 0;

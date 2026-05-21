@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TurnBasedRPG.Inventory;
+using TurnBasedRPG.Data;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public class EquipmentManager : MonoBehaviour {
         public PartyMemberView memberView;

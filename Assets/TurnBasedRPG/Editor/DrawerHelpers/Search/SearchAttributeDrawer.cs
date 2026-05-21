@@ -1,0 +1,33 @@
+using System;
+using TurnBasedRPG.DrawerHelpers.Search;
+using UnityEditor;
+using UnityEngine;
+
+namespace TurnBasedRPG.Editor.DrawerHelpers.Search
+{
+    [CustomPropertyDrawer(typeof(SearchAttribute), true)]
+    public class SearchAttributeDrawer : PropertyDrawer
+    {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            var a = attribute as SearchAttribute ?? throw new Exception("Not SearchAttribute");
+            Draw(position, property, label, () => a.Settings, a.Lock);
+        }
+
+        public static void Draw(Rect position, SerializedProperty property, GUIContent label, Func<ISearchSettings> getSettings, bool @lock)
+        {
+            var labelRect = position;
+            labelRect.width -= 35;
+            position.width = 35;
+            position.x += labelRect.width;
+
+            EditorGUI.BeginDisabledGroup(@lock);
+            EditorGUI.PropertyField(labelRect, property, label);
+            EditorGUI.EndDisabledGroup();
+
+            if (!GUI.Button(position, "Find")) return;
+            var target = property.serializedObject.targetObject;
+            SearchProvider.Create(getSettings(), target, property.SetValue).OpenWindow();
+        }
+    }
+}

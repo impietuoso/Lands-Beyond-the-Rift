@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TurnBasedRPG.Inventory
+namespace TurnBasedRPG.Data
 {
     [CreateAssetMenu(menuName = "Scriptable/Item/EquipmentType", fileName = "New Equipment Type")]
     public class EquipmentType : ScriptableObject {

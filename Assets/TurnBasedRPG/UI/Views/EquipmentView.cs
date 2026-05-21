@@ -1,5 +1,5 @@
 ﻿using TMPro;
-using TurnBasedRPG.Inventory;
+using TurnBasedRPG.Data;
 using UnityEngine;
 using UnityEngine.UI;
 

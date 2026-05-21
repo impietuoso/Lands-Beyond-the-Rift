@@ -1,7 +1,8 @@
+using TurnBasedRPG.DrawerHelpers;
 using UnityEditor;
 using UnityEngine;
 
-namespace Drafts.Editor {
+namespace TurnBasedRPG.Editor.DrawerHelpers {
     [CustomPropertyDrawer(typeof(SingleLine2Attribute), true)]
     [CustomPropertyDrawer(typeof(ISingleLine2Drawer), true)]
     public class SingleLine2Drawer : PropertyDrawer {

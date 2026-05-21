@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TurnBasedRPG.Inventory
+namespace TurnBasedRPG.Data
 {
     [CreateAssetMenu(menuName = "Scriptable/Tag", fileName = "New Tag")]
     public class Tag : ScriptableObject {

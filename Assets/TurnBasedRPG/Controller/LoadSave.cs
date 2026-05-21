@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TurnBasedRPG.Inventory;
+using TurnBasedRPG.Data;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public class LoadSave : MonoBehaviour {
         public List<PartyMember> initialParty;

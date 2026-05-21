@@ -1,9 +1,10 @@
 ﻿using TMPro;
+using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public class AttributeManager : DataView<Attribute>
     {

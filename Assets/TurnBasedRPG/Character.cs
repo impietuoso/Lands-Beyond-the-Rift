@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.Inventory;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
@@ -28,8 +27,8 @@ namespace TurnBasedRPG
         public PartyMember member;
         public string team;
         public Element Element;
-        public List<Skill.Skill> basicAttack = new();
-        public List<Skill.Skill> skills = new();
+        public List<Skill> basicAttack = new();
+        public List<Skill> skills = new();
         public StatusEffectList StatusEffectList;
 
         public IObservableList<Equipment> equipment => member.equips;

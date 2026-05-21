@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TurnBasedRPG.Inventory
+namespace TurnBasedRPG.Data
 {
     public abstract class Item : ScriptableObject, IItem {
         [field : SerializeField] public string displayName { private set; get; }

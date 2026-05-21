@@ -1,6 +1,6 @@
-﻿using TurnBasedRPG.Inventory;
+﻿using TurnBasedRPG.Data;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public static class EquipmentController {
         public static void EquipItem(LoadSave load, PartyMember member, Equipment newEquipment, int slot) {

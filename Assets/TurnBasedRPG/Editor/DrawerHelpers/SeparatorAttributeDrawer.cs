@@ -1,7 +1,8 @@
+using TurnBasedRPG.DrawerHelpers;
 using UnityEditor;
 using UnityEngine;
 
-namespace Drafts.Editor {
+namespace TurnBasedRPG.Editor.DrawerHelpers {
     [CustomPropertyDrawer(typeof(SeparatorAttribute), true)]
     public class SeparatorAttributeDrawer : DecoratorDrawer {
         public override void OnGUI(Rect position) {

@@ -1,7 +1,8 @@
 using System;
 using TurnBasedRPG;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.Skills;
 using UnityEngine;
+using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
 [Serializable]
 public class DamageSkill : ISkillEffect {
@@ -15,7 +16,7 @@ public class DamageSkill : ISkillEffect {
     [Range(0, 100)]
     public int criticalChance;
     public float statMultiplier;
-    public StatName damageStatScale; //TODO change to new
+    public Attribute damageStatScale; //TODO change to new
     public float damageRange = 0.15f;
 
     public void Prepare(CombatArgs args) {

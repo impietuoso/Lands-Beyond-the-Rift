@@ -1,5 +1,4 @@
-﻿using TurnBasedRPG.Inventory;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace TurnBasedRPG.Data

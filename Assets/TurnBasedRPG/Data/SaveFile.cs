@@ -1,5 +1,4 @@
 using System;
-using TurnBasedRPG.Inventory;
 
 namespace TurnBasedRPG.Data
 {

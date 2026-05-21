@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Text;
 using TMPro;
+using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using UnityEngine;
 using UnityEngine.UI;

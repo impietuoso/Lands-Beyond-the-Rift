@@ -1,8 +1,9 @@
-﻿using TurnBasedRPG.UI.Views;
+﻿using TurnBasedRPG.Data;
+using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public class SkillManager : MonoBehaviour  {
         public PartyMemberView memberView;
@@ -10,8 +11,8 @@ namespace TurnBasedRPG.Data
         public void SwapSkills(GameObject drop, PointerEventData eventData) {
             var target = drop.GetComponent<SkillView>().Data;
             var data = eventData.pointerDrag.GetComponent<SkillView>().Data;
-            var dropParentList = (ObservableList<Skill.Skill>)drop.GetComponentInParent<ListView>().Data;
-            var eventParentList = (ObservableList<Skill.Skill>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
+            var dropParentList = (ObservableList<Skill>)drop.GetComponentInParent<ListView>().Data;
+            var eventParentList = (ObservableList<Skill>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
             var targetIndex = drop.transform.GetSiblingIndex() - 1;
             var dataIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
             dropParentList[targetIndex] = data;

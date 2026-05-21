@@ -1,4 +1,5 @@
 using TMPro;
+using TurnBasedRPG.Data;
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ namespace TurnBasedRPG.UI.Views
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI extraText;
 
-        public void UpdateTemplateUI(Skill.Skill skill) {
+        public void UpdateTemplateUI(Skill skill) {
             if(icon) icon.sprite = skill.icon;
             if(nameText) nameText.text = skill.skillName;
             if(extraText) extraText.text = skill.cost + "\n <size=14>MP</size>";

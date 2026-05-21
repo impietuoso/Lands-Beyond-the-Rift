@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using TurnBasedRPG.DrawerHelpers;
 using UnityEditor;
 using UnityEngine;
 
-namespace Drafts.Editor {
+namespace TurnBasedRPG.Editor.DrawerHelpers {
     [CustomPropertyDrawer(typeof(TwoColumnsAttribute), true)]
     [CustomPropertyDrawer(typeof(ITwoColumnsDrawer), true)]
     public class TwoColumnsAttributeDrawer : ColumnsAttributeDrawer {
@@ -44,7 +45,7 @@ namespace Drafts.Editor {
                 var endProperty = child.GetEndProperty();
                 child.NextVisible(true);
 
-                var columnSpacing = 10;
+                var columnSpacing = 2;
                 var currentRect = EditorGUI.IndentedRect(position);
                 currentRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
                 var columnWidth = (currentRect.width - columnSpacing * (Columns - 1)) / Columns;

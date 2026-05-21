@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Drafts {
+namespace TurnBasedRPG.DrawerHelpers {
     public class SingleLine2Attribute : PropertyAttribute { }
 
     public interface ISingleLine2Drawer { }

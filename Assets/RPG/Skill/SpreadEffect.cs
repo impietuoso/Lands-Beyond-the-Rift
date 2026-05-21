@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using TurnBasedRPG;
-using TurnBasedRPG.Skill;
+using TurnBasedRPG.Data;
+using TurnBasedRPG.DrawerHelpers;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 [Serializable]
 public class SpreadEffect : ISkillEffect {

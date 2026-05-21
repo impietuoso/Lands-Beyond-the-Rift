@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.Skill;
 
 [Serializable]
 public class OnTakeDamage : IPassiveSkill {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Drafts {
+namespace TurnBasedRPG.DrawerHelpers {
     public class TwoColumnsAttribute : PropertyAttribute { }
 
     public interface ITwoColumnsDrawer { }

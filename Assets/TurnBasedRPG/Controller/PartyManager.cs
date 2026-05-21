@@ -1,8 +1,9 @@
-﻿using TurnBasedRPG.UI.Views;
+﻿using TurnBasedRPG.Data;
+using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace TurnBasedRPG.Data
+namespace TurnBasedRPG.Controller
 {
     public class PartyManager : MonoBehaviour {
         public LoadSave loadView;

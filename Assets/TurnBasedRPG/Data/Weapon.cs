@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace TurnBasedRPG.Inventory
+namespace TurnBasedRPG.Data
 {
     [CreateAssetMenu(menuName = "Scriptable/Item/Weapon", fileName = "New Weapon")]
     public class Weapon : Equipment {
-        public Skill.Skill basicAttack;
+        public Skill basicAttack;
     }
 }

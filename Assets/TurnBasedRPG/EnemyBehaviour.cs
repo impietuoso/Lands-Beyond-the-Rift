@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TurnBasedRPG.Data;
 using UnityEngine;
 
 namespace TurnBasedRPG
@@ -27,8 +28,8 @@ namespace TurnBasedRPG
 
             yield return new WaitForSeconds(0.3f);
 
-            List<Skill.Skill> availableSkills = currentEnemy.skills.Where(s => s.Available(currentEnemy)).ToList();
-            Skill.Skill selectedSkill = null;
+            List<Skill> availableSkills = currentEnemy.skills.Where(s => s.Available(currentEnemy)).ToList();
+            Skill selectedSkill = null;
 
             if (availableSkills.Count > 0) {
                 // Usa Skill (60%), Ataca (30%) ou Defende (10%)
@@ -50,7 +51,7 @@ namespace TurnBasedRPG
             yield return ExecuteSkill(currentEnemy, selectedSkill, cm);
         }
 
-        private IEnumerator ExecuteSkill(Character user, Skill.Skill skill, CombatManager cm) {
+        private IEnumerator ExecuteSkill(Character user, Skill skill, CombatManager cm) {
             List<Character> potentialTargets = new List<Character>();
             foreach (var template in cm.combatUI.characters) {
                 if (skill.animation.ValidateTarget(user, template.owner)) {

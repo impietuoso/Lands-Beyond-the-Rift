@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
-using TurnBasedRPG.Inventory;
+using TurnBasedRPG.Data;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,7 +55,7 @@ namespace TurnBasedRPG.UI
             }
         }
 
-        public void PrepareSkill(Character user, Skill.Skill skill) {
+        public void PrepareSkill(Character user, Skill skill) {
             if (user.Mana.Current >= skill.cost) {
                 skillPanel.SetActive(false);
                 selectTargetPanel.SetActive(true);
@@ -89,7 +89,7 @@ namespace TurnBasedRPG.UI
             PrepareSkill(currentPlayer, ((Consumable)itemView.Data).skillEffect);
         }
     
-        public void VerifyTargets(Character user, Skill.Skill skill) {
+        public void VerifyTargets(Character user, Skill skill) {
             var searchList = characters;
             foreach (var target in searchList) {
                 bool active = skill.animation.ValidateTarget(user ,target.owner);

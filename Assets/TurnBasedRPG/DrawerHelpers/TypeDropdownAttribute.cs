@@ -1,0 +1,13 @@
+using System;
+using UnityEngine;
+
+namespace TurnBasedRPG.DrawerHelpers
+{
+    public class TypeDropdownAttribute : PropertyAttribute {
+        public Type type;
+
+        public TypeDropdownAttribute(Type type) {
+            this.type = type;
+        }
+    }
+}
