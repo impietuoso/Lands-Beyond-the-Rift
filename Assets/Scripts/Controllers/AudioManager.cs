@@ -27,16 +27,6 @@ public class AudioManager : MonoBehaviour {
     public TextMeshProUGUI bgmText;
     public TextMeshProUGUI sfxText;
 
-    private void Awake() {
-        // Garante que apenas um AudioManager exista no jogo
-        if (Instance == null) {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Mantem o AudioManager entre cenas
-        } else {
-            Destroy(gameObject);
-        }
-    }
-
     private void Start() {
         LoadVolumes();
     }

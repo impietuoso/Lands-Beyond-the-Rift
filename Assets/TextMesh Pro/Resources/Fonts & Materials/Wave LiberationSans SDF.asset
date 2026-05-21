@@ -8,22 +8,26 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LiberationSans SDF Material
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_Parent: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
-  m_ModifiedSerializedProperties: 6
-  m_ValidKeywords:
+  m_Shader: {fileID: -6465566751694194690, guid: 7857d9e876490ed4f91dcd8a8af4e275, type: 3}
+  m_Parent: {fileID: 2100000, guid: 73eebd332b511574192142b7756ee8f4, type: 2}
+  m_ModifiedSerializedProperties: 2
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - OUTLINE_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: _amplitude
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 28684132378477856}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _FaceDilate: 0.2
@@ -34,8 +38,6 @@ Material:
     - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0
     - _amplitude: 12
-    - _frequency: 6
-    - _fresnel_power: 1.17
     - _speed: 4
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -52,7 +54,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: LiberationSans SDF
+  m_Name: Wave LiberationSans SDF
   m_EditorClassIdentifier: 
   m_Version: 1.1.0
   m_FaceInfo:
