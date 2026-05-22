@@ -4,19 +4,26 @@ using System.Collections.Generic;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.TargetFilters;
 using UnityEngine;
 
 
 [Serializable, Obsolete]
-public class SelfHitAnimate : ISkillAnimation {
+public class SelfHitAnimate : ISkillAnimationOld {
     public float damageDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
 
-    public bool TrySkipSelection(Character user, Skill skill) {
-        CombatManager.instance.UsingSkillOnTarget(user, skill, user);
-        return true;
+    public Targeting GetTargeting(Skill skill) {
+        return new Targeting
+        {
+            group = TargetGroup.Self,
+            area = TargetArea.One,
+            filter = new Any()
+        };
     }
+
+    public bool TrySkipSelection(Character user, Skill skill) => throw new NotImplementedException();
 
     public bool ValidateTarget(Character user, Character target) {
         if (user == target) return true;

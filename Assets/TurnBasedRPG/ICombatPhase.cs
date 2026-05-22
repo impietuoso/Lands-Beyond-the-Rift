@@ -84,40 +84,28 @@ namespace TurnBasedRPG {
             a.User.Mana.Current -= a.Skill.cost;
             var usedSlot = cm.consumables.slots.FirstOrDefault(s => s.item.skillEffect == a.Skill);
             if(usedSlot != null) cm.consumables.Remove(usedSlot.item, 1);
-            
-            
-            yield return a.Skill.UseSkill(a.User, a.Target, cm);
+            yield return a.Skill.UseSkill(a.User, a.Target);
         }
     }
 
     public class CombatEvents : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.combatUI.ResetSelections();
-            while (cm.combatEvents.TryDequeue(out var e))
-                yield return e.Execute(cm);
+            cm.models.ClearTargets();
+            while (cm.combatEvents.TryDequeue(out var ie))
+                yield return ie;
             cm.actionFlags.Clear();
         }
     }
 
     public class CheckResultPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            var enemiesAlive = cm.enemies.Count;
-            foreach (var enemy in cm.enemies) {
-                if(enemy.Health.Current <= 0) enemiesAlive--;
-            }
+            var win = cm.enemies.All(c => c.Dead);
+            var lose = cm.allies.All(c => c.Dead);
+            if(!win && !lose) yield break;
 
-            var alliesAlive = cm.allies.Count;
-            foreach (var ally in cm.allies) {
-                if(ally.Health.Current <= 0) alliesAlive--;
-            }
-
-            if(enemiesAlive == 0 || alliesAlive == 0) {
-                Debug.Log("Combat Ended");
-                cm.gameoverPanel.SetActive(true);
-                cm.FinishCombat(alliesAlive > 0);
-            }
-
-            yield break;
+            Debug.Log("Combat Ended");
+            cm.combatUI.gameOverPanel.SetActive(true);
+            cm.FinishCombat(!lose);
         }
     }
 }

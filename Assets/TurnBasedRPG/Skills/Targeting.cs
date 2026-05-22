@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills.TargetFilters;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace TurnBasedRPG.Skills {
         public TargetArea area = TargetArea.One;
         [SerializeReference, TypeInstance] public ITargetFilter filter = new Any();
 
-        public bool SkipSelection(Character user, Data.Skill skill) => group == TargetGroup.Self;
+        public bool SkipSelection => group == TargetGroup.Self;
         public bool ValidateTarget(Character user, Character target) => filter.Match(user, target);
 
         public IEnumerable<Character> GetAffectedTargets(Character user, Character target) => area switch
@@ -26,13 +27,10 @@ namespace TurnBasedRPG.Skills {
         public IEnumerable<Character> EligibleTargets(Character user) {
             var r = group switch
             {
-                TargetGroup.Driven => throw new Exception(),
                 TargetGroup.Self => new[] { user },
-                TargetGroup.Enemy => user.Enemies,
                 TargetGroup.Ally => user.Allies,
-                TargetGroup.Enemies => user.Enemies,
-                TargetGroup.Allies => user.Allies,
-                TargetGroup.Everyone => user.cm.everyone,
+                TargetGroup.Enemy => user.Enemies,
+                TargetGroup.Any => user.cm.everyone,
                 _ => throw new ArgumentOutOfRangeException()
             };
             return r.Where(t => filter.Match(user, t));

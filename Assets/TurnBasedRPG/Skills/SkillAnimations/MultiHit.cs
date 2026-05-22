@@ -14,10 +14,6 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public float damageDelay = 1;
         public float hitDelay = 1;
 
-        public bool TrySkipSelection(Character user, Skill skill) => throw new NotImplementedException();
-        public bool ValidateTarget(Character user, Character target) => throw new NotImplementedException();
-        public IEnumerable<Character> GetAffectedTargets(Character user, Character target) => throw new NotImplementedException();
-
         public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
             throw new InvalidOperationException();
         }

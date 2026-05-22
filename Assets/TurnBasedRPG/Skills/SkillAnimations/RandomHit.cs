@@ -29,24 +29,17 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
                 yield return new WaitForSeconds(0.1f);
             }
 
-            int newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
-
-            List<Character> targets = new(GetAffectedTargets(user, target));
+            List<Character> targets = new(skill.targeting.GetAffectedTargets(user, target));
+            var newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
             yield return cm.StartCoroutine(SingleTargetDamage(skill, user, targets, newHitCount));
         
             if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
         }
-
-        public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-            foreach (var newTarget in CombatManager.instance.characterList) {
-                if (ValidateTarget(user, newTarget)) yield return newTarget;
-            }
-        }
     
         public IEnumerator SingleTargetDamage(Skill skill, Character user, List<Character> targets, int newHitCount) {
-            for (int i = 0; i < newHitCount; i++) {
+            for (var i = 0; i < newHitCount; i++) {
 
-                CombatArgs args = new CombatArgs();
+                var args = new CombatArgs();
                 args.skill = skill;
                 args.element = skill.element;
                 args.target = targets[Random.Range(0, targets.Count)];
@@ -67,8 +60,8 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         }
     
         public bool ValidateTarget(Character user, Character target) {
-            bool sameTeam = user.team == target.team;
-            bool alive = target.Health.Current > 0;
+            var sameTeam = user.team == target.team;
+            var alive = target.Health.Current > 0;
             return sameTeam ^ targetEnemy && alive ^ targetDead;
         }
     }

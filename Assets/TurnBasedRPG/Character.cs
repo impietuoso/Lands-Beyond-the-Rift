@@ -37,6 +37,7 @@ namespace TurnBasedRPG {
         public IObservableList<Equipment> equipment => member.equips;
         public string characterName => member.charName;
         public Profession profession => member.profession;
+        public bool Dead => Health.Current == 0;
 
         public Action<Character> OnSetup;
         public Action<Character> OnStartTurn;

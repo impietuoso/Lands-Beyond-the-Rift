@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace TurnBasedRPG.UI {
     public class CombatModelManager : DataView<CombatManager> {
-        public CharacterFeedbacks prefab;
+        public CharacterModel prefab;
         public Transform[] allyPositions;
         public Transform[] enemyPositions;
 
-        private readonly Dictionary<Character, CharacterFeedbacks> _models = new();
+        private readonly Dictionary<Character, CharacterModel> _models = new();
 
         protected override void Subscribe() {
             for (var i = 0; i < Data.allies.Count; i++) {

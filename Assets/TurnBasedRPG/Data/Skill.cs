@@ -12,28 +12,23 @@ namespace TurnBasedRPG.Data {
         [TextArea(3, 6)] public string skillDescription;
         public int cost;
         public Sprite icon;
-
-        [Header("Config")]
         public Element element;
 
         [SerializeReference, TypeInstance, Separator] public Targeting targeting;
-        [SerializeReference, TypeInstance, Separator] public ISkillAnimation animation;
+        [SerializeReference, TypeInstance, Separator] public ISkillAnimationOld animation;
         [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> skillEffects;
 
         public bool Available(Character user) {
-            //TODO checksilence
-            // foreach (var status in user.StatusEffectList.StatusList) {
-            //     if (status.Value is Silence) return false;
-            // }
-
+            if(user.Silence) return false;
             if(user.Mana.Current < cost) return false;
             var hasTargets = targeting.EligibleTargets(user).Any();
             return hasTargets;
         }
 
-        public IEnumerator UseSkill(SkillArgs cast) {
-            Debug.Log(user.characterName + " used " + skillName);
-            return animation.Play(this, user, target, target.cm);
+        public IEnumerator UseSkill(Character user, Character target) {
+            Debug.Log($"{user?.characterName} used {skillName} on {target.characterName}");
+            var cast = new SkillArgs(this, user, target);
+            return animation.Play(cast);
         }
     }
 }

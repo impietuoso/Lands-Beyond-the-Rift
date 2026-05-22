@@ -35,7 +35,7 @@ public class ReflectEffect : Status {
         var chain = args.Chain(this, args.user);
         chain.unavoidable = true;
         chain.damage = damageReflected;
-        var genericEvent = new GenericCombatEvent(ReflectDamage(chain));
+        var genericEvent = ReflectDamage(chain);
         args.cm.combatEvents.Enqueue(genericEvent);
     }
     

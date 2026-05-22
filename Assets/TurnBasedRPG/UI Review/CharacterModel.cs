@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TurnBasedRPG.UI_Review {
     [RequireComponent(typeof(Character))]
-    public class CharacterFeedbacks : DataView<Character> {
+    public class CharacterModel : DataView<Character> {
         [SerializeField] private ResourceStatView healthView;
         [SerializeField] private GameObject turnMarker;
         [SerializeField] private GameObject targetMark;
@@ -12,7 +12,7 @@ namespace TurnBasedRPG.UI_Review {
 
         public GameObject TargetMark => targetMark;
 
-        public void SelectAsTarget() => Data.cm.selectedTarget = Data;
+        public void SelectAsTarget() => Data.cm.combatUI.SelectTarget(Data);
 
         protected override void Subscribe() {
             Data.PlayAnimation += _animator.Play;
