@@ -21,7 +21,7 @@ MonoBehaviour:
     group: 1
     area: 0
     filter:
-      rid: 5967445928687697927
+      rid: 5967445928687698291
   animation:
     rid: 3339743010432221417
   skillEffects:
@@ -50,6 +50,6 @@ MonoBehaviour:
         hitChance: 80
         critChance: 30
         damageRange: 0.2
-    - rid: 5967445928687697927
+    - rid: 5967445928687698291
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 

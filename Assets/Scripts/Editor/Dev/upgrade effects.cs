@@ -19,10 +19,12 @@ namespace Editor.Dev {
 
                 if(skill.animation is ISkillAnimationOld a) {
                     var t = a.GetTargeting(skill);
-                    if(t != null && t != skill.targeting)
+                    if(t != null && t != skill.targeting) {
                         skill.targeting = t;
+                        EditorUtility.SetDirty(skill);
+                    }
                 }
-                
+
                 for (var i = 0; i < skill.skillEffects.Count; i++) {
                     var oldEffect = skill.skillEffects[i];
                     var upgrade = oldEffect?.GetUpgrade(skill);
