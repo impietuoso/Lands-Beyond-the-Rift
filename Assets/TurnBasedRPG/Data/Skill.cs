@@ -14,7 +14,7 @@ namespace TurnBasedRPG.Data {
         public Sprite icon;
         public Element element;
 
-        [SerializeReference, TypeInstance, Separator] public Targeting targeting;
+        [Separator] public Targeting targeting;
         [SerializeReference, TypeInstance, Separator] public ISkillAnimationOld animation;
         [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> skillEffects;
 

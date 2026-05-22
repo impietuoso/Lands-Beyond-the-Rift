@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
   charName: Paladin
   level: 1
-  usedStats:
-    strength: 5
-    intelligence: 5
-    dexterity: 5
-    vitality: 5
-    spirit: 5
+  usedAttributes:
+    strength: 0
+    intelligence: 0
+    dexterity: 0
+    vitality: 0
+    spirit: 0
   profession: {fileID: 11400000, guid: 77d95e7a9018bca4ba1958547b071429, type: 2}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
@@ -29,7 +29,7 @@ MonoBehaviour:
     - {fileID: 0}
   equipedSkills:
     list:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 60c1f2050a92ff24cb70d622f696b609, type: 2}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -37,3 +37,4 @@ MonoBehaviour:
     list: []
   characterSprite: {fileID: 21300000, guid: d3054a316a922ad47a3e9b83b98c27e3, type: 3}
   uiSprite: {fileID: 1329982910, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
+  prefab: {fileID: 0}

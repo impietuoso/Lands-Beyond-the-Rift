@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 
 namespace Editor.Dev {
     public class upgrade_effects {
@@ -16,6 +17,12 @@ namespace Editor.Dev {
                 var skill = AssetDatabase.LoadAssetAtPath<Skill>(path);
                 if(!skill || skill.skillEffects == null || skill.skillEffects.Count == 0) continue;
 
+                if(skill.animation is ISkillAnimationOld a) {
+                    var t = a.GetTargeting(skill);
+                    if(t != null && t != skill.targeting)
+                        skill.targeting = t;
+                }
+                
                 for (var i = 0; i < skill.skillEffects.Count; i++) {
                     var oldEffect = skill.skillEffects[i];
                     var upgrade = oldEffect?.GetUpgrade(skill);
