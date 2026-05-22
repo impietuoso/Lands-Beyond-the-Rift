@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using TurnBasedRPG.UI_Review;
 using UnityEngine;
 
-namespace TurnBasedRPG.UI {
+namespace TurnBasedRPG.UI.Combat {
     public class CombatModelManager : DataView<CombatManager> {
         public CharacterModel prefab;
         public Transform[] allyPositions;

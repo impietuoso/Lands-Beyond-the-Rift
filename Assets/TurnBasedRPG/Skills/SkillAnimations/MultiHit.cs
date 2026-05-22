@@ -19,7 +19,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         }
 
         public IEnumerator Play(SkillArgs cast) {
-            var ui = CombatManager.instance.combatUI;
+            var ui = CombatManager.instance.view;
             if(castParticle) {
                 var pos = ui.GetCharacterWorldPosition(cast.User);
                 var particle = Object.Instantiate(castParticle, pos, Quaternion.identity);
@@ -56,7 +56,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
                 foreach (var effect in skill.skillEffects)
                     effect.Prepare(args);
 
-                var ui = CombatManager.instance.combatUI;
+                var ui = CombatManager.instance.view;
                 if(skillParticle) {
                     var pos = ui.GetCharacterWorldPosition(args.target);
                     Object.Instantiate(skillParticle, pos, Quaternion.identity);

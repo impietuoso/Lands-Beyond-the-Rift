@@ -39,7 +39,7 @@ namespace TurnBasedRPG {
     public class CharacterPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
             var character = cm.currentCharacter;
-            cm.combatUI.skillPanel.gameObject.SetActive(false);
+            cm.view.skillPanel.gameObject.SetActive(false);
             cm.selectedAction = cm.WaitFlag;
             character.OnStartTurn?.Invoke(character);
 
@@ -56,8 +56,8 @@ namespace TurnBasedRPG {
             else {
                 //Vez do Player
                 Debug.Log("Player Turn: " + character.characterName);
-                cm.combatUI.actionsPanel.SetActive(true);
-                cm.combatUI.ShowSkills(character);
+                cm.view.actionsPanel.SetActive(true);
+                cm.view.ShowSkills(character);
                 yield return new WaitUntil(() => cm.selectedAction != cm.WaitFlag);
             }
 
@@ -73,9 +73,9 @@ namespace TurnBasedRPG {
             var affected = a.Skill.targeting.GetAffectedTargets(a.User, a.Target);
 
             // Prepare UI
-            cm.combatUI.selectTargetPanel.SetActive(false);
-            cm.combatUI.actionsPanel.SetActive(false);
-            cm.combatUI.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
+            cm.view.selectTargetPanel.SetActive(false);
+            cm.view.actionsPanel.SetActive(false);
+            cm.view.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
             cm.models.ClearTargets();
             cm.models.TargetCharacters(affected);
             Debug.Log("Target Selected: " + a.Target?.characterName);
@@ -104,7 +104,7 @@ namespace TurnBasedRPG {
             if(!win && !lose) yield break;
 
             Debug.Log("Combat Ended");
-            cm.combatUI.gameOverPanel.SetActive(true);
+            cm.view.gameOverPanel.SetActive(true);
             cm.FinishCombat(!lose);
         }
     }

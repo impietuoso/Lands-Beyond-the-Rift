@@ -4,7 +4,7 @@ using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TurnBasedRPG.UI {
+namespace TurnBasedRPG.UI.Combat {
     public class CharacterView : DataView<Character> {
         [SerializeField] private Image portrait;
         [SerializeField] private GameObject shieldIcon;
@@ -67,7 +67,7 @@ namespace TurnBasedRPG.UI {
 
         private void HandleNewStat(Status newStatus) {
             var color = newStatus.source.statusPopupColor;
-            var statusPopup = Data.cm.combatUI.callPopup.Pop(newStatus.statusName, color, transform, 0);
+            var statusPopup = Data.cm.view.callPopup.Pop(newStatus.statusName, color, transform, 0);
             Data.cm.combatEvents.Enqueue(statusPopup);
         }
     }

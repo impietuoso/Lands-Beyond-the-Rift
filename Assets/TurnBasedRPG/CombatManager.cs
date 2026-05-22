@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
-using TurnBasedRPG.UI;
+using TurnBasedRPG.UI.Combat;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +18,7 @@ namespace TurnBasedRPG {
         public static CombatManager instance;
 
         public Skill basicDefense;
-        public CombatUI combatUI;
+        public CombatView view;
         public CombatModelManager models;
 
         [Header("Runtime")]
@@ -80,7 +80,7 @@ namespace TurnBasedRPG {
                 character.SubscribePassives();
 
             currentPhase = StartCoroutine(CombatLoop());
-            combatUI.SetData(this);
+            view.SetData(this);
             models.SetData(this);
         }
 
@@ -111,7 +111,7 @@ namespace TurnBasedRPG {
         [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]
         public void SkipTurn() {
             selectedAction = null;
-            combatUI.actionsPanel.SetActive(false);
+            view.actionsPanel.SetActive(false);
         }
 
         public void ReloadScene() {

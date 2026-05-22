@@ -11,7 +11,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public GameObject skillParticle;
 
         public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-            var ui = CombatManager.instance.combatUI;
+            var ui = CombatManager.instance.view;
             if (castingParticle) {
                 var particle = UnityEngine.Object.Instantiate(
                     castingParticle,

@@ -2,7 +2,7 @@ using TMPro;
 using TurnBasedRPG.Data;
 using UnityEngine.UI;
 
-namespace TurnBasedRPG.UI {
+namespace TurnBasedRPG.UI.Combat {
     public class AvailableSkillView : DataView<(Character c, Skill s)> {
         public TMP_Text displayName;
         public TMP_Text cost;

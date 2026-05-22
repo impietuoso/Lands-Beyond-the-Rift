@@ -6,8 +6,8 @@ using TurnBasedRPG.Skills;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 
-namespace TurnBasedRPG.UI {
-    public class CombatUI : DataView<CombatManager> {
+namespace TurnBasedRPG.UI.Combat {
+    public class CombatView : DataView<CombatManager> {
         [Header("UI Components")]
         public ListView alliesView;
         public ListView enemiesView;

@@ -40,7 +40,7 @@ public class MultiHitAnimate : ISkillAnimationOld {
     }
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.combatUI;
+        var ui = CombatManager.instance.view;
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
                 castingParticle,
@@ -80,7 +80,7 @@ public class MultiHitAnimate : ISkillAnimationOld {
                 effect.Prepare(args);
             }
 
-            var ui = CombatManager.instance.combatUI;
+            var ui = CombatManager.instance.view;
             if (skillParticle)
                 UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
             else
