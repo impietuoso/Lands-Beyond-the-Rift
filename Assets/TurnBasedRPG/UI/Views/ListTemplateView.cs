@@ -8,8 +8,8 @@ namespace TurnBasedRPG.UI.Views
 {
     public class ListTemplateView : MonoBehaviour {
         public Image icon;
-        public TextMeshProUGUI nameText;
-        public TextMeshProUGUI extraText;
+        public TMP_Text nameText;
+        public TMP_Text extraText;
 
         public void UpdateTemplateUI(Skill skill) {
             if(icon) icon.sprite = skill.icon;

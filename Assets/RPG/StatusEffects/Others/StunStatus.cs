@@ -2,6 +2,7 @@
 using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
+
 [System.Serializable]
 public class StunStatus : Status {
     public override Observable<int> DisplayValue => duration;

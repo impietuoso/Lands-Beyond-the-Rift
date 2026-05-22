@@ -5,6 +5,7 @@ using TurnBasedRPG.Skills;
 using TurnBasedRPG.Skills.SkillEffects;
 using UnityEngine;
 
+
 [Serializable, Obsolete]
 public class DefenseSkill : ISkillEffectOld {
     [Range(0f, 1f)]

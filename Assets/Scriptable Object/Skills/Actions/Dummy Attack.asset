@@ -17,17 +17,18 @@ MonoBehaviour:
   cost: 0
   icon: {fileID: 21300000, guid: cb1619254d776f943b9ff64bfda9a340, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  targeting:
+    group: 2
+    area: 0
+    filter:
+      rid: 5967445928687698283
   animation:
     rid: 3339743010432221460
   skillEffects:
   - rid: 5967445875509691248
-  passiva:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 3339743010432221460
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -49,4 +50,6 @@ MonoBehaviour:
         hitChance: 100
         critChance: 0
         damageRange: 1
-        modifiers: []
+    - rid: 5967445928687698283
+      type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 

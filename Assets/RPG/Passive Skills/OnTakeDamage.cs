@@ -4,6 +4,7 @@ using System.Linq;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 
+
 [Serializable]
 public class OnTakeDamage : IPassiveSkill {
     public Element element;
@@ -19,27 +20,18 @@ public class OnTakeDamage : IPassiveSkill {
     }
 
     public void ConsequencesOfSeuActs(CombatArgs args) {
-        if (element && args.element != element) return;
-        if (args.result.Health.Delta >= 0) return;
-        if (args.stopReactionAttacks) return;
-        
-        if (CombatManager.instance.combatEvents.Any(e => e is OnTakeDamageEvent
-                otd && otd.thisEvent == this && otd.args.target == args.target)) return;
-        
-        var combatEvent = new OnTakeDamageEvent(args, this);
-        CombatManager.instance.combatEvents.Enqueue(combatEvent);
-    }
-}
-public class OnTakeDamageEvent : ICombatPhase {
-    public CombatArgs args;
-    public OnTakeDamage thisEvent;
+        if(element && args.element != element) return;
+        if(args.result.Health.Delta >= 0) return;
+        if(args.stopReactionAttacks) return;
+        if(!args.cm.actionFlags.Add((this, args.target))) return;
 
-    public OnTakeDamageEvent(CombatArgs args, OnTakeDamage thisEvent) {
-        this.args = args;
-        this.thisEvent = thisEvent;
+        var combatEvent = Execute(args, this);
+        args.cm.combatEvents.Enqueue(combatEvent);
     }
 
-    public IEnumerator Execute(CombatManager cm) {
-        yield return thisEvent.counterSkill.UseSkill(args.target, thisEvent.castOnSelf ? args.target : args.user, CombatManager.instance);
+    public IEnumerator Execute(CombatArgs args, OnTakeDamage e) {
+        yield return null;
+        var tgt = e.castOnSelf ? args.target : args.user;
+        yield return e.counterSkill.UseSkill(args.target, tgt);
     }
 }

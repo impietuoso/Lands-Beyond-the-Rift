@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using TurnBasedRPG.Data;
 using UnityEngine;
 
@@ -11,21 +10,8 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public GameObject castingParticle;
         public GameObject skillParticle;
 
-        public bool TrySkipSelection(Character user, Skill skill) {
-            CombatManager.instance.UsingSkillOnTarget(user, skill, user);
-            return true;
-        }
-
-        public bool ValidateTarget(Character user, Character target) {
-            return user == target;
-        }
-
-        public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-            yield return target;
-        }
-
         public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-            var ui = CombatManager.instance.combatUI;
+            var ui = CombatManager.instance.view;
             if (castingParticle) {
                 var particle = UnityEngine.Object.Instantiate(
                     castingParticle,

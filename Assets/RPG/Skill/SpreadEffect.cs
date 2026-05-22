@@ -5,6 +5,8 @@ using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
+
+
 [Serializable, Obsolete]
 public class SpreadEffect : ISkillEffectOld {
     [SerializeReference, TypeDropdown(typeof(ISkillEffectOld))]
@@ -12,7 +14,7 @@ public class SpreadEffect : ISkillEffectOld {
     public float spreadDelay;
 
     public void Prepare(CombatArgs args) {
-        foreach (var newTarget in CombatManager.instance.characterList) {
+        foreach (var newTarget in args.cm.everyone) {
             if (ValidateTarget(args.target, newTarget)) {
                 var newArgs = args.Chain(args.source, newTarget);
                 newArgs.unavoidable = true;

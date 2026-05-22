@@ -11,7 +11,7 @@ namespace TurnBasedRPG.BattleStats {
         private string _format;
 
         private void Awake() {
-            _format = text.text.Contains("{") ? text.text : "{0}";
+            if(text) _format = text.text.Contains("{") ? text.text : "{0}";
         }
 
         protected override void Subscribe() {

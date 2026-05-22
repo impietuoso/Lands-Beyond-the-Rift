@@ -14,16 +14,12 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public float damageDelay = 1;
         public float hitDelay = 1;
 
-        public bool TrySkipSelection(Character user, Skill skill) => throw new NotImplementedException();
-        public bool ValidateTarget(Character user, Character target) => throw new NotImplementedException();
-        public IEnumerable<Character> GetAffectedTargets(Character user, Character target) => throw new NotImplementedException();
-
         public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
             throw new InvalidOperationException();
         }
 
         public IEnumerator Play(SkillArgs cast) {
-            var ui = CombatManager.instance.combatUI;
+            var ui = CombatManager.instance.view;
             if(castParticle) {
                 var pos = ui.GetCharacterWorldPosition(cast.User);
                 var particle = Object.Instantiate(castParticle, pos, Quaternion.identity);
@@ -60,7 +56,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
                 foreach (var effect in skill.skillEffects)
                     effect.Prepare(args);
 
-                var ui = CombatManager.instance.combatUI;
+                var ui = CombatManager.instance.view;
                 if(skillParticle) {
                     var pos = ui.GetCharacterWorldPosition(args.target);
                     Object.Instantiate(skillParticle, pos, Quaternion.identity);

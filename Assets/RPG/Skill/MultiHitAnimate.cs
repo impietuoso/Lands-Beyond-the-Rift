@@ -4,32 +4,43 @@ using System.Collections.Generic;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
+using TurnBasedRPG.Skills.TargetFilters;
 using UnityEngine;
 
+
 [Serializable, Obsolete]
-public class MultiHitAnimate : ISkillAnimation {
+public class MultiHitAnimate : ISkillAnimationOld {
     public bool singleTarget;
     public bool targetEnemy;
     public bool targetDead;
-    public Vector2Int hitCount = new Vector2Int(1, 1);
+    public Vector2Int hitCount = new(1, 1);
     public float damageDelay = 1;
     public float hitDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
     public bool TrySkipSelection(Character user, Skill skill) => false;
 
+    public Targeting GetTargeting(Skill skill) {
+        return new Targeting
+        {
+            group = targetEnemy ? TargetGroup.Enemy : TargetGroup.Ally,
+            area = singleTarget ? TargetArea.One : TargetArea.All,
+            filter = targetDead? new Dead(): new Any()
+        };
+    }
+
     public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
         if (singleTarget) {
             yield return target;
         } else {
-            foreach (var newTarget in CombatManager.instance.characterList) {
+            foreach (var newTarget in target.cm.everyone) {
                 if (ValidateTarget(user, newTarget)) yield return newTarget;
             }
         }
     }
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.combatUI;
+        var ui = CombatManager.instance.view;
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
                 castingParticle,
@@ -69,7 +80,7 @@ public class MultiHitAnimate : ISkillAnimation {
                 effect.Prepare(args);
             }
 
-            var ui = CombatManager.instance.combatUI;
+            var ui = CombatManager.instance.view;
             if (skillParticle)
                 UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
             else

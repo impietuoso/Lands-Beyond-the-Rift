@@ -21,7 +21,7 @@ namespace TurnBasedRPG.Skills.DamageModifiers {
             var target = targetUser ? args.user : args.target;
             var flag = (target, status);
             if(!args.cm.actionFlags.Add(flag)) return;
-            var applyIe = new GenericCombatEvent(Apply(target, status));
+            var applyIe = Apply(target, status);
 
             if(status.statusType != StatusType.Debuff) {
                 args.cm.combatEvents.Enqueue(applyIe);

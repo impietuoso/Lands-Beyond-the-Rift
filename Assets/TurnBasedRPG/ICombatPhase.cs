@@ -3,27 +3,15 @@ using System.Linq;
 using TurnBasedRPG.BattleStats;
 using UnityEngine;
 
-namespace TurnBasedRPG
-{
+namespace TurnBasedRPG {
     public interface ICombatPhase {
         public IEnumerator Execute(CombatManager cm);
     }
 
     public class SetupPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.characterList = cm.allies.Concat(cm.enemies).ToList();
-            cm.maxSpeed = cm.characterList.Max(c=> c[Stat.Speed]);
-
-            foreach (var newCharacter in cm.characterList) {
-                newCharacter.SubscribePassives();
-            }
-        
-            cm.combatUI.combatPanel.SetActive(true);
-            cm.menuPanel.SetActive(false);
-            cm.combatUI.consumablesView.SetData(cm.consumables);
+            cm.maxSpeed = cm.everyone.Max(c => c[Stat.Speed]);
             cm.turnCount = 1;
-            cm.combatUI.ShowCharacters(cm.characterList);
-        
             yield break;
         }
     }
@@ -31,20 +19,18 @@ namespace TurnBasedRPG
     public class WaitActionPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
             cm.currentCharacter = null;
-            var fastest = cm.characterList[0];
+            var fastest = cm.everyone.First();
             while (cm.currentCharacter == null) {
-                foreach (var newChar in cm.characterList) {
-                    if (newChar.Health.Current <= 0) continue;
-                    newChar.actionPoints.Value += newChar[Stat.Speed] * Time.deltaTime;
-                    if (fastest.actionPoints.Value < newChar.actionPoints.Value) {
-                        fastest = newChar;
-                    }
+                foreach (var character in cm.everyone) {
+                    if(character.Health.Current == 0) continue;
+                    character.actionPoints.Value += character[Stat.Speed] * Time.deltaTime;
+                    if(fastest.actionPoints.Value < character.actionPoints.Value)
+                        fastest = character;
                 }
-            
-                if (fastest.actionPoints.Value >= cm.maxSpeed) {
+
+                if(fastest.actionPoints.Value >= cm.maxSpeed)
                     cm.currentCharacter = fastest;
-                    cm.currentCharacter.actionPoints.Value -= cm.maxSpeed;
-                }
+
                 yield return null;
             }
         }
@@ -52,82 +38,74 @@ namespace TurnBasedRPG
 
     public class CharacterPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.selectedSkill = null;
-            cm.selectedTarget = null; 
-            cm.currentCharacter.OnStartTurn?.Invoke(cm.currentCharacter);
-            cm.combatUI.skillPanel.gameObject.SetActive(false);
-            if (cm.currentCharacter.Health.Current == 0) {
-                Debug.Log(cm.currentCharacter.characterName + " can't play");
-                cm.currentCharacter.OnEndTurn?.Invoke(cm.currentCharacter);
+            var character = cm.currentCharacter;
+            cm.view.skillPanel.gameObject.SetActive(false);
+            cm.selectedAction = cm.WaitFlag;
+            character.OnStartTurn?.Invoke(character);
+
+            var isDead = character.Health.Current == 0;
+            if(isDead || character.Stun) {
+                character.OnEndTurn?.Invoke(character);
                 yield break;
             }
-        
-            if (cm.enemies.Contains(cm.currentCharacter)) {
+
+            if(cm.enemies.Contains(character)) {
                 //Vez do Inimigo
-                if (cm.selectedTarget != cm.skipTurnFlag) {
-                    yield return cm.enemyBehaviour.EnemyTurn(cm);
-                    if (cm.selectedTarget != cm.skipTurnFlag) {
-                        yield return ExecuteSelectedSkill(cm, cm.currentCharacter);
-                    }
-                }
-            } else {
-                //Vez do Player
-                Debug.Log("Player Turn: " + cm.currentCharacter.characterName);
-                cm.combatUI.actionsPanel.SetActive(true);
-                if(cm.currentCharacter.basicAttack.Count > 1) cm.combatUI.secondBasicAttack.SetActive(true);
-                else cm.combatUI.secondBasicAttack.SetActive(false);
-                cm.combatUI.ShowSkills(cm.currentCharacter, cm);
-                yield return new WaitUntil(()=> cm.selectedTarget != null);
-                if (cm.selectedTarget != cm.skipTurnFlag) {
-                    yield return ExecuteSelectedSkill(cm, cm.currentCharacter);
-                }
+                yield return cm.enemyBehaviour.EnemyTurn(cm);
             }
-            cm.currentCharacter.OnEndTurn?.Invoke(cm.currentCharacter);
+            else {
+                //Vez do Player
+                Debug.Log("Player Turn: " + character.characterName);
+                cm.view.actionsPanel.SetActive(true);
+                cm.view.ShowSkills(character);
+                yield return new WaitUntil(() => cm.selectedAction != cm.WaitFlag);
+            }
+
+            yield return ExecuteSelectedSkill(cm);
+            character.OnEndTurn?.Invoke(character);
+            character.actionPoints.Value -= cm.maxSpeed;
         }
 
-        public IEnumerator ExecuteSelectedSkill(CombatManager cm, Character user) {
-            user.Mana.Current -= cm.selectedSkill.cost;
-            cm.combatUI.selectTargetPanel.SetActive(false);
-            cm.combatUI.actionsPanel.SetActive(false);
-            cm.combatUI.ResetSelections();
-            cm.combatUI.ShowSelection(cm.selectedSkill.animation.GetAffectedTargets(user, cm.selectedTarget).ToList());
-            if (cm.selectedTarget != null) Debug.Log("Target Selected: " + cm.selectedTarget.characterName);
-            var usedSlot = cm.consumables.slots.FirstOrDefault(s => s.item.skillEffect == cm.selectedSkill);
-            if (usedSlot != null) cm.consumables.Remove(usedSlot.item, 1);
-            cm.combatUI.ShowCurrentAction(user.characterName, cm.selectedSkill.skillName);
-            yield return cm.selectedSkill.UseSkill(user, cm.selectedTarget, cm);
+        private IEnumerator ExecuteSelectedSkill(CombatManager cm) {
+            if(cm.selectedAction == null) yield break;
+            if(cm.selectedAction == cm.WaitFlag) yield break;
+            var a = cm.selectedAction;
+            var affected = a.Skill.targeting.GetAffectedTargets(a.User, a.Target);
+
+            // Prepare UI
+            cm.view.selectTargetPanel.SetActive(false);
+            cm.view.actionsPanel.SetActive(false);
+            cm.view.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
+            cm.models.ClearTargets();
+            cm.models.TargetCharacters(affected);
+            Debug.Log("Target Selected: " + a.Target?.characterName);
+
+            // Use Skill
+            a.User.Mana.Current -= a.Skill.cost;
+            var usedSlot = cm.consumables.slots.FirstOrDefault(s => s.item.skillEffect == a.Skill);
+            if(usedSlot != null) cm.consumables.Remove(usedSlot.item, 1);
+            yield return a.Skill.UseSkill(a.User, a.Target);
         }
     }
 
     public class CombatEvents : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.combatUI.ResetSelections();
-            while (cm.combatEvents.TryDequeue(out var e))
-                yield return e.Execute(cm);
+            cm.models.ClearTargets();
+            while (cm.combatEvents.TryDequeue(out var ie))
+                yield return ie;
             cm.actionFlags.Clear();
         }
     }
 
     public class CheckResultPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            var enemiesAlive = cm.enemies.Count;
-            foreach (var enemy in cm.enemies) {
-                if (enemy.Health.Current <= 0) enemiesAlive--;
-            }
-        
-            var alliesAlive = cm.allies.Count;
-            foreach (var ally in cm.allies) {
-                if (ally.Health.Current <= 0) alliesAlive--;
-            }
-        
-            if (enemiesAlive == 0 || alliesAlive == 0) {
-                Debug.Log("Combat Ended");
-                cm.gameoverPanel.SetActive(true);
-                cm.FinishCombat(alliesAlive > 0);
-            }
-            yield break;
+            var win = cm.enemies.All(c => c.Dead);
+            var lose = cm.allies.All(c => c.Dead);
+            if(!win && !lose) yield break;
+
+            Debug.Log("Combat Ended");
+            cm.view.gameOverPanel.SetActive(true);
+            cm.FinishCombat(!lose);
         }
-    
-    
     }
 }

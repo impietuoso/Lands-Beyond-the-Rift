@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace TurnBasedRPG.UI
+namespace TurnBasedRPG.UI.Combat
 {
     public class PopupText : MonoBehaviour {
         public TextMeshProUGUI text;
