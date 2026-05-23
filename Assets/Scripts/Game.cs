@@ -7,9 +7,9 @@ public static class Game {
     private static GameObject _options;
     private static LoadController _load;
 
-    public static AudioManager Audio => _audio ??= Load<AudioManager>();
-    public static GameObject Options => _options ??= Load<GameObject>("Options Panel");
-    public static LoadController Loading => _load ??= Load<LoadController>();
+    public static GameObject Options => _options ? _options : _options = Load<GameObject>("Options Panel");
+    public static AudioManager Audio => _audio ? _audio : _audio = Load<AudioManager>();
+    public static LoadController Loading => _load ? _load : _load = Load<LoadController>();
 
     public static SaveManager Save = new("Save", "default", new JsonFileParser());
 
@@ -17,7 +17,7 @@ public static class Game {
         name ??= typeof(T).Name;
         var clone = Resources.Load<T>(name);
         clone.name = name;
-        Object.DontDestroyOnLoad(clone);
+        //Object.DontDestroyOnLoad(clone);
         return clone;
     }
 
