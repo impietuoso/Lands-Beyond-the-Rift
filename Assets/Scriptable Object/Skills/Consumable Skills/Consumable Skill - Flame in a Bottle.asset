@@ -10,40 +10,46 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Consumable Skill - Small Mana (p)
+  m_Name: Consumable Skill - Flame in a Bottle
   m_EditorClassIdentifier: 
-  skillName: Small Heal (p)
-  skillDescription: Heal a small amount of health
+  skillName: Flame in a Bottle
+  skillDescription: Fire a granade that explose on Impact
   cost: 0
-  icon: {fileID: -4795914746179759440, guid: 862bf9c73e3445e418cc4ef66e0ee927, type: 3}
-  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  icon: {fileID: -2035840135098207376, guid: ac9902f814a219e4ea10255084762e0c, type: 3}
+  element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   targeting:
-    group: 2
+    group: 1
     area: 0
     filter:
-      rid: 5967445928687698212
+      rid: 5967445928687698226
   animation:
     rid: 6720660755266404458
   effects:
-  - rid: 5967445875509691309
+  - rid: 5967445875509691173
   references:
     version: 2
     RefIds:
-    - rid: 5967445875509691309
-      type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+    - rid: 5967445875509691173
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        amount: 60
-    - rid: 5967445928687698212
+        damage: 40
+        scale:
+          attribute: 1
+          scale: 0
+        hitChance: 100
+        critChance: 0
+        damageRange: 0
+    - rid: 5967445928687698226
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
     - rid: 6720660755266404458
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
         singleTarget: 1
-        targetEnemy: 0
+        targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
         damageDelay: 1
         hitDelay: 1
         castingParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
-        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
+        skillParticle: {fileID: 1601998662364245037, guid: 61ddfba2ee7db1b4cb5dcd0116c2cc89, type: 3}

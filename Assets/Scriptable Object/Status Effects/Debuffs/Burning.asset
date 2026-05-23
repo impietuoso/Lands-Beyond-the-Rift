@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Burning
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6beb6a34170ba16488428b5168b1246f, type: 3}
   displayName: Burning
   description: Deal Damage at the Start of the Turn
   type: 1
@@ -20,13 +20,9 @@ MonoBehaviour:
   opposite: {fileID: 0}
   status:
     rid: 5967445967026782327
-  status2:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967445967026782327
       type: {class: Damage, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:

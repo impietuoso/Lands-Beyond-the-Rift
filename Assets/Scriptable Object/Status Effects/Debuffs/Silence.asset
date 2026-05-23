@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Silence
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: fff0e46593d20484dbd181cfc47972f5, type: 3}
   displayName: Silence
   description: Unable the use of Skills
   type: 1
@@ -20,13 +20,9 @@ MonoBehaviour:
   opposite: {fileID: 0}
   status:
     rid: 5967445967026782319
-  status2:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967445967026782319
       type: {class: Silence, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:

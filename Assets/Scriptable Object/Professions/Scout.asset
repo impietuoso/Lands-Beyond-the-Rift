@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ac12204a7b45340872b46eddf249f6, type: 3}
   m_Name: Scout
   m_EditorClassIdentifier: 
-  initialStats:
-    strength: 0
-    intelligence: 0
+  attributeBonus:
+    strength: 8
+    intelligence: 9
     dexterity: 5
-    vitality: 2
-    spirit: 3
+    vitality: 6
+    spirit: 7
   basicAttack: {fileID: 11400000, guid: 38fcbf2ac46866b42958d2d334fed669, type: 2}
   starterSkills:
   - {fileID: 0}

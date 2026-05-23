@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Poison
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 319715f427dda9c46b2d15471cbf15d7, type: 3}
   displayName: Poison
   description: Deal Damage at the End of the Turn
   type: 1
@@ -20,13 +20,9 @@ MonoBehaviour:
   opposite: {fileID: 0}
   status:
     rid: 5967445967026782331
-  status2:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967445967026782331
       type: {class: Poison, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11f039181a3e48eb9a75852ee9051aea, type: 3}
-  m_Name: Holy Water
+  m_Name: Flame in a Bottle
   m_EditorClassIdentifier: Assembly-CSharp::Consumable
-  <displayName>k__BackingField: Holy Water
-  <description>k__BackingField: Remove Debuffs
-  <sprite>k__BackingField: {fileID: 21300000, guid: ca2aa78e0217d1f429c632ce4af334ff, type: 3}
+  <displayName>k__BackingField: Flame in the Bottle
+  <description>k__BackingField: Deal Medium Fire Damage to 1 Foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: b5f5a95377786fc479bc099ab29be67f, type: 3}
   <maxStack>k__BackingField: 99
-  skillEffect: {fileID: 11400000, guid: 8fdb1b8a44f39c14588dc3b6559fbb29, type: 2}
+  skillEffect: {fileID: 11400000, guid: e224840b71ebda349a1bcc22b7a587b3, type: 2}

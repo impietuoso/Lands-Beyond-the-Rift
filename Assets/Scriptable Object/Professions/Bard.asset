@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ac12204a7b45340872b46eddf249f6, type: 3}
   m_Name: Bard
   m_EditorClassIdentifier: 
-  initialStats:
-    strength: 1
-    intelligence: 0
-    dexterity: 3
-    vitality: 3
-    spirit: 3
+  attributeBonus:
+    strength: 6
+    intelligence: 8
+    dexterity: 5
+    vitality: 8
+    spirit: 8
   basicAttack: {fileID: 11400000, guid: eecbba9a24d5c3e499f7ad505ef1b153, type: 2}
   starterSkills:
   - {fileID: 0}

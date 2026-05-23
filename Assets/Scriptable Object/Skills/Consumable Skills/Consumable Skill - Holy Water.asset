@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Consumable Skill - Cleanse
+  m_Name: Consumable Skill - Holy Water
   m_EditorClassIdentifier: 
   skillName: Small Heal (p)
   skillDescription: Heal a small amount of health
@@ -24,15 +24,11 @@ MonoBehaviour:
       rid: 5967445928687698323
   animation:
     rid: 6720660755266404457
-  skillEffects:
-  - rid: 5967445875509691344
+  effects:
+  - rid: 9169537190577307866
   references:
     version: 2
     RefIds:
-    - rid: 5967445875509691344
-      type: {class: RemoveStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
-      data:
-        status: {fileID: 0}
     - rid: 5967445928687698323
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
@@ -45,5 +41,9 @@ MonoBehaviour:
         hitCount: {x: 1, y: 1}
         damageDelay: 1
         hitDelay: 1
-        castingParticle: {fileID: 0}
+        castingParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
         skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
+    - rid: 9169537190577307866
+      type: {class: ClearStatus, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        type: 1

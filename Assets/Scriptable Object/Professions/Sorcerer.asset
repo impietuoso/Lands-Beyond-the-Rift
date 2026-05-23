@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ac12204a7b45340872b46eddf249f6, type: 3}
   m_Name: Sorcerer
   m_EditorClassIdentifier: 
-  initialStats:
-    strength: 0
-    intelligence: 4
-    dexterity: 3
-    vitality: 0
-    spirit: 3
+  attributeBonus:
+    strength: 5
+    intelligence: 7
+    dexterity: 10
+    vitality: 5
+    spirit: 8
   basicAttack: {fileID: 11400000, guid: d2f1460e11cceda4ab59790da2223d6e, type: 2}
   starterSkills:
   - {fileID: 0}

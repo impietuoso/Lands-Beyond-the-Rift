@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ac12204a7b45340872b46eddf249f6, type: 3}
   m_Name: Alchemist
   m_EditorClassIdentifier: 
-  initialStats:
-    strength: 2
-    intelligence: 0
-    dexterity: 1
-    vitality: 4
-    spirit: 3
+  attributeBonus:
+    strength: 5
+    intelligence: 7
+    dexterity: 6
+    vitality: 8
+    spirit: 9
   basicAttack: {fileID: 11400000, guid: eecbba9a24d5c3e499f7ad505ef1b153, type: 2}
   starterSkills:
   - {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Hit Down
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 67b266b3393cbe5458aef8ff5c43a5a1, type: 3}
   displayName: Confused
   description: Reduce the Hit Chance
   type: 1
@@ -20,13 +20,9 @@ MonoBehaviour:
   opposite: {fileID: 11400000, guid: 736558fac4207974bb831624f2464173, type: 2}
   status:
     rid: 5967445967026782334
-  status2:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967445967026782334
       type: {class: StatBonus, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:

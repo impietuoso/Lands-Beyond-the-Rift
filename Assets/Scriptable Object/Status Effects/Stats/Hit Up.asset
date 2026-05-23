@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Hit Up
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ca34a9eb3cda1374dbafa691804b02e5, type: 3}
   displayName: Focused
   description: Increase Hit Chance
   type: 0
@@ -20,13 +20,9 @@ MonoBehaviour:
   opposite: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
   status:
     rid: 5967445967026782306
-  status2:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967445967026782306
       type: {class: StatBonus, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:

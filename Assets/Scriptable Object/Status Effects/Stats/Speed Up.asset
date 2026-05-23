@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Speed Up
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7641375d63a404b4bbb76a954fba4163, type: 3}
   displayName: Quickning
   description: Increase Speed
   type: 0
@@ -20,13 +20,9 @@ MonoBehaviour:
   opposite: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
   status:
     rid: 5967445967026782307
-  status2:
-    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967445967026782307
       type: {class: StatBonus, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:
