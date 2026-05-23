@@ -19,7 +19,7 @@ public class SelfHitAnimate : ISkillAnimationOld {
         {
             group = TargetGroup.Self,
             area = TargetArea.One,
-            filter = new Any()
+            filter = new Alive()
         };
     }
 

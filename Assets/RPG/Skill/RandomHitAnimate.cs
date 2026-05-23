@@ -24,7 +24,7 @@ public class RandomHitAnimate : ISkillAnimationOld {
         {
             group = targetEnemy ? TargetGroup.Enemy : TargetGroup.Ally,
             area = TargetArea.All,
-            filter = targetDead ? new Dead() : new Any()
+            filter = targetDead ? new Dead() : new Alive()
         };
     }
 

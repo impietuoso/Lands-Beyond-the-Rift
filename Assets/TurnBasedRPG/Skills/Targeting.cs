@@ -11,7 +11,7 @@ namespace TurnBasedRPG.Skills {
     public class Targeting {
         public TargetGroup group = TargetGroup.Enemy;
         public TargetArea area = TargetArea.One;
-        [SerializeReference, TypeInstance] public ITargetFilter filter = new Any();
+        [SerializeReference, TypeInstance] public ITargetFilter filter = new Alive();
 
         public bool SkipSelection => group == TargetGroup.Self;
         public bool ValidateTarget(Character user, Character target) => filter.Match(user, target);

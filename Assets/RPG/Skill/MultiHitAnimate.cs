@@ -25,7 +25,7 @@ public class MultiHitAnimate : ISkillAnimationOld {
         {
             group = targetEnemy ? TargetGroup.Enemy : TargetGroup.Ally,
             area = singleTarget ? TargetArea.One : TargetArea.All,
-            filter = targetDead? new Dead(): new Any()
+            filter = targetDead? new Dead(): new Alive()
         };
     }
 
