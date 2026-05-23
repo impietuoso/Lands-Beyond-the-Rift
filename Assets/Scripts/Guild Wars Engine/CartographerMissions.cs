@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class CartographerMissions : MonoBehaviour {
-    public void LoadBiome(int sceneId) {
-        PersistenteConfig.Instance.load.ChangeScene(sceneId);
+namespace Guild_Wars_Engine {
+    public class CartographerMissions : MonoBehaviour {
+        public void LoadBiome(int sceneId) => Game.Loading.ChangeScene(sceneId);
     }
 }

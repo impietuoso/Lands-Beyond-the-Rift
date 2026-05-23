@@ -15,7 +15,7 @@ namespace Editor.Dev {
             foreach (var guid in guids) {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var skill = AssetDatabase.LoadAssetAtPath<Skill>(path);
-                if(!skill || skill.skillEffects == null || skill.skillEffects.Count == 0) continue;
+                if(!skill || skill.effects == null || skill.effects.Count == 0) continue;
 
                 if(skill.animation is ISkillAnimationOld a) {
                     var t = a.GetTargeting(skill);
@@ -25,8 +25,8 @@ namespace Editor.Dev {
                     }
                 }
 
-                for (var i = 0; i < skill.skillEffects.Count; i++) {
-                    var oldEffect = skill.skillEffects[i];
+                for (var i = 0; i < skill.effects.Count; i++) {
+                    var oldEffect = skill.effects[i];
                     var upgrade = oldEffect?.GetUpgrade(skill);
                     if(upgrade == oldEffect) continue;
                     if(upgrade == null) {
@@ -34,7 +34,7 @@ namespace Editor.Dev {
                         continue;
                     }
 
-                    skill.skillEffects[i] = upgrade;
+                    skill.effects[i] = upgrade;
                     EditorUtility.SetDirty(skill);
                 }
             }
