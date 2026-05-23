@@ -10,26 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
-  m_Name: Determined
+  m_Name: Crit Zero
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusPopupColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
   icon: {fileID: 0}
-  displayName: Determined
+  displayName: Dull
   description: Increase Critical Chance
-  type: 0
-  textColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
-  opposite: {fileID: 0}
+  type: 1
+  textColor: {r: 0.74509805, g: 0.050980393, b: 0.28627452, a: 1}
+  opposite: {fileID: 11400000, guid: dd31e747ea55043409809fe623937aa6, type: 2}
   status:
-    rid: 3339743010432221347
+    rid: 5967445967026782296
+  status2:
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221347
-      type: {class: CritStatus, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5967445967026782296
+      type: {class: StatBonus, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:
-        statusName: Determined
-        statusDescription: Increase Critical Chance
-        opposite: {fileID: 0}
         duration:
           value: 4
-        bonusValue: 50
+          max: 4
+        stacks:
+          value: 1
+          max: 1
+        bonus:
+          stat: 9
+          mode: 0
+          value: 30

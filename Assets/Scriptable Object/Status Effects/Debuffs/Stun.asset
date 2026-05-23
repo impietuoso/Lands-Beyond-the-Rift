@@ -19,12 +19,20 @@ MonoBehaviour:
   textColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
   opposite: {fileID: 11400000, guid: 420c41582add6b44e9ddf3f733801a28, type: 2}
   status:
-    rid: 9169536697585893455
+    rid: 5967445967026782317
+  status2:
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 9169536697585893455
-      type: {class: StunStatus, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5967445967026782317
+      type: {class: Stun, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:
         duration:
           value: 2
+          max: 2
+        stacks:
+          value: 1
+          max: 1

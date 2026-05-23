@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
-  m_Name: Burning
+  m_Name: Hit Up
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
   icon: {fileID: 0}
-  displayName: Burning
-  description: Deal Damage at the Start of the Turn
-  type: 1
-  textColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
-  opposite: {fileID: 0}
+  displayName: Focused
+  description: Increase Hit Chance
+  type: 0
+  textColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
+  opposite: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
   status:
-    rid: 5967445967026782327
+    rid: 5967445967026782306
   status2:
     rid: -2
   references:
@@ -27,17 +27,16 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 5967445967026782327
-      type: {class: Damage, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
+    - rid: 5967445967026782306
+      type: {class: StatBonus, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:
         duration:
-          value: 3
-          max: 3
+          value: 4
+          max: 4
         stacks:
           value: 1
           max: 1
-        trigger: 0
-        damage: 15
-        element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
-        ignoreArmor: 1
-        ignoreShield: 1
+        bonus:
+          stat: 4
+          mode: 1
+          value: 1.3

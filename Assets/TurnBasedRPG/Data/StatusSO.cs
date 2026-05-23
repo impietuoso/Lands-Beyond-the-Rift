@@ -13,7 +13,6 @@ namespace TurnBasedRPG.Data {
         [SerializeField] private Color textColor;
         [SerializeField] private StatusSO opposite;
         [SerializeReference, TypeInstance] private Status status;
-        [SerializeReference, TypeInstance] private Status status2;
 
         public Sprite Icon => icon;
         public string DisplayName => displayName;

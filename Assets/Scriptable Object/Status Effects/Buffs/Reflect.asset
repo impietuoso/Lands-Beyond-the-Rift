@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Reflect
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusPopupColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
   icon: {fileID: 0}
   displayName: Reflect
   description: Deal 50% of the damage receive to the attacker
@@ -20,17 +19,11 @@ MonoBehaviour:
   textColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
   opposite: {fileID: 0}
   status:
-    rid: 7065366283678384130
+    rid: -2
+  status2:
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 7065366283678384130
-      type: {class: ReflectEffect, ns: , asm: Assembly-CSharp}
-      data:
-        statusName: Reflect
-        statusDescription: Deal 50% of the damage receive to the attacker
-        opposite: {fileID: 0}
-        reflectPercentage: 0.5
-        protectFromDamage: 0
-        duration:
-          value: 2
+    - rid: -2
+      type: {class: , ns: , asm: }

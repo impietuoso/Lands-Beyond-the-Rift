@@ -10,26 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
-  m_Name: Focused
+  m_Name: Armor Up
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusPopupColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
   icon: {fileID: 0}
-  displayName: Focused
-  description: Increase Hit Chance
+  displayName: Protection
+  description: Increase Armor
   type: 0
   textColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
-  opposite: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
+  opposite: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
   status:
-    rid: 3339743010432221346
+    rid: 5967445967026782308
+  status2:
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221346
-      type: {class: HitChanceStatus, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5967445967026782308
+      type: {class: StatBonus, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:
-        statusName: Focused
-        statusDescription: Increase Hit Chance
-        opposite: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
         duration:
-          value: 5
-        hitBonus: 30
+          value: 4
+          max: 4
+        stacks:
+          value: 1
+          max: 1
+        bonus:
+          stat: 6
+          mode: 1
+          value: 1.3

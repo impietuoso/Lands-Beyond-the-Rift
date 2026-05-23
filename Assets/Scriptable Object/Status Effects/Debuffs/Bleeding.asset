@@ -19,13 +19,26 @@ MonoBehaviour:
   textColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
   opposite: {fileID: 0}
   status:
-    rid: 9169536697585893456
+    rid: 5967445967026782333
+  status2:
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 9169536697585893456
-      type: {class: BleedingStatus, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5967445967026782333
+      type: {class: Bleed, ns: TurnBasedRPG.StatusEffects, asm: TurnBasedRPG}
       data:
         duration:
-          value: 4
-        damage: 10
+          value: 3
+          max: 3
+        stacks:
+          value: 1
+          max: 1
+        trigger: 0
+        damage: 4
+        element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+        ignoreArmor: 1
+        ignoreShield: 1
+        extraDamage: 14
