@@ -1,5 +1,6 @@
 ﻿using Controllers;
 using Drafts.SaveData;
+using TurnBasedRPG;
 using UnityEngine;
 
 public static class Game {
@@ -15,9 +16,9 @@ public static class Game {
 
     private static T Load<T>(string name = null) where T : Object {
         name ??= typeof(T).Name;
-        var clone = Resources.Load<T>(name);
+        var clone = Resources.Load<T>(name).Clone();
         clone.name = name;
-        //Object.DontDestroyOnLoad(clone);
+        Object.DontDestroyOnLoad(clone);
         return clone;
     }
 

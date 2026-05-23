@@ -7769,7 +7769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358e151610f44a7c8b84c69a68ee5169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnBasedRPG.Controller.EncounterTrigger
-  combatManager: {fileID: 0}
+  combatManager: {fileID: 2098161172}
   encounter: {fileID: 11400000, guid: 8b615905ddf61e74ba139ae50cd03584, type: 2}
   arena: {fileID: 528379715971362417}
   staticEffect: {fileID: 447814965}
