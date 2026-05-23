@@ -22,8 +22,10 @@ namespace TurnBasedRPG {
         public CombatModelManager models;
 
         [Header("Runtime")]
-        public List<Character> allies { get; } = new();
-        public List<Character> enemies { get; } = new();
+        [field:SerializeField]
+        public List<Character> allies { get; private set; } = new();
+        [field:SerializeField]
+        public List<Character> enemies { get; private set; } = new();
         public IEnumerable<Character> everyone { get; private set; }
         public ListInventory<Consumable> consumables { get; private set; }
         public int maxSpeed;
@@ -111,6 +113,7 @@ namespace TurnBasedRPG {
         [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]
         public void SkipTurn() {
             selectedAction = null;
+            view.combatPanel.SetActive(false);
             view.actionsPanel.SetActive(false);
         }
 

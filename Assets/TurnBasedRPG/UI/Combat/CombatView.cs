@@ -39,8 +39,8 @@ namespace TurnBasedRPG.UI.Combat {
             alliesView.SetData(Data.allies);
             enemiesView.SetData(Data.enemies);
             consumablesView.SetData(Data.consumables);
-
-            combatPanel.SetActive(true);
+            combatPanel.SetActive(false);
+            actionsPanel.SetActive(false);
         }
 
         protected override void Unsubscribe() {
@@ -113,7 +113,7 @@ namespace TurnBasedRPG.UI.Combat {
         }
 
         public Vector3 GetCharacterWorldPosition(Character user) {
-            throw new System.NotImplementedException();
+            return user.cm.models.GetCharacterPosition(user);
         }
     }
 }

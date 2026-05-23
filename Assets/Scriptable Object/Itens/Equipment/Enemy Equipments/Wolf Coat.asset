@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70ad0b65e4d468fad8d06d15b5e7744, type: 3}
+  m_Name: Wolf Coat
+  m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  <displayName>k__BackingField: Wolf Coat
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: 21300000, guid: cc33631aa7238314788814fdeea956c1, type: 3}
+  <maxStack>k__BackingField: 1
+  _equipmentType: {fileID: 11400000, guid: 55798d5937659d9458b8be88af3772ae, type: 2}
+  _category: {fileID: 11400000, guid: d7d34f46f3c324d4c9221164823b173f, type: 2}
+  _bonusValue:
+    <MaxHealth>k__BackingField: 0
+    <MaxShield>k__BackingField: 0
+    <MaxMana>k__BackingField: 0
+    <Speed>k__BackingField: 0
+    <Hit>k__BackingField: 0
+    <Evade>k__BackingField: 0
+    <Armor>k__BackingField: 0
+    <Resistance>k__BackingField: 0
+    <Damage>k__BackingField: 0
+    <CritChance>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+    <CastSpeed>k__BackingField: 0
+  _equipmentSkill: {fileID: 0}
+  _passiva:
+    rid: -2
+  Type: {fileID: 11400000, guid: 55798d5937659d9458b8be88af3772ae, type: 2}
+  Category: {fileID: 11400000, guid: d7d34f46f3c324d4c9221164823b173f, type: 2}
+  equipmentSkill: {fileID: 0}
+  passiva:
+    rid: -2
+  basicAttack: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

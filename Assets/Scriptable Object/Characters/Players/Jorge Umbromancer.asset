@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
   charName: Jorge
   level: 1
-  usedStats:
+  usedAttributes:
     strength: 5
     intelligence: 5
     dexterity: 5
@@ -37,3 +37,4 @@ MonoBehaviour:
     list: []
   characterSprite: {fileID: 21300000, guid: 2f54ccae5767b3849bfc6bc5723f553f, type: 3}
   uiSprite: {fileID: -395514768, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
+  prefab: {fileID: 4520403846243800190, guid: 10c4aed7cd7ad6f47bd5c32c5101971a, type: 3}
