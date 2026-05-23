@@ -1,15 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TurnBasedRPG;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
-
-[System.Serializable]
+[System.Serializable, Obsolete]
 public class ReflectEffect : Status {
     [Range(0,10)]
     public float reflectPercentage;
     public bool protectFromDamage;
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
@@ -36,7 +36,7 @@ public class ReflectEffect : Status {
         chain.unavoidable = true;
         chain.damage = damageReflected;
         var genericEvent = ReflectDamage(chain);
-        args.cm.combatEvents.Enqueue(genericEvent);
+        args.cm.CombatEvents.Enqueue(genericEvent);
     }
     
     public IEnumerator ReflectDamage (CombatArgs args) {
@@ -48,7 +48,7 @@ public class ReflectEffect : Status {
     private void OnTurnEnd(Character target) {
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

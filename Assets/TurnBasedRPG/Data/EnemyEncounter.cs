@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using TurnBasedRPG.Data;
 using UnityEngine;
 
-namespace TurnBasedRPG
+namespace TurnBasedRPG.Data
 {
     [CreateAssetMenu(menuName = "Scriptable/EnemyEncounter", fileName = "New Enemy Encounter")]
     public class EnemyEncounter : ScriptableObject {

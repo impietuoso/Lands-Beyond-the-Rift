@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using TurnBasedRPG.Data;
 
 namespace TurnBasedRPG.UI.Views
 {

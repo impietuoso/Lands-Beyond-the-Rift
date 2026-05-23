@@ -4,7 +4,7 @@ using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using TurnBasedRPG.Skills.SkillEffects;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 
 [Serializable, Obsolete]
 public class StatusRemoval : ISkillEffectOld {
@@ -18,7 +18,7 @@ public class StatusRemoval : ISkillEffectOld {
             var toRemove = new List<StatusSO>();
 
             foreach (var kvp in statusList) {
-                if(kvp.Key.statusType == statusType) {
+                if(kvp.Key.Type == statusType) {
                     toRemove.Add(kvp.Key);
                 }
             }
@@ -30,12 +30,12 @@ public class StatusRemoval : ISkillEffectOld {
         else {
             StatusSO so = null;
             foreach (var kvp in statusList) {
-                if(kvp.Key.status == removedStatus.status) {
+                if(kvp.Key.Status == removedStatus.Status) {
                     so = kvp.Key;
                 }
             }
 
-            if(so.status != null) args.target.StatusEffectList.Remove(so);
+            if(so.Status != null) args.target.StatusEffectList.Remove(so);
         }
     }
 

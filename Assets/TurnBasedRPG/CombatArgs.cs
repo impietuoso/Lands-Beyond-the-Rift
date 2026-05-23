@@ -32,7 +32,7 @@ namespace TurnBasedRPG {
         public List<StatusSO> statusEffects = new();
         public Action<CombatArgs> OnResolve;
 
-        public CombatManager cm => CombatManager.instance;
+        public CombatManager cm => target.cm;
 
         public void Resolve() {
             if(result != null) return;
@@ -60,7 +60,7 @@ namespace TurnBasedRPG {
             if(!ignoreArmor) damage = Mathf.Max(damage - target[Armor], 0);
 
             // damage stat
-            if(user != null) damage = (int)(damage * (user[Damage] + 100 / 100f));
+            if(user != null) damage = (int)(damage * user[Damage] / 100f);
 
             // crit damage
             if(crit) {

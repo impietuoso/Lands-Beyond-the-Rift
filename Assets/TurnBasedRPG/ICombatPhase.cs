@@ -10,38 +10,45 @@ namespace TurnBasedRPG {
 
     public class SetupPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.maxSpeed = cm.everyone.Max(c => c[Stat.Speed]);
-            cm.turnCount = 1;
+            cm.MaxSpeed = cm.Everyone.Max(c => c[Stat.Speed]);
+            cm.TurnCount = 1;
             yield break;
         }
     }
 
     public class WaitActionPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.currentCharacter = null;
-            var fastest = cm.everyone.First();
-            while (cm.currentCharacter == null) {
-                foreach (var character in cm.everyone) {
+            cm.CurrentCharacter = null;
+            var fastest = cm.Everyone.First();
+            while (cm.CurrentCharacter == null) {
+                yield return null;
+                if(cm.Pause) continue;
+
+                foreach (var character in cm.Everyone) {
                     if(character.Health.Current == 0) continue;
                     character.actionPoints.Value += character[Stat.Speed] * Time.deltaTime;
                     if(fastest.actionPoints.Value < character.actionPoints.Value)
                         fastest = character;
                 }
 
-                if(fastest.actionPoints.Value >= cm.maxSpeed)
-                    cm.currentCharacter = fastest;
-
-                yield return null;
+                if(fastest.actionPoints.Value >= cm.MaxSpeed)
+                    cm.CurrentCharacter = fastest;
             }
         }
     }
 
     public class CharacterPhase : ICombatPhase {
+        private EnemyBehaviour _enemyBehaviour;
+
+        public CharacterPhase(EnemyBehaviour enemyBehaviour) {
+            _enemyBehaviour = enemyBehaviour;
+        }
+
         public IEnumerator Execute(CombatManager cm) {
-            var character = cm.currentCharacter;
-            cm.view.skillPanel.gameObject.SetActive(false);
-            cm.view.consumablesView.gameObject.SetActive(false);
-            cm.selectedAction = cm.WaitFlag;
+            var character = cm.CurrentCharacter;
+            cm.View.skillPanel.gameObject.SetActive(false);
+            cm.View.consumablesView.gameObject.SetActive(false);
+            cm.SelectedAction = cm.WaitFlag;
             character.OnStartTurn?.Invoke(character);
 
             var isDead = character.Health.Current == 0;
@@ -50,63 +57,63 @@ namespace TurnBasedRPG {
                 yield break;
             }
 
-            if(cm.enemies.Contains(character)) {
+            if(cm.Enemies.Contains(character)) {
                 //Vez do Inimigo
-                yield return cm.enemyBehaviour.EnemyTurn(cm);
+                yield return _enemyBehaviour.EnemyTurn(cm);
             }
             else {
                 //Vez do Player
                 Debug.Log("Player Turn: " + character.characterName);
-                cm.view.combatPanel.SetActive(true);
-                cm.view.ShowSkills(character);
-                yield return new WaitUntil(() => cm.selectedAction != cm.WaitFlag);
+                cm.View.combatPanel.SetActive(true);
+                cm.View.ShowSkills(character);
+                yield return new WaitUntil(() => cm.SelectedAction != cm.WaitFlag);
             }
 
             yield return ExecuteSelectedSkill(cm);
             character.OnEndTurn?.Invoke(character);
-            character.actionPoints.Value -= cm.maxSpeed;
+            character.actionPoints.Value -= cm.MaxSpeed;
         }
 
         private IEnumerator ExecuteSelectedSkill(CombatManager cm) {
-            if(cm.selectedAction == null) yield break;
-            if(cm.selectedAction == cm.WaitFlag) yield break;
-            var a = cm.selectedAction;
+            if(cm.SelectedAction == null) yield break;
+            if(cm.SelectedAction == cm.WaitFlag) yield break;
+            var a = cm.SelectedAction;
             var affected = a.Skill.targeting.GetAffectedTargets(a.User, a.Target);
 
             // Prepare UI
-            cm.view.selectTargetPanel.SetActive(false);
-            cm.view.combatPanel.SetActive(false);
-            cm.view.actionsPanel.SetActive(false);
-            cm.view.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
-            cm.models.ClearTargets();
-            cm.models.TargetCharacters(affected);
+            cm.View.selectTargetPanel.SetActive(false);
+            cm.View.combatPanel.SetActive(false);
+            cm.View.actionsPanel.SetActive(false);
+            cm.View.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
+            cm.Models.ClearTargets();
+            cm.Models.TargetCharacters(affected);
             Debug.Log("Target Selected: " + a.Target?.characterName);
 
             // Use Skill
             a.User.Mana.Current -= a.Skill.cost;
-            var usedSlot = cm.consumables.slots.FirstOrDefault(s => s.item.skillEffect == a.Skill);
-            if(usedSlot != null) cm.consumables.Remove(usedSlot.item, 1);
+            var usedSlot = cm.Consumables.slots.FirstOrDefault(s => s.item.skillEffect == a.Skill);
+            if(usedSlot != null) cm.Consumables.Remove(usedSlot.item, 1);
             yield return a.Skill.UseSkill(a.User, a.Target);
         }
     }
 
     public class CombatEvents : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.models.ClearTargets();
-            while (cm.combatEvents.TryDequeue(out var ie))
+            cm.Models.ClearTargets();
+            while (cm.CombatEvents.TryDequeue(out var ie))
                 yield return ie;
-            cm.actionFlags.Clear();
+            cm.ActionFlags.Clear();
         }
     }
 
     public class CheckResultPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            var win = cm.enemies.All(c => c.Dead);
-            var lose = cm.allies.All(c => c.Dead);
+            var win = cm.Enemies.All(c => c.Dead);
+            var lose = cm.Allies.All(c => c.Dead);
             if(!win && !lose) yield break;
 
             Debug.Log("Combat Ended");
-            cm.view.gameOverPanel.SetActive(true);
+            cm.View.gameOverPanel.SetActive(true);
             cm.FinishCombat(!lose);
         }
     }

@@ -4,7 +4,7 @@ using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-public class ApplySkillEffect : IPassiveSkill {
+public class ApplySkillEffect : IPassive {
     public Element element;
     [SerializeReference, TypeInstance]
     public ISkillEffectOld effect;

@@ -1,5 +1,6 @@
 ﻿using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.DrawerHelpers;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 
 namespace TurnBasedRPG.Data
@@ -10,12 +11,12 @@ namespace TurnBasedRPG.Data
         public Tag _category;
         public StatsBase _bonusValue;
         public Skill _equipmentSkill;
-        [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill _passiva;
+        [SerializeReference, TypeDropdown(typeof(IPassive))] public IPassive _passiva;
 
         public EquipmentType Type;
         public Tag Category;
         public Skill equipmentSkill;
-        [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
+        [SerializeReference, TypeDropdown(typeof(IPassive))] public IPassive passiva;
         
         public string BonusText() {
             var resume = "<b>" + displayName + ":</b>\n";

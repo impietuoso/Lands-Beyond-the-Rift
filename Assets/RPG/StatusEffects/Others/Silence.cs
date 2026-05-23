@@ -1,10 +1,11 @@
-﻿using TurnBasedRPG;
-using TurnBasedRPG.StatusEffect;
+﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.StatusEffects;
 
 
-[System.Serializable]
+[System.Serializable, Obsolete]
 public class Silence : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
 
     public override void Apply(Character target) {
@@ -25,7 +26,7 @@ public class Silence : Status {
     private void OnTurnEnd(Character target) {
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

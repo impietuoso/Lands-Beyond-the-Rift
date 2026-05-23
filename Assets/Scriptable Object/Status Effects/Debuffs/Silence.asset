@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Silence
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusIcon: {fileID: 21300000, guid: a04541149fb47324a9522bd9df1c4cd7, type: 3}
+  icon: {fileID: 0}
+  displayName: Silence
+  description: Unable the use of Skills
+  type: 1
+  textColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
+  opposite: {fileID: 0}
   status:
     rid: 6720660525144342684
-  statusType: 1
-  statusPopupColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
   references:
     version: 2
     RefIds:
     - rid: 6720660525144342684
       type: {class: Silence, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Silence
-        statusDescription: Unable the use of Skills
-        opposite: {fileID: 0}
         duration:
           value: 3

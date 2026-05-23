@@ -1,9 +1,10 @@
 ﻿using TurnBasedRPG;
 using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 
 
-public class ChangeElementalDamage : IPassiveSkill {
+public class ChangeElementalDamage : IPassive {
     public Element element;
     public bool changeAttack = true;
     [Range(0,2)] public float damageIncrease = 1;

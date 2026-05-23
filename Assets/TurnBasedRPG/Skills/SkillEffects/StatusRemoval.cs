@@ -1,6 +1,5 @@
 using System;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.StatusEffect;
 using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {

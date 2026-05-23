@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using TurnBasedRPG;
-using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
@@ -14,25 +13,24 @@ public class SpreadEffect : ISkillEffectOld {
     public float spreadDelay;
 
     public void Prepare(CombatArgs args) {
-        foreach (var newTarget in args.cm.everyone) {
-            if (ValidateTarget(args.target, newTarget)) {
-                var newArgs = args.Chain(args.source, newTarget);
-                newArgs.unavoidable = true;
-                effect.Prepare(newArgs);
-                args.OnResolve += _=> CombatManager.instance.StartCoroutine(ResolveSpread(newArgs));
-            }
+        foreach (var tgt in args.cm.Everyone) {
+            if(!ValidateTarget(args.target, tgt)) continue;
+            var chain = args.Chain(args.source, tgt);
+            chain.unavoidable = true;
+            effect.Prepare(chain);
+            args.OnResolve += _ => args.cm.StartCoroutine(ResolveSpread(chain));
         }
     }
 
-    public IEnumerator ResolveSpread(CombatArgs newArgs) {
+    private IEnumerator ResolveSpread(CombatArgs newArgs) {
         yield return new WaitForSeconds(spreadDelay);
         newArgs.Resolve();
     }
-    
-    public bool ValidateTarget(Character user, Character target) {
-        bool sameTeam = user.team == target.team;
-        bool alive = target.Health.Current > 0;
-        bool notSelf = target != user;
+
+    private bool ValidateTarget(Character user, Character target) {
+        var sameTeam = user.team == target.team;
+        var alive = target.Health.Current > 0;
+        var notSelf = target != user;
         return sameTeam && alive && notSelf;
     }
 }

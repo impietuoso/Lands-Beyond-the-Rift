@@ -5,7 +5,6 @@ using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using TurnBasedRPG.Skills.SkillEffects;
-using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
 [Serializable, Obsolete]
@@ -16,7 +15,7 @@ public class ApplyStatusEffect : ISkillEffectOld {
         if(args.hitChance == 0) args.hitChance = 100;
         if (targetUser) {
             args.user?.StatusEffectList.Apply(status);
-            Debug.Log(status.status.statusName + " was apply on " + args.user?.characterName + ".");
+            Debug.Log(status.DisplayName + " was apply on " + args.user?.characterName + ".");
         } else args.statusEffects.Add(status);
     }
 

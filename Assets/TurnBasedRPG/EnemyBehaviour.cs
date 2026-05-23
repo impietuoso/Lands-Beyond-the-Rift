@@ -21,7 +21,7 @@ namespace TurnBasedRPG {
         }
 
         public IEnumerator EnemyTurn(CombatManager cm) {
-            var currentEnemy = cm.currentCharacter;
+            var currentEnemy = cm.CurrentCharacter;
             Debug.Log("Enemy Turn: " + currentEnemy.characterName);
             yield return new WaitForSeconds(0.25f);
 
@@ -36,19 +36,19 @@ namespace TurnBasedRPG {
                 else if(choice == 1)
                     selectedSkill = currentEnemy.basicAttack;
                 else
-                    selectedSkill = cm.basicDefense;
+                    selectedSkill = cm.BasicDefense;
             }
             else {
                 // Ataca (80%) ou Defende (20%)
                 var choice = GetWeightedRandomIndex(new float[] { 80, 20 });
                 var attack = currentEnemy.basicAttack;
-                selectedSkill = choice == 0 ? attack : cm.basicDefense;
+                selectedSkill = choice == 0 ? attack : cm.BasicDefense;
             }
 
             yield return new WaitForSeconds(.25f);
             var eligible = selectedSkill.targeting.EligibleTargets(currentEnemy).ToArray();
             var target = eligible[Random.Range(0, eligible.Length)];
-            cm.selectedAction = new()
+            cm.SelectedAction = new()
             {
                 Skill = selectedSkill,
                 User = currentEnemy,

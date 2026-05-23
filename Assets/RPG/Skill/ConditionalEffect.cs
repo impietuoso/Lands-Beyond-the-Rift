@@ -4,7 +4,6 @@ using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
-using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
 [Serializable, Obsolete]

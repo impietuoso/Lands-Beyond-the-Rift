@@ -1,5 +1,5 @@
 using TMPro;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +14,10 @@ namespace TurnBasedRPG.UI.Views
 
         public void SetInfo(Status status) {
             owner = status;
-            statusIcon.sprite = status.source.statusIcon;
+            statusIcon.sprite = status.Source.Icon;
             if (durationText) durationText.text = status.DisplayValue.Value.ToString();
-            if (nameText) nameText.text = status.statusName;
-            if (descriptionText) descriptionText.text = status.statusDescription;
+            if (nameText) nameText.text = status.Source.DisplayName;
+            if (descriptionText) descriptionText.text = status.Source.Description;
             status.DisplayValue.OnChange += UpdateUI;
         }
 

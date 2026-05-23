@@ -1,5 +1,5 @@
 using TurnBasedRPG.BattleStats;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 namespace TurnBasedRPG.UI.Combat {
@@ -7,11 +7,13 @@ namespace TurnBasedRPG.UI.Combat {
         [SerializeField] private ResourceStatView healthView;
         [SerializeField] private GameObject turnMarker;
         [SerializeField] private GameObject targetMark;
+        [SerializeField] private GameObject focusCamera;
         private Animator _animator;
 
+        public GameObject Camera => focusCamera;
         public GameObject TargetMark => targetMark;
 
-        public void SelectAsTarget() => Data.cm.view.SelectTarget(Data);
+        public void SelectAsTarget() => Data.cm.View.SelectTarget(Data);
 
         protected override void Subscribe() {
             healthView.SetData(Data.Health);
@@ -37,9 +39,9 @@ namespace TurnBasedRPG.UI.Combat {
         private void DeactivateTurnMarker(Character obj) => turnMarker.SetActive(false);
 
         private void StatusMessage(Status status) {
-            var popup = Data.cm.view.callPopup;
-            var color = status.source.statusPopupColor;
-            StartCoroutine(popup.Pop(status.statusName, color, transform, 0));
+            var popup = Data.cm.View.callPopup;
+            var color = status.Source.TextColor;
+            StartCoroutine(popup.Pop(status.Source.DisplayName, color, transform, 0));
         }
 
         private void DamagePopup(CombatArgs args) {
@@ -64,7 +66,7 @@ namespace TurnBasedRPG.UI.Combat {
             if(args.user == args.target && popupValue == 0) return;
 
             var popupText = args.result.Miss ? "Miss" : popupValue.ToString();
-            var popup = Data.cm.view.callPopup;
+            var popup = Data.cm.View.callPopup;
 
             if(!args.result.Miss && args.result.ResistStatus) {
                 if(popupValue == 0)

@@ -3,7 +3,7 @@ using System.Collections;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 using UnityEngine.Scripting;
 using Random = UnityEngine.Random;
@@ -20,11 +20,11 @@ namespace TurnBasedRPG.Skills.DamageModifiers {
             if(args.result.Miss) return;
             var target = targetUser ? args.user : args.target;
             var flag = (target, status);
-            if(!args.cm.actionFlags.Add(flag)) return;
+            if(!args.cm.ActionFlags.Add(flag)) return;
             var applyIe = Apply(target, status);
 
-            if(status.statusType != StatusType.Debuff) {
-                args.cm.combatEvents.Enqueue(applyIe);
+            if(status.Type != StatusType.Debuff) {
+                args.cm.CombatEvents.Enqueue(applyIe);
                 return;
             }
 
@@ -34,12 +34,12 @@ namespace TurnBasedRPG.Skills.DamageModifiers {
                 return;
             }
 
-            args.cm.combatEvents.Enqueue(applyIe);
+            args.cm.CombatEvents.Enqueue(applyIe);
         }
 
         private static IEnumerator Apply(Character tgt, StatusSO effect) {
             yield return null;
-            Debug.Log(effect.status.statusName + " was apply to " + tgt.characterName);
+            Debug.Log(effect.DisplayName + " was apply to " + tgt.characterName);
             tgt.StatusEffectList.Apply(effect);
         }
     }

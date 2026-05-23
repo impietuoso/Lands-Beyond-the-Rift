@@ -36,9 +36,9 @@ namespace TurnBasedRPG.UI.Combat {
         }
 
         protected override void Subscribe() {
-            alliesView.SetData(Data.allies);
-            enemiesView.SetData(Data.enemies);
-            consumablesView.SetData(Data.consumables);
+            alliesView.SetData(Data.Allies);
+            enemiesView.SetData(Data.Enemies);
+            consumablesView.SetData(Data.Consumables);
             combatPanel.SetActive(false);
             actionsPanel.SetActive(false);
         }
@@ -69,35 +69,35 @@ namespace TurnBasedRPG.UI.Combat {
             }
 
             var eligible = skill.targeting.EligibleTargets(user);
-            Data.models.ClearTargets();
-            Data.models.TargetCharacters(eligible);
+            Data.Models.ClearTargets();
+            Data.Models.TargetCharacters(eligible);
         }
 
         public void SelectTarget(Character target) {
             if(_preparation == null) return;
             _preparation.Target = target;
-            Data.selectedAction = _preparation;
+            Data.SelectedAction = _preparation;
             _preparation = null;
-            Data.models.ClearTargets();
+            Data.Models.ClearTargets();
         }
         
         public void CancelPreparation() {
             _preparation = null;
-            Data.models.ClearTargets();
+            Data.Models.ClearTargets();
         }
 
         public void PrepareAttackForCurrentPlayer() {
-            var currentPlayer = Data.currentCharacter;
+            var currentPlayer = Data.CurrentCharacter;
             PrepareSkill(currentPlayer.basicAttack, currentPlayer);
         }
 
         public void PrepareDefenseForCurrentPlayer() {
-            var currentPlayer = Data.currentCharacter;
-            PrepareSkill(Data.basicDefense, currentPlayer);
+            var currentPlayer = Data.CurrentCharacter;
+            PrepareSkill(Data.BasicDefense, currentPlayer);
         }
 
         public void PrepareSkillForCurrentPlayer(IItemView itemView) {
-            var currentPlayer = Data.currentCharacter;
+            var currentPlayer = Data.CurrentCharacter;
             PrepareSkill(((Consumable)itemView.Data).skillEffect, currentPlayer);
         }
 
@@ -110,10 +110,6 @@ namespace TurnBasedRPG.UI.Combat {
                 currentActionPanel.SetActive(false);
             currentActionPanel.SetActive(true);
             currentActionText.text = userName + " uses " + actionName;
-        }
-
-        public Vector3 GetCharacterWorldPosition(Character user) {
-            return user.cm.models.GetCharacterPosition(user);
         }
     }
 }

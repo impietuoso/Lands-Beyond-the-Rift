@@ -25,66 +25,59 @@ public class MultiHitAnimate : ISkillAnimationOld {
         {
             group = targetEnemy ? TargetGroup.Enemy : TargetGroup.Ally,
             area = singleTarget ? TargetArea.One : TargetArea.All,
-            filter = targetDead? new Dead(): new Alive()
+            filter = targetDead ? new Dead() : new Alive()
         };
     }
 
     public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-        if (singleTarget) {
+        if(singleTarget) {
             yield return target;
-        } else {
-            foreach (var newTarget in target.cm.everyone) {
-                if (ValidateTarget(user, newTarget)) yield return newTarget;
+        }
+        else {
+            foreach (var newTarget in target.cm.Everyone) {
+                if(ValidateTarget(user, newTarget)) yield return newTarget;
             }
         }
     }
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.view;
-        if (castingParticle) {
-            var particle = UnityEngine.Object.Instantiate(
-                castingParticle,
-                ui.GetCharacterWorldPosition(user),
-                Quaternion.identity);
+        if(castingParticle) {
+            var particle = castingParticle.Clone(user.Position);
             yield return new WaitWhile(() => particle);
-        } else {
+        }
+        else
             yield return new WaitForSeconds(0.1f);
-        }
 
-        int newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
+        var newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
+        var routines = new List<Coroutine>();
 
-        List<Coroutine> executores = new();
+        foreach (var newTarget in GetAffectedTargets(user, target))
+            routines.Add(cm.StartCoroutine(SingleTargetDamage(skill, user, newTarget, newHitCount)));
 
-        foreach (var newTarget in GetAffectedTargets(user, target)) {
-            executores.Add(cm.StartCoroutine(SingleTargetDamage(skill, user, newTarget, newHitCount)));
-        }
-
-        foreach (var exe in executores) {
+        foreach (var exe in routines)
             yield return exe;
-        }
 
-        if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
+        if(hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
 
     public IEnumerator SingleTargetDamage(Skill skill, Character user, Character target, int newHitCount) {
-        for (int i = 0; i < newHitCount; i++) {
-
-            CombatArgs args = new CombatArgs();
+        for (var i = 0; i < newHitCount; i++) {
+            var args = new CombatArgs();
             args.skill = skill;
             args.element = skill.element;
             args.target = target;
             args.user = user;
             args.source = this;
 
-            foreach (var effect in skill.skillEffects) {
+            foreach (var effect in skill.effects) {
                 effect.Prepare(args);
             }
 
-            var ui = CombatManager.instance.view;
-            if (skillParticle)
-                UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+            if(skillParticle)
+                skillParticle.Clone(args.target.Position);
             else
                 Debug.Log("No Particle, add it to: " + skill.skillName);
+
             yield return new WaitForSeconds(damageDelay);
             args.Resolve();
             yield return new WaitForSeconds(hitDelay);
@@ -94,8 +87,8 @@ public class MultiHitAnimate : ISkillAnimationOld {
     }
 
     public bool ValidateTarget(Character user, Character target) {
-        bool sameTeam = user.team == target.team;
-        bool alive = target.Health.Current > 0;
+        var sameTeam = user.team == target.team;
+        var alive = target.Health.Current > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
 }

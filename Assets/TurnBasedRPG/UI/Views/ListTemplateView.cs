@@ -1,6 +1,6 @@
 using TMPro;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +18,9 @@ namespace TurnBasedRPG.UI.Views
         }
     
         public void UpdateTemplateUI(Status status) {
-            if(icon) icon.sprite = status.source.statusIcon;
-            if(nameText) nameText.text = status.statusName;
-            if(extraText) extraText.text = status.statusDescription;
+            if(icon) icon.sprite = status.Source.Icon;
+            if(nameText) nameText.text = status.Source.DisplayName;
+            if(extraText) extraText.text = status.Source.Description;
         }
     }
 }

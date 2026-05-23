@@ -11,28 +11,27 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public GameObject skillParticle;
 
         public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-            var ui = CombatManager.instance.view;
-            if (castingParticle) {
-                var particle = UnityEngine.Object.Instantiate(
-                    castingParticle,
-                    ui.GetCharacterWorldPosition(user),
-                    Quaternion.identity);
+            if(castingParticle) {
+                var particle = castingParticle.Clone(user.Position);
                 yield return new WaitWhile(() => particle);
-            } else
+            }
+            else
                 yield return new WaitForSeconds(0.1f);
 
             Debug.Log(user.characterName + " Defends!");
-            var args = new CombatArgs();
-            args.source = this;
-            args.skill = skill;
-            args.element = skill.element;
-            args.user = user;
-            args.target = user;
+            var args = new CombatArgs
+            {
+                source = this,
+                skill = skill,
+                element = skill.element,
+                user = user,
+                target = user
+            };
 
-            foreach (var effect in skill.skillEffects)
+            foreach (var effect in skill.effects)
                 effect.Prepare(args);
 
-            UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+            skillParticle.Clone(args.target.Position);
             yield return new WaitForSeconds(damageDelay);
 
             args.Resolve();

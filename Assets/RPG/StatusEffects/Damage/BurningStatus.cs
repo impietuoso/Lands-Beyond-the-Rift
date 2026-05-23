@@ -1,12 +1,13 @@
-﻿using TurnBasedRPG;
+﻿using System;
+using TurnBasedRPG;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 
-[System.Serializable]
+[System.Serializable, Obsolete]
 public class BurningStatus : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
     public int damage = 10;
     public Element element;
@@ -45,7 +46,7 @@ public class BurningStatus : Status {
     private void OnTurnEnd(Character target) {
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

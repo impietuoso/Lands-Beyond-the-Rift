@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TurnBasedRPG.Data;
 
-namespace TurnBasedRPG.StatusEffect
+namespace TurnBasedRPG.StatusEffects
 {
     public class StatusEffectList {
         private readonly Character _target;
@@ -18,13 +18,13 @@ namespace TurnBasedRPG.StatusEffect
     
         public void Apply(StatusSO so) {
             if (_statusList.TryGetValue(so, out var existingStatus)) {
-                existingStatus.Stack(_target, so.status);
+                existingStatus.Stack(_target, so.Status);
             } else {
                 var newStatus = so.Clone();
                 if (newStatus == null) return;
 
-                if (so.status.opposite && _statusList.ContainsKey(so.status.opposite))
-                    Remove(so.status.opposite);
+                if (so.Opposite && _statusList.ContainsKey(so.Opposite))
+                    Remove(so.Opposite);
                 else
                 {
                     _statusList.Add(so, newStatus);

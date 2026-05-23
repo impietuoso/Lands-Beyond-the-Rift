@@ -1,11 +1,12 @@
-﻿using TurnBasedRPG;
-using TurnBasedRPG.StatusEffect;
+﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 
-[System.Serializable]
+[System.Serializable, Obsolete]
 public class CritStatus : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
     public int bonusValue = 30; // Additive bonus for critical chance
 
@@ -33,7 +34,7 @@ public class CritStatus : Status {
     private void OnTurnEnd(Character target) {
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

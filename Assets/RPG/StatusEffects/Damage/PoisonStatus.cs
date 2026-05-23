@@ -1,12 +1,13 @@
-﻿using TurnBasedRPG;
+﻿using System;
+using TurnBasedRPG;
 using TurnBasedRPG.Data;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 
-[System.Serializable]
+[System.Serializable, Obsolete]
 public class PoisonStatus : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
     public int damage = 10;
     public float healReduction = 0.6f; // 40% reduction means heal * 0.6
@@ -50,7 +51,7 @@ public class PoisonStatus : Status {
         
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

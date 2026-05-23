@@ -1,50 +1,13 @@
-﻿using TurnBasedRPG;
-using TurnBasedRPG.StatusEffect;
-using UnityEngine;
+﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.StatusEffects;
 
-
-[System.Serializable]
+[Serializable, Obsolete]
 public class SleepStatus : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
 
-    public override void Apply(Character target) {
-        if (TryNullifyOpposite(target)) return;
-        target.OnStartTurn += OnTurnStart;
-        target.OnDefend += OnDefend;
-        target.OnEndTurn += OnTurnEnd;
-    }
-
-    public override void Remove(Character target) {
-        target.OnStartTurn -= OnTurnStart;
-        target.OnDefend -= OnDefend;
-        target.OnEndTurn -= OnTurnEnd;
-    }
-
-    public override void Stack(Character target, Status other) {
-        if (other is SleepStatus otherStatus) {
-            duration.Value = otherStatus.duration.Value;
-        }
-    }
-
-    private void OnTurnStart(Character target) {
-        if (CombatManager.instance.currentCharacter == target) {
-            Debug.Log(target.characterName + " is sleeping and skips turn!");
-            CombatManager.instance.SkipTurn();
-        }
-    }
-
-    private void OnDefend(CombatArgs args) {
-        if (args.damage > 0) {
-            Debug.Log(args.target.characterName + " woke up from damage!");
-            args.target.StatusEffectList.Remove(source);
-        }
-    }
-
-    private void OnTurnEnd(Character target) {
-        duration.Value--;
-        if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
-        }
-    }
+    public override void Apply(Character target) => throw new NotImplementedException();
+    public override void Remove(Character target) => throw new NotImplementedException();
+    public override void Stack(Character target, Status other) => throw new NotImplementedException();
 }

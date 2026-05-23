@@ -1,25 +1,48 @@
 using System;
 using TurnBasedRPG.BattleStats;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.DrawerHelpers;
+using UnityEngine;
+using UnityEngine.Scripting;
 
-namespace TurnBasedRPG.StatusEffects
-{
-    [Serializable, Obsolete]
-    public class StatBonus : StatusBase
-    {
-        public Stat stat;
-        public float multiplier = 1.3f;
+namespace TurnBasedRPG.StatusEffects {
+    [Preserve, Serializable]
+    public class StatBonus : StatusBase {
+        [SerializeField, Label(null)] private Bonus bonus;
 
-        public override void Apply(Character target)
-        {
+        public override void Apply(Character target) {
             base.Apply(target);
-            target.Stats.GetStat(stat).AddBonus(this, multiplier);
+            bonus.Add(target.Stats);
         }
 
-        public override void Remove(Character target)
-        {
+        public override void Remove(Character target) {
             base.Remove(target);
-            target.Stats.GetStat(stat).RemoveBonus(this);
+            bonus.Remove(target.Stats);
+        }
+
+        [Serializable]
+        public class Bonus : ISingleLineDrawer {
+            public enum Mode {
+                Add,
+                Mult,
+            }
+
+            public Stat stat;
+            [Label(null)] public Mode mode = Mode.Mult;
+            [Label(null)] public float value = 1.3f;
+
+            public void Add(Stats stats) {
+                var s = stats.GetStat(stat);
+                if(mode == Mode.Add)
+                    s.Base += (int)value;
+                else s.AddBonus(this, value);
+            }
+
+            public void Remove(Stats stats) {
+                var s = stats.GetStat(stat);
+                if(mode == Mode.Add)
+                    s.Base -= (int)value;
+                else s.RemoveBonus(this);
+            }
         }
     }
 }

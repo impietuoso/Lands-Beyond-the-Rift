@@ -1,5 +1,5 @@
 using TurnBasedRPG.BattleStats;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 namespace TurnBasedRPG

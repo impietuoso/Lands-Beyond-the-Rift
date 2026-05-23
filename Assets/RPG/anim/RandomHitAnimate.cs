@@ -29,12 +29,8 @@ public class RandomHitAnimate : ISkillAnimationOld {
     }
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.view;
         if(castingParticle) {
-            var particle = UnityEngine.Object.Instantiate(
-                castingParticle,
-                ui.GetCharacterWorldPosition(user),
-                Quaternion.identity);
+            var particle = castingParticle.Clone(user.Position);
             yield return new WaitWhile(() => particle);
         }
         else {
@@ -50,7 +46,7 @@ public class RandomHitAnimate : ISkillAnimationOld {
     }
 
     public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-        foreach (var newTarget in target.cm.everyone) {
+        foreach (var newTarget in target.cm.Everyone) {
             if(ValidateTarget(user, newTarget)) yield return newTarget;
         }
     }
@@ -64,12 +60,11 @@ public class RandomHitAnimate : ISkillAnimationOld {
             args.user = user;
             args.source = this;
 
-            foreach (var effect in skill.skillEffects) {
+            foreach (var effect in skill.effects) {
                 effect.Prepare(args);
             }
 
-            var ui = CombatManager.instance.view;
-            UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+            skillParticle.Clone(args.target.Position);
             yield return new WaitForSeconds(damageDelay);
 
             args.Resolve();

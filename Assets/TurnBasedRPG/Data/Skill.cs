@@ -4,6 +4,7 @@ using System.Linq;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TurnBasedRPG.Data {
     [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
@@ -16,7 +17,9 @@ namespace TurnBasedRPG.Data {
 
         [Separator] public Targeting targeting;
         [SerializeReference, TypeInstance, Separator] public ISkillAnimationOld animation;
-        [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> skillEffects;
+        
+        [FormerlySerializedAs("skillEffects")]
+        [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> effects;
 
         public bool Available(Character user) {
             if(user.Silence) return false;

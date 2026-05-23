@@ -20,7 +20,7 @@ namespace TurnBasedRPG.Skills {
         {
             TargetArea.One => new[] { target }.Where(t => filter.Match(user, t)),
             TargetArea.Team => target.Allies.Where(t => filter.Match(user, t)),
-            TargetArea.All => target.cm.everyone.Where(t => filter.Match(user, t)),
+            TargetArea.All => target.cm.Everyone.Where(t => filter.Match(user, t)),
             _ => throw new ArgumentOutOfRangeException()
         };
 
@@ -30,7 +30,7 @@ namespace TurnBasedRPG.Skills {
                 TargetGroup.Self => new[] { user },
                 TargetGroup.Ally => user.Allies,
                 TargetGroup.Enemy => user.Enemies,
-                TargetGroup.Any => user.cm.everyone,
+                TargetGroup.Any => user.cm.Everyone,
                 _ => throw new ArgumentOutOfRangeException()
             };
             return r.Where(t => filter.Match(user, t));

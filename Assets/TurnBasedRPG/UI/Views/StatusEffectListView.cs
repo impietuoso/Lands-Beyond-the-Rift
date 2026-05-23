@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 namespace TurnBasedRPG.UI.Views

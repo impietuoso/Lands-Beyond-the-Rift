@@ -1,8 +1,9 @@
 ﻿using TurnBasedRPG;
 using TurnBasedRPG.Data;
+using TurnBasedRPG.Skills;
 
 
-public class SwapSkillElement : IPassiveSkill {
+public class SwapSkillElement : IPassive {
     public Element originalElement;
     public Element newElement;
 

@@ -1,12 +1,12 @@
-﻿using TurnBasedRPG;
-using TurnBasedRPG.Data;
-using TurnBasedRPG.StatusEffect;
+﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
 
-[System.Serializable]
+[Serializable, Obsolete]
 public class BleedingStatus: Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
     public int damage = 10;
     
@@ -39,7 +39,7 @@ public class BleedingStatus: Status {
     private void OnTurnEnd(Character target) {
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

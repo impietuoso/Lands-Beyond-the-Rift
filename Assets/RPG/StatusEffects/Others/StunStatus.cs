@@ -1,41 +1,13 @@
-﻿using TurnBasedRPG;
-using TurnBasedRPG.StatusEffect;
-using UnityEngine;
+﻿using System;
+using TurnBasedRPG;
+using TurnBasedRPG.StatusEffects;
 
-
-[System.Serializable]
+[Serializable, Obsolete]
 public class StunStatus : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (1);
-
-    public override void Apply(Character target) {
-        target.StatusEffectList.Remove(opposite);
-        target.OnStartTurn += OnTurnStart;
-        target.OnEndTurn += OnTurnEnd;
-    }
-
-    public override void Remove(Character target) {
-        target.OnStartTurn -= OnTurnStart;
-        target.OnEndTurn -= OnTurnEnd;
-    }
-
-    public override void Stack(Character target, Status other) {
-        if (other is SleepStatus otherStatus) {
-            duration.Value = otherStatus.duration.Value;
-        }
-    }
-
-    private void OnTurnStart(Character target) {
-        if (CombatManager.instance.currentCharacter == target) {
-            Debug.Log(target.characterName + " is stunned!");
-            CombatManager.instance.SkipTurn();
-        }
-    }
-
-    private void OnTurnEnd(Character target) {
-        duration.Value--;
-        if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
-        }
-    }
+    
+    public override void Apply(Character target) => throw new NotImplementedException();
+    public override void Remove(Character target) => throw new NotImplementedException();
+    public override void Stack(Character target, Status other) => throw new NotImplementedException();
 }

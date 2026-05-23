@@ -1,30 +1,32 @@
 using System.Collections.Generic;
+using TurnBasedRPG.DrawerHelpers.Search;
 using UnityEngine;
 
 namespace TurnBasedRPG.UI.Combat {
-    public class CombatModelManager : DataView<CombatManager> {
-        public CharacterModel prefab;
-        public Transform[] allyPositions;
-        public Transform[] enemyPositions;
+    public class CombatArena : DataView<CombatManager> {
+        [SerializeField, Prefab] private CharacterModel prefab;
+        [field: SerializeField] public GameObject Camera { get; private set; }
+        [SerializeField] private Transform center;
+        [SerializeField] private Transform[] allyPositions;
+        [SerializeField] private Transform[] enemyPositions;
+
+        public Vector3 Center => center.position;
 
         private readonly Dictionary<Character, CharacterModel> _models = new();
 
         protected override void Subscribe() {
-            prefab.gameObject.SetActive(false);
-            for (var i = 0; i < Data.allies.Count; i++) {
+            for (var i = 0; i < Data.Allies.Count; i++) {
                 if(i >= allyPositions.Length) break;
                 var instance = Instantiate(prefab, allyPositions[i]);
-                instance.SetData(Data.allies[i]);
-                _models.Add(Data.allies[i], instance);
-                instance.gameObject.SetActive(true);
+                instance.SetData(Data.Allies[i]);
+                _models.Add(Data.Allies[i], instance);
             }
 
-            for (var i = 0; i < Data.enemies.Count; i++) {
+            for (var i = 0; i < Data.Enemies.Count; i++) {
                 if(i >= enemyPositions.Length) break;
                 var instance = Instantiate(prefab, enemyPositions[i]);
-                instance.SetData(Data.enemies[i]);
-                _models.Add(Data.enemies[i], instance);
-                instance.gameObject.SetActive(true);
+                instance.SetData(Data.Enemies[i]);
+                _models.Add(Data.Enemies[i], instance);
             }
         }
 
@@ -34,10 +36,10 @@ namespace TurnBasedRPG.UI.Combat {
             _models.Clear();
         }
 
-        public Vector3 GetCharacterPosition(Character character) {
+        public Vector3 GetPosition(Character character) {
             return _models.TryGetValue(character, out var feedback)
                 ? feedback.transform.position
-                : Vector3.zero;
+                : throw new MissingReferenceException();
         }
 
         public void ClearTargets() {

@@ -35,16 +35,11 @@ public class SelfHitAnimate : ISkillAnimationOld {
     }
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.view;
         if (castingParticle) {
-            var particle = UnityEngine.Object.Instantiate(
-                castingParticle,
-                ui.GetCharacterWorldPosition(user),
-                Quaternion.identity);
+            var particle = castingParticle.Clone(user.Position);
             yield return new WaitWhile(() => particle);
-        } else {
+        } else
             yield return new WaitForSeconds(0.1f);
-        }
 
         Debug.Log(user.characterName + " Defends!");
         CombatArgs args = new CombatArgs();
@@ -54,11 +49,10 @@ public class SelfHitAnimate : ISkillAnimationOld {
         args.target = user;
         args.source = this;
 
-        foreach (var effect in skill.skillEffects) {
+        foreach (var effect in skill.effects)
             effect.Prepare(args);
-        }
 
-        UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+        skillParticle.Clone(args.target.Position);
         yield return new WaitForSeconds(damageDelay);
 
         args.Resolve();

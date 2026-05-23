@@ -1,11 +1,11 @@
 ﻿using System;
 using TurnBasedRPG;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 
 
 [Serializable, Obsolete]
 public class ArmorStatus : Status {
-    public override Observable<int> DisplayValue => duration;
+    public override IObservable<int> DisplayValue => throw new Exception();
     public Observable<int> duration = new (3);
     public float multiplier = 1.3f;
 
@@ -29,7 +29,7 @@ public class ArmorStatus : Status {
     private void OnTurnEnd(Character target) {
         duration.Value--;
         if (duration.Value <= 0) {
-            target.StatusEffectList.Remove(source);
+            target.StatusEffectList.Remove(Source);
         }
     }
 }

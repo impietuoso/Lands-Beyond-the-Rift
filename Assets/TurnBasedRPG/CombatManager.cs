@@ -8,113 +8,100 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TurnBasedRPG {
-    public class CombatConfig {
-        public IEnumerable<PartyMember> Allies;
-        public IEnumerable<PartyMember> Enemies;
-        public List<Slot<Item>> Items;
-    }
-
     public class CombatManager : MonoBehaviour {
-        public static CombatManager instance;
-
-        public Skill basicDefense;
-        public CombatView view;
-        public CombatModelManager models;
+        [field: SerializeField] public Skill BasicDefense { get; private set; }
+        [field: SerializeField] public CombatView View { get; private set; }
+        [field: SerializeField] public CombatArena Models { get; private set; }
 
         [Header("Runtime")]
-        [field:SerializeField]
-        public List<Character> allies { get; private set; } = new();
-        [field:SerializeField]
-        public List<Character> enemies { get; private set; } = new();
-        public IEnumerable<Character> everyone { get; private set; }
-        public ListInventory<Consumable> consumables { get; private set; }
-        public int maxSpeed;
-        public int turnCount;
+        [field: SerializeField] public List<Character> Allies { get; private set; } = new();
+        [field: SerializeField] public List<Character> Enemies { get; private set; } = new();
+        [field: SerializeField] public ListInventory<Consumable> Consumables { get; private set; }
+        [field: SerializeField] public Character CurrentCharacter { get; set; }
+        [field: SerializeField] public int MaxSpeed { get; set; }
+        [field: SerializeField] public int TurnCount { get; set; }
+        [field: SerializeField] public bool Pause { get; set; }
+        [field: SerializeField] public bool CombatWon { get; set; }
 
-        public Character currentCharacter { get; set; }
-
-        [Header("Combat Phases")]
-        public readonly EnemyBehaviour enemyBehaviour = new();
-        public Queue<IEnumerator> combatEvents = new();
-        public readonly HashSet<object> actionFlags = new();
-        private readonly List<ICombatPhase> setupPhases = new();
-        private readonly List<ICombatPhase> loopPhases = new();
-        private readonly List<ICombatPhase> endPhases = new();
-
-        public Coroutine currentPhase { get; private set; }
-
-        [Header("Debug Variables")]
-        public SkillArgs selectedAction;
-        public bool combatWon { get; set; }
+        public IEnumerable<Character> Everyone { get; private set; }
+        public readonly Queue<IEnumerator> CombatEvents = new();
+        public readonly HashSet<object> ActionFlags = new();
         public SkillArgs WaitFlag { get; } = new();
+        public SkillArgs SelectedAction;
+
+        private Coroutine _currentPhase;
+        private readonly List<ICombatPhase> _setupPhases = new();
+        private readonly List<ICombatPhase> _loopPhases = new();
+        private readonly List<ICombatPhase> _endPhases = new();
 
         private void Awake() {
-            instance = this;
-            setupPhases.Add(new SetupPhase());
-            loopPhases.Add(new WaitActionPhase());
-            loopPhases.Add(new CharacterPhase());
-            loopPhases.Add(new CombatEvents());
-            loopPhases.Add(new CheckResultPhase());
+            _setupPhases.Add(new SetupPhase());
+            _loopPhases.Add(new WaitActionPhase());
+            _loopPhases.Add(new CharacterPhase(new EnemyBehaviour()));
+            _loopPhases.Add(new CombatEvents());
+            _loopPhases.Add(new CheckResultPhase());
         }
 
         public void StartCombat(CombatConfig config) {
-            allies.Clear();
-            enemies.Clear();
-            everyone = allies.Concat(enemies);
-            consumables = new();
+            config.Arena.Camera.SetActive(true);
+
+            Allies.Clear();
+            Enemies.Clear();
+            Everyone = Allies.Concat(Enemies);
+            Consumables = new();
 
             foreach (var member in config.Allies) {
                 if(!member) continue;
-                allies.Add(new(this, member, "Player", allies, enemies));
+                Allies.Add(new(this, member, "Player", Allies, Enemies));
             }
 
             foreach (var member in config.Enemies) {
                 if(!member) continue;
-                enemies.Add(new(this, member, "Enemy", enemies, allies));
+                Enemies.Add(new(this, member, "Enemy", Enemies, Allies));
             }
 
             foreach (var slot in config.Items) {
                 if(!slot.item) continue;
-                consumables.Add(slot.item, slot.amount);
+                Consumables.Add(slot.item, slot.amount);
             }
 
-            foreach (var character in everyone)
+            foreach (var character in Everyone)
                 character.SubscribePassives();
 
-            currentPhase = StartCoroutine(CombatLoop());
-            view.SetData(this);
-            models.SetData(this);
+            _currentPhase = StartCoroutine(CombatLoop());
+            View.SetData(this);
+            Models.SetData(this);
         }
 
         public void FinishCombat(bool won) {
-            combatWon = won;
-            StopCoroutine(currentPhase);
+            CombatWon = won;
+            StopCoroutine(_currentPhase);
             StartCoroutine(CombatEnd());
         }
 
         public IEnumerator CombatLoop() {
-            foreach (var phase in setupPhases) {
+            foreach (var phase in _setupPhases) {
                 yield return phase.Execute(this);
             }
 
             while (true) {
-                foreach (var phase in loopPhases) {
+                foreach (var phase in _loopPhases) {
                     yield return phase.Execute(this);
                 }
             }
         }
 
         public IEnumerator CombatEnd() {
-            foreach (var phase in endPhases) {
+            foreach (var phase in _endPhases) {
                 yield return phase.Execute(this);
             }
         }
 
         [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]
         public void SkipTurn() {
-            selectedAction = null;
-            view.combatPanel.SetActive(false);
-            view.actionsPanel.SetActive(false);
+            SelectedAction = null;
+            View.combatPanel.SetActive(false);
+            View.actionsPanel.SetActive(false);
         }
 
         public void ReloadScene() {

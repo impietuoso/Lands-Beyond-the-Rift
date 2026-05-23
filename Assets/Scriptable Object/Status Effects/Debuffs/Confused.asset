@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Confused
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusIcon: {fileID: 21300000, guid: 67b266b3393cbe5458aef8ff5c43a5a1, type: 3}
+  icon: {fileID: 0}
+  displayName: Confused
+  description: Reduce the Hit Chance
+  type: 1
+  textColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
+  opposite: {fileID: 11400000, guid: 736558fac4207974bb831624f2464173, type: 2}
   status:
     rid: 3339743010432221346
-  statusType: 1
-  statusPopupColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
   references:
     version: 2
     RefIds:
     - rid: 3339743010432221346
       type: {class: HitChanceStatus, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Confused
-        statusDescription: Reduce the Hit Chance
-        opposite: {fileID: 11400000, guid: 736558fac4207974bb831624f2464173, type: 2}
         duration:
           value: 4
         hitBonus: -30

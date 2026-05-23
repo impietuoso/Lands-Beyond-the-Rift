@@ -1,5 +1,5 @@
 using TurnBasedRPG.BattleStats;
-using TurnBasedRPG.StatusEffect;
+using TurnBasedRPG.StatusEffects;
 using TurnBasedRPG.UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,17 +58,17 @@ namespace TurnBasedRPG.UI.Combat {
         }
 
         private void UpdateSpeedSlider(float value) {
-            speedView.fillAmount = value / Data.cm.maxSpeed;
+            speedView.fillAmount = value / Data.cm.MaxSpeed;
         }
 
         private void ChangePortraitAlpha(ResourceStat stat, int _) {
             portrait.color = stat.Current == 0 ? new Color(1, 1, 1, 0.5f) : Color.white;
         }
 
-        private void HandleNewStat(Status newStatus) {
-            var color = newStatus.source.statusPopupColor;
-            var statusPopup = Data.cm.view.callPopup.Pop(newStatus.statusName, color, transform, 0);
-            Data.cm.combatEvents.Enqueue(statusPopup);
+        private void HandleNewStat(Status status) {
+            var color = status.Source.TextColor;
+            var statusPopup = Data.cm.View.callPopup.Pop(status.Source.DisplayName, color, transform, 0);
+            Data.cm.CombatEvents.Enqueue(statusPopup);
         }
     }
 }

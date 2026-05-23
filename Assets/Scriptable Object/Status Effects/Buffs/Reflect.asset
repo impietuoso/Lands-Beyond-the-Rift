@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
   m_Name: Reflect
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusIcon: {fileID: 21300000, guid: 8c857596d0aaf854184f9c5ba7d37e39, type: 3}
+  statusPopupColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
+  icon: {fileID: 0}
+  displayName: Reflect
+  description: Deal 50% of the damage receive to the attacker
+  type: 0
+  textColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
+  opposite: {fileID: 0}
   status:
     rid: 7065366283678384130
-  statusType: 0
-  statusPopupColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
   references:
     version: 2
     RefIds:
