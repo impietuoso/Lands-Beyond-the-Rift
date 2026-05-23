@@ -3,7 +3,6 @@ using TurnBasedRPG.StatusEffect;
 using UnityEngine;
 
 namespace TurnBasedRPG.UI.Combat {
-    [RequireComponent(typeof(Character))]
     public class CharacterModel : DataView<Character> {
         [SerializeField] private ResourceStatView healthView;
         [SerializeField] private GameObject turnMarker;
@@ -15,15 +14,15 @@ namespace TurnBasedRPG.UI.Combat {
         public void SelectAsTarget() => Data.cm.view.SelectTarget(Data);
 
         protected override void Subscribe() {
+            healthView.SetData(Data.Health);
+            _animator = Instantiate(Data.member.prefab, transform);
+            _animator.Play("Spawn");
+            
             Data.PlayAnimation += _animator.Play;
             Data.OnResolveDefend += DamagePopup;
             Data.StatusEffectList.OnStatusAdded += StatusMessage;
             Data.OnStartTurn += ActivateTurnMarker;
             Data.OnEndTurn += DeactivateTurnMarker;
-
-            healthView.SetData(Data.Health);
-            _animator = Instantiate(Data.member.prefab, transform);
-            _animator.Play("Spawn");
         }
 
         protected override void Unsubscribe() {

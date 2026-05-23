@@ -10,28 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0eb2f9a7c5a449c0812e8c345c2c09ab, type: 3}
-  m_Name: Slime
+  m_Name: Slime Model
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
   charName: Slime
   level: 1
-  usedStats:
-    strength: 0
-    intelligence: 1
-    dexterity: 0
-    vitality: 2
-    spirit: 2
+  usedAttributes:
+    strength: 1
+    intelligence: 4
+    dexterity: 1
+    vitality: 1
+    spirit: 3
   profession: {fileID: 11400000, guid: ffb99c29d02008e45868fdb5bbd75dbb, type: 2}
   element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
   equips:
     list:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 45adde246d0f090439f43843ca21ab40, type: 2}
+    - {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
+    - {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
   equipedSkills:
     list:
     - {fileID: 11400000, guid: d2d5dae906a6c074584ead75a65cc3e9, type: 2}
     - {fileID: 11400000, guid: b5bfadfbafdcc0642a469837782388cb, type: 2}
   learnedSkills:
-    list: []
+    list:
+    - {fileID: 11400000, guid: f82d6dd321d46154e81ab930dc8b6e67, type: 2}
   characterSprite: {fileID: -8107458173249376312, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
-  uiSprite: {fileID: 0}
+  uiSprite: {fileID: -7245848890258496006, guid: 7d78a1fa9f887f848b3f6e6ab44b2883, type: 3}
+  prefab: {fileID: 3134276080824390833, guid: 9a55278c364ff894b92282631896a12e, type: 3}

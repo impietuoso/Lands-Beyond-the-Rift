@@ -8,7 +8,7 @@ namespace TurnBasedRPG.BattleStats {
         [SerializeField] private TMP_Text text;
         [SerializeField] private Slider bar;
         [SerializeField] private float animDuration = .25f;
-        private string _format;
+        private string _format = "{0}";
 
         private void Awake() {
             if(text) _format = text.text.Contains("{") ? text.text : "{0}";

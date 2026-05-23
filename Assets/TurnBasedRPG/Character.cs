@@ -64,7 +64,7 @@ namespace TurnBasedRPG {
             skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
 
             foreach (var e in equipment)
-                if(!skills.Contains(e.equipmentSkill))
+                if(e && e.equipmentSkill && !skills.Contains(e.equipmentSkill))
                     skills.Add(e.equipmentSkill);
 
             basicAttack = equipment.OfType<Weapon>().FirstOrDefault()?.basicAttack;

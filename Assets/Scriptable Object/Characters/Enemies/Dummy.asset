@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
   charName: Training Dummy
   level: 10
-  usedStats:
-    strength: 5
-    intelligence: 5
+  usedAttributes:
+    strength: 0
+    intelligence: 0
     dexterity: 1
-    vitality: 60
-    spirit: -120
+    vitality: 200
+    spirit: -8
   profession: {fileID: 11400000, guid: d4b4c8a8e855f21499ba1fea7412cf39, type: 2}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
@@ -34,3 +34,4 @@ MonoBehaviour:
     list: []
   characterSprite: {fileID: -7105167047226534911, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
   uiSprite: {fileID: 0}
+  prefab: {fileID: 0}

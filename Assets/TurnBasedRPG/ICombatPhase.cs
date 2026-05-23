@@ -40,6 +40,7 @@ namespace TurnBasedRPG {
         public IEnumerator Execute(CombatManager cm) {
             var character = cm.currentCharacter;
             cm.view.skillPanel.gameObject.SetActive(false);
+            cm.view.consumablesView.gameObject.SetActive(false);
             cm.selectedAction = cm.WaitFlag;
             character.OnStartTurn?.Invoke(character);
 
@@ -56,7 +57,7 @@ namespace TurnBasedRPG {
             else {
                 //Vez do Player
                 Debug.Log("Player Turn: " + character.characterName);
-                cm.view.actionsPanel.SetActive(true);
+                cm.view.combatPanel.SetActive(true);
                 cm.view.ShowSkills(character);
                 yield return new WaitUntil(() => cm.selectedAction != cm.WaitFlag);
             }
@@ -74,6 +75,7 @@ namespace TurnBasedRPG {
 
             // Prepare UI
             cm.view.selectTargetPanel.SetActive(false);
+            cm.view.combatPanel.SetActive(false);
             cm.view.actionsPanel.SetActive(false);
             cm.view.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
             cm.models.ClearTargets();

@@ -10,11 +10,13 @@ namespace TurnBasedRPG.UI.Combat {
         private readonly Dictionary<Character, CharacterModel> _models = new();
 
         protected override void Subscribe() {
+            prefab.gameObject.SetActive(false);
             for (var i = 0; i < Data.allies.Count; i++) {
                 if(i >= allyPositions.Length) break;
                 var instance = Instantiate(prefab, allyPositions[i]);
                 instance.SetData(Data.allies[i]);
                 _models.Add(Data.allies[i], instance);
+                instance.gameObject.SetActive(true);
             }
 
             for (var i = 0; i < Data.enemies.Count; i++) {
@@ -22,6 +24,7 @@ namespace TurnBasedRPG.UI.Combat {
                 var instance = Instantiate(prefab, enemyPositions[i]);
                 instance.SetData(Data.enemies[i]);
                 _models.Add(Data.enemies[i], instance);
+                instance.gameObject.SetActive(true);
             }
         }
 

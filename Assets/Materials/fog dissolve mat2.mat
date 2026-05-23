@@ -60,7 +60,7 @@ Material:
     - _mult: 1
     - _scale: 5
     - _speed: 2
-    - _time: 0
+    - _time: 0.624
     - _wave_amp: 0.1
     - _wave_freq: 4
     - _wave_spd: 4

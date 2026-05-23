@@ -24,6 +24,6 @@ namespace TurnBasedRPG.Data {
         public int GetUnusedPoints() => level * 2 - usedAttributes.Sum();
 
         public int this[Attribute a] => profession[a] + usedAttributes[a];
-        public int this[Stat s] => equips.Sum(i => i[s]);
+        public int this[Stat s] => equips.Sum(i => i ? i[s] : 0);
     }
 }
