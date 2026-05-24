@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 4298939928252144759}
   - component: {fileID: 8425339289898764634}
   - component: {fileID: 3168334120790545255}
+  - component: {fileID: 2916125319502969170}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -477,6 +478,48 @@ MonoBehaviour:
   members:
   - {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
   - {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
+--- !u!114 &2916125319502969170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673845810104858166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf53b49be6e49e0bb699e0a232ca78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Explorations.ExplorationTaskListener
+  <OnFree>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5371949744522816635}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  <OnBusy>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5371949744522816635}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8257512805580941724
 GameObject:
   m_ObjectHideFlags: 0

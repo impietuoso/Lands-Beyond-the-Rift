@@ -19,9 +19,9 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
-    area: 0
+    area: 1
     filter:
-      rid: 5967445928687698244
+      rid: 5967445971306545276
   animation:
     rid: 3339743010432221460
   effects:
@@ -51,8 +51,8 @@ MonoBehaviour:
       type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
         amount: 500
-    - rid: 5967445928687698244
-      type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+    - rid: 5967445971306545276
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
     - rid: 7065366216047853729
       type: {class: ManaDrainSkill, ns: , asm: Assembly-CSharp}

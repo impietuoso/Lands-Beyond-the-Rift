@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Explorations;
 using UnityEngine;
 
 namespace Rooms {
@@ -12,7 +13,7 @@ namespace Rooms {
         [SerializeField] private float advance = 1.7f;
 
         private void OnCollisionEnter2D(Collision2D other)
-        {
+        {   
             if (!other.collider.GetComponent<PlayerController>()) return;
             var (a, b) = roomA.Entities.activeSelf ? (roomA, roomB) : (roomB, roomA);
             var pos = other.transform.position;
@@ -28,9 +29,9 @@ namespace Rooms {
 
         private IEnumerator MovePlayer(Transform player, TilemapRoom a, TilemapRoom b, Vector3 tgtPos, Coroutine ie)
         {
+            ExplorationTask.Add(this);
             gameObject.SetActive(false);
             var posA = player.position;
-            Time.timeScale = 0;
             a.Collider.enabled = false;
 
             for (var i = 0f; i < 1; i += Time.unscaledDeltaTime / duration)
@@ -39,11 +40,11 @@ namespace Rooms {
                 yield return null;
             }
 
-            Time.timeScale = 1;
             b.Collider.enabled = true;
 
             yield return ie;
             gameObject.SetActive(true);
+            ExplorationTask.Add(this);
         }
     }
 }

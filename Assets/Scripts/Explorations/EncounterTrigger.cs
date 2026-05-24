@@ -10,10 +10,9 @@ namespace Explorations {
         private static readonly int AlphaID = Shader.PropertyToID("_alpha");
         private static readonly int PixelsID = Shader.PropertyToID("_pixels");
 
-        public CombatManager combatManager;
         public EnemyEncounter encounter;
         public CombatArena arena;
-        
+
         public Image staticEffect;
         public Vector2 duration = new(.5f, .25f);
         public Vector2 pixels = new(10, 40);
@@ -31,41 +30,62 @@ namespace Explorations {
                 Allies = p.members,
                 Enemies = encounter.enemyList,
                 Items = p.consumables.slots,
+                Callback = OnCombatEnded,
             };
 
-            StartCoroutine(StaticTransition(config));
+            StartCoroutine(EnterCombat(config));
         }
 
-        private IEnumerator StaticTransition(CombatConfig config) {
+        private void OnCombatEnded(bool win) => StartCoroutine(ExitCombat(win));
+
+        private IEnumerator EnterCombat(CombatConfig config) {
             ExplorationTask.Add(this);
-            var material = staticEffect.material;
-            
-            staticEffect.gameObject.SetActive(true);
-            material.SetFloat(AlphaID, 0);
-            material.SetFloat(PixelsID, 10);
+            Game.Combat.Pause = true;
 
-            for (var i = 0f; i < 1f; i += Time.unscaledDeltaTime / duration.x) {
-                material.SetFloat(AlphaID, i);
-                material.SetFloat(PixelsID, pixels.x + pixels.y * i);
-                yield return null;
-            }
+            yield return FadeStatic(true);
 
-            material.SetFloat(AlphaID, 1);
-            material.SetFloat(PixelsID, pixels.x + pixels.y);
-
-            combatManager.StartCombat(config);
-            combatManager.Pause = true;
+            arena.Camera.SetActive(true);
+            Game.Combat.StartCombat(config);
             yield return new WaitForSecondsRealtime(duration.y);
-            
+
+            yield return FadeStatic(false);
+
+            Game.Combat.Pause = false;
+            ExplorationTask.Remove(this);
+        }
+
+        private IEnumerator ExitCombat(bool win) {
+            ExplorationTask.Add(this);
+
+            yield return FadeStatic(true);
+
+            arena.Camera.SetActive(false);
+            Game.Combat.gameObject.SetActive(false);
+            yield return new WaitForSecondsRealtime(duration.y);
+
+            yield return FadeStatic(false);
+
+            ExplorationTask.Remove(this);
+        }
+
+        private IEnumerator FadeStatic(bool fadeIn) {
+            var material = staticEffect.material;
+            staticEffect.gameObject.SetActive(true);
+
+            float start = fadeIn ? 0 : 1;
+            float end = fadeIn ? 1 : 0;
+
             for (var i = 0f; i < 1f; i += Time.unscaledDeltaTime / duration.x) {
-                material.SetFloat(AlphaID, 1-i);
-                material.SetFloat(PixelsID, pixels.x + pixels.y * (1-i));
+                var t = Mathf.Lerp(start, end, i);
+                material.SetFloat(AlphaID, t);
+                material.SetFloat(PixelsID, pixels.x + pixels.y * t);
                 yield return null;
             }
 
-            combatManager.Pause = false;
-            staticEffect.gameObject.SetActive(false);
-            ExplorationTask.Remove(this);
+            material.SetFloat(AlphaID, end);
+            material.SetFloat(PixelsID, pixels.x + pixels.y * end);
+
+            if(!fadeIn) staticEffect.gameObject.SetActive(false);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +12,19 @@ namespace TurnBasedRPG {
     public class CombatManager : MonoBehaviour {
         [field: SerializeField] public Skill BasicDefense { get; private set; }
         [field: SerializeField] public CombatView View { get; private set; }
-        [field: SerializeField] public CombatArena Models { get; private set; }
 
-        [Header("Runtime")]
+        [field: Header("Runtime")]
+        [field: SerializeField] public Character CurrentCharacter { get; set; }
         [field: SerializeField] public List<Character> Allies { get; private set; } = new();
         [field: SerializeField] public List<Character> Enemies { get; private set; } = new();
         [field: SerializeField] public ListInventory<Consumable> Consumables { get; private set; }
-        [field: SerializeField] public Character CurrentCharacter { get; set; }
         [field: SerializeField] public int MaxSpeed { get; set; }
         [field: SerializeField] public int TurnCount { get; set; }
         [field: SerializeField] public bool Pause { get; set; }
         [field: SerializeField] public bool CombatWon { get; set; }
 
+        public CombatConfig Config { get; set; }
+        public CombatArena Arena => Config.Arena;
         public IEnumerable<Character> Everyone { get; private set; }
         public readonly Queue<IEnumerator> CombatEvents = new();
         public readonly HashSet<object> ActionFlags = new();
@@ -40,10 +42,13 @@ namespace TurnBasedRPG {
             _loopPhases.Add(new CharacterPhase(new EnemyBehaviour()));
             _loopPhases.Add(new CombatEvents());
             _loopPhases.Add(new CheckResultPhase());
+            _endPhases.Add(new ResultPhase());
         }
 
         public void StartCombat(CombatConfig config) {
-            config.Arena.Camera.SetActive(true);
+            if(Config != null) throw new Exception("Last combat not terminated");
+            Config = config;
+            gameObject.SetActive(true);
 
             Allies.Clear();
             Enemies.Clear();
@@ -70,31 +75,28 @@ namespace TurnBasedRPG {
 
             _currentPhase = StartCoroutine(CombatLoop());
             View.SetData(this);
-            Models.SetData(this);
+            Arena.SetData(this);
         }
 
         public void FinishCombat(bool won) {
             CombatWon = won;
             StopCoroutine(_currentPhase);
-            StartCoroutine(CombatEnd());
+            _currentPhase = StartCoroutine(CombatEnd());
         }
 
-        public IEnumerator CombatLoop() {
-            foreach (var phase in _setupPhases) {
+        private IEnumerator CombatLoop() {
+            foreach (var phase in _setupPhases)
                 yield return phase.Execute(this);
-            }
 
-            while (true) {
-                foreach (var phase in _loopPhases) {
+            while (true)
+                foreach (var phase in _loopPhases)
                     yield return phase.Execute(this);
-                }
-            }
+            // ReSharper disable once IteratorNeverReturns
         }
 
-        public IEnumerator CombatEnd() {
-            foreach (var phase in _endPhases) {
+        private IEnumerator CombatEnd() {
+            foreach (var phase in _endPhases)
                 yield return phase.Execute(this);
-            }
         }
 
         [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]

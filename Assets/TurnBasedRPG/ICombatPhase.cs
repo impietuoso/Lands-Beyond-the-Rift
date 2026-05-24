@@ -85,8 +85,8 @@ namespace TurnBasedRPG {
             cm.View.combatPanel.SetActive(false);
             cm.View.actionsPanel.SetActive(false);
             cm.View.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
-            cm.Models.ClearTargets();
-            cm.Models.TargetCharacters(affected);
+            cm.Arena.ClearTargets();
+            cm.Arena.TargetCharacters(affected);
             Debug.Log("Target Selected: " + a.Target?.characterName);
 
             // Use Skill
@@ -99,7 +99,7 @@ namespace TurnBasedRPG {
 
     public class CombatEvents : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
-            cm.Models.ClearTargets();
+            cm.Arena.ClearTargets();
             while (cm.CombatEvents.TryDequeue(out var ie))
                 yield return ie;
             cm.ActionFlags.Clear();
@@ -112,9 +112,19 @@ namespace TurnBasedRPG {
             var lose = cm.Allies.All(c => c.Dead);
             if(!win && !lose) yield break;
 
-            Debug.Log("Combat Ended");
             cm.View.gameOverPanel.SetActive(true);
             cm.FinishCombat(!lose);
+        }
+    }
+
+    public class ResultPhase : ICombatPhase {
+        public IEnumerator Execute(CombatManager cm) {
+            cm.View.gameOverPanel.SetActive(true);
+            yield return new WaitForSeconds(1f);
+
+            Debug.Log(cm.CombatWon ? "Combat Won!" : "Combat Lost :c");
+            cm.Config.Callback?.Invoke(cm.CombatWon);
+            cm.Config = null;
         }
     }
 }

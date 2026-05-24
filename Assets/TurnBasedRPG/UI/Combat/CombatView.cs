@@ -39,15 +39,17 @@ namespace TurnBasedRPG.UI.Combat {
             alliesView.SetData(Data.Allies);
             enemiesView.SetData(Data.Enemies);
             consumablesView.SetData(Data.Consumables);
+            
             combatPanel.SetActive(false);
             actionsPanel.SetActive(false);
+            gameObject.SetActive(true);
         }
 
         protected override void Unsubscribe() {
             alliesView.SetData(null);
             enemiesView.SetData(null);
-
-            combatPanel.SetActive(false);
+            
+            gameObject.SetActive(false);
         }
 
         public void ShowSkills(Character character) => skillsView.SetData(character.skills.Select(s => (character, s)));
@@ -69,8 +71,8 @@ namespace TurnBasedRPG.UI.Combat {
             }
 
             var eligible = skill.targeting.EligibleTargets(user);
-            Data.Models.ClearTargets();
-            Data.Models.TargetCharacters(eligible);
+            Data.Arena.ClearTargets();
+            Data.Arena.TargetCharacters(eligible);
         }
 
         public void SelectTarget(Character target) {
@@ -78,12 +80,12 @@ namespace TurnBasedRPG.UI.Combat {
             _preparation.Target = target;
             Data.SelectedAction = _preparation;
             _preparation = null;
-            Data.Models.ClearTargets();
+            Data.Arena.ClearTargets();
         }
         
         public void CancelPreparation() {
             _preparation = null;
-            Data.Models.ClearTargets();
+            Data.Arena.ClearTargets();
         }
 
         public void PrepareAttackForCurrentPlayer() {

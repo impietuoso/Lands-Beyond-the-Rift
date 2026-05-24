@@ -38,7 +38,7 @@ namespace TurnBasedRPG {
         public string characterName => member.charName;
         public Profession profession => member.profession;
         public bool Dead => Health.Current == 0;
-        public Vector3 Position => cm.Models.GetPosition(this);
+        public Vector3 Position => cm.Arena.GetPosition(this);
 
         public Action<Character> OnSetup;
         public Action<Character> OnStartTurn;
