@@ -49,9 +49,9 @@ Material:
     - _StencilWriteMask: 255
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
-    - _alpha: 1
+    - _alpha: 0
     - _colorCount: 2
-    - _pixels: 50
+    - _pixels: 10
     - _scale: 30
     - _speed: 20
     m_Colors:

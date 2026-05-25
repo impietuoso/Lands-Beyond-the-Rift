@@ -69,6 +69,6 @@ Material:
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.53333336, g: 0.30588236, b: 0.65882355, a: 1}
-    - _origin: {r: 0.06, g: 3.55, b: 0, a: 0}
+    - _origin: {r: 0.059999466, g: 3.5500002, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

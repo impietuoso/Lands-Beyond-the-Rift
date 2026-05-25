@@ -13,17 +13,40 @@ MonoBehaviour:
   m_Name: 1 - Cleave
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   skillName: Cleave
-  skillDescription: 
-  cost: 0
+  skillDescription: Deal low Physical Damage to all Foes.
+  cost: 10
   icon: {fileID: 21300000, guid: 845fff3567c270543bc8d3f0645137e6, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  targeting:
+    group: 1
+    area: 2
+    filter:
+      rid: 9169537190577307905
   animation:
-    rid: -2
-  skillEffects: []
-  passiva:
-    rid: -2
+    rid: 9169537190577307913
+  effects:
+  - rid: 9169537190577307914
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 9169537190577307905
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 
+    - rid: 9169537190577307913
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 2533292804782726874, guid: 1468bcb34c210a346a2bbb80fabbecfb, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1
+    - rid: 9169537190577307914
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 0
+          scale: 1
+        hitChance: 80
+        critChance: 10
+        damageRange: 0.15
