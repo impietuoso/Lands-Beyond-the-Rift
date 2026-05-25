@@ -67,9 +67,12 @@ namespace Explorations {
 
             yield return FadeStatic(false);
 
+            var pos = transform.position;
             if(win)
-                foreach (var enemy in encounter.enemies) {
-                    itemDrop.PopCopy(transform.position, enemy.Drops.Random(), 1); //TODO drop chance
+                foreach (var enemy in encounter.enemies)
+                foreach (var drop in enemy.Drops) {
+                    if(Random.value > drop.Chance) continue;
+                    itemDrop.PopCopy(pos, drop.Item, 1);
                     yield return new WaitForSeconds(.15f);
                 }
 
