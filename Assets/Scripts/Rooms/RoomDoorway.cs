@@ -44,7 +44,7 @@ namespace Rooms {
 
             yield return ie;
             gameObject.SetActive(true);
-            ExplorationTask.Add(this);
+            ExplorationTask.Remove(this);
         }
     }
 }
