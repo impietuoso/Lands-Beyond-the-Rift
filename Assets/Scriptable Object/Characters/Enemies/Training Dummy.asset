@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72636009a86d4e5cb2a30dcb13792c2c, type: 3}
+  m_Name: Training Dummy
+  m_EditorClassIdentifier: Assembly-CSharp::RPG.EnemyInfo
+  charName: Training Dummy
+  level: 1
+  usedAttributes:
+    strength: 0
+    intelligence: 0
+    dexterity: 1
+    vitality: 200
+    spirit: 0
+  profession: {fileID: 11400000, guid: 4e1d1c8272f718148abedc7e4e473353, type: 2}
+  element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
+  equips:
+    list:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  equipedSkills:
+    list: []
+  learnedSkills:
+    list: []
+  characterSprite: {fileID: 1541126211223835864, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
+  uiSprite: {fileID: 699685992253955964, guid: d09a376eb9f0e3b4397d233b33f085c7, type: 3}
+  prefab: {fileID: 3288017297164883012, guid: 379575d70000d1145a2bc2da55d06f0d, type: 3}
+  drops: []

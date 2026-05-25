@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 208c10548156f8b4ba708110a0783483, type: 3}
-  m_Name: Advanced Ice Element
+  m_Name: 4 - Holy Element
   m_EditorClassIdentifier: Assembly-CSharp::Element
-  elementName: Ice
-  elementSprite: {fileID: 21300000, guid: 5686c8dda73f7cb468ce31e7537a38aa, type: 3}
-  elementColor: {r: 0.5801887, g: 1, b: 0.86799926, a: 1}
+  elementName: Holy
+  elementSprite: {fileID: 21300000, guid: fc5063ff0adfc564493c01d39669fec1, type: 3}
+  elementColor: {r: 0.9716981, g: 0.9620319, b: 0.86627805, a: 1}
   weak:
-  - {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
+  - {fileID: 11400000, guid: fa6150d78113bf84681d1d19061623c2, type: 2}
+  - {fileID: 11400000, guid: 17558d2aa8ded394194189c14265cf34, type: 2}

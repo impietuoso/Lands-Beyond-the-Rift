@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb2f9a7c5a449c0812e8c345c2c09ab, type: 3}
-  m_Name: Wolf Model
-  m_EditorClassIdentifier: Assembly-CSharp::PartyMember
-  charName: Kobold 2
+  m_Script: {fileID: 11500000, guid: 72636009a86d4e5cb2a30dcb13792c2c, type: 3}
+  m_Name: Wolf
+  m_EditorClassIdentifier: Assembly-CSharp::RPG.EnemyInfo
+  charName: Wolf
   level: 1
   usedAttributes:
     strength: 4
@@ -34,6 +34,9 @@ MonoBehaviour:
   learnedSkills:
     list:
     - {fileID: 11400000, guid: d2d5dae906a6c074584ead75a65cc3e9, type: 2}
-  characterSprite: {fileID: 3594130101213413524, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
+  characterSprite: {fileID: -4053993945890409367, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
   uiSprite: {fileID: 8816000985053885555, guid: 9b44e326ebfb5044f92f73a53809cd1f, type: 3}
   prefab: {fileID: 3288017297164883012, guid: 379575d70000d1145a2bc2da55d06f0d, type: 3}
+  drops:
+  - {fileID: 11400000, guid: 16b839efbbb8a0b42857c52262a33ce4, type: 2}
+  - {fileID: 11400000, guid: d5859b60d794cc045b458ed3c5d3644a, type: 2}

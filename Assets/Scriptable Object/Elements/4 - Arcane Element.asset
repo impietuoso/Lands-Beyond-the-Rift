@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 208c10548156f8b4ba708110a0783483, type: 3}
-  m_Name: Superior Arcane Element
+  m_Name: 4 - Arcane Element
   m_EditorClassIdentifier: Assembly-CSharp::Element
   elementName: Arcane
   elementSprite: {fileID: 21300000, guid: d72ab2807651bb549b6acc2a79f0c4b9, type: 3}

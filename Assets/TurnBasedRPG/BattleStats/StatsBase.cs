@@ -16,7 +16,6 @@ namespace TurnBasedRPG.BattleStats {
         Damage,
         CritChance,
         CritDamage,
-        CastSpeed,
     }
 
     public interface IStats {
@@ -36,7 +35,6 @@ namespace TurnBasedRPG.BattleStats {
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public int CritChance { get; private set; }
         [field: SerializeField] public int CritDamage { get; private set; }
-        [field: SerializeField] public int CastSpeed { get; private set; }
 
         public int this[Stat stat] => stat switch {
             Stat.MaxHealth => MaxHealth,
@@ -50,7 +48,6 @@ namespace TurnBasedRPG.BattleStats {
             Stat.Damage => Damage,
             Stat.CritChance => CritChance,
             Stat.CritDamage => CritDamage,
-            Stat.CastSpeed => CastSpeed,
             _ => throw new NotImplementedException()
         };
     }

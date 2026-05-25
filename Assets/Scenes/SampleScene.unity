@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemDropParticleTest
   target: {fileID: 1123276150}
   itemDrop: {fileID: 5321322376771370253, guid: cbe6915ef50b5074ab909ddaea60c92f, type: 3}
-  sprite: {fileID: 21300000, guid: b58451fecb0bd3e4ebad12a7b2675c2c, type: 3}
+  item: {fileID: 0}
   amount: 2
 --- !u!4 &146065516 stripped
 Transform:
@@ -7245,6 +7245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurnBasedRPG.Controller.EncounterTrigger
   encounter: {fileID: 11400000, guid: 8b615905ddf61e74ba139ae50cd03584, type: 2}
   arena: {fileID: 528379715971362417}
+  itemDrop: {fileID: 0}
   staticEffect: {fileID: 447814965}
   duration: {x: 0.5, y: 0.2}
   pixels: {x: 10, y: 40}
