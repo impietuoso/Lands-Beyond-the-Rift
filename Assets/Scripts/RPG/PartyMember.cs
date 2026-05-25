@@ -8,7 +8,7 @@ using UnityEngine;
 using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
 namespace RPG {
-    [Serializable, CreateAssetMenu(fileName = "New Party Member", menuName = "Scriptable/PartyMember")]
+    [Serializable, CreateAssetMenu(menuName = "Scriptable/PartyMember")]
     public class PartyMember : ScriptableObject, IPartyMember {
         [SerializeField] private string charName;
         [SerializeField] private int level;
