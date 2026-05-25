@@ -1,10 +1,13 @@
 using System.Collections;
+using RPG;
+using TurnBasedRPG.Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Explorations {
     public class ItemDropParticle : MonoBehaviour
     {
+        [SerializeField] private Item item;
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Collider2D collider2d;
         [SerializeField] private float duration = 1f;
@@ -14,14 +17,15 @@ namespace Explorations {
 
         private static ComponentPool<ItemDropParticle> _pool;
 
-        public void PopCopy(Vector3 position, Sprite spr, int amount)
+        public void PopCopy(Vector3 position, Item item, int amount)
         {
             _pool ??= new(this);
         
             for (var i = 0; i < amount; i++)
             {
                 var clone = _pool.Recycle();
-                clone.sprite.sprite = spr;
+                clone.item = item;
+                clone.sprite.sprite = item.sprite;
                 clone.transform.position = position;
                 clone.StartCoroutine(clone.PopAnimation());
             }
@@ -66,9 +70,10 @@ namespace Explorations {
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.GetComponent<PlayerController>()) return;
+            if (!other.TryGetComponent(out PlayerParty p)) return;
             gameObject.SetActive(false);
             _pool.Trash(this);
+            p.inventory.Add(item, 1);
         }
     }
 }

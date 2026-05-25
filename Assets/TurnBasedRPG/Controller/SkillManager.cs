@@ -11,12 +11,12 @@ namespace TurnBasedRPG.Controller
         public void SwapSkills(GameObject drop, PointerEventData eventData) {
             var target = drop.GetComponent<SkillView>().Data;
             var data = eventData.pointerDrag.GetComponent<SkillView>().Data;
-            var dropParentList = (ObservableList<Skill>)drop.GetComponentInParent<ListView>().Data;
-            var eventParentList = (ObservableList<Skill>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
+            var dropParentList = (ObservableList<ISkill>)drop.GetComponentInParent<ListView>().Data;
+            var eventParentList = (ObservableList<ISkill>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
             var targetIndex = drop.transform.GetSiblingIndex() - 1;
             var dataIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
             dropParentList[targetIndex] = data;
-            if(target == null && eventParentList != memberView.Data.equipedSkills) eventParentList.RemoveAt(dataIndex);
+            if(target == null && eventParentList != memberView.Data.EquipedSkills) eventParentList.RemoveAt(dataIndex);
             else eventParentList[dataIndex] = target;
         }
 
@@ -24,9 +24,9 @@ namespace TurnBasedRPG.Controller
             if (view.Data == null) return;
         
             var targetIndex = view.transform.GetSiblingIndex() - 1;
-            var removedSkill = memberView.Data.equipedSkills[targetIndex];
-            memberView.Data.equipedSkills[targetIndex] = null;
-            memberView.Data.learnedSkills.Add(removedSkill);
+            var removedSkill = memberView.Data.EquipedSkills[targetIndex];
+            memberView.Data.SetSkill(targetIndex , null);
+            memberView.Data.LearnSkill(removedSkill);
         }
     }
 }

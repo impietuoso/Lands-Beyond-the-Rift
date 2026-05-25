@@ -17,7 +17,7 @@ namespace TurnBasedRPG.UI.Combat {
 
         protected override void Subscribe() {
             //healthView.SetData(Data.Health);
-            _animator = Instantiate(Data.member.prefab, transform);
+            _animator = Instantiate(Data.member.Prefab, transform);
             _animator.Play("Spawn");
             
             Data.PlayAnimation += _animator.Play;

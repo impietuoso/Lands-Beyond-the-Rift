@@ -19,7 +19,7 @@ public class ApplyStatusEffect : ISkillEffectOld {
         } else args.statusEffects.Add(status);
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         return new ApplyEffect
         {
             status = status,

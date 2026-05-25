@@ -14,7 +14,7 @@ public class SelfHitAnimate : ISkillAnimationOld {
     public GameObject castingParticle;
     public GameObject skillParticle;
 
-    public Targeting GetTargeting(Skill skill) {
+    public Targeting GetTargeting(ISkill skill) {
         return new Targeting
         {
             group = TargetGroup.Self,
@@ -23,7 +23,7 @@ public class SelfHitAnimate : ISkillAnimationOld {
         };
     }
 
-    public bool TrySkipSelection(Character user, Skill skill) => throw new NotImplementedException();
+    public bool TrySkipSelection(Character user, ISkill skill) => throw new NotImplementedException();
 
     public bool ValidateTarget(Character user, Character target) {
         if (user == target) return true;
@@ -34,7 +34,7 @@ public class SelfHitAnimate : ISkillAnimationOld {
         yield return target;
     }
 
-    public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
+    public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
         if (castingParticle) {
             var particle = castingParticle.Clone(user.Position);
             yield return new WaitWhile(() => particle);
@@ -44,12 +44,12 @@ public class SelfHitAnimate : ISkillAnimationOld {
         Debug.Log(user.characterName + " Defends!");
         CombatArgs args = new CombatArgs();
         args.skill = skill;
-        args.element = skill.element;
+        args.element = skill.Element;
         args.user = user;
         args.target = user;
         args.source = this;
 
-        foreach (var effect in skill.effects)
+        foreach (var effect in skill.Effects)
             effect.Prepare(args);
 
         skillParticle.Clone(args.target.Position);

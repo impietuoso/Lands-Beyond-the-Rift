@@ -6,9 +6,9 @@ using TurnBasedRPG.UI.Combat;
 namespace TurnBasedRPG {
     public class CombatConfig {
         public CombatArena Arena;
-        public IEnumerable<PartyMember> Allies;
-        public IEnumerable<PartyMember> Enemies;
-        public List<Slot<Item>> Items;
+        public IEnumerable<IPartyMember> Allies;
+        public IEnumerable<IPartyMember> Enemies;
+        public IEnumerable<(IConsumable, int)> Items;
         public Action<bool> Callback;
     }
 }

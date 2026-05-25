@@ -39,7 +39,7 @@ public class StatusRemoval : ISkillEffectOld {
         }
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         if(removeAll) {
             return new ClearStatus
             {

@@ -24,7 +24,7 @@ namespace TurnBasedRPG
             Stats.MaxShield.OnChanged += v => Shield.Max = v;
             Stats.MaxMana.OnChanged += v => Mana.Max = v;
 
-            Stats.Recalculate(member.level, member, member);
+            Stats.Recalculate(member.Level, member, member);
             Health.Current = Health.Max;
             Mana.Current = Mana.Max;
         }

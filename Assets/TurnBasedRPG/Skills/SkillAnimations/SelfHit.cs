@@ -10,7 +10,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public GameObject castingParticle;
         public GameObject skillParticle;
 
-        public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
+        public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
             if(castingParticle) {
                 var particle = castingParticle.Clone(user.Position);
                 yield return new WaitWhile(() => particle);
@@ -23,12 +23,12 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             {
                 source = this,
                 skill = skill,
-                element = skill.element,
+                element = skill.Element,
                 user = user,
                 target = user
             };
 
-            foreach (var effect in skill.effects)
+            foreach (var effect in skill.Effects)
                 effect.Prepare(args);
 
             skillParticle.Clone(args.target.Position);

@@ -55,22 +55,22 @@ namespace TurnBasedRPG.UI.Combat {
         public void ShowSkills(Character character) => skillsView.SetData(character.skills.Select(s => (character, s)));
         public void SelectSkill(AvailableSkillView view) => PrepareSkill(view.Data.s, view.Data.c);
 
-        private void PrepareSkill(Skill skill, Character user) {
+        private void PrepareSkill(ISkill skill, Character user) {
             if(!skill.Available(user)) return;
 
             skillPanel.SetActive(false);
             selectTargetPanel.SetActive(true);
-            currentSkillNameText.text = "[" + skill.skillName + "]";
-            currentSkillDescriptionText.text = skill.skillDescription;
+            currentSkillNameText.text = "[" + skill.SkillName + "]";
+            currentSkillDescriptionText.text = skill.SkillDescription;
 
             _preparation = new(skill, user, null);
             
-            if(skill.targeting.SkipSelection) {
+            if(skill.Targeting.SkipSelection) {
                 SelectTarget(user);
                 return;
             }
 
-            var eligible = skill.targeting.EligibleTargets(user);
+            var eligible = skill.Targeting.EligibleTargets(user);
             Data.Arena.ClearTargets();
             Data.Arena.TargetCharacters(eligible);
         }
@@ -100,7 +100,7 @@ namespace TurnBasedRPG.UI.Combat {
 
         public void PrepareSkillForCurrentPlayer(IItemView itemView) {
             var currentPlayer = Data.CurrentCharacter;
-            PrepareSkill(((Consumable)itemView.Data).skillEffect, currentPlayer);
+            PrepareSkill(((IConsumable)itemView.Data).Skill, currentPlayer);
         }
 
         public void ShowCurrentStatusEffects(StatusEffectListView statusEffectListView) {

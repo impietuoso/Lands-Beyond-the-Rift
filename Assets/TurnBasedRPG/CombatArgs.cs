@@ -12,7 +12,7 @@ namespace TurnBasedRPG {
         public object source;
         public Character user;
         public Character target;
-        public Skill skill;
+        public ISkill skill;
         public Element element;
 
         public bool unavoidable;

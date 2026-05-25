@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace TurnBasedRPG.UI.Views
 {
-    public class EquipmentView : DataView<Equipment> {
+    public class EquipmentView : DataView<IEquipment> {
         public Image icon;
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI descriptionText;
@@ -14,7 +14,7 @@ namespace TurnBasedRPG.UI.Views
         public CanvasGroup interactable;
     
         private void Start() {
-            if (interactable && !Data) interactable.interactable = false;
+            if (Data == null) interactable.interactable = false;
         }
 
         protected override void Subscribe() {

@@ -8,14 +8,14 @@ using UnityEngine;
 namespace TurnBasedRPG {
     [Serializable]
     public partial class Character {
-        public Character(CombatManager cm, PartyMember member, string teamName,
+        public Character(CombatManager cm, IPartyMember member, string teamName,
             List<Character> allies, List<Character> enemies) {
             this.cm = cm;
             this.member = member;
             team = teamName;
             Allies = allies;
             Enemies = enemies;
-            Element = member.element;
+            Element = member.Element;
 
             GetSkills();
             InitializeStats();
@@ -27,16 +27,16 @@ namespace TurnBasedRPG {
         public IReadOnlyList<Character> Enemies { get; }
 
         [Header("Advancement Info")]
-        public PartyMember member;
+        public IPartyMember member;
         public string team;
         public Element Element;
-        public Skill basicAttack;
-        public List<Skill> skills = new();
+        public ISkill basicAttack;
+        public List<ISkill> skills = new();
         public StatusEffectList StatusEffectList;
 
-        public IObservableList<Equipment> equipment => member.equips;
-        public string characterName => member.charName;
-        public Profession profession => member.profession;
+        public IReadOnlyList<IEquipment> equipment => member.Equips;
+        public string characterName => member.CharName;
+        public Profession profession => member.Profession;
         public bool Dead => Health.Current == 0;
         public Vector3 Position => cm.Arena.GetPosition(this);
 
@@ -52,23 +52,23 @@ namespace TurnBasedRPG {
         public Observable<float> actionPoints = new();
 
         public void SubscribePassives() {
-            foreach (var e in member.equips.Where(i => i))
-                e.passiva?.Subscribe(this);
+            foreach (var e in member.Equips)
+                e?.Passive?.Subscribe(this);
         }
 
         public void UnsubscribePassives() {
-            foreach (var e in member.equips.Where(i => i))
-                e.passiva?.Unsubscribe(this);
+            foreach (var e in member.Equips)
+                e?.Passive?.Unsubscribe(this);
         }
 
         private void GetSkills() {
-            skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
+            skills = member.EquipedSkills.Where(s => s.Animation != null).ToList();
 
             foreach (var e in equipment)
-                if(e && e.equipmentSkill && !skills.Contains(e.equipmentSkill))
-                    skills.Add(e.equipmentSkill);
+                if(e?.ActiveSkill != null && !skills.Contains(e.ActiveSkill))
+                    skills.Add(e.ActiveSkill);
 
-            basicAttack = equipment.OfType<Weapon>().FirstOrDefault()?.basicAttack;
+            basicAttack = equipment.OfType<IWeapon>().FirstOrDefault()?.Attack;
             basicAttack ??= profession.BasicAttack;
         }
     }

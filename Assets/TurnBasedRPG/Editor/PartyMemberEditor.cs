@@ -3,15 +3,15 @@ using TurnBasedRPG.Data;
 using UnityEditor;
 
 namespace TurnBasedRPG.Editor {
-    [CustomEditor(typeof(PartyMember))]
+    [CustomEditor(typeof(IPartyMember))]
     public class PartyMemberEditor : UnityEditor.Editor {
         private Stats publicStats = new();
         public bool applyEquipmentStats;
 
         public void OnEnable() {
-            var member = (PartyMember)target;
+            var member = (IPartyMember)target;
             var statBonus = applyEquipmentStats ? member : Stats.Zero;
-            publicStats.Recalculate(member.level, member, statBonus);
+            publicStats.Recalculate(member.Level, member, statBonus);
         }
 
         public override void OnInspectorGUI() {
@@ -30,9 +30,9 @@ namespace TurnBasedRPG.Editor {
             EditorGUI.EndDisabledGroup();
 
             if(!change) return;
-            var member = (PartyMember)target;
+            var member = (IPartyMember)target;
             var statBonus = applyEquipmentStats ? member : Stats.Zero;
-            publicStats.Recalculate(member.level, member, statBonus);
+            publicStats.Recalculate(member.Level, member, statBonus);
         }
     }
 }

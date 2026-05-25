@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace TurnBasedRPG.Controller
-{
+namespace TurnBasedRPG.Controller {
     public class EquipmentManager : MonoBehaviour {
         public PartyMemberView memberView;
         public LoadSave load;
@@ -16,14 +15,14 @@ namespace TurnBasedRPG.Controller
         public EquipmentView currentItemStats;
         public Button swapButton;
         private int selectedItemIndex;
-        private EquipmentType equipFilter = null;
+        private EquipmentType equipFilter;
 
         private void OnEnable() {
             ApplyFilter((EquipmentType)null);
         }
 
         public void ResetFilter() {
-            var itensToFilter = load.save.inventory.slots.Where(i => i.item is Equipment);
+            var itensToFilter = load.save.inventory.slots.Where(i => i.item is IEquipment);
             inventoryView.SetData(itensToFilter);
         }
 
@@ -36,13 +35,13 @@ namespace TurnBasedRPG.Controller
         public void ApplyFilter(EquipmentType newFilter) {
             memberView.SetData(memberView.Data);
             equipFilter = newFilter;
-            if (newFilter == null) {
+            if(newFilter == null) {
                 ResetFilter();
                 return;
             }
 
-            if (newItensStats.Data != null && newItensStats.Data.Type != newFilter) newItensStats.SetData(null);
-            var itensToFilter = load.save.inventory.slots.Where(i => i.item is Equipment e && e.Type == newFilter);
+            if(newItensStats.Data != null && newItensStats.Data.Type != newFilter) newItensStats.SetData(null);
+            var itensToFilter = load.save.inventory.slots.Where(i => i.item is IEquipment e && e.Type == newFilter);
             inventoryView.SetData(itensToFilter);
             swapButton.interactable = false;
         }
@@ -50,34 +49,34 @@ namespace TurnBasedRPG.Controller
 
         public void SelectNewEquipButton() {
             List<int> weaponIndexes = new();
-            for (int i = 0; i < memberView.Data.equips.Count; i++) {
+            for (int i = 0; i < memberView.Data.Equips.Count; i++) {
                 var type = GameConfig.Instance.equipmentArrayOrder[i];
-                if (type == newItensStats.Data.Type) {
+                if(type == newItensStats.Data.Type) {
                     weaponIndexes.Add(i);
                 }
             }
 
-            var equipData = memberView.Data.equips[weaponIndexes[0]];
+            var equipData = memberView.Data.Equips[weaponIndexes[0]];
             currentItemStats.SetData(equipData);
             selectedItemIndex = weaponIndexes[0];
             swapButton.interactable = true;
         }
 
         public void SwapEquipmentButton() {
-            if (newItensStats.Data == null) return;
+            if(newItensStats.Data == null) return;
 
-            var removedEquipment = memberView.Data.equips[selectedItemIndex];
+            var removedEquipment = memberView.Data.Equips[selectedItemIndex];
 
             EquipmentController.EquipItem(load, memberView.Data, newItensStats.Data, selectedItemIndex);
 
             newItensStats.SetData(removedEquipment);
-            currentItemStats.SetData(memberView.Data.equips[selectedItemIndex]);
+            currentItemStats.SetData(memberView.Data.Equips[selectedItemIndex]);
             ApplyFilter(currentItemStats.Data.Type);
         }
 
 
         public void SwapFromEquipment(GameObject drop, PointerEventData eventData) {
-            if (eventData.pointerDrag.transform.parent == drop.transform.parent) return;
+            if(eventData.pointerDrag.transform.parent == drop.transform.parent) return;
 
             var inventoryItem = drop.GetComponent<EquipmentView>().Data;
             var drawIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
@@ -89,7 +88,7 @@ namespace TurnBasedRPG.Controller
         }
 
         public void SwapFromInventory(GameObject drop, PointerEventData eventData) {
-            if (eventData.pointerDrag.transform.parent == drop.transform.parent) return;
+            if(eventData.pointerDrag.transform.parent == drop.transform.parent) return;
 
             var inventoryItem = eventData.pointerDrag.GetComponent<EquipmentView>().Data;
             var drawIndex = drop.transform.GetSiblingIndex() - 1;
@@ -101,7 +100,7 @@ namespace TurnBasedRPG.Controller
         }
 
         public void UnequipEquipment(EquipmentView view) {
-            if (view.Data == null) return;
+            if(view.Data == null) return;
 
             var drawIndex = view.transform.GetSiblingIndex() - 1;
             var targetIndex = GameConfig.Instance.equipmentDrawOrder[drawIndex];

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace TurnBasedRPG.UI.Views
 {
-    public class PartyMemberView : DataView<PartyMember>
+    public class PartyMemberView : DataView<IPartyMember>
     {
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI levelText;
@@ -23,12 +23,12 @@ namespace TurnBasedRPG.UI.Views
 
         private void Start()
         {
-            if (interactable && !Data) interactable.interactable = false;
+            if (Data == null) interactable.interactable = false;
         }
 
         private string AllStats()
         {
-            statsPreview.Recalculate(Data.level, Data, Data);
+            statsPreview.Recalculate(Data.Level, Data, Data);
 
             var all = new StringBuilder();
 
@@ -51,20 +51,20 @@ namespace TurnBasedRPG.UI.Views
 
         protected override void Subscribe()
         {
-            if (nameText) nameText.text = Data.charName;
-            if (levelText) levelText.text = $"Lv. {Data.level}";
-            if (professionText) professionText.text = Data.profession.name;
+            if (nameText) nameText.text = Data.CharName;
+            if (levelText) levelText.text = $"Lv. {Data.Level}";
+            if (professionText) professionText.text = Data.Profession.name;
             if (allStatsText) allStatsText.text = AllStats();
-            if (equipedSkills) equipedSkills.SetData(Data.equipedSkills);
-            if (avaliableSkills) avaliableSkills.SetData(Data.learnedSkills);
+            if (equipedSkills) equipedSkills.SetData(Data.EquipedSkills);
+            if (avaliableSkills) avaliableSkills.SetData(Data.LearnedSkills);
             if (equipments)
             {
                 var sortedEquips = GameConfig.Instance.equipmentDrawOrder
-                    .Select(type => Data.equips[type]);
+                    .Select(type => Data.Equips[type]);
                 equipments.SetData(sortedEquips);
             }
 
-            if (icon) icon.overrideSprite = Data.uiSprite;
+            if (icon) icon.overrideSprite = Data.UISprite;
             if (interactable) interactable.interactable = true;
         }
 

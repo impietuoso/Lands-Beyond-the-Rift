@@ -29,7 +29,7 @@ namespace Explorations {
                 Arena = arena,
                 Allies = p.members,
                 Enemies = encounter.enemyList,
-                Items = p.consumables.slots,
+                Items = p.GetConsumables(),
                 Callback = OnCombatEnded,
             };
 

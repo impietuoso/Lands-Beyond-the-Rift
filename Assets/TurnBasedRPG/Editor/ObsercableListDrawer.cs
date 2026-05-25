@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TurnBasedRPG.Editor
 {
-    [CustomPropertyDrawer(typeof(ObservableList<Equipment>), true)]
+    [CustomPropertyDrawer(typeof(ObservableList<IEquipment>), true)]
     public class ObsercableListDrawer : PropertyDrawer {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             var listProperty = property.FindPropertyRelative("list");

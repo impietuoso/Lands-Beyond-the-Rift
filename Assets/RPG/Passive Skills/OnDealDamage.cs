@@ -7,7 +7,7 @@ using TurnBasedRPG.Skills;
 [Serializable]
 public class OnDealDamage : IPassive {
     public Element element;
-    public Skill selfUseSkill;
+    public ISkill selfUseSkill;
     public bool castOnSelf;
 
     public void Subscribe(Character character) {

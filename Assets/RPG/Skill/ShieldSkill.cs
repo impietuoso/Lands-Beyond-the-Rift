@@ -15,7 +15,7 @@ public class ShieldSkill : ISkillEffectOld {
         else args.shield += shieldValue;
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         if(usePercentageOfHealth) {
             return new PercentShield
             {

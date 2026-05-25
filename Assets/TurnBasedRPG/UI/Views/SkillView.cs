@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace TurnBasedRPG.UI.Views
 {
-    public class SkillView : DataView<Skill> {
+    public class SkillView : DataView<ISkill> {
         public TextMeshProUGUI skillNameText;
         public TextMeshProUGUI descriptionText;
         public TextMeshProUGUI costText;
@@ -13,15 +13,15 @@ namespace TurnBasedRPG.UI.Views
         public CanvasGroup interactable;
 
         private void Start() {
-            if (interactable && !Data) interactable.interactable = false;
+            if (Data == null) interactable.interactable = false;
         }
 
         protected override void Subscribe() {
-            if (skillNameText) skillNameText.text = Data.skillName;
-            if (skillNameText) skillNameText.color = Data.element.elementColor;
-            if (descriptionText) descriptionText.text = Data.skillDescription;
-            if (costText) costText.text = Data.cost + " MP";
-            if (icon) icon.overrideSprite = Data.icon;
+            if (skillNameText) skillNameText.text = Data.SkillName;
+            if (skillNameText) skillNameText.color = Data.Element.elementColor;
+            if (descriptionText) descriptionText.text = Data.SkillDescription;
+            if (costText) costText.text = Data.Cost + " MP";
+            if (icon) icon.overrideSprite = Data.Icon;
             if (interactable) interactable.interactable = true;
         }
 

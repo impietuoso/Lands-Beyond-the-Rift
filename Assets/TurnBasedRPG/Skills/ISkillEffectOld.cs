@@ -3,11 +3,11 @@ using TurnBasedRPG.Data;
 namespace TurnBasedRPG.Skills {
     public interface ISkillEffectOld {
         void Prepare(CombatArgs args);
-        ISkillEffectOld GetUpgrade(Skill skill) => null;
+        ISkillEffectOld GetUpgrade(ISkill skill) => null;
     }
 
     public interface ISkillEffect : ISkillEffectOld {
-        ISkillEffectOld ISkillEffectOld.GetUpgrade(Skill skill) => this;
+        ISkillEffectOld ISkillEffectOld.GetUpgrade(ISkill skill) => this;
     }
 
     public interface ICombatEffect {

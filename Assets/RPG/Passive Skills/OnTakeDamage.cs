@@ -9,7 +9,7 @@ using TurnBasedRPG.Skills;
 [Serializable]
 public class OnTakeDamage : IPassive {
     public Element element;
-    public Skill counterSkill;
+    public ISkill counterSkill;
     public bool castOnSelf;
 
     public void Subscribe(Character character) {

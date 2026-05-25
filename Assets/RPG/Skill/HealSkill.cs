@@ -34,7 +34,7 @@ public class HealSkill : ISkillEffectOld {
         args.hitChance = 100;
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         if(isPercentageHeal) {
             return new HealPercent
             {

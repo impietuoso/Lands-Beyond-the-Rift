@@ -1,3 +1,5 @@
+using RPG;
+using TurnBasedRPG.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,16 +8,16 @@ namespace Explorations {
     {
         public Transform target;
         public ItemDropParticle itemDrop;
-        public Sprite sprite;
+        public Item item;
         public int amount = 2;
 
         private void Update()
         {
             if (Keyboard.current.pKey.wasPressedThisFrame)
-                itemDrop.PopCopy(target.position, sprite, 1);
+                itemDrop.PopCopy(target.position, item, 1);
         }
 
         [ContextMenu("test pop")]
-        public void TestPop() => itemDrop.PopCopy(target.position, sprite, amount);
+        public void TestPop() => itemDrop.PopCopy(target.position, item, amount);
     }
 }

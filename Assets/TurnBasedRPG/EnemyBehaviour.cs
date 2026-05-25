@@ -26,7 +26,7 @@ namespace TurnBasedRPG {
             yield return new WaitForSeconds(0.25f);
 
             var availableSkills = currentEnemy.skills.Where(s => s.Available(currentEnemy)).ToList();
-            Skill selectedSkill;
+            ISkill selectedSkill;
 
             if(availableSkills.Count > 0) {
                 // Usa Skill (60%), Ataca (30%) ou Defende (10%)
@@ -46,7 +46,7 @@ namespace TurnBasedRPG {
             }
 
             yield return new WaitForSeconds(.25f);
-            var eligible = selectedSkill.targeting.EligibleTargets(currentEnemy).ToArray();
+            var eligible = selectedSkill.Targeting.EligibleTargets(currentEnemy).ToArray();
             var target = eligible[Random.Range(0, eligible.Length)];
             cm.SelectedAction = new()
             {

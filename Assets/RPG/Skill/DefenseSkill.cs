@@ -26,7 +26,7 @@ public class DefenseSkill : ISkillEffectOld {
         target.OnDefend -= OnDefend;
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) => new Defense
+    public ISkillEffectOld GetUpgrade(ISkill skill) => new Defense
     {
         damageReduction = damageReduction,
     };

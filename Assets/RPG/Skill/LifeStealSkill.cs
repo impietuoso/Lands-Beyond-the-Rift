@@ -22,7 +22,7 @@ public class LifeStealSkill : ISkillEffectOld {
         chain.Resolve();
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         return new LifeSteal
         {
             percent = damagePercentage,

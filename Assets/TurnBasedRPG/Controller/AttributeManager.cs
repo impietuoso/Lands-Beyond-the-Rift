@@ -28,14 +28,14 @@ namespace TurnBasedRPG.Controller
         public void LevelUp()
         {
             if (member.Data.GetUnusedPoints() > 0)
-                member.Data.usedAttributes[Data]++;
+                member.Data.UsedAttributes[Data]++;
             manager.UpdateStatsValue();
         }
 
         public void LevelDown()
         {
-            if (member.Data.usedAttributes[Data] > 0)
-                member.Data.usedAttributes[Data]--;
+            if (member.Data.UsedAttributes[Data] > 0)
+                member.Data.UsedAttributes[Data]--;
             manager.UpdateStatsValue();
         }
     }

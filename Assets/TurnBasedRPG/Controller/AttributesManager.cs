@@ -16,26 +16,26 @@ namespace TurnBasedRPG.Controller
         private void Start() => attributesView.SetData(Attributes.All);
 
         public void CheatLevelUp() {
-            if(memberView.Data.level < 20) 
-                memberView.Data.level++;
+            if(memberView.Data.Level < 20) 
+                memberView.Data.Level++;
             UpdateStatsValue();
         }
 
         public void CheatLevelDown() {
-            if(memberView.Data.level > 1)
-                memberView.Data.level--;
+            if(memberView.Data.Level > 1)
+                memberView.Data.Level--;
             UpdateStatsValue();
         }
 
         public void UpdateStatsValue() {
             var member = memberView.Data;
             var pointsLeft = member.GetUnusedPoints() ;
-            _previewStats.Recalculate(member.level, member, member);
+            _previewStats.Recalculate(member.Level, member, member);
             
             availablePointsText.text = pointsLeft.ToString();
             foreach (var view in attributesView.templateList.OfType<AttributeManager>()) {
                 view.upButton.interactable = pointsLeft > 0;
-                view.downButton.interactable = member.usedAttributes[view.Data] > 0;
+                view.downButton.interactable = member.UsedAttributes[view.Data] > 0;
                 view.valueText.text = member[view.Data].ToString();
             }
         }

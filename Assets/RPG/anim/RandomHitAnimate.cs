@@ -17,9 +17,9 @@ public class RandomHitAnimate : ISkillAnimationOld {
     public float hitDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
-    public bool TrySkipSelection(Character user, Skill skill) => false;
+    public bool TrySkipSelection(Character user, ISkill skill) => false;
 
-    public Targeting GetTargeting(Skill skill) {
+    public Targeting GetTargeting(ISkill skill) {
         return new Targeting
         {
             group = targetEnemy ? TargetGroup.Enemy : TargetGroup.Ally,
@@ -28,7 +28,7 @@ public class RandomHitAnimate : ISkillAnimationOld {
         };
     }
 
-    public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
+    public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
         if(castingParticle) {
             var particle = castingParticle.Clone(user.Position);
             yield return new WaitWhile(() => particle);
@@ -51,16 +51,16 @@ public class RandomHitAnimate : ISkillAnimationOld {
         }
     }
 
-    public IEnumerator SingleTargetDamage(Skill skill, Character user, List<Character> targets, int newHitCount) {
+    public IEnumerator SingleTargetDamage(ISkill skill, Character user, List<Character> targets, int newHitCount) {
         for (int i = 0; i < newHitCount; i++) {
             CombatArgs args = new CombatArgs();
             args.skill = skill;
-            args.element = skill.element;
+            args.element = skill.Element;
             args.target = targets[Random.Range(0, targets.Count)];
             args.user = user;
             args.source = this;
 
-            foreach (var effect in skill.effects) {
+            foreach (var effect in skill.Effects) {
                 effect.Prepare(args);
             }
 

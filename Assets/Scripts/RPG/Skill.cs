@@ -1,25 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TurnBasedRPG;
+using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TurnBasedRPG.Data {
+namespace RPG {
     [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
-    public class Skill : ScriptableObject {
-        public string skillName;
-        [TextArea(3, 6)] public string skillDescription;
-        public int cost;
-        public Sprite icon;
-        public Element element;
+    public class Skill : ScriptableObject, ISkill {
+        [SerializeField] private string skillName;
+        [SerializeField, TextArea(3, 6)] private string skillDescription;
+        [SerializeField] private int cost;
+        [SerializeField] private Sprite icon;
+        [SerializeField] private Element element;
 
-        [Separator] public Targeting targeting;
+        [SerializeField, Separator] private Targeting targeting;
         [SerializeReference, TypeInstance, Separator] public ISkillAnimationOld animation;
-        
+
         [FormerlySerializedAs("skillEffects")]
         [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> effects;
+
+        public string SkillName => skillName;
+        public string SkillDescription => skillDescription;
+        public int Cost => cost;
+        public Sprite Icon => icon;
+        public Element Element => element;
+        public Targeting Targeting => targeting;
+        public ISkillAnimationOld Animation => animation;
+        public List<ISkillEffectOld> Effects => effects;
 
         public bool Available(Character user) {
             if(user.Silence) return false;

@@ -10,7 +10,7 @@ public class StopSkillReactionEffect : ISkillEffectOld {
         args.stopReactionAttacks = true;
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         return new StopReactions();
     }
 }

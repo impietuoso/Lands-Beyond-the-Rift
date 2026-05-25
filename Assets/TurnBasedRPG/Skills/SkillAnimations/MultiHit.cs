@@ -14,7 +14,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public float damageDelay = 1;
         public float hitDelay = 1;
 
-        public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
+        public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
             throw new InvalidOperationException();
         }
 
@@ -29,7 +29,7 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             var newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
             var routines = new List<Coroutine>();
 
-            foreach (var newTarget in cast.Skill.targeting.GetAffectedTargets(cast.User, cast.Target)) {
+            foreach (var newTarget in cast.Skill.Targeting.GetAffectedTargets(cast.User, cast.Target)) {
                 var ie = SingleTargetDamage(cast.Skill, cast.User, newTarget, newHitCount);
                 routines.Add(cast.Cm.StartCoroutine(ie));
             }
@@ -40,24 +40,24 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             if(hitCount.y > 1) Debug.Log(newHitCount + " Hits");
         }
 
-        public IEnumerator SingleTargetDamage(Skill skill, Character user, Character target, int newHitCount) {
+        public IEnumerator SingleTargetDamage(ISkill skill, Character user, Character target, int newHitCount) {
             for (var i = 0; i < newHitCount; i++) {
                 var args = new CombatArgs
                 {
                     source = this,
                     skill = skill,
-                    element = skill.element,
+                    element = skill.Element,
                     target = target,
                     user = user,
                 };
 
-                foreach (var effect in skill.effects)
+                foreach (var effect in skill.Effects)
                     effect.Prepare(args);
 
                 if(skillParticle)
                     Object.Instantiate(skillParticle, args.target.Position, Quaternion.identity);
                 else
-                    Debug.LogError("No Particle, add it to: " + skill.skillName);
+                    Debug.LogError("No Particle, add it to: " + skill.SkillName);
 
                 yield return new WaitForSeconds(damageDelay);
                 args.Resolve();

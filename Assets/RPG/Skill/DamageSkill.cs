@@ -36,7 +36,7 @@ public class DamageSkill : ISkillEffectOld {
         args.hitChance = hitChance;
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         if(isPercentageDamage)
             return new PercentDamage
             {

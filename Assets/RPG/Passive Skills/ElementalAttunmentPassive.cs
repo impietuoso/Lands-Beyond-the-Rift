@@ -10,6 +10,6 @@ public class ElementalAttunmentPassive : IPassive {
     }
 
     public void Unsubscribe(Character character) {
-        character.Element = character.member.element;
+        character.Element = character.member.Element;
     }
 }

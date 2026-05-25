@@ -18,9 +18,9 @@ public class MultiHitAnimate : ISkillAnimationOld {
     public float hitDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
-    public bool TrySkipSelection(Character user, Skill skill) => false;
+    public bool TrySkipSelection(Character user, ISkill skill) => false;
 
-    public Targeting GetTargeting(Skill skill) {
+    public Targeting GetTargeting(ISkill skill) {
         return new Targeting
         {
             group = targetEnemy ? TargetGroup.Enemy : TargetGroup.Ally,
@@ -40,7 +40,7 @@ public class MultiHitAnimate : ISkillAnimationOld {
         }
     }
 
-    public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
+    public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
         if(castingParticle) {
             var particle = castingParticle.Clone(user.Position);
             yield return new WaitWhile(() => particle);
@@ -60,23 +60,23 @@ public class MultiHitAnimate : ISkillAnimationOld {
         if(hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
 
-    public IEnumerator SingleTargetDamage(Skill skill, Character user, Character target, int newHitCount) {
+    public IEnumerator SingleTargetDamage(ISkill skill, Character user, Character target, int newHitCount) {
         for (var i = 0; i < newHitCount; i++) {
             var args = new CombatArgs();
             args.skill = skill;
-            args.element = skill.element;
+            args.element = skill.Element;
             args.target = target;
             args.user = user;
             args.source = this;
 
-            foreach (var effect in skill.effects) {
+            foreach (var effect in skill.Effects) {
                 effect.Prepare(args);
             }
 
             if(skillParticle)
                 skillParticle.Clone(args.target.Position);
             else
-                Debug.Log("No Particle, add it to: " + skill.skillName);
+                Debug.Log("No Particle, add it to: " + skill.SkillName);
 
             yield return new WaitForSeconds(damageDelay);
             args.Resolve();

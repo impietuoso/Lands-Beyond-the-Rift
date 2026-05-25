@@ -40,7 +40,7 @@ namespace TurnBasedRPG.StatusEffects {
                 unavoidable = true,
             };
             args.Resolve();
-            Debug.Log($"{target.member.charName} takes {damage} {Source.DisplayName} damage.");
+            Debug.Log($"{target.member.CharName} takes {damage} {Source.DisplayName} damage.");
         }
     }
 }

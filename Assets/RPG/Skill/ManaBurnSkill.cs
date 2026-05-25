@@ -22,7 +22,7 @@ public class ManaBurnSkill : ISkillEffectOld {
         args.mana = -(int)damage;
     }
 
-    public ISkillEffectOld GetUpgrade(Skill skill) {
+    public ISkillEffectOld GetUpgrade(ISkill skill) {
         if(useDamageDealt) {
             return new ManaBurn
             {

@@ -15,9 +15,9 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public float hitDelay = 1;
         public GameObject castingParticle;
         public GameObject skillParticle;
-        public bool TrySkipSelection(Character user, Skill skill) => false;
+        public bool TrySkipSelection(Character user, ISkill skill) => false;
 
-        public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
+        public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
             if(castingParticle) {
                 var particle = castingParticle.Clone(user.Position);
                 yield return new WaitWhile(() => particle);
@@ -25,25 +25,25 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             else
                 yield return new WaitForSeconds(0.1f);
 
-            var targets = new List<Character>(skill.targeting.GetAffectedTargets(user, target));
+            var targets = new List<Character>(skill.Targeting.GetAffectedTargets(user, target));
             var newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
             yield return cm.StartCoroutine(SingleTargetDamage(skill, user, targets, newHitCount));
 
             if(hitCount.y > 1) Debug.Log(newHitCount + " Hits");
         }
 
-        public IEnumerator SingleTargetDamage(Skill skill, Character user, List<Character> targets, int newHitCount) {
+        public IEnumerator SingleTargetDamage(ISkill skill, Character user, List<Character> targets, int newHitCount) {
             for (var i = 0; i < newHitCount; i++) {
                 var args = new CombatArgs
                 {
                     skill = skill,
-                    element = skill.element,
+                    element = skill.Element,
                     target = targets[Random.Range(0, targets.Count)],
                     user = user,
                     source = this
                 };
 
-                foreach (var effect in skill.effects) {
+                foreach (var effect in skill.Effects) {
                     effect.Prepare(args);
                 }
 

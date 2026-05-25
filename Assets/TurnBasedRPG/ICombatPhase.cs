@@ -78,20 +78,20 @@ namespace TurnBasedRPG {
             if(cm.SelectedAction == null) yield break;
             if(cm.SelectedAction == cm.WaitFlag) yield break;
             var a = cm.SelectedAction;
-            var affected = a.Skill.targeting.GetAffectedTargets(a.User, a.Target);
+            var affected = a.Skill.Targeting.GetAffectedTargets(a.User, a.Target);
 
             // Prepare UI
             cm.View.selectTargetPanel.SetActive(false);
             cm.View.combatPanel.SetActive(false);
             cm.View.actionsPanel.SetActive(false);
-            cm.View.ShowCurrentAction(a.User.characterName, a.Skill.skillName);
+            cm.View.ShowCurrentAction(a.User.characterName, a.Skill.SkillName);
             cm.Arena.ClearTargets();
             cm.Arena.TargetCharacters(affected);
             Debug.Log("Target Selected: " + a.Target?.characterName);
 
             // Use Skill
-            a.User.Mana.Current -= a.Skill.cost;
-            var usedSlot = cm.Consumables.slots.FirstOrDefault(s => s.item.skillEffect == a.Skill);
+            a.User.Mana.Current -= a.Skill.Cost;
+            var usedSlot = cm.Consumables.slots.FirstOrDefault(s => s.item.Skill == a.Skill);
             if(usedSlot != null) cm.Consumables.Remove(usedSlot.item, 1);
             yield return a.Skill.UseSkill(a.User, a.Target);
         }

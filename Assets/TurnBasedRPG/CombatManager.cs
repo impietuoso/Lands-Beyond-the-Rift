@@ -10,14 +10,14 @@ using UnityEngine.SceneManagement;
 
 namespace TurnBasedRPG {
     public class CombatManager : MonoBehaviour {
-        [field: SerializeField] public Skill BasicDefense { get; private set; }
+        [field: SerializeField] public ISkill BasicDefense { get; private set; }
         [field: SerializeField] public CombatView View { get; private set; }
 
         [field: Header("Runtime")]
         [field: SerializeField] public Character CurrentCharacter { get; set; }
         [field: SerializeField] public List<Character> Allies { get; private set; } = new();
         [field: SerializeField] public List<Character> Enemies { get; private set; } = new();
-        [field: SerializeField] public ListInventory<Consumable> Consumables { get; private set; }
+        [field: SerializeField] public ListInventory<IConsumable> Consumables { get; private set; }
         [field: SerializeField] public int MaxSpeed { get; set; }
         [field: SerializeField] public int TurnCount { get; set; }
         [field: SerializeField] public bool Pause { get; set; }
@@ -55,19 +55,15 @@ namespace TurnBasedRPG {
             Everyone = Allies.Concat(Enemies);
             Consumables = new();
 
-            foreach (var member in config.Allies) {
-                if(!member) continue;
+            foreach (var member in config.Allies)
                 Allies.Add(new(this, member, "Player", Allies, Enemies));
-            }
 
-            foreach (var member in config.Enemies) {
-                if(!member) continue;
+            foreach (var member in config.Enemies)
                 Enemies.Add(new(this, member, "Enemy", Enemies, Allies));
-            }
 
-            foreach (var slot in config.Items) {
-                if(!slot.item) continue;
-                Consumables.Add(slot.item, slot.amount);
+            foreach (var (item, amt) in config.Items) {
+                if(item == null) continue;
+                Consumables.Add(item, amt);
             }
 
             foreach (var character in Everyone)

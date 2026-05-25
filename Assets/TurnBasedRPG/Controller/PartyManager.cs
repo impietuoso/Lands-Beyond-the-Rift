@@ -11,8 +11,8 @@ namespace TurnBasedRPG.Controller
         public void SwapPartyMember(GameObject drop, PointerEventData eventData) {
             var target = drop.GetComponent<PartyMemberView>().Data;
             var data = eventData.pointerDrag.GetComponent<PartyMemberView>().Data;
-            var dropParentList = (ObservableList<PartyMember>)drop.GetComponentInParent<ListView>().Data;
-            var eventParentList = (ObservableList<PartyMember>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
+            var dropParentList = (ObservableList<IPartyMember>)drop.GetComponentInParent<ListView>().Data;
+            var eventParentList = (ObservableList<IPartyMember>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
             var targetIndex = drop.transform.GetSiblingIndex() - 1;
             var dataIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
             dropParentList[targetIndex] = data;
