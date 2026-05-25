@@ -24,7 +24,7 @@ MonoBehaviour:
       rid: 5967445928687698216
   animation:
     rid: 3339743010432221417
-  skillEffects:
+  effects:
   - rid: 5967445875509691161
   - rid: 5967445875509691162
   references:
@@ -47,7 +47,7 @@ MonoBehaviour:
         damage: 8
         scale:
           attribute: 1
-          scale: 1
+          scale: 2
         hitChance: 90
         critChance: 20
         damageRange: 0.25

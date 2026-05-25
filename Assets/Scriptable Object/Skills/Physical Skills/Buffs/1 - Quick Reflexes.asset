@@ -14,16 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   skillName: Quick Reflexes
   skillDescription: 
-  cost: 0
+  cost: 10
   icon: {fileID: 21300000, guid: 15ac24e280babdb43bb27639131c29ec, type: 3}
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  targeting:
+    group: 0
+    area: 0
+    filter:
+      rid: 9169537190577307917
   animation:
-    rid: -2
-  skillEffects: []
-  passiva:
-    rid: -2
+    rid: 9169537190577307918
+  effects:
+  - rid: 9169537190577307920
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 9169537190577307917
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 
+    - rid: 9169537190577307918
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 1811082849834210756, guid: 10e794042b1a9334aa43b97929434bed, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1
+    - rid: 9169537190577307920
+      type: {class: ApplyStatus, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: c7e184ed8a45fa3438d3608535875785, type: 2}
+        targetUser: 0

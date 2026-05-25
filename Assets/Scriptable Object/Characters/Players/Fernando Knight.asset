@@ -31,7 +31,7 @@ MonoBehaviour:
     list:
     - {fileID: 11400000, guid: a9b48b2ea24c321439dc922a7086d36d, type: 2}
     - {fileID: 11400000, guid: def4854e1696d364b9bc687d92c49d45, type: 2}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 3bf3995e8a3fb1e4890f236250e021c1, type: 2}
     - {fileID: 0}
   learnedSkills:
     list: []

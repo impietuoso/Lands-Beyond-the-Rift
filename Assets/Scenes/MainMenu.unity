@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 342983581}
   - component: {fileID: 342983580}
   - component: {fileID: 342983584}
+  - component: {fileID: 342983585}
   m_Layer: 5
   m_Name: Menu Canvas
   m_TagString: Untagged
@@ -596,6 +597,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6f1dd86b692f843b95aa1ffb0c1946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
+--- !u!114 &342983585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342983579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa236b0f74c9b1e4ca89e685259baf9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayBGM
+  bgm: {fileID: 8300000, guid: 9af3b469b884d4641a7256461ec03524, type: 3}
 --- !u!1 &537140150
 GameObject:
   m_ObjectHideFlags: 0

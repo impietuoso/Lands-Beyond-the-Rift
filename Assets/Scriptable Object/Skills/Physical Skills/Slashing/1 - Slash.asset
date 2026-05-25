@@ -13,17 +13,40 @@ MonoBehaviour:
   m_Name: 1 - Slash
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   skillName: Slash
-  skillDescription: 
-  cost: 0
+  skillDescription: Deal low Physical Damage to one Foe.
+  cost: 5
   icon: {fileID: 21300000, guid: 6705d42d8b3c02a4fb1d0a11f8834e77, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  targeting:
+    group: 1
+    area: 0
+    filter:
+      rid: 9169537190577307906
   animation:
-    rid: -2
-  skillEffects: []
-  passiva:
-    rid: -2
+    rid: 9169537190577307911
+  effects:
+  - rid: 9169537190577307912
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 9169537190577307906
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 
+    - rid: 9169537190577307911
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 8846507025273177154, guid: 10b2dd959ed4e1f428cb8ca6f6de0006, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1
+    - rid: 9169537190577307912
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 0
+          scale: 1
+        hitChance: 80
+        critChance: 10
+        damageRange: 0.15

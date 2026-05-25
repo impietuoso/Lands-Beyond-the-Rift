@@ -39,9 +39,10 @@ namespace TurnBasedRPG.UI.Combat {
         private void DeactivateTurnMarker(Character obj) => turnMarker.SetActive(false);
 
         private void StatusMessage(Status status) {
-            var popup = Data.cm.View.callPopup;
+            var view = Data.cm.View;
             var color = status.Source.TextColor;
-            StartCoroutine(popup.Pop(status.Source.DisplayName, color, transform, 0));
+            var dName = status.Source.DisplayName;
+            StartCoroutine(view.callPopup.Pop(dName, color,transform.localPosition, view.transform, 0));
         }
 
         private void DamagePopup(CombatArgs args) {
@@ -66,7 +67,7 @@ namespace TurnBasedRPG.UI.Combat {
             if(args.user == args.target && popupValue == 0) return;
 
             var popupText = args.result.Miss ? "Miss" : popupValue.ToString();
-            var popup = Data.cm.View.callPopup;
+            var view = Data.cm.View;
 
             if(!args.result.Miss && args.result.ResistStatus) {
                 if(popupValue == 0)
@@ -75,7 +76,7 @@ namespace TurnBasedRPG.UI.Combat {
                     popupText += "\nResist";
             }
 
-            StartCoroutine(popup.Pop(popupText, damageColor, transform, 0));
+            StartCoroutine(view.callPopup.Pop(popupText, damageColor,transform.localPosition, view.transform, 0));
             if(args.result.IsFatal) _animator.Play("Die", 0, 0);
             if(args.result.IsRevive) _animator.Play("Spawn", 0, 0);
         }
