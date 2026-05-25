@@ -11,7 +11,7 @@ namespace TurnBasedRPG.Controller {
         public CombatManager combatManager;
         public CombatArena arena;
         public ListInventory<IItem> initialItems;
-        public List<EnemyEncounter> encounters;
+        public List<IPartyMember> encounters;
         public SaveView views;
         public ListView encounterListView;
         public SaveFile save;

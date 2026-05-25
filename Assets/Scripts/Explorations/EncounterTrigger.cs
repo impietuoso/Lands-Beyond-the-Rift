@@ -1,4 +1,5 @@
 using System.Collections;
+using RPG;
 using TurnBasedRPG;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.UI.Combat;
@@ -10,8 +11,9 @@ namespace Explorations {
         private static readonly int AlphaID = Shader.PropertyToID("_alpha");
         private static readonly int PixelsID = Shader.PropertyToID("_pixels");
 
-        public EnemyEncounter encounter;
+        public Encounter encounter;
         public CombatArena arena;
+        public ItemDropParticle itemDrop;
 
         public Image staticEffect;
         public Vector2 duration = new(.5f, .25f);
@@ -28,7 +30,7 @@ namespace Explorations {
             {
                 Arena = arena,
                 Allies = p.members,
-                Enemies = encounter.enemyList,
+                Enemies = encounter.enemies,
                 Items = p.GetConsumables(),
                 Callback = OnCombatEnded,
             };
@@ -64,6 +66,12 @@ namespace Explorations {
             yield return new WaitForSecondsRealtime(duration.y);
 
             yield return FadeStatic(false);
+
+            if(win)
+                foreach (var enemy in encounter.enemies) {
+                    itemDrop.PopCopy(transform.position, enemy.Drops.Random(), 1); //TODO drop chance
+                    yield return new WaitForSeconds(.15f);
+                }
 
             ExplorationTask.Remove(this);
         }

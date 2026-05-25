@@ -1,23 +1,19 @@
-﻿using TMPro;
-using TurnBasedRPG.Data;
+﻿using System;
+using TMPro;
 
 namespace TurnBasedRPG.UI.Views
 {
-    public class EnemyEncounterView : DataView<EnemyEncounter> {
+    [Obsolete]
+    public class EnemyEncounterView : DataView<object> {
         public TextMeshProUGUI encounterName;
         public ListView enemyList;
 
         protected override void Subscribe() {
-            encounterName.text = Data.encounterName;
-            if (enemyList) {
-                enemyList.SetData(Data.enemyList);
-            }
+            throw new NotImplementedException();
         }
 
         protected override void Unsubscribe() {
-            if (enemyList) {
-                enemyList.SetData(null);
-            }
+            throw new NotImplementedException();
         }
     }
 }
