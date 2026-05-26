@@ -10,20 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: 2 - Crack Skill
+  m_Name: 2 - Crack Skull
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  skillName: Crack Skill
+  skillName: Crack Skull
   skillDescription: 
   cost: 0
   icon: {fileID: 21300000, guid: 3a4695e861793c84bb98b6385a6a5917, type: 3}
   element: {fileID: 0}
+  targeting:
+    group: 1
+    area: 0
+    filter:
+      rid: 9169537256759230544
   animation:
     rid: -2
-  skillEffects: []
-  passiva:
-    rid: -2
+  effects: []
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 9169537256759230544
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 
