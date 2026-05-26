@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Defrost
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Defrost
+  <description>k__BackingField: Removes Slow and Vulnerable from the Party.
+  <sprite>k__BackingField: {fileID: 21300000, guid: b11f5a73467356a40811312231732ee8, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Defrost
   skillDescription: Removes Slow and Vulnerable from the Party.
   cost: 10

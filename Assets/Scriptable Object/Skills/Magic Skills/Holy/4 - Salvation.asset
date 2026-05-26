@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 4 - Salvation
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Salvation
+  <description>k__BackingField: Fully Heal the Party and Removes Debuffs.
+  <sprite>k__BackingField: {fileID: 21300000, guid: ec2b7dca436e47c4681676ee1c132b20, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Salvation
   skillDescription: Fully Heal the Party and Removes Debuffs.
   cost: 5

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Flaming Wall
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Flaming Wall
+  <description>k__BackingField: Heavy Fire Damage to all Foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 5ef5ca8a34e36144ba851f66f866415d, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Flaming Wall
   skillDescription: Heavy Fire Damage to all Foes.
   cost: 25

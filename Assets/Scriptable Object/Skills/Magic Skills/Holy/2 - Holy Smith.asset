@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Holy Smith
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Holy Smith
+  <description>k__BackingField: Medium Holy Damage to 1 foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: a91d3d7b7ab40a74bb3909f31de63f21, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Holy Smith
   skillDescription: Medium Holy Damage to 1 foe.
   cost: 5

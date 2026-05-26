@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Quicksand
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Quicksand
+  <description>k__BackingField: Apply Vulnerable, Slow and Stun to a Target
+  <sprite>k__BackingField: {fileID: 21300000, guid: 42348cbd75d98584d94a4ce28b986ec3, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Quicksand
   skillDescription: Apply Vulnerable, Slow and Stun to a Target
   cost: 5

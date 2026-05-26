@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Shattered Shards
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Shattered Shards
+  <description>k__BackingField: Medium Ice Damage to all foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 0938c2b734e028f48a828cccba5053d7, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Shattered Shards
   skillDescription: Medium Ice Damage to all foes.
   cost: 10

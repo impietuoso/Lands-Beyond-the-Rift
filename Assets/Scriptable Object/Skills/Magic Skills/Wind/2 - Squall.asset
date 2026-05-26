@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Squall
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Squall
+  <description>k__BackingField: Medium Wind Damage to all Foes, removes Quickning
+    from foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 3dae6f4f8c047f64eadbd7d30b111f37, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Squall
   skillDescription: Medium Wind Damage to all Foes, removes Quickning from foes.
   cost: 10

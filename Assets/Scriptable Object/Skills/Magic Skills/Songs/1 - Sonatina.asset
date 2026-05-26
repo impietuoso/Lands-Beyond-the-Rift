@@ -12,18 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Sonatina
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Sonatina
+  <description>k__BackingField: Low Heal to one Ally, Apply Protection.
+  <sprite>k__BackingField: {fileID: 21300000, guid: ad48d87e23e8f6641812826fe579fd6c, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Sonatina
   skillDescription: Low Heal to one Ally, Apply Protection.
   cost: 0
   icon: {fileID: 21300000, guid: ad48d87e23e8f6641812826fe579fd6c, type: 3}
   element: {fileID: 11400000, guid: 17558d2aa8ded394194189c14265cf34, type: 2}
+  targeting:
+    group: 1
+    area: 0
+    filter:
+      rid: 5967446036352073855
   animation:
     rid: -2
-  skillEffects: []
-  passiva:
-    rid: -2
+  effects: []
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967446036352073855
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 

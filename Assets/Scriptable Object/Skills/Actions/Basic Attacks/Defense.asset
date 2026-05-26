@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Defense
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Defense
+  <description>k__BackingField: Common defense that reduces damage taken
+  <sprite>k__BackingField: {fileID: 0}
+  <maxStack>k__BackingField: 99
   skillName: Defense
   skillDescription: Common defense that reduces damage taken
   cost: 0

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Burning Passion
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Burning Passion
+  <description>k__BackingField: Remove Burning from Party and Apply Rage.
+  <sprite>k__BackingField: {fileID: 21300000, guid: cf7805be1ebdf55418386b6c1719461f, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Burning Passion
   skillDescription: Remove Burning from Party and Apply Rage.
   cost: 20

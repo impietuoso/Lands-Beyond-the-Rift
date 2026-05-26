@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Consumable Skill - Small Heal (p)
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Small Heal (p)
+  <description>k__BackingField: Heal a small amount of health
+  <sprite>k__BackingField: {fileID: 3774859132685714036, guid: ca2aa78e0217d1f429c632ce4af334ff, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Small Heal (p)
   skillDescription: Heal a small amount of health
   cost: 0

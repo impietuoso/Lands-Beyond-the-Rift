@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Grow Toxin
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Grow Toxin
+  <description>k__BackingField: Low Nature Damage to all foes and Apply Poison.
+  <sprite>k__BackingField: {fileID: 1680889114686643296, guid: 7d2cba3bb5537fe4ab23d7026f1f0223, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Grow Toxin
   skillDescription: Low Nature Damage to all foes and Apply Poison.
   cost: 5

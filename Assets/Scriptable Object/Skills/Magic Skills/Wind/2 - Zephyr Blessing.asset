@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Zephyr Blessing
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Zephyr Blessing
+  <description>k__BackingField: Removes Burning and Vulnerable and Apply Quickning
+    from the Party.
+  <sprite>k__BackingField: {fileID: 21300000, guid: c8b1a281efaaaf74a94f06b05199001b, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Zephyr Blessing
   skillDescription: Removes Burning and Vulnerable and Apply Quickning from the Party.
   cost: 10

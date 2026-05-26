@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Spark
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Spark
+  <description>k__BackingField: Low Lightning Damage to 1 foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 41d888b9897aec84baa7c8cee9ffc9b2, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Spark
   skillDescription: Low Lightning Damage to 1 foe.
   cost: 10

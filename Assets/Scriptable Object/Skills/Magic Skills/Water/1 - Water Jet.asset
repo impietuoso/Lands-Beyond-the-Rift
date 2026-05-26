@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Water Jet
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Water Jet
+  <description>k__BackingField: Low Water Damage to 1 Foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 5bf2db2615ee4af4c94a0f347facc868, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Water Jet
   skillDescription: Low Water Damage to 1 Foe.
   cost: 5

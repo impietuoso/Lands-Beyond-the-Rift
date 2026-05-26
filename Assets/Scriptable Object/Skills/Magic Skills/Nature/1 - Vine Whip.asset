@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Vine Whip
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Vine Whip
+  <description>k__BackingField: Low Nature Damage to 1 foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 99a440fe13213ea4e87d506f8eeb7d0e, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Vine Whip
   skillDescription: Low Nature Damage to 1 foe.
   cost: 5

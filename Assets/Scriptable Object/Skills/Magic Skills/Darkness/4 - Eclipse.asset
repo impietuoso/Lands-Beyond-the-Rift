@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 4 - Eclipse
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Eclipse
+  <description>k__BackingField: Deal Massive Dark Damage to all foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 3e951a4751e9ecd4bac0ab7a130f4ac5, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Eclipse
   skillDescription: Deal Massive Dark Damage to all foes.
   cost: 10

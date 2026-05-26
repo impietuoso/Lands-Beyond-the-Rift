@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Bless
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Bless
+  <description>k__BackingField: Heal a Low amount of Health from all allies, remove
+    all Debuffs.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 7c98ebe0d375e244eb1088fa174ee338, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Bless
   skillDescription: Heal a Low amount of Health from all allies, remove all Debuffs.
   cost: 5

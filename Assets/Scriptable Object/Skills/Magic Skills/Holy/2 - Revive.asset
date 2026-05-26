@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Revive
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Revive
+  <description>k__BackingField: Revives an ally with 30% max Health.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 2a336d2597fdd1a48b223ec402a73717, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Revive
   skillDescription: Revives an ally with 30% max Health.
   cost: 10

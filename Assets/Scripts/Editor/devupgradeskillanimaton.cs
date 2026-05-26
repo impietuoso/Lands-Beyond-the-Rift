@@ -20,16 +20,26 @@ namespace Editor {
                 if(!skill) continue;
 
                 var changed = false;
+
+                Item item = skill;
+                if(item.description != skill.Description || item.displayName != skill.SkillName) {
+                    item.ReflectSet("description", skill.Description);
+                    item.ReflectSet("displayName", skill.SkillName);
+                    item.ReflectSet("sprite", skill.Icon);
+                    changed = true;
+                }
+                
                 for (var i = 0; i < skill.effects.Count; i++) {
                     var e = skill.effects[i];
-                    if (e is ISkillEffect) continue;
+                    if(e is ISkillEffect) continue;
 
                     var newEffect = e.GetUpgrade(skill);
-                    if (newEffect != null && newEffect != e) {
+                    if(newEffect != null && newEffect != e) {
                         Undo.RecordObject(skill, "Upgrade Skill Effect");
                         skill.effects[i] = newEffect;
                         changed = true;
-                    } else {
+                    }
+                    else {
                         Debug.LogError($"Skill '{skill.SkillName}' at {path} contains legacy effects that could not be upgraded.", skill);
                         dic.Add(e.GetType());
                     }
@@ -45,7 +55,7 @@ namespace Editor {
                     }
                 }
 
-                if (changed) {
+                if(changed) {
                     EditorUtility.SetDirty(skill);
                     count++;
                 }

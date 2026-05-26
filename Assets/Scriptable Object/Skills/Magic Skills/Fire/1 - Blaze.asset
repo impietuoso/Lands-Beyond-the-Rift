@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Blaze
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Blaze
+  <description>k__BackingField: Low Fire Damage to 1 Foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 81153f25372fe0d4583dbc34779e6204, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Blaze
   skillDescription: Low Fire Damage to 1 Foe.
   cost: 5

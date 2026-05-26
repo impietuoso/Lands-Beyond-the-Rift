@@ -10,9 +10,9 @@ using UnityEngine.Serialization;
 
 namespace RPG {
     [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
-    public class Skill : ScriptableObject, ISkill {
+    public class Skill : Item, ISkill {
         [SerializeField] private string skillName;
-        [SerializeField, TextArea(3, 6)] private string skillDescription;
+        [SerializeField] private string skillDescription;
         [SerializeField] private int cost;
         [SerializeField] private Sprite icon;
         [SerializeField] private Element element;

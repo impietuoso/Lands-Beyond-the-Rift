@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Quick Reflexes
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Quick Reflexes
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: 21300000, guid: 15ac24e280babdb43bb27639131c29ec, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Quick Reflexes
   skillDescription: 
   cost: 10

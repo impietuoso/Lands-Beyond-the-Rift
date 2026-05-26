@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Hunter's Mark
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Hunter's Mark
+  <description>k__BackingField: Apply Vulnerable on Target and Gain Focused on Caster
+  <sprite>k__BackingField: {fileID: 21300000, guid: ca34a9eb3cda1374dbafa691804b02e5, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Hunter's Mark
   skillDescription: Apply Vulnerable on Target and Gain Focused on Caster
   cost: 10

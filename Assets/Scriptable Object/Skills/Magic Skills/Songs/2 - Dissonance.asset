@@ -12,18 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Dissonance
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Dissonance
+  <description>k__BackingField: Medium Wind Damage all Foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 576249e1e354e3c4eba2695841bc561f, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Dissonance
   skillDescription: Medium Wind Damage all Foes.
   cost: 0
   icon: {fileID: 21300000, guid: 576249e1e354e3c4eba2695841bc561f, type: 3}
   element: {fileID: 11400000, guid: 6e11067072e285a4cb15c48aa5e3d94b, type: 2}
+  targeting:
+    group: 1
+    area: 0
+    filter:
+      rid: 5967446036352073844
   animation:
     rid: -2
-  skillEffects: []
-  passiva:
-    rid: -2
+  effects: []
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 5967446036352073844
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 

@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Intelligence Base Attack
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Attack
+  <description>k__BackingField: Common attack deals base damage scale to Character
+    Power
+  <sprite>k__BackingField: {fileID: 0}
+  <maxStack>k__BackingField: 99
   skillName: Attack
   skillDescription: Common attack deals base damage scale to Character Power
   cost: 0

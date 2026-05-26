@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Serrated Arrow
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Serrated Arrow
+  <description>k__BackingField: Deal Low Damage to 1 foe and Apply Bleeding.
+  <sprite>k__BackingField: {fileID: 21300000, guid: fa69836b31f4bbf44b8c0492013021a5, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Serrated Arrow
   skillDescription: Deal Low Damage to 1 foe and Apply Bleeding.
   cost: 0

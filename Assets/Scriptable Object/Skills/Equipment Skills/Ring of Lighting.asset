@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Ring of Lighting
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Lightning
+  <description>k__BackingField: Common attack deals base damage scale to Character
+    Power
+  <sprite>k__BackingField: {fileID: 6605283560793580422, guid: 9945e62a5530c4c488a963123b011c2b, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Lightning
   skillDescription: Common attack deals base damage scale to Character Power
   cost: 15

@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TurnBasedRPG.Data;
 
 namespace RPG {
     public class PartyMemberView : DataView<PartyMember> {
@@ -10,6 +9,7 @@ namespace RPG {
         [field: SerializeField] public TMP_Text Profession { get; private set; }
         [field: SerializeField] public Image Element { get; private set; }
         [field: SerializeField] public ListView Attributes { get; private set; }
+        [field: SerializeField] public MemberStatsView Stats { get; private set; }
         [field: SerializeField] public ListView Equips { get; private set; }
         [field: SerializeField] public ListView EquipedSkills { get; private set; }
         [field: SerializeField] public ListView LearnedSkills { get; private set; }
@@ -21,6 +21,7 @@ namespace RPG {
             if(Profession) Profession.text = Data.Profession.name;
             if(Element) Element.overrideSprite = Data.Element.elementSprite;
             if(Attributes) Attributes.SetData(Data.UsedAttributes);
+            if(Stats) Stats.SetData(Data);
             if(Equips) Equips.SetData(Data.Equips);
             if(EquipedSkills) EquipedSkills.SetData(Data.EquipedSkills);
             if(LearnedSkills) LearnedSkills.SetData(Data.LearnedSkills);

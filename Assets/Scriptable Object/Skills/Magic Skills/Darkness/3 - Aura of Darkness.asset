@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Aura of Darkness
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Aura of Darkness
+  <description>k__BackingField: 'Removes Debuffs, Gain Reflect Damage and Determined '
+  <sprite>k__BackingField: {fileID: 21300000, guid: a48b2cd9991ff99449b84b0cd547632d, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Aura of Darkness
   skillDescription: 'Removes Debuffs, Gain Reflect Damage and Determined '
   cost: 10

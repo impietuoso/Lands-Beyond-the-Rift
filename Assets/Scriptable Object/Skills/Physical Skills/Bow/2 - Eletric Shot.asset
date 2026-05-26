@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Eletric Shot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Eletric Shot
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: 21300000, guid: 2af0169e34297db4aa98352eaa24a83b, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Eletric Shot
   skillDescription: 
   cost: 0

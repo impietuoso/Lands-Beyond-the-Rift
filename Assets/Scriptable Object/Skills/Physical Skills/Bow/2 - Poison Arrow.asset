@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Poison Arrow
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Poison Arrow
+  <description>k__BackingField: Deals Medium Damage to 1 foe and Apply Poison.
+  <sprite>k__BackingField: {fileID: 21300000, guid: d2578b7e0d8679f4fad6eaf2efeba897, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Poison Arrow
   skillDescription: Deals Medium Damage to 1 foe and Apply Poison.
   cost: 10

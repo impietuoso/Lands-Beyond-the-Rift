@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Mistral Strike
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Mistral Strike
+  <description>k__BackingField: Heavy Wind Damage to all Foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 72bbdfadd2b75044e9198758b5ffa986, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Mistral Strike
   skillDescription: Heavy Wind Damage to all Foes.
   cost: 10

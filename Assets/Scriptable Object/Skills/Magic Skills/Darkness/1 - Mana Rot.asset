@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Mana Rot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Mana Rot
+  <description>k__BackingField: 'Deal Low Dark Damage to the target''s Mana and Heal
+    Caster a Small Amount. '
+  <sprite>k__BackingField: {fileID: 21300000, guid: 35c94277d9482c94aabf42ac1d800ae7, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Mana Rot
   skillDescription: 'Deal Low Dark Damage to the target''s Mana and Heal Caster a
     Small Amount. '

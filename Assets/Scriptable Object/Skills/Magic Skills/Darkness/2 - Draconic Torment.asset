@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Draconic Torment
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Draconic Torment
+  <description>k__BackingField: 3 Medium Dark Damage to random foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: ea7db6fcb29656a43a1fc81903084036, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Draconic Torment
   skillDescription: 3 Medium Dark Damage to random foes.
   cost: 10

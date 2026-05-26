@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Consumable Skill - Flame in a Bottle
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Flame in a Bottle
+  <description>k__BackingField: Fire a granade that explose on Impact
+  <sprite>k__BackingField: {fileID: -2035840135098207376, guid: ac9902f814a219e4ea10255084762e0c, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Flame in a Bottle
   skillDescription: Fire a granade that explose on Impact
   cost: 0

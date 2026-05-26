@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Transfusion
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Transfusion
+  <description>k__BackingField: Heal Large Amount but receives Bleeding
+  <sprite>k__BackingField: {fileID: 21300000, guid: 9ec4300a0790226448fd5c31fb711f14, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Transfusion
   skillDescription: Heal Large Amount but receives Bleeding
   cost: 5

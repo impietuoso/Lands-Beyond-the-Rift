@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Consumable Skill - Holy Water
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Small Heal (p)
+  <description>k__BackingField: Heal a small amount of health
+  <sprite>k__BackingField: {fileID: -1009742683727084556, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Small Heal (p)
   skillDescription: Heal a small amount of health
   cost: 0

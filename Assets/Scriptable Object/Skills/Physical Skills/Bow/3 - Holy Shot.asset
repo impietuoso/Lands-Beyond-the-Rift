@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Holy Shot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Holy Shot
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: 21300000, guid: 0edb617b400abf54a84bd64f5ae4a6d2, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Holy Shot
   skillDescription: 
   cost: 0

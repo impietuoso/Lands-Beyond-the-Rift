@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 4 - Chaos Vortex
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Mistral Strike
+  <description>k__BackingField: Between 3 to 6 hits of Heavy Wind Damage to all Foes,
+    If has Confusion gains Vulnerable and Apply Determined to Caster.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 37d9a3ffc2557c043b8a65b89ae31d59, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Mistral Strike
   skillDescription: Between 3 to 6 hits of Heavy Wind Damage to all Foes, If has
     Confusion gains Vulnerable and Apply Determined to Caster.
@@ -31,6 +36,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 5967445875509691186
       type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:

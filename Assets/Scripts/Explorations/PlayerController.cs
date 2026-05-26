@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Update() {
         if(rb) rb.linearVelocity = axis.normalized * moveSpeed;
-        if(anim) anim.SetBool("Moving",axis.sqrMagnitude != 0);
+        if(anim) anim.SetBool("Moving", axis.sqrMagnitude != 0);
     }
 
     public void Move(InputAction.CallbackContext context) {
@@ -27,16 +27,23 @@ public class PlayerController : MonoBehaviour {
             interactor.TryInteract();
         }
     }
-    
+
     public void Attack(InputAction.CallbackContext context) {
         if(context.action.WasPressedThisFrame()) {
-          Debug.Log("Atacou!");
-          anim.SetTrigger("Attack");
+            Debug.Log("Atacou!");
+            anim.SetTrigger("Attack");
         }
     }
-    
+
     public void Flip() {
         if(spr) spr.flipX = !spr.flipX;
         facingRight = !facingRight;
+    }
+
+    public void Menu() {
+        var party = GetComponent<PlayerParty>();
+        if(!party) return;
+        Game.PartyView.SetData(party);
+        Game.PartyView.gameObject.SetActive(true);
     }
 }

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 4 - Meteor Shower
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Meteor Shower
+  <description>k__BackingField: Between 3 to 6 hits of Heavy Fire Damage to one Foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: ab26fe879c7e8d04e87618561e521c4d, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Meteor Shower
   skillDescription: Between 3 to 6 hits of Heavy Fire Damage to one Foe.
   cost: 35

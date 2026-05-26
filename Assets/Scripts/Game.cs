@@ -10,18 +10,21 @@ public static class Game {
     private static GameObject _options;
     private static LoadController _load;
     private static CombatManager _combat;
+    private static PlayerPartyView _partyView;
 
-    public static GameObject Options => _options ? _options : _options = Load<GameObject>("Options Panel");
-    public static AudioManager Audio => _audio ? _audio : _audio = Load<AudioManager>();
-    public static LoadController Loading => _load ? _load : _load = Load<LoadController>();
-    public static CombatManager Combat => _combat ? _combat : _combat = Load<CombatManager>();
+    public static GameObject Options => Clone(ref _options, "Options Panel");
+    public static AudioManager Audio => Clone(ref _audio);
+    public static LoadController Loading => Clone(ref _load);
+    public static CombatManager Combat => Clone(ref _combat);
+    public static PlayerPartyView PartyView => Clone(ref _partyView);
 
     public static SaveManager Save = new("Save", "default", new JsonFileParser());
     public static LoadingTask LoadTasks = new();
 
-    private static T Load<T>(string name = null) where T : Object {
+    private static T Clone<T>(ref T clone, string name = null) where T : Object {
+        if(clone) return clone;
         name ??= typeof(T).Name;
-        var clone = Resources.Load<T>(name).Clone();
+        clone = Resources.Load<T>(name).Clone();
         clone.name = name;
         Object.DontDestroyOnLoad(clone);
         return clone;

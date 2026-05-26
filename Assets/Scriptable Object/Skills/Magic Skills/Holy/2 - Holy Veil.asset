@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Holy Veil
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Holy Veil
+  <description>k__BackingField: Gain Shield, Apply Protection and Determined.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 7c98ebe0d375e244eb1088fa174ee338, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Holy Veil
   skillDescription: Gain Shield, Apply Protection and Determined.
   cost: 5

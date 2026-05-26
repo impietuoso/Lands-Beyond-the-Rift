@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Cleave
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Cleave
+  <description>k__BackingField: Deal low Physical Damage to all Foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 845fff3567c270543bc8d3f0645137e6, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Cleave
   skillDescription: Deal low Physical Damage to all Foes.
   cost: 10

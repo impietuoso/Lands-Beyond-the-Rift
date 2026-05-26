@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Double Shot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Double Shot
+  <description>k__BackingField: Deals 2 hits of Low Damage to 1 foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: b81dd847ed9c27f438b35f69b6375dd5, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Double Shot
   skillDescription: Deals 2 hits of Low Damage to 1 foe.
   cost: 10

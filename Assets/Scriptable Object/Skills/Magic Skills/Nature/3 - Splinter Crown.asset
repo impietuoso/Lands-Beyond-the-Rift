@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Splinter Crown
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Quicksand
+  <description>k__BackingField: Medium Nature Damage to 1 foe, Apply Vulnerable and
+    Bleeding.
+  <sprite>k__BackingField: {fileID: -8067978381563143127, guid: 7c1bc47564cf71b4ba142d6c41282902, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Quicksand
   skillDescription: Medium Nature Damage to 1 foe, Apply Vulnerable and Bleeding.
   cost: 5

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Freezing Shot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Freezing Shot
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: 21300000, guid: a177565445ff99c4c9041e72116c49e7, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Freezing Shot
   skillDescription: 
   cost: 0

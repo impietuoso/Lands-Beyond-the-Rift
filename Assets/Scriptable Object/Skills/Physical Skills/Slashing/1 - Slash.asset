@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Slash
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Slash
+  <description>k__BackingField: Deal low Physical Damage to one Foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 6705d42d8b3c02a4fb1d0a11f8834e77, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Slash
   skillDescription: Deal low Physical Damage to one Foe.
   cost: 5

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Light Pulse
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Light Pulse
+  <description>k__BackingField: Low Holy Damage to 1 Foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 10cf28bf10686254bb7f51e03655922c, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Light Pulse
   skillDescription: Low Holy Damage to 1 Foe.
   cost: 5

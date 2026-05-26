@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Disruption Shock
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Disruption Shock
+  <description>k__BackingField: Medium Lightning Damage to 1 foe, ignore Shield,
+    cause Stun.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 3441e39788175c14cbc69e7a09c3ae73, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Disruption Shock
   skillDescription: Medium Lightning Damage to 1 foe, ignore Shield, cause Stun.
   cost: 10

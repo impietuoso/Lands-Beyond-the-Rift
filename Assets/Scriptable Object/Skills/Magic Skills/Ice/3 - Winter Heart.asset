@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Winter Heart
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Winter Heart
+  <description>k__BackingField: Low Heal and Remove Burning, Bleeding, Apply Protection.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 77b5f42fdec8da44188346483257d479, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Winter Heart
   skillDescription: Low Heal and Remove Burning, Bleeding, Apply Protection.
   cost: 10

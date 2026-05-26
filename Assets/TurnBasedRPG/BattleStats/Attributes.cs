@@ -26,6 +26,7 @@ namespace TurnBasedRPG.BattleStats {
         [Label("DEX")] public int dexterity;
         [Label("VIT")] public int vitality;
         [Label("SPT")] public int spirit;
+        public event Action<Attribute> OnChanged;
 
         public int Sum() => strength + intelligence + dexterity + vitality + spirit;
 
@@ -34,8 +35,10 @@ namespace TurnBasedRPG.BattleStats {
                 this[a] = other[a];
         }
 
-        public int this[Attribute a] {
-            get => a switch {
+        public int this[Attribute a]
+        {
+            get => a switch
+            {
                 Attribute.Str => strength,
                 Attribute.Int => intelligence,
                 Attribute.Dex => dexterity,
@@ -51,6 +54,8 @@ namespace TurnBasedRPG.BattleStats {
                     case Attribute.Vit: vitality = value; break;
                     case Attribute.Spt: spirit = value; break;
                 }
+
+                OnChanged?.Invoke(a);
             }
         }
     }

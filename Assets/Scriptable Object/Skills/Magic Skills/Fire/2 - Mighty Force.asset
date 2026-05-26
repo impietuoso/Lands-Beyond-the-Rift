@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Mighty Force
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Mighty Force
+  <description>k__BackingField: Removes all Debuffs from the Caster and Gains Rage
+  <sprite>k__BackingField: {fileID: 21300000, guid: 8c857596d0aaf854184f9c5ba7d37e39, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Mighty Force
   skillDescription: Removes all Debuffs from the Caster and Gains Rage
   cost: 15

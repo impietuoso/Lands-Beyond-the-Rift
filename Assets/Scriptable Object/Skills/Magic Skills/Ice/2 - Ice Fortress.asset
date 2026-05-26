@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Ice Fortress
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Ice Fortress
+  <description>k__BackingField: Gain Shield, Apply Protection, Remove Burning
+  <sprite>k__BackingField: {fileID: 21300000, guid: e905422aa64436c4ba9edf700d6ea857, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Ice Fortress
   skillDescription: Gain Shield, Apply Protection, Remove Burning
   cost: 10

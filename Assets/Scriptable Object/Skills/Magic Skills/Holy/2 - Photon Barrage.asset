@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Photon Barrage
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Photon Barrage
+  <description>k__BackingField: 3 Medium Holy Damage to random foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 36548d773df740e4cae3a70f3c245914, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Photon Barrage
   skillDescription: 3 Medium Holy Damage to random foes.
   cost: 5

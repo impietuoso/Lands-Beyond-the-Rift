@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Swirling Blade
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Swirling Blade
+  <description>k__BackingField: Low Wind Damage to all Foes.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 36c6939d75112264bae50348fdb6fa0e, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Swirling Blade
   skillDescription: Low Wind Damage to all Foes.
   cost: 10

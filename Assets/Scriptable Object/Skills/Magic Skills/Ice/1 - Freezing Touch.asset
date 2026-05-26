@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Freezing Touch
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Freezing Touch
+  <description>k__BackingField: Low Ice Damage to one foe.
+  <sprite>k__BackingField: {fileID: 21300000, guid: 1dcadea0d51f314439c32915a71a4d76, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Freezing Touch
   skillDescription: Low Ice Damage to one foe.
   cost: 10

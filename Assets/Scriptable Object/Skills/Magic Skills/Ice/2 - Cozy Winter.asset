@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Cozy Winter
   m_EditorClassIdentifier: 
+  <displayName>k__BackingField: Cozy Winter
+  <description>k__BackingField: Apply Slowed to all foes, if has Slowed, cause Sleep
+  <sprite>k__BackingField: {fileID: 21300000, guid: 71bc6f50e0d1666448c72e7e31120299, type: 3}
+  <maxStack>k__BackingField: 99
   skillName: Cozy Winter
   skillDescription: Apply Slowed to all foes, if has Slowed, cause Sleep
   cost: 10
