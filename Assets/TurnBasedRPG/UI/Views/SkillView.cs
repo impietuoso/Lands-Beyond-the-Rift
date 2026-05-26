@@ -19,7 +19,7 @@ namespace TurnBasedRPG.UI.Views
         protected override void Subscribe() {
             if (skillNameText) skillNameText.text = Data.SkillName;
             if (skillNameText) skillNameText.color = Data.Element.elementColor;
-            if (descriptionText) descriptionText.text = Data.SkillDescription;
+            if (descriptionText) descriptionText.text = Data.Description;
             if (costText) costText.text = Data.Cost + " MP";
             if (icon) icon.overrideSprite = Data.Icon;
             if (interactable) interactable.interactable = true;

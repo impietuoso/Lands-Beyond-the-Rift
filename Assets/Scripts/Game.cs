@@ -2,7 +2,6 @@
 using Drafts.SaveData;
 using TurnBasedRPG;
 using UnityEngine;
-using TurnBasedRPG;
 
 public static class Game {
     public const int TileBuildSpeed = 100;
@@ -18,6 +17,7 @@ public static class Game {
     public static CombatManager Combat => _combat ? _combat : _combat = Load<CombatManager>();
 
     public static SaveManager Save = new("Save", "default", new JsonFileParser());
+    public static LoadingTask LoadTasks = new();
 
     private static T Load<T>(string name = null) where T : Object {
         name ??= typeof(T).Name;

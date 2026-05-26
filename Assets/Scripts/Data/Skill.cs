@@ -24,7 +24,7 @@ namespace RPG {
         [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> effects;
 
         public string SkillName => skillName;
-        public string SkillDescription => skillDescription;
+        public string Description => skillDescription;
         public int Cost => cost;
         public Sprite Icon => icon;
         public Element Element => element;

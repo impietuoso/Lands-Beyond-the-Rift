@@ -29,7 +29,8 @@ namespace Rooms {
             go.transform.SetParent(transform, false);
 
             var map = go.AddComponent<Tilemap>();
-            go.AddComponent<TilemapRenderer>().material = mat;
+            Fog1 = go.AddComponent<TilemapRenderer>();
+            Fog1.material = mat;
 
             var count = 0;
             foreach (var pos in source.cellBounds.allPositionsWithin) {

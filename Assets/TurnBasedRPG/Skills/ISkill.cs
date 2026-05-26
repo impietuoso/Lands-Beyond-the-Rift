@@ -6,7 +6,7 @@ using UnityEngine;
 namespace TurnBasedRPG.Data {
     public interface ISkill {
         string SkillName { get; }
-        string SkillDescription { get; }
+        string Description { get; }
         int Cost { get; }
         Sprite Icon { get; }
         Element Element { get; }

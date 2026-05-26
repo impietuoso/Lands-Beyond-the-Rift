@@ -4,7 +4,7 @@ using TurnBasedRPG.Data;
 using UnityEngine;
 
 public class PlayerParty : MonoBehaviour {
-    public List<IPartyMember> members;
+    public ObservableList<IPartyMember> members;
     public ListInventory<Item> inventory;
 
     public IEnumerable<(IConsumable, int)> GetConsumables() {

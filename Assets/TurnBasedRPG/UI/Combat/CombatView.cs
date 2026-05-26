@@ -61,7 +61,7 @@ namespace TurnBasedRPG.UI.Combat {
             skillPanel.SetActive(false);
             selectTargetPanel.SetActive(true);
             currentSkillNameText.text = "[" + skill.SkillName + "]";
-            currentSkillDescriptionText.text = skill.SkillDescription;
+            currentSkillDescriptionText.text = skill.Description;
 
             _preparation = new(skill, user, null);
             
