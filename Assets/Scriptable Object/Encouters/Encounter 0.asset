@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a34660d87d4b8eaec170dcf624ecbf, type: 3}
   m_Name: Encounter 0
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEncounter
-  encounterName: Training Room
-  enemyList:
-  - {fileID: 11400000, guid: 8063acfc06afce7439948e6545da9ff4, type: 2}
+  displayName: 
+  enemies:
+  - {fileID: 11400000, guid: 5bd4cd2e258417644a7b7a7fcc25962c, type: 2}
+  - {fileID: 11400000, guid: 5bd4cd2e258417644a7b7a7fcc25962c, type: 2}

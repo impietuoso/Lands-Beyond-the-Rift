@@ -23,24 +23,13 @@ MonoBehaviour:
     filter:
       rid: 5967445928687698307
   animation:
-    rid: 3339743010432221418
-  skillEffects:
+    rid: 5967445995023237329
+  effects:
   - rid: 5967445875509691279
-  - rid: 9169536697585893489
+  - rid: 5967445995023237504
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221418
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
-      data:
-        singleTarget: 1
-        targetEnemy: 1
-        targetDead: 0
-        hitCount: {x: 1, y: 1}
-        damageDelay: 0.5
-        hitDelay: 0
-        castingParticle: {fileID: 0}
-        skillParticle: {fileID: 0}
     - rid: 5967445875509691279
       type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
@@ -54,21 +43,28 @@ MonoBehaviour:
     - rid: 5967445928687698307
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
-    - rid: 9169536697585893489
-      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237329
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
+        hitDelay: 0
+    - rid: 5967445995023237504
+      type: {class: ConditionalEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        condition:
+          rid: 5967445995023237505
+        effects:
+        - rid: 5967445995023237551
+    - rid: 5967445995023237505
+      type: {class: StatusEffect, ns: TurnBasedRPG.Skills.CombatArgsFilters, asm: TurnBasedRPG}
       data:
         status: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
-        effect:
-        - rid: 9169536697585893490
-    - rid: 9169536697585893490
-      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
+        not: 0
+    - rid: 5967445995023237551
+      type: {class: DamageMod, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
       data:
-        baseDamage: 10
-        ignoreShield: 0
-        isPercentageDamage: 0
-        healthPercentage: 0.2
-        hitChance: 80
-        criticalChance: 20
-        statMultiplier: 1.6
-        damageStatScale: 1
-        damageRange: 0.15
+        mode: 1
+        value: 2

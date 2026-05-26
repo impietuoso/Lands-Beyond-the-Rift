@@ -24,10 +24,10 @@ MonoBehaviour:
     filter:
       rid: 5967445928687698236
   animation:
-    rid: 9169536697585893492
-  skillEffects:
+    rid: 5967445995023237269
+  effects:
   - rid: 5967445875509691186
-  - rid: 9169536824337498207
+  - rid: 5967445995023237508
   references:
     version: 2
     RefIds:
@@ -44,24 +44,27 @@ MonoBehaviour:
     - rid: 5967445928687698236
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
-    - rid: 9169536697585893492
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237269
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
-        singleTarget: 0
-        targetEnemy: 1
-        targetDead: 0
+        castParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
         hitCount: {x: 3, y: 6}
         damageDelay: 0.5
         hitDelay: 0
-        castingParticle: {fileID: 0}
-        skillParticle: {fileID: 0}
-    - rid: 9169536824337498207
-      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237508
+      type: {class: ConditionalEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
-        status: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
-        effect:
+        condition:
+          rid: 5967445995023237509
+        effects:
         - rid: 9169536824337498208
         - rid: 9169536824337498209
+    - rid: 5967445995023237509
+      type: {class: StatusEffect, ns: TurnBasedRPG.Skills.CombatArgsFilters, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
+        not: 0
     - rid: 9169536824337498208
       type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
       data:

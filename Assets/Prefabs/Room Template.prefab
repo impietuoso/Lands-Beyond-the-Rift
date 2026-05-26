@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6356372544112117301}
   - component: {fileID: 3982487027621778937}
   - component: {fileID: 1286598820029263407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fog 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2291,7 +2291,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 14723061
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -9329,7 +9329,7 @@ GameObject:
   - component: {fileID: 5099370720394838123}
   - component: {fileID: 4512240076818261529}
   - component: {fileID: 791252675748625393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fog 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11609,7 +11609,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 14723061
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}

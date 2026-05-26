@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TurnBasedRPG.Data;
 using UnityEngine;
+using UnityEngine.Scripting;
 using Object = UnityEngine.Object;
 
 namespace TurnBasedRPG.Skills.SkillAnimations {
-    [Serializable]
+    [Preserve, Serializable]
     public class MultiHit : ISkillAnimation {
         public GameObject castParticle;
         public GameObject skillParticle;
@@ -14,34 +15,31 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
         public float damageDelay = 1;
         public float hitDelay = 1;
 
-        public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
-            throw new InvalidOperationException();
-        }
-
         public IEnumerator Play(SkillArgs cast) {
             if(castParticle) {
-                var particle = Object.Instantiate(castParticle, cast.User.Position, Quaternion.identity);
+                var pos = cast.User.Position;
+                var particle = Object.Instantiate(castParticle, pos, Quaternion.identity);
                 yield return new WaitWhile(() => particle);
             }
             else
                 yield return new WaitForSeconds(0.1f);
 
-            var newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
+            var hits = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
             var routines = new List<Coroutine>();
 
-            foreach (var newTarget in cast.Skill.Targeting.GetAffectedTargets(cast.User, cast.Target)) {
-                var ie = SingleTargetDamage(cast.Skill, cast.User, newTarget, newHitCount);
+            foreach (var tgt in cast.Targets) {
+                var ie = Damage(cast.Skill, cast.User, tgt, hits);
                 routines.Add(cast.Cm.StartCoroutine(ie));
             }
 
             foreach (var exe in routines)
                 yield return exe;
 
-            if(hitCount.y > 1) Debug.Log(newHitCount + " Hits");
+            if(hitCount.y > 1) Debug.Log(hits + " Hits");
         }
 
-        public IEnumerator SingleTargetDamage(ISkill skill, Character user, Character target, int newHitCount) {
-            for (var i = 0; i < newHitCount; i++) {
+        private IEnumerator Damage(ISkill skill, Character user, Character target, int hits) {
+            for (var i = 0; i < hits; i++) {
                 var args = new CombatArgs
                 {
                     source = this,

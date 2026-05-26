@@ -24,24 +24,13 @@ MonoBehaviour:
     filter:
       rid: 5967445928687698319
   animation:
-    rid: 3339743010432221417
-  skillEffects:
+    rid: 5967445995023237340
+  effects:
   - rid: 5967445875509691306
-  - rid: 9169536697585893472
+  - rid: 5967445995023237506
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221417
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
-      data:
-        singleTarget: 1
-        targetEnemy: 1
-        targetDead: 0
-        hitCount: {x: 1, y: 1}
-        damageDelay: 1
-        hitDelay: 0
-        castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
-        skillParticle: {fileID: 0}
     - rid: 5967445875509691306
       type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
@@ -55,13 +44,27 @@ MonoBehaviour:
     - rid: 5967445928687698319
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
-    - rid: 9169536697585893472
-      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237340
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
-        status: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
-        effect:
+        castParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
+        skillParticle: {fileID: 0}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 0
+    - rid: 5967445995023237506
+      type: {class: ConditionalEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        condition:
+          rid: 5967445995023237507
+        effects:
         - rid: 9169536697585893485
         - rid: 9169536697585893488
+    - rid: 5967445995023237507
+      type: {class: StatusEffect, ns: TurnBasedRPG.Skills.CombatArgsFilters, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: fbc96127fc5e93d499a122daed03a603, type: 2}
+        not: 0
     - rid: 9169536697585893485
       type: {class: SpreadEffect, ns: , asm: Assembly-CSharp}
       data:

@@ -23,25 +23,13 @@ MonoBehaviour:
     filter:
       rid: 5967445928687698277
   animation:
-    rid: 3339743010432221460
-  skillEffects:
+    rid: 5967445995023237243
+  effects:
   - rid: 5967445875509691242
-  - rid: 5967445875509691312
-  - rid: 7065366216047853729
+  - rid: 5967445995023237553
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221460
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
-      data:
-        singleTarget: 0
-        targetEnemy: 1
-        targetDead: 0
-        hitCount: {x: 1, y: 1}
-        damageDelay: 1
-        hitDelay: 1.5
-        castingParticle: {fileID: 0}
-        skillParticle: {fileID: 0}
     - rid: 5967445875509691242
       type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
@@ -52,14 +40,17 @@ MonoBehaviour:
         hitChance: 90
         critChance: 50
         damageRange: 0.15
-    - rid: 5967445875509691312
-      type: {class: Mana, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
-      data:
-        amount: 20
     - rid: 5967445928687698277
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
-    - rid: 7065366216047853729
-      type: {class: ManaDrainSkill, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237243
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
-        damagePercentage: 0.8
+        castParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1.5
+    - rid: 5967445995023237553
+      type: {class: ManaRecover, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data: 

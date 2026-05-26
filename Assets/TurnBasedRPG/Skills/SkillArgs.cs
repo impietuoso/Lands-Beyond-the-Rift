@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TurnBasedRPG.Data;
 
 namespace TurnBasedRPG.Skills {
@@ -15,5 +16,6 @@ namespace TurnBasedRPG.Skills {
         }
 
         public CombatManager Cm => Target.cm;
+        public IEnumerable<Character> Targets => Skill.Targeting.GetAffectedTargets(User, Target);
     }
 }

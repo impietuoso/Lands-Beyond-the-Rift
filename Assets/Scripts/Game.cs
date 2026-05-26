@@ -5,6 +5,8 @@ using UnityEngine;
 using TurnBasedRPG;
 
 public static class Game {
+    public const int TileBuildSpeed = 100;
+
     private static AudioManager _audio;
     private static GameObject _options;
     private static LoadController _load;

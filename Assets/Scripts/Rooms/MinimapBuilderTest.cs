@@ -7,6 +7,10 @@ namespace Rooms {
         public SpriteRenderer result;
 
         [ContextMenu("See Result")]
-        public void SeeResult() => result.sprite = builder.BuildSprite();
+        public void SeeResult() {
+            var ie = builder.BuildSprite();
+            while (ie.MoveNext()) { }
+            result.sprite = ie.Current;
+        }
     }
 }

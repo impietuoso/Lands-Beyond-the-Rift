@@ -32,7 +32,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a9b48b2ea24c321439dc922a7086d36d, type: 2}
     - {fileID: 11400000, guid: def4854e1696d364b9bc687d92c49d45, type: 2}
     - {fileID: 11400000, guid: 3bf3995e8a3fb1e4890f236250e021c1, type: 2}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: f5d1059124a35da409c12dd5c8cbdb26, type: 2}
   learnedSkills:
     list: []
   characterSprite: {fileID: 21300000, guid: d3054a316a922ad47a3e9b83b98c27e3, type: 3}

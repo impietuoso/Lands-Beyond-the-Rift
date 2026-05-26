@@ -23,24 +23,13 @@ MonoBehaviour:
     filter:
       rid: 5967445928687698214
   animation:
-    rid: 3339743010432221417
-  skillEffects:
+    rid: 5967445995023237250
+  effects:
   - rid: 5967445875509691158
   - rid: 5967445875509691325
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221417
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
-      data:
-        singleTarget: 0
-        targetEnemy: 0
-        targetDead: 0
-        hitCount: {x: 1, y: 1}
-        damageDelay: 0.5
-        hitDelay: 0
-        castingParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
-        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
     - rid: 5967445875509691158
       type: {class: HealPercent, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
@@ -52,3 +41,11 @@ MonoBehaviour:
     - rid: 5967445928687698214
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
+    - rid: 5967445995023237250
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
+        hitDelay: 0

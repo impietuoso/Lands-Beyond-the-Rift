@@ -14,10 +14,10 @@ namespace TurnBasedRPG.Skills.DamageModifiers {
 
         private void Steal(CombatArgs args) {
             var heal = args.result.Health.Delta * percent;
-            if (heal <= 0) return;
+            if (heal >= 0) return;
 
             var chain = args.Chain(this, args.user);
-            chain.heal = (int)heal;
+            chain.heal = (int)-heal;
             chain.Resolve();
         }
     }

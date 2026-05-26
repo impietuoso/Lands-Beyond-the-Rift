@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using TurnBasedRPG.Data;
 using UnityEngine;
 
 namespace TurnBasedRPG.Skills.SkillAnimations {
     [Serializable, Obsolete]
-    public class SelfHit : ISkillAnimation {
+    public class SelfHit : ISkillAnimationOld {
         public float damageDelay = 1;
         public GameObject castingParticle;
         public GameObject skillParticle;
+
+        public ISkillAnimation GetUpgrade(ISkill skill) => new MultiHit()
+        {
+            damageDelay = damageDelay,
+            castParticle = castingParticle,
+            skillParticle = skillParticle,
+        };
 
         public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm) {
             if(castingParticle) {
@@ -36,5 +44,13 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
 
             args.Resolve();
         }
+
+        public bool TrySkipSelection(Character user, ISkill skill) => throw new NotImplementedException();
+
+        public bool ValidateTarget(Character user, Character target) => throw new NotImplementedException();
+
+        public IEnumerable<Character> GetAffectedTargets(Character user, Character target) => throw new NotImplementedException();
+
+        public IEnumerator Play(SkillArgs cast) => throw new NotImplementedException();
     }
 }

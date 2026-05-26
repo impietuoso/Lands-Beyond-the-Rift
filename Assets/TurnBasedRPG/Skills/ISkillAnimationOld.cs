@@ -7,21 +7,20 @@ using Object = UnityEngine.Object;
 
 namespace TurnBasedRPG.Skills {
     public interface ISkillAnimationOld {
-        public bool TrySkipSelection(Character user, ISkill skill);
-        public bool ValidateTarget(Character user, Character target);
-        public IEnumerable<Character> GetAffectedTargets(Character user, Character target);
-        [Obsolete] public IEnumerator Play(ISkill skill, Character user, Character target, CombatManager cm);
-        public IEnumerator Play(SkillArgs cast) => Play(cast.Skill, cast.User, cast.Target, cast.Cm);
+        bool TrySkipSelection(Character user, ISkill skill);
+        bool ValidateTarget(Character user, Character target);
+        IEnumerable<Character> GetAffectedTargets(Character user, Character target);
+        IEnumerator Play(SkillArgs cast);
 
-        public static T Instantiate<T>(T a) where T : Component => Object.Instantiate(a);
+        static T Instantiate<T>(T a) where T : Component => Object.Instantiate(a);
 
-        public Targeting GetTargeting(ISkill skill);
-        //public ISkillAnimationOld GegUpgrade(Skill skill);
+        //public Targeting GetTargeting(ISkill skill);
+        ISkillAnimation GetUpgrade(ISkill skill);
     }
 
     public interface ISkillAnimation : ISkillAnimationOld {
-        Targeting ISkillAnimationOld.GetTargeting(ISkill skill) => null;
-        public ISkillAnimationOld GetUpgrade(ISkill skill) => this;
+        //Targeting ISkillAnimationOld.GetTargeting(ISkill skill) => null;
+        ISkillAnimation ISkillAnimationOld.GetUpgrade(ISkill skill) => this;
 
         bool ISkillAnimationOld.TrySkipSelection(Character user, ISkill skill) => throw new NotImplementedException();
         bool ISkillAnimationOld.ValidateTarget(Character user, Character target) => throw new NotImplementedException();

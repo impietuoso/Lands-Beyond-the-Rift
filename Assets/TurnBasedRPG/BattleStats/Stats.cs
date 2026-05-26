@@ -17,13 +17,11 @@ namespace TurnBasedRPG.BattleStats {
         public Stats() {
             stats = new BonusStat[Count];
             for (var i = 0; i < stats.Length; i++)
-                stats[i] = new ();
+                stats[i] = new();
 
             stats[(int)MaxHealth].Max = 9999;
             stats[(int)MaxShield].Max = 9999;
             stats[(int)MaxMana].Max = 9999;
-            stats[(int)Evade].Max = 40;
-            stats[(int)Resistance].Max = 60;
         }
 
         public int this[Stat stat] => stats[(int)stat].Total;
@@ -40,6 +38,9 @@ namespace TurnBasedRPG.BattleStats {
         public int this[Stat s] { get => _v[(int)s]; private set => _v[(int)s] = value; }
 
         public void Recalculate(int level, IAttributes a, IStats stats) {
+            _context.GetStat(Evade).Max = 40;
+            _context.GetStat(Resistance).Max = 60;
+            
             this[MaxHealth] = 2 * level + a[Vit] * 15;
             this[MaxMana] = 6 * level + a[Spt] * 8;
             this[MaxShield] = this[MaxHealth] / 2;

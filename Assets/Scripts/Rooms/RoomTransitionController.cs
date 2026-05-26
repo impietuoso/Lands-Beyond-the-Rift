@@ -9,7 +9,7 @@ namespace Rooms {
         private static readonly int DistanceID = Shader.PropertyToID("_distance");
         private static readonly int OriginID = Shader.PropertyToID("_origin");
 
-        [SerializeField] private TilemapRoom staringRoom;
+        [SerializeField] private TilemapRoom startingRoom;
         [SerializeField] private Material fogMat1;
         [SerializeField] private Material fogMat2;
         [SerializeField] private Material dissolveMat1;
@@ -24,8 +24,23 @@ namespace Rooms {
 
         public float Duration => duration;
 
+        private void Awake() {
+            dissolveMat1 = new Material(dissolveMat1);
+            dissolveMat2 = new Material(dissolveMat2);
+            radialMat1 = new Material(radialMat1);
+            radialMat2 = new Material(radialMat2);
+        }
+
         private void Start()
         {
+            if (startingRoom)
+            {
+                startingRoom.Entities.SetActive(true);
+                startingRoom.Collider.enabled = true;
+                startingRoom.Fog1.material = radialMat1;
+                startingRoom.Fog2.material = radialMat2;
+
+            }
             SetDissolve(1);
             SetRadial(1, 0);
         }

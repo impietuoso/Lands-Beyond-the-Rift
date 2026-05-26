@@ -24,11 +24,11 @@ MonoBehaviour:
     filter:
       rid: 5967445928687698248
   animation:
-    rid: 9169536824337498264
-  skillEffects:
+    rid: 5967445995023237277
+  effects:
   - rid: 5967445875509691198
   - rid: 5967445875509691314
-  - rid: 9169536824337498280
+  - rid: 5967445995023237592
   - rid: 5967445875509691199
   - rid: 5967445875509691200
   - rid: 5967445875509691201
@@ -67,18 +67,15 @@ MonoBehaviour:
     - rid: 5967445928687698248
       type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
-    - rid: 9169536824337498264
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237277
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
-        singleTarget: 0
-        targetEnemy: 1
-        targetDead: 0
+        castParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
         hitCount: {x: 1, y: 1}
         damageDelay: 0.5
         hitDelay: 0
-        castingParticle: {fileID: 0}
-        skillParticle: {fileID: 0}
-    - rid: 9169536824337498280
-      type: {class: ManaDrainSkill, ns: , asm: Assembly-CSharp}
+    - rid: 5967445995023237592
+      type: {class: ManaSteal, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
       data:
-        damagePercentage: 1
+        percent: 1
