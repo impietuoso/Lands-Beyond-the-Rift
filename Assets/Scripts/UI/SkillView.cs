@@ -23,7 +23,10 @@ namespace RPG {
         }
 
         protected override void Unsubscribe() {
-            Icon.color = new(1, 1, 1, .15f);
+            if (Icon) {
+                Icon.overrideSprite = null;
+                Icon.color = new(1, 1, 1, .15f);
+            }
         }
     }
 }

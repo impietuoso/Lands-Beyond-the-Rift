@@ -11,9 +11,9 @@ namespace RPG {
         [field: SerializeField] public Image Element { get; private set; }
         [field: SerializeField] public ListView Attributes { get; private set; }
         [field: SerializeField] public MemberStatsView Stats { get; private set; }
-        [field: SerializeField] public ListView Equips { get; private set; }
+        [field: SerializeField] public FixedListView Equips { get; private set; }
         [field: SerializeField] public ListView Consumables { get; private set; }
-        [field: SerializeField] public ListView EquipedSkills { get; private set; }
+        [field: SerializeField] public FixedListView EquipedSkills { get; private set; }
         [field: SerializeField] public ListView LearnedSkills { get; private set; }
         [field: SerializeField] public Image Portrait { get; private set; }
 
