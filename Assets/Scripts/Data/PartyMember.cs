@@ -4,18 +4,22 @@ using System.Linq;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
+using UnityEditor;
 using UnityEngine;
 using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
 namespace RPG {
+    [CanEditMultipleObjects]
     [Serializable, CreateAssetMenu(menuName = "Scriptable/PartyMember")]
     public class PartyMember : ScriptableObject, IPartyMember {
         [SerializeField] private string charName;
         [SerializeField] private int level;
+        [SerializeField] private int exp;
         [SerializeField] private Attributes usedAttributes;
         [SerializeField] private Profession profession;
         [SerializeField] private Element element;
         [SerializeField, ShowEquipmentTypeAtribute] private ObservableList<Equipment> equips;
+        [SerializeField, Fixed(3)] private ObservableList<Consumable> consumables;
         [SerializeField] private ObservableList<Skill> equipedSkills;
         [SerializeField] private ObservableList<Skill> learnedSkills;
         [SerializeField] private Sprite characterSprite;
@@ -24,10 +28,12 @@ namespace RPG {
 
         public string CharName => charName;
         public int Level { get => level; set => level = value; }
+        public int Exp { get => exp; set => exp = value; }
         public Attributes UsedAttributes => usedAttributes;
         public Profession Profession => profession;
         public Element Element => element;
         public IReadOnlyList<IEquipment> Equips => equips;
+        public IReadOnlyList<Consumable> Consumables => consumables;
         public IReadOnlyList<ISkill> EquipedSkills => equipedSkills;
         public IReadOnlyList<ISkill> LearnedSkills => learnedSkills;
         public Sprite CharacterSprite => characterSprite;

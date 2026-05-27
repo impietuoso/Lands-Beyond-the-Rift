@@ -11,10 +11,8 @@ using UnityEngine.Serialization;
 namespace RPG {
     [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
     public class Skill : Item, ISkill {
-        [SerializeField] private string skillName;
-        [SerializeField] private string skillDescription;
+        [Separator]
         [SerializeField] private int cost;
-        [SerializeField] private Sprite icon;
         [SerializeField] private Element element;
 
         [SerializeField, Separator] private Targeting targeting;
@@ -23,10 +21,11 @@ namespace RPG {
         [FormerlySerializedAs("skillEffects")]
         [Separator, SerializeReference, TypeInstance] public List<ISkillEffectOld> effects;
 
-        public string SkillName => skillName;
-        public string Description => skillDescription;
+        public string SkillName => displayName;
+        public string Description => description;
+        public override int maxStack => 1;
         public int Cost => cost;
-        public Sprite Icon => icon;
+        public Sprite Icon => sprite;
         public Element Element => element;
         public Targeting Targeting => targeting;
         public ISkillAnimationOld Animation => animation;
@@ -40,7 +39,7 @@ namespace RPG {
         }
 
         public IEnumerator UseSkill(Character user, Character target) {
-            Debug.Log($"{user?.characterName} used {skillName} on {target.characterName}");
+            Debug.Log($"{user?.characterName} used {displayName} on {target.characterName}");
             var cast = new SkillArgs(this, user, target);
             return animation.Play(cast);
         }

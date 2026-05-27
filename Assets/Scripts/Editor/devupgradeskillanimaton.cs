@@ -18,17 +18,8 @@ namespace Editor {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var skill = AssetDatabase.LoadAssetAtPath<Skill>(path);
                 if(!skill) continue;
-
                 var changed = false;
 
-                Item item = skill;
-                if(item.description != skill.Description || item.displayName != skill.SkillName) {
-                    item.ReflectSet("description", skill.Description);
-                    item.ReflectSet("displayName", skill.SkillName);
-                    item.ReflectSet("sprite", skill.Icon);
-                    changed = true;
-                }
-                
                 for (var i = 0; i < skill.effects.Count; i++) {
                     var e = skill.effects[i];
                     if(e is ISkillEffect) continue;

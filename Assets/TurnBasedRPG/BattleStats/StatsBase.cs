@@ -1,4 +1,5 @@
 ﻿using System;
+using TurnBasedRPG.DrawerHelpers;
 using UnityEngine;
 
 namespace TurnBasedRPG.BattleStats {
@@ -6,13 +7,11 @@ namespace TurnBasedRPG.BattleStats {
         MaxHealth,
         MaxShield,
         MaxMana,
-
         Speed,
         Hit,
         Evade,
         Armor,
         Resistance,
-
         Damage,
         CritChance,
         CritDamage,
@@ -23,9 +22,9 @@ namespace TurnBasedRPG.BattleStats {
     }
 
     [Serializable]
-    public class StatsBase : IStats {
+    public class StatsBase : IStats, ITwoColumnsDrawer {
         [field: SerializeField] public int MaxHealth { get; private set; }
-        [field: SerializeField] public int MaxShield { get; private set; }
+        [field: SerializeField, HideInInspector] public int MaxShield { get; private set; }
         [field: SerializeField] public int MaxMana { get; private set; }
         [field: SerializeField] public int Speed { get; private set; }
         [field: SerializeField] public int Hit { get; private set; }
@@ -36,7 +35,8 @@ namespace TurnBasedRPG.BattleStats {
         [field: SerializeField] public int CritChance { get; private set; }
         [field: SerializeField] public int CritDamage { get; private set; }
 
-        public int this[Stat stat] => stat switch {
+        public int this[Stat stat] => stat switch
+        {
             Stat.MaxHealth => MaxHealth,
             Stat.MaxShield => MaxShield,
             Stat.MaxMana => MaxMana,

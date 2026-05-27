@@ -23,9 +23,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Interact(InputAction.CallbackContext context) {
-        if(context.action.WasPressedThisFrame()) {
+        if(context.action.WasPressedThisFrame())
             interactor.TryInteract();
-        }
     }
 
     public void Attack(InputAction.CallbackContext context) {
@@ -40,7 +39,8 @@ public class PlayerController : MonoBehaviour {
         facingRight = !facingRight;
     }
 
-    public void Menu() {
+    public void Menu(InputAction.CallbackContext context) {
+        if(!context.action.WasPressedThisFrame()) return;
         var party = GetComponent<PlayerParty>();
         if(!party) return;
         Game.PartyView.SetData(party);

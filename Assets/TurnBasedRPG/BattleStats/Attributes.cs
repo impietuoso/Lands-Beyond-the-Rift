@@ -18,6 +18,7 @@ namespace TurnBasedRPG.BattleStats {
 
     [Serializable]
     public class Attributes : IAttributes, IThreeColumnsDrawer {
+        public static readonly Attributes Zero = new();
         public static int Count => All.Count;
         public static IReadOnlyList<Attribute> All { get; } = Enum.GetValues(typeof(Attribute)).OfType<Attribute>().ToList();
 

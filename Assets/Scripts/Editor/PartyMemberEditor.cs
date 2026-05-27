@@ -1,9 +1,10 @@
-﻿using TurnBasedRPG.BattleStats;
+﻿using RPG;
+using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using UnityEditor;
 
-namespace TurnBasedRPG.Editor {
-    [CustomEditor(typeof(IPartyMember))]
+namespace Editor {
+    [CustomEditor(typeof(PartyMember))]
     public class PartyMemberEditor : UnityEditor.Editor {
         private Stats publicStats = new();
         public bool applyEquipmentStats;

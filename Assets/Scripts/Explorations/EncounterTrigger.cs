@@ -35,10 +35,10 @@ namespace Explorations {
                 Callback = OnCombatEnded,
             };
 
+            void OnCombatEnded(bool win) => StartCoroutine(ExitCombat(p, win));
             StartCoroutine(EnterCombat(config));
         }
 
-        private void OnCombatEnded(bool win) => StartCoroutine(ExitCombat(win));
 
         private IEnumerator EnterCombat(CombatConfig config) {
             ExplorationTask.Add(this);
@@ -56,7 +56,7 @@ namespace Explorations {
             ExplorationTask.Remove(this);
         }
 
-        private IEnumerator ExitCombat(bool win) {
+        private IEnumerator ExitCombat(PlayerParty party, bool win) {
             ExplorationTask.Add(this);
 
             yield return FadeStatic(true);
@@ -68,13 +68,22 @@ namespace Explorations {
             yield return FadeStatic(false);
 
             var pos = transform.position;
-            if(win)
-                foreach (var enemy in encounter.enemies)
-                foreach (var drop in enemy.Drops) {
-                    if(Random.value > drop.Chance) continue;
-                    itemDrop.PopCopy(pos, drop.Item, 1);
-                    yield return new WaitForSeconds(.15f);
+            if(win) {
+                var totalExp = 0;
+                foreach (var enemy in encounter.enemies) {
+                    totalExp += enemy.Exp;
+                    foreach (var drop in enemy.Drops) {
+                        if(Random.value > drop.Chance) continue;
+                        itemDrop.PopCopy(pos, drop.Item, 1);
+                        yield return new WaitForSeconds(.15f);
+                    }
                 }
+
+                totalExp /= party.members.Count;
+                foreach (var member in party.members)
+                    member.Exp += totalExp;
+                
+            }
 
             ExplorationTask.Remove(this);
         }

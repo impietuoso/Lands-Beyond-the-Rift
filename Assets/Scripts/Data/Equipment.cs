@@ -7,6 +7,7 @@ using UnityEngine;
 namespace RPG {
     [CreateAssetMenu(menuName = "Scriptable/Item/Equipment", fileName = "New Equipment")]
     public class Equipment : Item, IEquipment {
+        [Separator]
         [SerializeField] private EquipmentType type;
         [SerializeField] private Tag category;
         [SerializeField] private StatsBase bonusValue;
