@@ -17,7 +17,7 @@ namespace RPG {
 
             var color = Data.d > 0 ? addColor : subColor;
             var colorCode = ColorUtility.ToHtmlStringRGB(color);
-            var sign = Data.d > 0 ? "+" : "-";
+            var sign = Data.d > 0 ? "+" : "";
             text.text += $" <color=#{colorCode}>{sign}{Data.d}</color>";
         }
 

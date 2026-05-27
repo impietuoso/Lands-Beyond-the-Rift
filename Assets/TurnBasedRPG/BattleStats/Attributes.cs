@@ -14,6 +14,11 @@ namespace TurnBasedRPG.BattleStats {
 
     public interface IAttributes {
         int this[Attribute a] { get; }
+
+        IEnumerable<(Attribute, int)> Pairs() {
+            foreach (var a in Attributes.All)
+                yield return (a, this[a]);
+        }
     }
 
     [Serializable]

@@ -13,30 +13,33 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::RPG.EnemyInfo
   charName: Slime
-  level: 1
-  usedAttributes:
-    strength: 1
-    intelligence: 4
-    dexterity: 1
-    vitality: 1
-    spirit: 3
-  profession: {fileID: 11400000, guid: ffb99c29d02008e45868fdb5bbd75dbb, type: 2}
+  level: 0
+  exp: 2
   element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
-  equips:
-    list:
-    - {fileID: 11400000, guid: 45adde246d0f090439f43843ca21ab40, type: 2}
-    - {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
-    - {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
-  equipedSkills:
-    list:
-    - {fileID: 11400000, guid: d2d5dae906a6c074584ead75a65cc3e9, type: 2}
-    - {fileID: 11400000, guid: b5bfadfbafdcc0642a469837782388cb, type: 2}
-  learnedSkills:
-    list:
-    - {fileID: 11400000, guid: f82d6dd321d46154e81ab930dc8b6e67, type: 2}
-  characterSprite: {fileID: -8107458173249376312, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
-  uiSprite: {fileID: -7245848890258496006, guid: 7d78a1fa9f887f848b3f6e6ab44b2883, type: 3}
+  portrait: {fileID: 0}
   prefab: {fileID: 3134276080824390833, guid: 9a55278c364ff894b92282631896a12e, type: 3}
+  attributes:
+    strength: 0
+    intelligence: 0
+    dexterity: 0
+    vitality: 0
+    spirit: 0
+  statsBonus:
+    <MaxHealth>k__BackingField: 0
+    <MaxShield>k__BackingField: 0
+    <MaxMana>k__BackingField: 0
+    <Speed>k__BackingField: 0
+    <Hit>k__BackingField: 0
+    <Evade>k__BackingField: 0
+    <Armor>k__BackingField: 0
+    <Resistance>k__BackingField: 0
+    <Damage>k__BackingField: 0
+    <CritChance>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+  skills:
+  - {fileID: 11400000, guid: 81492b8b38e9e42418807179b0324a40, type: 2}
   drops:
-  - {fileID: 11400000, guid: 45adde246d0f090439f43843ca21ab40, type: 2}
-  - {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
+  - <Item>k__BackingField: {fileID: 11400000, guid: 16b839efbbb8a0b42857c52262a33ce4, type: 2}
+    <Chance>k__BackingField: 0
+  - <Item>k__BackingField: {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
+    <Chance>k__BackingField: 0

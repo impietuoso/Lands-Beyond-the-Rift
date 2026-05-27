@@ -14,29 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RPG.EnemyInfo
   charName: Wolf
   level: 1
-  usedAttributes:
-    strength: 4
-    intelligence: 0
-    dexterity: 3
-    vitality: 2
-    spirit: 1
-  profession: {fileID: 11400000, guid: 4e1d1c8272f718148abedc7e4e473353, type: 2}
+  exp: 5
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
-  equips:
-    list:
-    - {fileID: 11400000, guid: 8cadb888fe5f2ef47839a1e97911f3ca, type: 2}
-    - {fileID: 11400000, guid: 16b839efbbb8a0b42857c52262a33ce4, type: 2}
-    - {fileID: 11400000, guid: d5859b60d794cc045b458ed3c5d3644a, type: 2}
-  equipedSkills:
-    list:
-    - {fileID: 11400000, guid: 1f4ec07f38179044885f8692e545624a, type: 2}
-    - {fileID: 11400000, guid: 9bc606d0771e00948a1d2e12b1566865, type: 2}
-  learnedSkills:
-    list:
-    - {fileID: 11400000, guid: d2d5dae906a6c074584ead75a65cc3e9, type: 2}
-  characterSprite: {fileID: -4053993945890409367, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}
-  uiSprite: {fileID: 8816000985053885555, guid: 9b44e326ebfb5044f92f73a53809cd1f, type: 3}
+  portrait: {fileID: 0}
   prefab: {fileID: 3288017297164883012, guid: 379575d70000d1145a2bc2da55d06f0d, type: 3}
+  attributes:
+    strength: 0
+    intelligence: 0
+    dexterity: 0
+    vitality: 0
+    spirit: 0
+  statsBonus:
+    <MaxHealth>k__BackingField: 0
+    <MaxShield>k__BackingField: 0
+    <MaxMana>k__BackingField: 0
+    <Speed>k__BackingField: 0
+    <Hit>k__BackingField: 0
+    <Evade>k__BackingField: 0
+    <Armor>k__BackingField: 0
+    <Resistance>k__BackingField: 0
+    <Damage>k__BackingField: 0
+    <CritChance>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+  skills: []
   drops:
-  - {fileID: 11400000, guid: 16b839efbbb8a0b42857c52262a33ce4, type: 2}
-  - {fileID: 11400000, guid: d5859b60d794cc045b458ed3c5d3644a, type: 2}
+  - <Item>k__BackingField: {fileID: 0}
+    <Chance>k__BackingField: 0
+  - <Item>k__BackingField: {fileID: 0}
+    <Chance>k__BackingField: 0

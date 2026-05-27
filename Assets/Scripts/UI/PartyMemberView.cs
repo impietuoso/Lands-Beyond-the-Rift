@@ -1,4 +1,5 @@
 using TMPro;
+using TurnBasedRPG.BattleStats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,10 +19,10 @@ namespace RPG {
 
         protected override void Subscribe() {
             if(CharName) CharName.text = Data.CharName;
-            if(Level) Level.text = Data.Level.ToString();
+            if(Level) Level.text = "Lv. " + Data.Level;
             if(Profession) Profession.text = Data.Profession.name;
             if(Element) Element.overrideSprite = Data.Element.elementSprite;
-            if(Attributes) Attributes.SetData(Data.UsedAttributes);
+            if(Attributes) Attributes.SetData(((IAttributes)Data).Pairs());
             if(Stats) Stats.SetData(Data);
             if(Equips) Equips.SetData(Data.Equips);
             if(Consumables) Consumables.SetData(Data.Consumables);

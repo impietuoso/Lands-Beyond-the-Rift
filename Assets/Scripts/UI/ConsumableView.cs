@@ -11,9 +11,14 @@ namespace RPG {
         protected override void Subscribe() {
             if (Name) Name.text = Data.name;
             if (Description) Description.text = Data.description;
-            if (Icon) Icon.overrideSprite = Data.sprite;
+            if(Icon) {
+                Icon.color = Color.white;
+                Icon.overrideSprite = Data.sprite;
+            }
         }
 
-        protected override void Unsubscribe() { }
+        protected override void Unsubscribe() {
+            Icon.color = new(1, 1, 1, .15f);
+        }
     }
 }

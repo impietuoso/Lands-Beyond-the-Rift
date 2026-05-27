@@ -13,13 +13,9 @@ MonoBehaviour:
   m_Name: test skill
   m_EditorClassIdentifier: TurnBasedRPG::TurnBasedRPG.Data.Skill
   <displayName>k__BackingField: 
-  <description>k__BackingField: 
   <sprite>k__BackingField: {fileID: 0}
-  <maxStack>k__BackingField: 99
-  skillName: 
-  skillDescription: 
+  <description>k__BackingField: Deal (10/30/50) fire damage.
   cost: 0
-  icon: {fileID: 0}
   element: {fileID: 0}
   targeting:
     group: 1
@@ -27,13 +23,30 @@ MonoBehaviour:
     filter:
       rid: 5967446036352073852
   animation:
-    rid: -2
-  effects: []
+    rid: 5967446036352073915
+  effects:
+  - rid: 5967446036352073916
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967446036352073852
       type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
+    - rid: 5967446036352073915
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1
+    - rid: 5967446036352073916
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 30
+        scale:
+          attribute: 0
+          scale: 1
+        hitChance: 80
+        critChance: 10
+        damageRange: 0.15

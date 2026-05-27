@@ -13,7 +13,36 @@ MonoBehaviour:
   m_Name: Health Potions (p)
   m_EditorClassIdentifier: Assembly-CSharp::Consumable
   <displayName>k__BackingField: Small Health Potion
-  <description>k__BackingField: Heal a small amount of health
   <sprite>k__BackingField: {fileID: 21300000, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
-  <maxStack>k__BackingField: 99
-  skillEffect: {fileID: 11400000, guid: 4df4aa34cb89b8947a7de1ef28fb7245, type: 2}
+  <description>k__BackingField: Heal a small amount of health
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  targeting:
+    group: 2
+    area: 0
+    filter:
+      rid: 5967446036352073942
+  animation:
+    rid: 5967446036352073943
+  effects:
+  - rid: 5967446036352073944
+  references:
+    version: 2
+    RefIds:
+    - rid: 5967446036352073942
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 
+    - rid: 5967446036352073943
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 0}
+        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1
+    - rid: 5967446036352073944
+      type: {class: Heal, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        amount: 20
+        scale:
+          attribute: 0
+          scale: 0
