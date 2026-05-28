@@ -1,25 +1,29 @@
 using Explorations;
+using TurnBasedRPG;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     public float moveSpeed;
-    public Vector2 axis { get; private set; }
-    public SpriteRenderer spr;
-    public Rigidbody2D rb;
-    public Animator anim;
-    private bool facingRight = true;
-    public Interactor interactor;
+    [SerializeField] private SpriteRenderer spr;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
+    [SerializeField] private Interactor interactor;
+    [SerializeField] private PlayerPartyView partyViewPrefab;
+
+    private Vector2 Axis { get; set; }
+    private bool _facingRight = true;
+    private PlayerPartyView _partyView;
 
     public void Update() {
-        if(rb) rb.linearVelocity = axis.normalized * moveSpeed;
-        if(anim) anim.SetBool("Moving", axis.sqrMagnitude != 0);
+        if(rb) rb.linearVelocity = Axis.normalized * moveSpeed;
+        if(anim) anim.SetBool("Moving", Axis.sqrMagnitude != 0);
     }
 
     public void Move(InputAction.CallbackContext context) {
-        axis = context.ReadValue<Vector2>();
-        if(axis.x > 0 && !facingRight) Flip();
-        if(axis.x < 0 && facingRight) Flip();
+        Axis = context.ReadValue<Vector2>();
+        if(Axis.x > 0 && !_facingRight) Flip();
+        if(Axis.x < 0 && _facingRight) Flip();
     }
 
     public void Interact(InputAction.CallbackContext context) {
@@ -36,14 +40,19 @@ public class PlayerController : MonoBehaviour {
 
     public void Flip() {
         if(spr) spr.flipX = !spr.flipX;
-        facingRight = !facingRight;
+        _facingRight = !_facingRight;
     }
 
     public void Menu(InputAction.CallbackContext context) {
         if(!context.action.WasPressedThisFrame()) return;
         var party = GetComponent<PlayerParty>();
         if(!party) return;
-        Game.PartyView.SetData(party);
-        Game.PartyView.gameObject.SetActive(true);
+
+        if(!_partyView) {
+            _partyView = partyViewPrefab.Clone();
+            _partyView.SetData(party);
+        }
+
+        _partyView.gameObject.SetActive(true);
     }
 }

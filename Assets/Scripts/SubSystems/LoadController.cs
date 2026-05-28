@@ -7,18 +7,19 @@ namespace Controllers {
         public Animator loadscreen;
         public float loadDelay;
 
-        public Coroutine ChangeScene(int sceneId) {
-            return StartCoroutine(_ChangeScene(sceneId));
+        public void ChangeScene(int sceneId) {
+            StartCoroutine(_ChangeScene(sceneId));
         }
 
         private IEnumerator _ChangeScene(int sceneId) {
             loadscreen.SetTrigger("Fade");
             yield return new WaitForSeconds(loadDelay);
-            var op = SceneManager.LoadSceneAsync(sceneId);
-            op!.completed += Fade;
-        }
 
-        private void Fade(AsyncOperation obj) {
+            var op = SceneManager.LoadSceneAsync(sceneId);
+            yield return op;
+            yield return Game.LoadTasks.WaitAll();
+            
+            yield return new WaitForSeconds(loadDelay);
             loadscreen.SetTrigger("Fade");
         }
     }

@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 2916125319502969170}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -444,6 +444,7 @@ MonoBehaviour:
   rb: {fileID: 6084286297295793419}
   anim: {fileID: 4520403846243800190}
   interactor: {fileID: 8425339289898764634}
+  partyViewPrefab: {fileID: 3007064492225041233, guid: 722b4dec30ce5e14fabb3244bc0ed09b, type: 3}
 --- !u!114 &8425339289898764634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,15 +470,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53490a9ff0943b79a77924915f69e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerParty
-  consumables:
-    slots:
-    - _item: {fileID: 11400000, guid: 90fb8655e0a5be54ea72f00cba2c713c, type: 2}
-      _amount: 5
-    - _item: {fileID: 11400000, guid: 91897ed542825724a9a83fbe7479b3f1, type: 2}
-      _amount: 2
   members:
-  - {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
-  - {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
+    list: []
+  inventory:
+    slots: []
 --- !u!114 &2916125319502969170
 MonoBehaviour:
   m_ObjectHideFlags: 0
