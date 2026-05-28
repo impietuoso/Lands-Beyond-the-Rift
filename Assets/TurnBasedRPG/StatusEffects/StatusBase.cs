@@ -38,7 +38,7 @@ namespace TurnBasedRPG.StatusEffects {
             if(other is not StatusBase sb) return;
             duration.Value += sb.duration.Value;
             if(stacks.Value >= stacks.Max) return;
-            stacks.Value++;
+            stacks.Value += sb.stacks.Value;
             OnStacksChanged(target, stacks.Value);
         }
 
@@ -51,7 +51,7 @@ namespace TurnBasedRPG.StatusEffects {
 
         protected virtual void OnStacksChanged(Character target, int amt) { }
     }
-    
+
     [Serializable]
     public class StatusValue : IObservable<int>, ISingleLineDrawer {
         [SerializeField] private int value, max;

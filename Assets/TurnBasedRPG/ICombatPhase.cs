@@ -90,7 +90,9 @@ namespace TurnBasedRPG {
             Debug.Log("Target Selected: " + a.Target?.characterName);
 
             // Use Skill
-            a.User.Mana.Current -= a.Skill.Cost;
+            var costMult = (a.User[OtherStat.ManaCost] + 100) / 100f;
+            var cost = a.Skill.Cost * Mathf.Max(0, costMult);
+            a.User.Mana.Current -= (int)cost;
             var usedSlot = cm.Consumables.slots.FirstOrDefault(s => s.item.Skill == a.Skill);
             if(usedSlot != null) cm.Consumables.Remove(usedSlot.item, 1);
             yield return a.Skill.UseSkill(a.User, a.Target);

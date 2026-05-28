@@ -11,7 +11,7 @@ namespace TurnBasedRPG.BattleStats {
         Hit,
         Evade,
         Armor,
-        Resistance,
+        Resistance, 
         Damage,
         CritChance,
         CritDamage,
