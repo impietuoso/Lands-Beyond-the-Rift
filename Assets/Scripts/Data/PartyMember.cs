@@ -39,6 +39,7 @@ namespace RPG {
         public Sprite CharacterSprite => characterSprite;
         public Sprite UISprite => uiSprite;
         public Animator Prefab => prefab;
+        public ISkill BasicAttack => profession.BasicAttack;
 
         public int GetUnusedPoints() => level * 2 - usedAttributes.Sum();
         public void SetEquip(int index, IEquipment e) => equips[index] = (Equipment)e;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb2f9a7c5a449c0812e8c345c2c09ab, type: 3}
   m_Name: Alchemist A
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
-  charName: Alchemist
+  charName: Full Lanu
   level: 1
   exp: 0
   usedAttributes:
@@ -26,7 +26,7 @@ MonoBehaviour:
   equips:
     list:
     - {fileID: 11400000, guid: e78f0a43b63420e4d8b43544dfd1a3f9, type: 2}
-    - {fileID: 11400000, guid: 9bdbd5fb0372c9f4f90b892c4458a968, type: 2}
+    - {fileID: 11400000, guid: dc5281018de01c14b89e805e70fc3d9b, type: 2}
     - {fileID: 0}
   consumables:
     list:

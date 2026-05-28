@@ -15,6 +15,7 @@ namespace TurnBasedRPG.Data {
         Sprite CharacterSprite { get; }
         Sprite UISprite { get; }
         Animator Prefab { get; }
+        ISkill BasicAttack { get; }
         int GetUnusedPoints();
 
         void SetEquip(int index, IEquipment e);

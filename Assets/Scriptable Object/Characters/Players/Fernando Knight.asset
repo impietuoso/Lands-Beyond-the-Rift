@@ -25,8 +25,8 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
     list:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 5e2707f025cc02142881a5e1e5c28ce0, type: 2}
+    - {fileID: 11400000, guid: b393353cd864d0148a2db6652fd4eb32, type: 2}
     - {fileID: 0}
   consumables:
     list:

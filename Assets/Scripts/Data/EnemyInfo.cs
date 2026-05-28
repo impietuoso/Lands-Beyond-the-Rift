@@ -15,6 +15,7 @@ namespace RPG {
         [SerializeField] private Element element;
         [SerializeField] private Sprite portrait;
         [SerializeField] private Animator prefab;
+        [SerializeField] private Skill basicAttack;
         [Separator]
         [SerializeField] private Attributes attributes;
         [SerializeField] private StatsBase statsBonus;
@@ -39,6 +40,7 @@ namespace RPG {
         public Sprite CharacterSprite => portrait;
         public Sprite UISprite => portrait;
         public Animator Prefab => prefab;
+        public ISkill BasicAttack => basicAttack;
         public IReadOnlyList<Drop> Drops => drops;
 
         public int this[Attribute a] => attributes[a] + 2;
