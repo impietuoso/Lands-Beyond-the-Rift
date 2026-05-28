@@ -15,8 +15,8 @@ MonoBehaviour:
   <displayName>k__BackingField: Ruby Necklace
   <sprite>k__BackingField: {fileID: 21300000, guid: 9cb47e698fe83a94a9d6900394a19350, type: 3}
   <description>k__BackingField: 
-  type: {fileID: 0}
-  category: {fileID: 0}
+  type: {fileID: 11400000, guid: 7a5efbb9c2b12fe43a803acb0b88e94f, type: 2}
+  category: {fileID: 11400000, guid: e2eea7846ad15474094f7f3c7e01fe24, type: 2}
   bonusValue:
     <MaxHealth>k__BackingField: 20
     <MaxShield>k__BackingField: 0

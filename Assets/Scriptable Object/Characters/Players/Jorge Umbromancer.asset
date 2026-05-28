@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
   charName: Jorge
   level: 1
+  exp: 0
   usedAttributes:
     strength: 5
     intelligence: 5
@@ -23,6 +24,11 @@ MonoBehaviour:
   profession: {fileID: 11400000, guid: 6c59e8f0d69ec0e43977395b3d8110ae, type: 2}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
+    list:
+    - {fileID: 11400000, guid: dc597644d2633f440ac1c34fd10e0afb, type: 2}
+    - {fileID: 11400000, guid: 78f8f17b3c9dbb043be1316aa0f3731c, type: 2}
+    - {fileID: 0}
+  consumables:
     list:
     - {fileID: 0}
     - {fileID: 0}

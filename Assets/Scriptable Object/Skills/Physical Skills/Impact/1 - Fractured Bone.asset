@@ -13,27 +13,46 @@ MonoBehaviour:
   m_Name: 1 - Fractured Bone
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <displayName>k__BackingField: Fractured Bone
-  <description>k__BackingField: 
   <sprite>k__BackingField: {fileID: 21300000, guid: fb4e082fc18b2ab4bbc654500cb0e335, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Fractured Bone
-  skillDescription: 
+  <description>k__BackingField: Low Physical Damage to One Foe, Apply Vulnerable.
   cost: 0
-  icon: {fileID: 21300000, guid: fb4e082fc18b2ab4bbc654500cb0e335, type: 3}
-  element: {fileID: 0}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
     area: 0
     filter:
       rid: 5967446036352073842
   animation:
-    rid: -2
-  effects: []
+    rid: 9169537286629752835
+  effects:
+  - rid: 9169537286629752854
+  - rid: 9169537286629752850
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5967446036352073842
       type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
+    - rid: 9169537286629752835
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 8846507025273177154, guid: 10b2dd959ed4e1f428cb8ca6f6de0006, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 0
+    - rid: 9169537286629752850
+      type: {class: ApplyStatus, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
+        targetUser: 0
+    - rid: 9169537286629752854
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 0
+          scale: 1
+        hitChance: 80
+        critChance: 10
+        damageRange: 0.15

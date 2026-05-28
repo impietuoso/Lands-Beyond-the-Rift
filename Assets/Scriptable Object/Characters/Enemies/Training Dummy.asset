@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72636009a86d4e5cb2a30dcb13792c2c, type: 3}
   m_Name: Training Dummy
   m_EditorClassIdentifier: Assembly-CSharp::RPG.EnemyInfo
-  charName: Training Dummy
+  charName: Dummy
   level: 1
   exp: 0
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}

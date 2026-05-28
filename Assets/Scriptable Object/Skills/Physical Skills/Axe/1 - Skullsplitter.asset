@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 1 - Skullsplitter
+  m_EditorClassIdentifier: Assembly-CSharp::Skill
+  <displayName>k__BackingField: Skullsplitter
+  <sprite>k__BackingField: {fileID: 21300000, guid: f247ad3d9bd3dba41a8ded8ef87ba3dd, type: 3}
+  <description>k__BackingField: Low Physical Damage to One Foe, Ignores Armor and
+    Unavoidable.
+  cost: 0
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
+  targeting:
+    group: 1
+    area: 0
+    filter:
+      rid: 5967446036352073859
+  animation:
+    rid: 9169537286629752873
+  effects:
+  - rid: 9169537286629752874
+  - rid: 9169537286629752875
+  - rid: 9169537286629752876
+  references:
+    version: 2
+    RefIds:
+    - rid: 5967446036352073859
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 
+    - rid: 9169537286629752873
+      type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
+      data:
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 8846507025273177154, guid: 10b2dd959ed4e1f428cb8ca6f6de0006, type: 3}
+        hitCount: {x: 1, y: 1}
+        damageDelay: 1
+        hitDelay: 1
+    - rid: 9169537286629752874
+      type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        damage: 10
+        scale:
+          attribute: 0
+          scale: 1
+        hitChance: 80
+        critChance: 90
+        damageRange: 0.15
+    - rid: 9169537286629752875
+      type: {class: IgnoreArmor, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data: 
+    - rid: 9169537286629752876
+      type: {class: Unavoidable, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data: 

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb2f9a7c5a449c0812e8c345c2c09ab, type: 3}
   m_Name: Scout A
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
-  charName: Scout
+  charName: Bel Trano
   level: 1
+  exp: 0
   usedAttributes:
     strength: 5
     intelligence: 5
@@ -23,6 +24,11 @@ MonoBehaviour:
   profession: {fileID: 11400000, guid: ce05d3c6bbc652f4590fa57bbbdcfe8d, type: 2}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
+    list:
+    - {fileID: 11400000, guid: d6af40e43cd38114d8c63193cec5dc49, type: 2}
+    - {fileID: 11400000, guid: dc5281018de01c14b89e805e70fc3d9b, type: 2}
+    - {fileID: 0}
+  consumables:
     list:
     - {fileID: 0}
     - {fileID: 0}

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb2f9a7c5a449c0812e8c345c2c09ab, type: 3}
   m_Name: Sorcerer A
   m_EditorClassIdentifier: Assembly-CSharp::PartyMember
-  charName: Scorcerer
+  charName: Paper
   level: 1
+  exp: 0
   usedAttributes:
     strength: 5
     intelligence: 5
@@ -23,6 +24,11 @@ MonoBehaviour:
   profession: {fileID: 11400000, guid: ffb99c29d02008e45868fdb5bbd75dbb, type: 2}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
+    list:
+    - {fileID: 11400000, guid: 517a43311b83d104db5776ce7474262d, type: 2}
+    - {fileID: 11400000, guid: 78f8f17b3c9dbb043be1316aa0f3731c, type: 2}
+    - {fileID: 0}
+  consumables:
     list:
     - {fileID: 0}
     - {fileID: 0}

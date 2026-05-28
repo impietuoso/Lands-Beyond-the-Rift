@@ -62,14 +62,14 @@ namespace TurnBasedRPG {
         }
 
         private void GetSkills() {
-            skills = member.EquipedSkills.Where(s => s.Animation != null).ToList();
+            skills = member.EquipedSkills.Where(s => s?.Animation != null).ToList();
 
             foreach (var e in equipment)
                 if(e?.ActiveSkill != null && !skills.Contains(e.ActiveSkill))
                     skills.Add(e.ActiveSkill);
 
             basicAttack = equipment.OfType<IWeapon>().FirstOrDefault()?.Attack;
-            basicAttack ??= profession.BasicAttack;
+            basicAttack ??= member.BasicAttack;
         }
     }
 }

@@ -13,22 +13,24 @@ MonoBehaviour:
   m_Name: L 3 Armor
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
   <displayName>k__BackingField: Magic Robe
-  <description>k__BackingField: 
   <sprite>k__BackingField: {fileID: -5179249603268246280, guid: 355fe41ec779b5744a50639830dfe647, type: 3}
-  <maxStack>k__BackingField: 99
-  equipmentType: {fileID: 11400000, guid: 55798d5937659d9458b8be88af3772ae, type: 2}
-  categoryTag: {fileID: 11400000, guid: d448a3b0e1ca65448a2a11050e197a41, type: 2}
+  <description>k__BackingField: 
+  type: {fileID: 11400000, guid: 55798d5937659d9458b8be88af3772ae, type: 2}
+  category: {fileID: 11400000, guid: d448a3b0e1ca65448a2a11050e197a41, type: 2}
   bonusValue:
-    <damage>k__BackingField: 0
-    <health>k__BackingField: 0
-    <shield>k__BackingField: 0
-    <mana>k__BackingField: 0
-    <speed>k__BackingField: 0
-    <armor>k__BackingField: 0
-    <resistance>k__BackingField: 0
-    <evade>k__BackingField: 0
-  equipmentSkill: {fileID: 0}
-  passiva:
+    <MaxHealth>k__BackingField: 0
+    <MaxShield>k__BackingField: 0
+    <MaxMana>k__BackingField: 0
+    <Speed>k__BackingField: 0
+    <Hit>k__BackingField: 0
+    <Evade>k__BackingField: 0
+    <Armor>k__BackingField: 0
+    <Resistance>k__BackingField: 0
+    <Damage>k__BackingField: 0
+    <CritChance>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+  skill: {fileID: 0}
+  passive:
     rid: -2
   references:
     version: 2

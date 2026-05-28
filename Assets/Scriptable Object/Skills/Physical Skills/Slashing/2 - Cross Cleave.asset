@@ -13,13 +13,9 @@ MonoBehaviour:
   m_Name: 2 - Cross Cleave
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <displayName>k__BackingField: Cross Cleave
-  <description>k__BackingField: 
   <sprite>k__BackingField: {fileID: 21300000, guid: 0f2dbcf63a6a9c247a0f0891a4e24d91, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Cross Cleave
-  skillDescription: 
+  <description>k__BackingField: 2 Hits of Medium Physical Damage to all Foes.
   cost: 0
-  icon: {fileID: 21300000, guid: 0f2dbcf63a6a9c247a0f0891a4e24d91, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
