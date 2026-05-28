@@ -10,49 +10,62 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: 1 - Fractured Bone
+  m_Name: 2 - Attack of Oportunity
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  <displayName>k__BackingField: Fractured Bone
-  <sprite>k__BackingField: {fileID: 21300000, guid: fb4e082fc18b2ab4bbc654500cb0e335, type: 3}
-  <description>k__BackingField: Low Physical Damage to One Foe, Apply Vulnerable.
+  <displayName>k__BackingField: Attack of Oportunity
+  <sprite>k__BackingField: {fileID: 21300000, guid: 15ac24e280babdb43bb27639131c29ec, type: 3}
+  <description>k__BackingField: Medium Physical Damage to One Foe, if has Vulnerable,
+    Tripple Damage.
   cost: 0
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
     area: 0
     filter:
-      rid: 5967446036352073842
+      rid: 5967446036352073859
   animation:
-    rid: 9169537286629752835
+    rid: 9169537286629752873
   effects:
-  - rid: 9169537286629752854
-  - rid: 9169537286629752850
+  - rid: 9169537286629752874
+  - rid: 9169537286629752890
   references:
     version: 2
     RefIds:
-    - rid: 5967446036352073842
+    - rid: 5967446036352073859
       type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
       data: 
-    - rid: 9169537286629752835
+    - rid: 9169537286629752873
       type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
         castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
         skillParticle: {fileID: 8846507025273177154, guid: 10b2dd959ed4e1f428cb8ca6f6de0006, type: 3}
         hitCount: {x: 1, y: 1}
         damageDelay: 1
-        hitDelay: 0
-    - rid: 9169537286629752850
-      type: {class: ApplyStatus, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
-      data:
-        status: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
-        targetUser: 0
-    - rid: 9169537286629752854
+        hitDelay: 1
+    - rid: 9169537286629752874
       type: {class: Damage, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
       data:
         damage: 10
         scale:
-          attribute: 0
+          attribute: 2
           scale: 1
-        hitChance: 80
+        hitChance: 70
         critChance: 10
         damageRange: 0.15
+    - rid: 9169537286629752890
+      type: {class: ConditionalEffect, ns: TurnBasedRPG.Skills.SkillEffects, asm: TurnBasedRPG}
+      data:
+        condition:
+          rid: 9169537286629752891
+        effects:
+        - rid: 9169537286629752892
+    - rid: 9169537286629752891
+      type: {class: StatusEffect, ns: TurnBasedRPG.Skills.CombatArgsFilters, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
+        not: 0
+    - rid: 9169537286629752892
+      type: {class: DamageMod, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data:
+        mode: 1
+        value: 3
