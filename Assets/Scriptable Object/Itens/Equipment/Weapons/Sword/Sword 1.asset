@@ -15,6 +15,7 @@ MonoBehaviour:
   <displayName>k__BackingField: Gladius
   <sprite>k__BackingField: {fileID: 21300000, guid: f660613d55dc8dd438f455466f3be854, type: 3}
   <description>k__BackingField: 
+  tags: []
   type: {fileID: 11400000, guid: 25617ff5ff885b742b9ab6a5fbd84654, type: 2}
   category: {fileID: 11400000, guid: d16f2f7703ef9184b93df1933d7e462d, type: 2}
   bonusValue:
@@ -30,6 +31,7 @@ MonoBehaviour:
     <CritChance>k__BackingField: 0
     <CritDamage>k__BackingField: 0
   skill: {fileID: 0}
+  tacticsBuff: {fileID: 11400000, guid: 6b7acff30465bc84db2dda55c61658b4, type: 2}
   passive:
     rid: -2
   attack: {fileID: 0}

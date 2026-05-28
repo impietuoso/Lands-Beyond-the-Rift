@@ -13,20 +13,17 @@ MonoBehaviour:
   m_Name: Dexterity Base Attack
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <displayName>k__BackingField: Attack
+  <sprite>k__BackingField: {fileID: 0}
   <description>k__BackingField: Common attack deals base damage scale to Character
     Power
-  <sprite>k__BackingField: {fileID: 0}
-  <maxStack>k__BackingField: 99
-  skillName: Attack
-  skillDescription: Common attack deals base damage scale to Character Power
+  tags: []
   cost: 0
-  icon: {fileID: 0}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
     area: 0
     filter:
-      rid: 5967445928687698326
+      rid: 9169537302688694352
   animation:
     rid: 5967445995023237230
   effects:
@@ -48,14 +45,14 @@ MonoBehaviour:
     - rid: 5967445875509691359
       type: {class: ManaRecover, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
       data: 
-    - rid: 5967445928687698326
-      type: {class: Any, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
-      data: 
     - rid: 5967445995023237230
       type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
-        castParticle: {fileID: 0}
+        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
         skillParticle: {fileID: 6196835313948401845, guid: 79056cc77430647498cd2cf58c6c5999, type: 3}
         hitCount: {x: 1, y: 1}
         damageDelay: 1
         hitDelay: 1
+    - rid: 9169537302688694352
+      type: {class: Alive, ns: TurnBasedRPG.Skills.TargetFilters, asm: TurnBasedRPG}
+      data: 

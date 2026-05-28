@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514340767191422e959359a83957c1b3, type: 3}
+  m_Name: Speed Increase
+  m_EditorClassIdentifier: Assembly-CSharp::RPG.Passive
+  <displayName>k__BackingField: Sword Passive
+  <sprite>k__BackingField: {fileID: 21300000, guid: ad577c7c0a47b3142828a26b5bf7320a, type: 3}
+  <description>k__BackingField: Each Attack increases the Speed of the User
+  tags:
+  - {fileID: 11400000, guid: d16f2f7703ef9184b93df1933d7e462d, type: 2}
+  trigger:
+    rid: 9169537302688694377
+  references:
+    version: 2
+    RefIds:
+    - rid: 9169537302688694377
+      type: {class: OnAttack, ns: TurnBasedRPG.Skills.PassiveTriggers, asm: TurnBasedRPG}
+      data:
+        condition:
+          rid: 9169537302688694379
+        effects:
+        - rid: 9169537302688694381
+    - rid: 9169537302688694379
+      type: {class: SkillTag, ns: TurnBasedRPG.Skills.CombatArgsFilters, asm: TurnBasedRPG}
+      data:
+        tag: {fileID: 11400000, guid: f2948c185d2f47842804f525da28a7cd, type: 2}
+        not: 0
+    - rid: 9169537302688694381
+      type: {class: ApplyStatus, ns: TurnBasedRPG.Skills.DamageModifiers, asm: TurnBasedRPG}
+      data:
+        status: {fileID: 0}
+        targetUser: 0

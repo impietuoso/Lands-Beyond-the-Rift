@@ -7,7 +7,6 @@ namespace TurnBasedRPG.Data {
         string CharName { get; }
         int Level { get; set; }
         Attributes UsedAttributes { get; }
-        Profession Profession { get; }
         Element Element { get; }
         IReadOnlyList<IEquipment> Equips { get; }
         IReadOnlyList<ISkill> EquipedSkills { get; }

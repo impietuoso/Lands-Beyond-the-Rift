@@ -12,7 +12,6 @@ namespace TurnBasedRPG.UI.Views
     {
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI levelText;
-        public TextMeshProUGUI professionText;
         public TextMeshProUGUI allStatsText;
         public Image icon;
         public ListView equipedSkills;
@@ -53,7 +52,6 @@ namespace TurnBasedRPG.UI.Views
         {
             if (nameText) nameText.text = Data.CharName;
             if (levelText) levelText.text = $"Lv. {Data.Level}";
-            if (professionText) professionText.text = Data.Profession.name;
             if (allStatsText) allStatsText.text = AllStats();
             if (equipedSkills) equipedSkills.SetData(Data.EquipedSkills);
             if (avaliableSkills) avaliableSkills.SetData(Data.LearnedSkills);
@@ -73,7 +71,6 @@ namespace TurnBasedRPG.UI.Views
             if (interactable) interactable.interactable = false;
             if (nameText) nameText.text = "Empty";
             if (levelText) levelText.text = "";
-            if (professionText) professionText.text = "-";
             if (icon) icon.overrideSprite = null;
         }
     }

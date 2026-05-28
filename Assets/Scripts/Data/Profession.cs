@@ -1,16 +1,15 @@
+using RPG;
 using System.Collections.Generic;
 using TurnBasedRPG.BattleStats;
 using UnityEngine;
 
-namespace TurnBasedRPG.Data
-{
+namespace TurnBasedRPG.Data {
     [CreateAssetMenu(menuName = "Scriptable/Profession", fileName = "New Profession")]
-    public class Profession : ScriptableObject, IAttributes
-    {
+    public class Profession : ScriptableObject, IAttributes {
         [SerializeField] private Attributes attributeBonus;
-        [SerializeField] private ISkill basicAttack;
-        [SerializeField] private List<ISkill> starterSkills = new();
-        [SerializeField] private List<ISkill> unlockableSkills = new();
+        [SerializeField] private Skill basicAttack;
+        [SerializeField] private List<Skill> starterSkills = new();
+        [SerializeField] private List<Skill> unlockableSkills = new();
 
         public ISkill BasicAttack => basicAttack;
         public IReadOnlyList<ISkill> StarterSkills => starterSkills;

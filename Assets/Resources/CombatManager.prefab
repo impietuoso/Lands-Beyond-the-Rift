@@ -379,10 +379,10 @@ RectTransform:
   - {fileID: 6278192289573991168}
   m_Father: {fileID: 58049275134670552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -47.5}
-  m_SizeDelta: {x: 190, y: 65}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1109712446185328719
 CanvasRenderer:
@@ -1182,10 +1182,10 @@ RectTransform:
   - {fileID: 719557485700299047}
   m_Father: {fileID: 3092731273456453623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 65}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 110, y: -137.5}
+  m_SizeDelta: {x: 190, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &781447888581535245
 CanvasRenderer:
@@ -2506,7 +2506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &58049275134670552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3894,10 +3894,10 @@ RectTransform:
   - {fileID: 2293511217827809891}
   m_Father: {fileID: 3092731273456453623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 65}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 110, y: -227.5}
+  m_SizeDelta: {x: 190, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3865998289267432740
 CanvasRenderer:
@@ -4202,10 +4202,10 @@ RectTransform:
   - {fileID: 5843324459920907358}
   m_Father: {fileID: 58049275134670552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -137.5}
-  m_SizeDelta: {x: 190, y: 65}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7515979229956509919
 CanvasRenderer:
@@ -4356,10 +4356,10 @@ RectTransform:
   - {fileID: 4919543270559070891}
   m_Father: {fileID: 58049275134670552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -317.5}
-  m_SizeDelta: {x: 190, y: 65}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &785888167420701730
 CanvasRenderer:
@@ -4913,10 +4913,10 @@ RectTransform:
   - {fileID: 7649297731296556713}
   m_Father: {fileID: 3092731273456453623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 65}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 110, y: -47.5}
+  m_SizeDelta: {x: 190, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &392583435346983627
 CanvasRenderer:
@@ -10554,14 +10554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7e8e8590716445bdeed9643546bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TurnBasedRPG::TurnBasedRPG.CombatManager
-  <BasicDefense>k__BackingField: {fileID: 11400000, guid: 127865cc1fecd3a46a72ca3625092cca, type: 2}
   <View>k__BackingField: {fileID: 6789984008980602207}
   <CurrentCharacter>k__BackingField:
-    member: {fileID: 0}
     team: 
     Element: {fileID: 0}
-    basicAttack: {fileID: 0}
-    skills: []
     actionPoints:
       value: 0
     <Health>k__BackingField:
@@ -10745,7 +10741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98adfe871cfcb64b9c13c427b3d1e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TurnBasedRPG::TurnBasedRPG.UI.Combat.CallPopupText
-  popup: {fileID: 1588779822788351524, guid: 773f3338b2f71964988cdfadfa6c379f, type: 3}
+  popup: {fileID: 1412540040370326125, guid: 3249ef68bb1caf94eb6ad4f8c6a00688, type: 3}
 --- !u!114 &-2548140616700463730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11119,10 +11115,10 @@ RectTransform:
   - {fileID: 5536125677815750014}
   m_Father: {fileID: 58049275134670552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -227.5}
-  m_SizeDelta: {x: 190, y: 65}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3489042474043670891
 CanvasRenderer:
@@ -11205,7 +11201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22551436782769034}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5091245487863347589}
+        m_TargetAssemblyTypeName: TurnBasedRPG.CombatManager, TurnBasedRPG
+        m_MethodName: SkipTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7902247458242339534
 MonoBehaviour:
   m_ObjectHideFlags: 0

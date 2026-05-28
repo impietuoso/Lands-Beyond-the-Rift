@@ -36,7 +36,6 @@ namespace TurnBasedRPG {
 
         public IReadOnlyList<IEquipment> equipment => member.Equips;
         public string characterName => member.CharName;
-        public Profession profession => member.Profession;
         public bool Dead => Health.Current == 0;
         public Vector3 Position => cm.Arena.GetPosition(this);
 

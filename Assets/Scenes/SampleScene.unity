@@ -3380,11 +3380,15 @@ PrefabInstance:
     - target: {fileID: 3168334120790545255, guid: f6e1c1f4ac0c82a4fb56857f7a4a7696, type: 3}
       propertyPath: 'members.list.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 97e9b44b27e8b8743bf0330de3d8337c, type: 2}
+      objectReference: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
     - target: {fileID: 3168334120790545255, guid: f6e1c1f4ac0c82a4fb56857f7a4a7696, type: 3}
       propertyPath: 'members.list.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 8063acfc06afce7439948e6545da9ff4, type: 2}
+      objectReference: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
+    - target: {fileID: 3168334120790545255, guid: f6e1c1f4ac0c82a4fb56857f7a4a7696, type: 3}
+      propertyPath: 'members.list.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
     - target: {fileID: 3168334120790545255, guid: f6e1c1f4ac0c82a4fb56857f7a4a7696, type: 3}
       propertyPath: inventory.slots.Array.data[0]._item
       value: 
@@ -5040,7 +5044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurnBasedRPG.Controller.EncounterTrigger
   encounter: {fileID: 11400000, guid: 8b615905ddf61e74ba139ae50cd03584, type: 2}
   arena: {fileID: 528379715971362417}
-  itemDrop: {fileID: 0}
+  itemDrop: {fileID: 5321322376771370253, guid: cbe6915ef50b5074ab909ddaea60c92f, type: 3}
   staticEffect: {fileID: 447814965}
   duration: {x: 0.5, y: 0.2}
   pixels: {x: 10, y: 40}

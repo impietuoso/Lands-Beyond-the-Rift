@@ -11,12 +11,12 @@ public class SpeedStatus : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.Stats.Speed.AddBonus(this, multiplier);
+        target.Stats.Speed.SetBonusMult(this, multiplier);
         target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.Stats.Speed.RemoveBonus(this);
+        target.Stats.Speed.RemoveBonusMult(this);
         target.OnEndTurn -= OnTurnEnd;
     }
 

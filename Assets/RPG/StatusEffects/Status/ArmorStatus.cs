@@ -11,12 +11,12 @@ public class ArmorStatus : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.Stats.Armor.AddBonus(this, multiplier);
+        target.Stats.Armor.SetBonusMult(this, multiplier);
         target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.Stats.Armor.RemoveBonus(this);
+        target.Stats.Armor.RemoveBonusMult(this);
         target.OnEndTurn -= OnTurnEnd;
     }
 

@@ -4,11 +4,17 @@ using UnityEngine;
 namespace TurnBasedRPG.UI.Combat
 {
     public class PopupText : MonoBehaviour {
-        public TextMeshProUGUI text;
+        public TextMeshProUGUI textcanvas;
+        public TextMeshPro text;
 
         public void Message(string message, Color color) {
-            text.text = message;
-            text.color = color;
+            if (textcanvas) {
+                textcanvas.text = message;
+                textcanvas.color = color;
+            } else if (text) {
+                text.text = message;
+                text.color = color;
+            }
         }
 
         public void AutoDestroy() {
