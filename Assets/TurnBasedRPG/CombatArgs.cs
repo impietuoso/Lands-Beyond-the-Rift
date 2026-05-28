@@ -1,14 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
+using TurnBasedRPG.StatusEffects;
 using UnityEngine;
+using static TurnBasedRPG.BattleStats.OtherStat;
 using Random = UnityEngine.Random;
 using static TurnBasedRPG.BattleStats.Stat;
 
 namespace TurnBasedRPG {
     public class CombatArgs {
-
         public object source;
         public Character user;
         public Character target;
@@ -60,7 +62,7 @@ namespace TurnBasedRPG {
             if(!ignoreArmor) damage = Mathf.Max(damage - target[Armor], 0);
 
             // damage stat
-            if(user != null) damage = (int)(damage * user[Damage] / 100f);
+            if(user != null) damage = (int)(damage * user[Stat.Damage] / 100f);
 
             // crit damage
             if(crit) {
@@ -98,7 +100,37 @@ namespace TurnBasedRPG {
             if(result.Miss) Debug.Log("Miss");
         }
 
+        public void TryApplyStatuses(Character tgt, params StatusSO[] statuses) {
+            var roll = Random.Range(0, 100);
+            var chance = 100 - tgt[Resistance] + (user?[Malignance] ?? 0);
+            var apply = roll < chance;
+
+            foreach (var so in statuses) {
+                var flag = (target: tgt, so);
+                if(!cm.ActionFlags.Add(flag)) continue;
+
+                if(so.Type != StatusType.Debuff) {
+                    cm.CombatEvents.Enqueue(Apply(tgt, so));
+                    continue;
+                }
+
+                if(!apply) {
+                    result.ResistStatus = true;
+                    continue;
+                }
+
+                cm.CombatEvents.Enqueue(Apply(tgt, so));
+            }
+        }
+
+        private static IEnumerator Apply(Character tgt, StatusSO effect) {
+            yield return null;
+            Debug.Log(effect.DisplayName + " was apply to " + tgt.characterName);
+            tgt.StatusEffectList.Apply(effect);
+        }
+
         public CombatArgs Chain() => Chain(source, target);
+
         public CombatArgs Chain(object src, Character tgt) => new()
         {
             source = src ?? source,
