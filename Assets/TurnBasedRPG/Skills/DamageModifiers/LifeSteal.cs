@@ -5,7 +5,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.DamageModifiers {
     [Preserve, Serializable]
-    public class LifeSteal : IDamageModifier, ISkillEffectOld, ISingleLineDrawer {
+    public class LifeSteal : IDamageModifier, ISingleLineDrawer {
         [Range(0f, 1f)] public float percent = 0.2f;
 
         public void ModifyArgs(CombatArgs args) {

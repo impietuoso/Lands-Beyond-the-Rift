@@ -11,6 +11,7 @@ namespace TurnBasedRPG.Data {
         Sprite Icon { get; }
         Element Element { get; }
         Targeting Targeting { get; }
+        IReadOnlyList<Tag> Tags { get; }
         ISkillAnimationOld Animation { get; }
         List<ISkillEffectOld> Effects { get; }
         bool Available(Character user);

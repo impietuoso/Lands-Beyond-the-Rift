@@ -5,7 +5,7 @@ using UnityEngine.Scripting;
 
 namespace TurnBasedRPG.Skills.SkillEffects {
     [Preserve, Serializable]
-    public class ConditionalHit : ISkillEffect, ISingleLineDrawer {
+    public class ConditionalHit : ISkillEffect {
         [SerializeReference, TypeInstance] public ICombatArgsFilter condition;
         [SerializeReference, TypeInstance] public ISkillEffect[] effects;
 

@@ -12,6 +12,7 @@ namespace RPG {
         [SerializeField] private Tag category;
         [SerializeField] private StatsBase bonusValue;
         [SerializeField] private Skill skill;
+        [SerializeField] private Passive tacticsBuff;
         [SerializeReference, TypeDropdown(typeof(IPassive))] private IPassive passive;
 
         public EquipmentType Type => type;
