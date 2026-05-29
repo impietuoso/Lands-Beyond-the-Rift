@@ -28,19 +28,23 @@ namespace TurnBasedRPG.BattleStats {
         public BonusStat GetStat(Stat stat) => stats[(int)stat];
 
         public void Recalculate(int level, IAttributes a, IStats bonus) =>
-            new StatCalcHelper(this).Recalculate(level, a, bonus);
+            StatCalcHelper.Recalculate(this, level, a, bonus);
     }
 
     public class StatCalcHelper : IStats {
-        private readonly Stats _context;
         private readonly int[] _v = new int[12];
-        public StatCalcHelper(Stats context) => _context = context;
+        private static StatCalcHelper _instance;
         public int this[Stat s] { get => _v[(int)s]; private set => _v[(int)s] = value; }
 
-        public void Recalculate(int level, IAttributes a, IStats stats) {
-            _context.GetStat(Evade).Max = 40;
-            _context.GetStat(Resistance).Max = 60;
-            
+        public static void Recalculate(Stats ctx, int level, IAttributes a, IStats stats) {
+            _instance ??= new();
+            _instance._Recalculate(ctx, level, a, stats);
+        }
+
+        private void _Recalculate(Stats ctx, int level, IAttributes a, IStats stats) {
+            ctx.GetStat(Evade).Max = 40;
+            ctx.GetStat(Resistance).Max = 60;
+
             this[MaxHealth] = 2 * level + a[Vit] * 15;
             this[MaxMana] = 6 * level + a[Spt] * 8;
             this[MaxShield] = this[MaxHealth] / 2;
@@ -54,7 +58,7 @@ namespace TurnBasedRPG.BattleStats {
                 _v[(int)s] += stats[s];
 
             foreach (var s in Stats.All)
-                _context.GetStat(s).Base = _v[(int)s];
+                ctx.GetStat(s).Base = _v[(int)s];
         }
     }
 }

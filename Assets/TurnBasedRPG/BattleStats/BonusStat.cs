@@ -11,7 +11,7 @@ namespace TurnBasedRPG.BattleStats {
         private readonly Dictionary<object, float> _bonusAdd = new ();
         private readonly Dictionary<object, float> _bonusMult = new ();
 
-        public int Total { get; private set; }
+        public int Total => total;
         public float Normalized => Total / (float)Max;
         public event Action<int> OnChanged;
         public static implicit operator int(BonusStat stat) => stat.Total;
@@ -69,7 +69,7 @@ namespace TurnBasedRPG.BattleStats {
             foreach (var bonus in _bonusMult)
                 v *= bonus.Value;
 
-            Total = Mathf.Clamp((int)v, Min, Max);
+            total = Mathf.Clamp((int)v, Min, Max);
             OnChanged?.Invoke(Total);
         }
     }

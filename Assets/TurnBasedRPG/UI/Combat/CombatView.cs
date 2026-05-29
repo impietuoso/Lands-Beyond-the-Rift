@@ -18,6 +18,7 @@ namespace TurnBasedRPG.UI.Combat {
         public GameObject combatPanel;
         public GameObject actionsPanel;
         public GameObject skillPanel;
+        public GameObject itemsPanel;
         public GameObject selectTargetPanel;
         public GameObject currentActionPanel;
         public GameObject gameOverPanel;
@@ -41,8 +42,11 @@ namespace TurnBasedRPG.UI.Combat {
             enemiesView.SetData(Data.Enemies);
             consumablesView.SetData(Data.Consumables);
             
-            combatPanel.SetActive(false);
+            currentActionPanel.SetActive(false);
             actionsPanel.SetActive(false);
+            combatPanel.SetActive(false);
+            skillPanel.SetActive(false);
+            itemsPanel.SetActive(false);
             gameObject.SetActive(true);
         }
 
