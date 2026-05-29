@@ -121,6 +121,11 @@ namespace TurnBasedRPG {
 
     public class ResultPhase : ICombatPhase {
         public IEnumerator Execute(CombatManager cm) {
+            foreach (var c in cm.Everyone) {
+                c.member.CurrentHp = c.Health.Current;
+                c.member.CurrentMp = c.Mana.Current;
+            }
+
             cm.View.gameOverPanel.SetActive(true);
             yield return new WaitForSeconds(1f);
 

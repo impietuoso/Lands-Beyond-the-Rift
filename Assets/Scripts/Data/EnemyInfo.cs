@@ -33,6 +33,8 @@ namespace Data {
         public string CharName => charName;
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
+        public int CurrentHp { get => int.MaxValue; set { } }
+        public int CurrentMp { get => int.MaxValue; set { } }
         public Attributes UsedAttributes => attributes;
         public Profession Profession => null;
         public Element Element => element;

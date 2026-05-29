@@ -24,6 +24,8 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             else
                 yield return new WaitForSeconds(0.1f);
 
+            cast.User.PlayAnimation?.Invoke("Attack", 0);
+            
             var hits = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
             var routines = new List<Coroutine>();
 

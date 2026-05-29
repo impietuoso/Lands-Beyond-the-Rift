@@ -14,6 +14,8 @@ namespace Data {
         [SerializeField] private string charName;
         [SerializeField] private int level;
         [SerializeField] private int exp;
+        [SerializeField] private int hp;
+        [SerializeField] private int mp;
         [SerializeField] private Attributes usedAttributes;
         [SerializeField] private Profession profession;
         [SerializeField] private Element element;
@@ -27,6 +29,8 @@ namespace Data {
 
         public string CharName => charName;
         public int Level { get => level; set => level = value; }
+        public int CurrentHp { get => hp; set => hp = value; }
+        public int CurrentMp { get => mp; set => mp = value; }
         public int Exp { get => exp; set => exp = value; }
         public Attributes UsedAttributes => usedAttributes;
         public Profession Profession => profession;

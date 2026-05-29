@@ -2,13 +2,12 @@ using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.StatusEffects;
 using UnityEngine;
 
-namespace TurnBasedRPG
-{
+namespace TurnBasedRPG {
     public partial class Character : IAttributes, IStats, IOtherStats {
         [Header("Stats")]
-        [field: SerializeField] public ResourceStat Health { get; private set; } = new ();
-        [field: SerializeField] public ResourceStat Shield { get; private set; } = new ();
-        [field: SerializeField] public ResourceStat Mana { get; private set; } = new ();
+        [field: SerializeField] public ResourceStat Health { get; private set; } = new();
+        [field: SerializeField] public ResourceStat Shield { get; private set; } = new();
+        [field: SerializeField] public ResourceStat Mana { get; private set; } = new();
         [field: SerializeField] public StatsSummary Stats { get; private set; }
         [field: SerializeField] public OtherStats OtherStats { get; private set; }
         [field: SerializeField] public BoolStat Stun { get; private set; } = new();
@@ -19,7 +18,7 @@ namespace TurnBasedRPG
         public int this[OtherStat os] => OtherStats[os];
 
         private void InitializeStats() {
-            Stats = new ();
+            Stats = new();
             OtherStats = new();
             StatusEffectList = new StatusEffectList(this);
 
@@ -28,8 +27,8 @@ namespace TurnBasedRPG
             Stats.MaxMana.OnChanged += v => Mana.Max = v;
 
             Stats.Recalculate(member.Level, member, member);
-            Health.Current = Health.Max;
-            Mana.Current = Mana.Max;
+            Health.Current = member.CurrentHp;
+            Mana.Current = member.CurrentMp;
         }
     }
 }

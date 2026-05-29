@@ -1,5 +1,4 @@
-﻿using TurnBasedRPG.Data;
-using TurnBasedRPG.DrawerHelpers;
+﻿using TurnBasedRPG.DrawerHelpers;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ namespace TurnBasedRPG.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {        
             var listProperty = property.FindPropertyRelative("list");
         
-            var arrayMaxSize = GameSettings.Instance.equipmentArrayOrder.Length;
+            var arrayMaxSize = Game.Settings.equipmentArrayOrder.Length;
             if (listProperty.arraySize != arrayMaxSize) {
                 listProperty.arraySize = arrayMaxSize;
             }
@@ -25,7 +24,7 @@ namespace TurnBasedRPG.Editor
                 EditorGUI.indentLevel++;
                 for (int i = 0; i < listProperty.arraySize; i++) {
                     var elementProperty = listProperty.GetArrayElementAtIndex(i);
-                    var betterLabel = GameSettings.Instance.equipmentArrayOrder[i].typeName;
+                    var betterLabel = Game.Settings.equipmentArrayOrder[i].typeName;
                 
                     float height = EditorGUI.GetPropertyHeight(elementProperty, true);
                     rect.height = height;

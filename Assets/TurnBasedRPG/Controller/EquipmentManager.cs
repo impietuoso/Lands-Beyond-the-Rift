@@ -16,9 +16,13 @@ namespace TurnBasedRPG.Controller {
         public Button swapButton;
         private int selectedItemIndex;
         private EquipmentType equipFilter;
+        private int[] equipmentDrawOrder;
+        private EquipmentType[] equipmentArrayOrder;
+        private EquipmentController _controller;
 
         private void OnEnable() {
             ApplyFilter((EquipmentType)null);
+            _controller ??= new EquipmentController(load, equipmentArrayOrder);
         }
 
         public void ResetFilter() {
@@ -27,8 +31,8 @@ namespace TurnBasedRPG.Controller {
         }
 
         public void ApplyFilter(EquipmentView view) {
-            int orderIndex = GameSettings.Instance.equipmentDrawOrder[view.transform.GetSiblingIndex() - 1];
-            equipFilter = GameSettings.Instance.equipmentArrayOrder[orderIndex];
+            int orderIndex = equipmentDrawOrder[view.transform.GetSiblingIndex() - 1];
+            equipFilter = equipmentArrayOrder[orderIndex];
             ApplyFilter(equipFilter);
         }
 
@@ -50,7 +54,7 @@ namespace TurnBasedRPG.Controller {
         public void SelectNewEquipButton() {
             List<int> weaponIndexes = new();
             for (int i = 0; i < memberView.Data.Equips.Count; i++) {
-                var type = GameSettings.Instance.equipmentArrayOrder[i];
+                var type = equipmentArrayOrder[i];
                 if(type == newItensStats.Data.Type) {
                     weaponIndexes.Add(i);
                 }
@@ -67,7 +71,7 @@ namespace TurnBasedRPG.Controller {
 
             var removedEquipment = memberView.Data.Equips[selectedItemIndex];
 
-            EquipmentController.EquipItem(load, memberView.Data, newItensStats.Data, selectedItemIndex);
+            _controller.EquipItem(memberView.Data, newItensStats.Data, selectedItemIndex);
 
             newItensStats.SetData(removedEquipment);
             currentItemStats.SetData(memberView.Data.Equips[selectedItemIndex]);
@@ -80,9 +84,9 @@ namespace TurnBasedRPG.Controller {
 
             var inventoryItem = drop.GetComponent<EquipmentView>().Data;
             var drawIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
-            var equipedItemIndex = GameSettings.Instance.equipmentDrawOrder[drawIndex];
+            var equipedItemIndex = equipmentDrawOrder[drawIndex];
 
-            EquipmentController.EquipItem(load, memberView.Data, inventoryItem, equipedItemIndex);
+            _controller.EquipItem(memberView.Data, inventoryItem, equipedItemIndex);
 
             ApplyFilter(equipFilter);
         }
@@ -92,9 +96,9 @@ namespace TurnBasedRPG.Controller {
 
             var inventoryItem = eventData.pointerDrag.GetComponent<EquipmentView>().Data;
             var drawIndex = drop.transform.GetSiblingIndex() - 1;
-            var equipedItemIndex = GameSettings.Instance.equipmentDrawOrder[drawIndex];
+            var equipedItemIndex = equipmentDrawOrder[drawIndex];
 
-            EquipmentController.EquipItem(load, memberView.Data, inventoryItem, equipedItemIndex);
+            _controller.EquipItem(memberView.Data, inventoryItem, equipedItemIndex);
 
             ApplyFilter(equipFilter);
         }
@@ -103,9 +107,9 @@ namespace TurnBasedRPG.Controller {
             if(view.Data == null) return;
 
             var drawIndex = view.transform.GetSiblingIndex() - 1;
-            var targetIndex = GameSettings.Instance.equipmentDrawOrder[drawIndex];
+            var targetIndex = equipmentDrawOrder[drawIndex];
 
-            EquipmentController.EquipItem(load, memberView.Data, null, targetIndex);
+            _controller.EquipItem(memberView.Data, null, targetIndex);
 
             ApplyFilter(equipFilter);
         }

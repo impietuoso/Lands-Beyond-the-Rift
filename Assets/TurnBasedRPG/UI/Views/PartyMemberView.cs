@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Text;
 using TMPro;
 using TurnBasedRPG.BattleStats;
@@ -55,13 +54,7 @@ namespace TurnBasedRPG.UI.Views
             if (allStatsText) allStatsText.text = AllStats();
             if (equipedSkills) equipedSkills.SetData(Data.EquipedSkills);
             if (avaliableSkills) avaliableSkills.SetData(Data.LearnedSkills);
-            if (equipments)
-            {
-                var sortedEquips = GameSettings.Instance.equipmentDrawOrder
-                    .Select(type => Data.Equips[type]);
-                equipments.SetData(sortedEquips);
-            }
-
+            if (equipments) equipments.SetData(Data.Equips);
             if (icon) icon.overrideSprite = Data.UISprite;
             if (interactable) interactable.interactable = true;
         }

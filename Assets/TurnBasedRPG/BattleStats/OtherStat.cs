@@ -14,6 +14,7 @@ namespace TurnBasedRPG.BattleStats {
         int this[OtherStat os] { get; }
     }
 
+    [Serializable]
     public class OtherStats : IOtherStats {
         public static IReadOnlyList<OtherStat> All { get; } = Enum.GetValues(typeof(OtherStat)).OfType<OtherStat>().ToArray();
         public static IOtherStats Zero { get; } = new OtherStats();
