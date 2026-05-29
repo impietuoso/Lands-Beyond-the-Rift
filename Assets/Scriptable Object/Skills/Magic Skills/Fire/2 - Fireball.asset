@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 2 - Fireball
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Fireball
-  <description>k__BackingField: Medium Fire Damage to all Foes.
   <sprite>k__BackingField: {fileID: 21300000, guid: 96ea5f1247af6c147afb2e3647d4187b, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Fireball
-  skillDescription: Medium Fire Damage to all Foes.
+  <description>k__BackingField: Medium Fire Damage to all Foes.
+  tags: []
   cost: 15
-  icon: {fileID: 21300000, guid: 96ea5f1247af6c147afb2e3647d4187b, type: 3}
   element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698235
   animation:

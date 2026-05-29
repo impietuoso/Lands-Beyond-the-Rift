@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TurnBasedRPG.Data;
 using UnityEngine;
 
-namespace RPG {
+namespace Data {
     public abstract class Item : ScriptableObject, IItem {
         [field: SerializeField] public string displayName { get; protected set; }
         [field: SerializeField] public Sprite sprite { get; protected set; }

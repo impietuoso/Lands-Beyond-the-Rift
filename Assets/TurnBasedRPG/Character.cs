@@ -16,8 +16,9 @@ namespace TurnBasedRPG {
             Allies = allies;
             Enemies = enemies;
             Element = member.Element;
-
-            GetSkills();
+            basicAttack = member.BasicAttack;
+            skills = member.GetSkills().ToList();
+            
             InitializeStats();
             OnSetup?.Invoke(this);
         }
@@ -31,10 +32,9 @@ namespace TurnBasedRPG {
         public string team;
         public Element Element;
         public ISkill basicAttack;
-        public List<ISkill> skills = new();
+        public List<ISkill> skills;
         public StatusEffectList StatusEffectList;
 
-        public IReadOnlyList<IEquipment> equipment => member.Equips;
         public string characterName => member.CharName;
         public bool Dead => Health.Current == 0;
         public Vector3 Position => cm.Arena.GetPosition(this);
@@ -51,24 +51,13 @@ namespace TurnBasedRPG {
         public Observable<float> actionPoints = new();
 
         public void SubscribePassives() {
-            foreach (var e in member.Equips)
-                e?.Passive?.Subscribe(this);
+            foreach (var p in member.GetPassives())
+                p?.Subscribe(this);
         }
 
         public void UnsubscribePassives() {
-            foreach (var e in member.Equips)
-                e?.Passive?.Unsubscribe(this);
-        }
-
-        private void GetSkills() {
-            skills = member.EquipedSkills.Where(s => s?.Animation != null).ToList();
-
-            foreach (var e in equipment)
-                if(e?.ActiveSkill != null && !skills.Contains(e.ActiveSkill))
-                    skills.Add(e.ActiveSkill);
-
-            basicAttack = equipment.OfType<IWeapon>().FirstOrDefault()?.Attack;
-            basicAttack ??= member.BasicAttack;
+            foreach (var p in member.GetPassives())
+                p?.Unsubscribe(this);
         }
     }
 }

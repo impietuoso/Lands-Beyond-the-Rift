@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Controllers {
+namespace SubSystems {
     public class LoadController : MonoBehaviour {
         public Animator loadscreen;
         public float loadDelay;

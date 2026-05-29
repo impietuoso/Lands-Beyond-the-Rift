@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TurnBasedRPG.BattleStats;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 
 namespace TurnBasedRPG.Data {
@@ -16,6 +17,9 @@ namespace TurnBasedRPG.Data {
         Animator Prefab { get; }
         ISkill BasicAttack { get; }
         int GetUnusedPoints();
+        
+        IEnumerable<IPassive> GetPassives();
+        IEnumerable<ISkill> GetSkills();
 
         void SetEquip(int index, IEquipment e);
         void SetSkill(int index, ISkill e);

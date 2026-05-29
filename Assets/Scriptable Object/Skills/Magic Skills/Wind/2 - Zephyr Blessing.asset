@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: 2 - Zephyr Blessing
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Zephyr Blessing
+  <sprite>k__BackingField: {fileID: 21300000, guid: c8b1a281efaaaf74a94f06b05199001b, type: 3}
   <description>k__BackingField: Removes Burning and Vulnerable and Apply Quickning
     from the Party.
-  <sprite>k__BackingField: {fileID: 21300000, guid: c8b1a281efaaaf74a94f06b05199001b, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Zephyr Blessing
-  skillDescription: Removes Burning and Vulnerable and Apply Quickning from the Party.
+  tags: []
   cost: 10
-  icon: {fileID: 21300000, guid: c8b1a281efaaaf74a94f06b05199001b, type: 3}
   element: {fileID: 11400000, guid: 6e11067072e285a4cb15c48aa5e3d94b, type: 2}
   targeting:
     group: 2
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698224
   animation:

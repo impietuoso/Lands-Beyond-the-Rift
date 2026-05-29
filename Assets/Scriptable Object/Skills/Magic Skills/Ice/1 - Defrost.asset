@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 1 - Defrost
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Defrost
-  <description>k__BackingField: Removes Slow and Vulnerable from the Party.
   <sprite>k__BackingField: {fileID: 21300000, guid: b11f5a73467356a40811312231732ee8, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Defrost
-  skillDescription: Removes Slow and Vulnerable from the Party.
+  <description>k__BackingField: Removes Slow and Vulnerable from the Party.
+  tags: []
   cost: 10
-  icon: {fileID: 21300000, guid: b11f5a73467356a40811312231732ee8, type: 3}
   element: {fileID: 11400000, guid: da5641991f7be5f469f5aae812cff879, type: 2}
   targeting:
     group: 2
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698272
   animation:

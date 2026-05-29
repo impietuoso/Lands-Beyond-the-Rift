@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: Greatsword Attack
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <displayName>k__BackingField: Greatsword Attack
+  <sprite>k__BackingField: {fileID: 0}
   <description>k__BackingField: Common attack deals base damage scale to Character
     Power
-  <sprite>k__BackingField: {fileID: 0}
-  <maxStack>k__BackingField: 99
-  skillName: Greatsword Attack
-  skillDescription: Common attack deals base damage scale to Character Power
+  tags: []
   cost: 0
-  icon: {fileID: 0}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698277
   animation:

@@ -57,7 +57,7 @@ namespace TurnBasedRPG.UI.Views
             if (avaliableSkills) avaliableSkills.SetData(Data.LearnedSkills);
             if (equipments)
             {
-                var sortedEquips = GameConfig.Instance.equipmentDrawOrder
+                var sortedEquips = GameSettings.Instance.equipmentDrawOrder
                     .Select(type => Data.Equips[type]);
                 equipments.SetData(sortedEquips);
             }

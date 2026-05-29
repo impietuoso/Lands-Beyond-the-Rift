@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 3 - Earthquack
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Earthquake
-  <description>k__BackingField: Between 3 and 6 Medium Nature Damage to all foes.
   <sprite>k__BackingField: {fileID: -3042107026998017643, guid: f04dcc4869a471c47bcc3b9642e7b143, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Earthquake
-  skillDescription: Between 3 and 6 Medium Nature Damage to all foes.
+  <description>k__BackingField: Between 3 and 6 Medium Nature Damage to all foes.
+  tags: []
   cost: 5
-  icon: {fileID: -3042107026998017643, guid: f04dcc4869a471c47bcc3b9642e7b143, type: 3}
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698325
   animation:

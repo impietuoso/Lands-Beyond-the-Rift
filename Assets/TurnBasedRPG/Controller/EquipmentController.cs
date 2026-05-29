@@ -3,7 +3,7 @@
 namespace TurnBasedRPG.Controller {
     public static class EquipmentController {
         public static void EquipItem(LoadSave load, IPartyMember member, IEquipment equip, int slot) {
-            if(equip != null && equip.Type != GameConfig.Instance.equipmentArrayOrder[slot]) return;
+            if(equip != null && equip.Type != GameSettings.Instance.equipmentArrayOrder[slot]) return;
 
             if(member.Equips[slot] != null) {
                 var old = member.Equips[slot];

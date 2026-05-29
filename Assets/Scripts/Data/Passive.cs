@@ -3,7 +3,7 @@ using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-namespace RPG {
+namespace Data {
     [CreateAssetMenu(menuName = "Scriptable/Passive")]
     public class Passive : Item, IPassive {
         [Separator]

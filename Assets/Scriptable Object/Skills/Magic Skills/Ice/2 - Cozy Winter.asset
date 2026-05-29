@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 2 - Cozy Winter
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Cozy Winter
-  <description>k__BackingField: Apply Slowed to all foes, if has Slowed, cause Sleep
   <sprite>k__BackingField: {fileID: 21300000, guid: 71bc6f50e0d1666448c72e7e31120299, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Cozy Winter
-  skillDescription: Apply Slowed to all foes, if has Slowed, cause Sleep
+  <description>k__BackingField: Apply Slowed to all foes, if has Slowed, cause Sleep
+  tags: []
   cost: 10
-  icon: {fileID: 21300000, guid: 71bc6f50e0d1666448c72e7e31120299, type: 3}
   element: {fileID: 11400000, guid: da5641991f7be5f469f5aae812cff879, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698232
   animation:

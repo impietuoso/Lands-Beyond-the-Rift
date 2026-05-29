@@ -8,7 +8,7 @@ using TurnBasedRPG.Skills;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace RPG {
+namespace Data {
     [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
     public class Skill : Item, ISkill {
         [Separator]

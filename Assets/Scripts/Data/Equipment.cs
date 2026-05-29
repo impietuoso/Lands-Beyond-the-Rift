@@ -1,10 +1,11 @@
-﻿using TurnBasedRPG.BattleStats;
+﻿using System.Collections.Generic;
+using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
 using TurnBasedRPG.Skills;
 using UnityEngine;
 
-namespace RPG {
+namespace Data {
     [CreateAssetMenu(menuName = "Scriptable/Item/Equipment", fileName = "New Equipment")]
     public class Equipment : Item, IEquipment {
         [Separator]
@@ -28,6 +29,11 @@ namespace RPG {
             }
 
             return resume;
+        }
+
+        public IEnumerable<IPassive> GetPassives() {
+            if(tacticsBuff) yield return tacticsBuff;
+            if(passive != null) yield return passive;
         }
 
         public virtual int this[Stat s] => bonusValue[s];

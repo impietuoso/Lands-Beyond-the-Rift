@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 3 - Rain of Purification
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Rain of Purification
-  <description>k__BackingField: Medium Heal and Remove all Debuffs from the Party.
   <sprite>k__BackingField: {fileID: 21300000, guid: 0078c4184aba9244a98576f605ad1e95, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Rain of Purification
-  skillDescription: Medium Heal and Remove all Debuffs from the Party.
+  <description>k__BackingField: Medium Heal and Remove all Debuffs from the Party.
+  tags: []
   cost: 5
-  icon: {fileID: 21300000, guid: 0078c4184aba9244a98576f605ad1e95, type: 3}
   element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
   targeting:
     group: 2
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698299
   animation:

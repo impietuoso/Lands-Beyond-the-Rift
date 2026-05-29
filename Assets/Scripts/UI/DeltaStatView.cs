@@ -2,7 +2,7 @@ using TMPro;
 using TurnBasedRPG.BattleStats;
 using UnityEngine;
 
-namespace RPG {
+namespace UI {
     public class DeltaStatView : DataView<(int v, int d)> {
         [SerializeField] private Stat stat;
         [SerializeField] private string alias;

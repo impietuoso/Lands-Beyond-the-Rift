@@ -15,11 +15,12 @@ MonoBehaviour:
   <displayName>k__BackingField: Cleave
   <sprite>k__BackingField: {fileID: 21300000, guid: 845fff3567c270543bc8d3f0645137e6, type: 3}
   <description>k__BackingField: Low Physical Damage to all Foes.
+  tags: []
   cost: 10
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 9169537190577307905
   animation:

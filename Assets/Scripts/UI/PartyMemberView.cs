@@ -1,9 +1,10 @@
+using Data;
 using TMPro;
 using TurnBasedRPG.BattleStats;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG {
+namespace UI {
     public class PartyMemberView : DataView<PartyMember> {
         [field: SerializeField] public TMP_Text CharName { get; private set; }
         [field: SerializeField] public TMP_Text Level { get; private set; }

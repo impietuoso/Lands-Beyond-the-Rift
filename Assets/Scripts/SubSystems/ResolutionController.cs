@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace Controllers {
+namespace SubSystems {
     public class ResolutionController : MonoBehaviour {
         public TMP_Dropdown resolutionDropdown;
         public TMP_Dropdown windowModeDropdown;

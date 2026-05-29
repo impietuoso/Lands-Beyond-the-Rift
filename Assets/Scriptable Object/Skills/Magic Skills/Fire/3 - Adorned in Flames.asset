@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 3 - Adorned in Flames
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Adorned in Flames
-  <description>k__BackingField: Gain Shield and Apply Reflect to the Party.
   <sprite>k__BackingField: {fileID: 21300000, guid: 5257e0050e560114da415dae2d057d78, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Adorned in Flames
-  skillDescription: Gain Shield and Apply Reflect to the Party.
+  <description>k__BackingField: Gain Shield and Apply Reflect to the Party.
+  tags: []
   cost: 20
-  icon: {fileID: 21300000, guid: 5257e0050e560114da415dae2d057d78, type: 3}
   element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   targeting:
     group: 2
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698217
   animation:

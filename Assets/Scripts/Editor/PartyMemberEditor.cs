@@ -1,9 +1,10 @@
-﻿using RPG;
+﻿using Data;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using UnityEditor;
 
 namespace Editor {
+    [CanEditMultipleObjects]
     [CustomEditor(typeof(PartyMember))]
     public class PartyMemberEditor : UnityEditor.Editor {
         private Stats publicStats = new();

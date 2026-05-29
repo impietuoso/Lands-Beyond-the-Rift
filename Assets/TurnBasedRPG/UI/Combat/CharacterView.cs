@@ -12,6 +12,7 @@ namespace TurnBasedRPG.UI.Combat {
         [SerializeField] private ResourceStatView shieldView;
         [SerializeField] private ResourceStatView manaView;
         [SerializeField] private Image speedView;
+        [SerializeField] private GameObject turnArrow;
         [SerializeField] private StatusEffectListView statusEffectView;
 
         public Color normalSpeedColor;
@@ -19,6 +20,8 @@ namespace TurnBasedRPG.UI.Combat {
         public Color slowSpeedColor;
 
         protected override void Subscribe() {
+            Data.OnStartTurn += ActivateArrow;
+            Data.OnEndTurn += DeactivateArrow;
             Data.Health.OnChanged += ChangePortraitAlpha;
             Data.Shield.OnChanged += ToggleShield;
             Data.Stats.Speed.OnChanged += ChangeSpeedColor;
@@ -31,6 +34,7 @@ namespace TurnBasedRPG.UI.Combat {
             statusEffectView.SetData(Data.StatusEffectList);
 
             ChangeSpeedColor(Data[Stat.Speed]);
+            turnArrow.SetActive(false);
         }
 
         protected override void Unsubscribe() {
@@ -49,6 +53,9 @@ namespace TurnBasedRPG.UI.Combat {
         private void ToggleShield(ResourceStat stat, int delta) {
             shieldIcon.SetActive(stat.Current > 0);
         }
+
+        private void ActivateArrow(Character _) => turnArrow.SetActive(true);
+        private void DeactivateArrow(Character _) => turnArrow.SetActive(false);
 
         private void ChangeSpeedColor(int value) {
             if(!speedView) return;
@@ -69,7 +76,7 @@ namespace TurnBasedRPG.UI.Combat {
             var color = status.Source.TextColor;
             var dName = status.Source.DisplayName;
             var pos = Data.cm.View.transform;
-            var statusPopup = Data.cm.View.callPopup.Pop(dName, color,transform.position, 0.5f);
+            var statusPopup = Data.cm.View.callPopup.Pop(dName, color, transform.position, 0.5f);
             Data.cm.CombatEvents.Enqueue(statusPopup);
         }
     }

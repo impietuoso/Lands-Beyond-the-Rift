@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using TurnBasedRPG.Skills;
 using System.Collections.Generic;
+using Data;
 
 namespace Editor {
     public class devupgradeskillanimaton {
@@ -19,6 +20,11 @@ namespace Editor {
                 var skill = AssetDatabase.LoadAssetAtPath<Skill>(path);
                 if(!skill) continue;
                 var changed = false;
+
+                if(skill.Targeting.area == TargetArea.All) {
+                    skill.Targeting.area = TargetArea.Team;
+                    changed = true;
+                }
 
                 for (var i = 0; i < skill.effects.Count; i++) {
                     var e = skill.effects[i];

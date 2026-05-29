@@ -10,7 +10,7 @@ namespace TurnBasedRPG.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {        
             var listProperty = property.FindPropertyRelative("list");
         
-            var arrayMaxSize = GameConfig.Instance.equipmentArrayOrder.Length;
+            var arrayMaxSize = GameSettings.Instance.equipmentArrayOrder.Length;
             if (listProperty.arraySize != arrayMaxSize) {
                 listProperty.arraySize = arrayMaxSize;
             }
@@ -25,7 +25,7 @@ namespace TurnBasedRPG.Editor
                 EditorGUI.indentLevel++;
                 for (int i = 0; i < listProperty.arraySize; i++) {
                     var elementProperty = listProperty.GetArrayElementAtIndex(i);
-                    var betterLabel = GameConfig.Instance.equipmentArrayOrder[i].typeName;
+                    var betterLabel = GameSettings.Instance.equipmentArrayOrder[i].typeName;
                 
                     float height = EditorGUI.GetPropertyHeight(elementProperty, true);
                     rect.height = height;

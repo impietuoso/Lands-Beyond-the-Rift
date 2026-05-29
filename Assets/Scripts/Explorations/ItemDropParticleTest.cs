@@ -1,3 +1,4 @@
+using Data;
 using RPG;
 using TurnBasedRPG.Data;
 using UnityEngine;

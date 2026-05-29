@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-namespace Controllers {
+namespace SubSystems {
     public class AudioConfig : MonoBehaviour {
         [Header("Sliders")]
         public Slider masterSlider;

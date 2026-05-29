@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-namespace Controllers {
+namespace SubSystems {
     public class LoadingTask {
         private class Routiner : MonoBehaviour { }
 

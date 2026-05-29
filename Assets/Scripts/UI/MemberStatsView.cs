@@ -1,9 +1,10 @@
 using System.Collections.Specialized;
 using System.Linq;
+using Data;
 using TurnBasedRPG.BattleStats;
 using UnityEngine;
 
-namespace RPG {
+namespace UI {
     public class MemberStatsView : DataView<PartyMember> {
         [SerializeField] private DeltaStatView[] stats;
         [SerializeField] private DataView compareEquip;

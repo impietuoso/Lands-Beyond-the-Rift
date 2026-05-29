@@ -1,8 +1,9 @@
+using Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG {
+namespace UI {
     public class SkillView : DataView<Skill> {
         [field: SerializeField] public TMP_Text Name { get; private set; }
         [field: SerializeField] public TMP_Text Description { get; private set; }

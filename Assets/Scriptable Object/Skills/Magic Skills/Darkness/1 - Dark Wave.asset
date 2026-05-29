@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 1 - Dark Wave
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <displayName>k__BackingField: Dark Wave
-  <description>k__BackingField: Low Dark Damage to all foes.
   <sprite>k__BackingField: {fileID: 21300000, guid: d657dbaaab867ba43b9e0583ba68078a, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Dark Wave
-  skillDescription: Low Dark Damage to all foes.
+  <description>k__BackingField: Low Dark Damage to all foes.
+  tags: []
   cost: 10
-  icon: {fileID: 21300000, guid: d657dbaaab867ba43b9e0583ba68078a, type: 3}
   element: {fileID: 11400000, guid: fa6150d78113bf84681d1d19061623c2, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698258
   animation:

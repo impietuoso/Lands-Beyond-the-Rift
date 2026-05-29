@@ -1,9 +1,9 @@
-using RPG;
 using System.Collections.Generic;
 using TurnBasedRPG.BattleStats;
+using TurnBasedRPG.Data;
 using UnityEngine;
 
-namespace TurnBasedRPG.Data {
+namespace Data {
     [CreateAssetMenu(menuName = "Scriptable/Profession", fileName = "New Profession")]
     public class Profession : ScriptableObject, IAttributes {
         [SerializeField] private Attributes attributeBonus;

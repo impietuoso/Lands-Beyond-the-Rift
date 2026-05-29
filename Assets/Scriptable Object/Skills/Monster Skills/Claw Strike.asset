@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: Claw Strike
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <displayName>k__BackingField: Claw Strike
-  <description>k__BackingField: 
   <sprite>k__BackingField: {fileID: 21300000, guid: 2b49aff96265d914599a293e70063b99, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Claw Strike
-  skillDescription: 
+  <description>k__BackingField: 
+  tags: []
   cost: 5
-  icon: {fileID: 21300000, guid: 2b49aff96265d914599a293e70063b99, type: 3}
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698213
   animation:

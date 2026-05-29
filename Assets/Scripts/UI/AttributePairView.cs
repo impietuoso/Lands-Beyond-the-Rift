@@ -2,7 +2,7 @@ using TMPro;
 using TurnBasedRPG.BattleStats;
 using UnityEngine;
 
-namespace RPG {
+namespace UI {
     public class AttributePairView : DataView<(Attribute a, int v)> {
         [SerializeField] private TMP_Text text;
         protected override void Subscribe() => text.text = $"{Data.a} - {Data.v}";

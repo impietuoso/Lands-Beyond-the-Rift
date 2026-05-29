@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TurnBasedRPG.BattleStats;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.DrawerHelpers;
+using TurnBasedRPG.Skills;
 using UnityEngine;
 using Attribute = TurnBasedRPG.BattleStats.Attribute;
 
-namespace RPG {
+namespace Data {
     [Serializable, CreateAssetMenu(menuName = "Scriptable/EnemyInfo")]
     public class EnemyInfo : ScriptableObject, IPartyMember {
         [SerializeField] private string charName;
@@ -42,6 +44,12 @@ namespace RPG {
         public Animator Prefab => prefab;
         public ISkill BasicAttack => basicAttack;
         public IReadOnlyList<Drop> Drops => drops;
+
+        public IEnumerable<IPassive> GetPassives() {
+            yield break;
+        }
+
+        public IEnumerable<ISkill> GetSkills() => skills;
 
         public int this[Attribute a] => attributes[a] + 2;
         public int this[Stat s] => statsBonus[s];

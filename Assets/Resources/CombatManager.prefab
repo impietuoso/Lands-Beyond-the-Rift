@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 6688452921387669981}
   - component: {fileID: 38844681647788030}
   - component: {fileID: 8564651563316382863}
+  - component: {fileID: 6286621460086973022}
   m_Layer: 5
   m_Name: Action
   m_TagString: Untagged
@@ -498,6 +499,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6286621460086973022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127733027590810712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &135053739375812524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1173,7 @@ GameObject:
   - component: {fileID: 3952469470265404506}
   - component: {fileID: 52857964608247261}
   - component: {fileID: 1537644994011413813}
+  - component: {fileID: 4198658437745103152}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -1313,6 +1327,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4198658437745103152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061435332524248919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &1108937136101739371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,6 +1850,7 @@ GameObject:
   - component: {fileID: 2607120101846692609}
   - component: {fileID: 4106653157962812693}
   - component: {fileID: 6729005666596940103}
+  - component: {fileID: 8170376911145681866}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -2024,6 +2051,18 @@ MonoBehaviour:
   displayName: {fileID: 1473349725660676451}
   description: {fileID: 0}
   sprite: {fileID: 8564115229527034010}
+--- !u!114 &8170376911145681866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445914592175492381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &2465545807433978182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +3911,7 @@ GameObject:
   - component: {fileID: 9198878789903313359}
   - component: {fileID: 1111652162136127924}
   - component: {fileID: 6136035054194088357}
+  - component: {fileID: 6729908607331147953}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -4025,6 +4065,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6729908607331147953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3765475704562121525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &3814202950386250071
 GameObject:
   m_ObjectHideFlags: 0
@@ -4180,6 +4232,7 @@ GameObject:
   - component: {fileID: 635448961196756156}
   - component: {fileID: 4443639969923843840}
   - component: {fileID: 6437816462972367756}
+  - component: {fileID: 4691081433266527237}
   m_Layer: 5
   m_Name: Defense
   m_TagString: Untagged
@@ -4321,6 +4374,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4691081433266527237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895954507318050098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &3917568152761321889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,6 +4399,7 @@ GameObject:
   - component: {fileID: 8476721898066698209}
   - component: {fileID: 5791661345230225756}
   - component: {fileID: 4210355649765414364}
+  - component: {fileID: 7656282535024002335}
   m_Layer: 5
   m_Name: Escape
   m_TagString: Untagged
@@ -4475,6 +4541,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &7656282535024002335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917568152761321889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &3985442473177649339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4891,6 +4969,7 @@ GameObject:
   - component: {fileID: 8563949770372278544}
   - component: {fileID: 5896798936332866288}
   - component: {fileID: 7239410832171529020}
+  - component: {fileID: 1939262170328591553}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -5032,6 +5111,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1939262170328591553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165093130854444790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &4251166875677183764
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,6 +5208,7 @@ MonoBehaviour:
   shieldView: {fileID: 1085360600082729076}
   manaView: {fileID: 4585962427928951137}
   speedView: {fileID: 3384104709232557633}
+  turnArrow: {fileID: 6847003159764737502}
   statusEffectView: {fileID: 3848724530594074426}
   normalSpeedColor: {r: 0.86932886, g: 1, b: 0, a: 1}
   fastSpeedColor: {r: 0.9245283, g: 0.33044624, b: 0.095941514, a: 1}
@@ -5268,6 +5360,7 @@ GameObject:
   - component: {fileID: 1042062953134084139}
   - component: {fileID: 7735280796728875504}
   - component: {fileID: 8726560022258538327}
+  - component: {fileID: 6450845168232414289}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -5455,6 +5548,18 @@ MonoBehaviour:
   cost: {fileID: 5614561274791063088}
   icon: {fileID: 1320764993978006999}
   button: {fileID: 2111528835758891253}
+--- !u!114 &6450845168232414289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543873868533160025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &4593039098433914786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5467,6 +5572,7 @@ GameObject:
   - component: {fileID: 8485457878202888374}
   - component: {fileID: 808868255010536310}
   - component: {fileID: 1724172824376326983}
+  - component: {fileID: 1517853960245631000}
   m_Layer: 5
   m_Name: Scrollbar Vertical
   m_TagString: Untagged
@@ -5581,6 +5687,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1517853960245631000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593039098433914786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &4619204814974537725
 GameObject:
   m_ObjectHideFlags: 0
@@ -9499,6 +9617,7 @@ GameObject:
   - component: {fileID: 3678604762441122437}
   - component: {fileID: 921325709555397297}
   - component: {fileID: 2526954126959901870}
+  - component: {fileID: 6312917376455182850}
   m_Layer: 5
   m_Name: Scrollbar Vertical
   m_TagString: Untagged
@@ -9613,6 +9732,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6312917376455182850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249383446829414040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &8345784791162078716
 GameObject:
   m_ObjectHideFlags: 0
@@ -11093,6 +11224,7 @@ GameObject:
   - component: {fileID: 22551436782769034}
   - component: {fileID: 7356302117491541180}
   - component: {fileID: 7902247458242339534}
+  - component: {fileID: 2977552755100923154}
   m_Layer: 5
   m_Name: Skip Turn
   m_TagString: Untagged
@@ -11234,6 +11366,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2977552755100923154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887850433605541351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe2b8d878f487ea4eb61d791da3fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ClickSound
 --- !u!1 &8889681481277483776
 GameObject:
   m_ObjectHideFlags: 0
@@ -11319,6 +11463,7 @@ MonoBehaviour:
   shieldView: {fileID: 5978643636407292977}
   manaView: {fileID: 1114580209845064862}
   speedView: {fileID: 1582590301681739026}
+  turnArrow: {fileID: 6191516884966041298}
   statusEffectView: {fileID: 2586560011784175323}
   normalSpeedColor: {r: 0.87058824, g: 1, b: 0, a: 1}
   fastSpeedColor: {r: 0.9254902, g: 0.32941177, b: 0.09411765, a: 1}

@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: 2 - Chain Lightning
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Chain Lightning
-  <description>k__BackingField: Medium Lightning Damage to all foes and gain Quickning.
   <sprite>k__BackingField: {fileID: 21300000, guid: a4c4595acbf93d640bad455b532b8e60, type: 3}
-  <maxStack>k__BackingField: 99
-  skillName: Chain Lightning
-  skillDescription: Medium Lightning Damage to all foes and gain Quickning.
+  <description>k__BackingField: Medium Lightning Damage to all foes and gain Quickning.
+  tags: []
   cost: 10
-  icon: {fileID: 21300000, guid: a4c4595acbf93d640bad455b532b8e60, type: 3}
   element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   targeting:
     group: 1
-    area: 2
+    area: 1
     filter:
       rid: 5967445928687698264
   animation:
