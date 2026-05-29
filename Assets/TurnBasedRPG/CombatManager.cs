@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 namespace TurnBasedRPG {
     public class CombatManager : MonoBehaviour {
-        [field: SerializeField] public ISkill BasicDefense { get; private set; }
         [field: SerializeField] public CombatView View { get; private set; }
 
         [field: Header("Runtime")]

@@ -45,6 +45,7 @@ namespace Data {
         public Sprite UISprite => portrait;
         public Animator Prefab => prefab;
         public ISkill BasicAttack => basicAttack;
+        public ISkill BasicDefense => Game.Settings.BasicDefense;
         public IReadOnlyList<Drop> Drops => drops;
 
         public IEnumerable<IPassive> GetPassives() {

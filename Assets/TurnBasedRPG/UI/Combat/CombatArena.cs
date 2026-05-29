@@ -6,6 +6,7 @@ namespace TurnBasedRPG.UI.Combat {
     public class CombatArena : DataView<CombatManager> {
         [SerializeField, Prefab] private CharacterModel prefab;
         [field: SerializeField] public GameObject Camera { get; private set; }
+        [field: SerializeField] public GameObject ActionCamera { get; private set; }
         [SerializeField] private Transform center;
         [SerializeField] private Transform[] allyPositions;
         [SerializeField] private Transform[] enemyPositions;

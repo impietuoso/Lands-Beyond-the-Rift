@@ -18,6 +18,7 @@ namespace TurnBasedRPG.Data {
         Sprite UISprite { get; }
         Animator Prefab { get; }
         ISkill BasicAttack { get; }
+        ISkill BasicDefense { get; }
         int GetUnusedPoints();
         
         IEnumerable<IPassive> GetPassives();

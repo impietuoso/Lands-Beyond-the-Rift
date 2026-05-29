@@ -10638,6 +10638,7 @@ GameObject:
   - component: {fileID: 3344979682670110909}
   - component: {fileID: 6634573618078228046}
   - component: {fileID: -2548140616700463730}
+  - component: {fileID: -8493796567467420767}
   m_Layer: 5
   m_Name: CombatManager
   m_TagString: Untagged
@@ -10687,19 +10688,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: TurnBasedRPG::TurnBasedRPG.CombatManager
   <View>k__BackingField: {fileID: 6789984008980602207}
   <CurrentCharacter>k__BackingField:
+    pName: 
     team: 
     Element: {fileID: 0}
     actionPoints:
       value: 0
     <Health>k__BackingField:
-      _max: 0
-      _current: 0
+      max: 0
+      current: 0
     <Shield>k__BackingField:
-      _max: 0
-      _current: 0
+      max: 0
+      current: 0
     <Mana>k__BackingField:
-      _max: 0
-      _current: 0
+      max: 0
+      current: 0
     <Stats>k__BackingField:
       stats:
       - min: 0
@@ -10751,7 +10753,95 @@ MonoBehaviour:
         base: 0
         total: 0
   <Allies>k__BackingField: []
-  <Enemies>k__BackingField: []
+  <Enemies>k__BackingField:
+  - pName: 
+    team: sa
+    Element: {fileID: 0}
+    actionPoints:
+      value: 0
+    <Health>k__BackingField:
+      max: 0
+      current: 0
+    <Shield>k__BackingField:
+      max: 0
+      current: 0
+    <Mana>k__BackingField:
+      max: 0
+      current: 0
+    <Stats>k__BackingField:
+      stats:
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+  - pName: 
+    team: sa
+    Element: {fileID: 0}
+    actionPoints:
+      value: 0
+    <Health>k__BackingField:
+      max: 0
+      current: 0
+    <Shield>k__BackingField:
+      max: 0
+      current: 0
+    <Mana>k__BackingField:
+      max: 0
+      current: 0
+    <Stats>k__BackingField:
+      stats:
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
+      - min: 0
+        max: 0
+        base: 0
+        total: 0
   <Consumables>k__BackingField:
     slots: []
   <MaxSpeed>k__BackingField: 0
@@ -10837,6 +10927,7 @@ MonoBehaviour:
   enemiesView: {fileID: 7360950224673330718}
   skillsView: {fileID: 4369860608290136192}
   consumablesView: {fileID: 27376668169938521}
+  canvas: {fileID: -8493796567467420767}
   combatPanel: {fileID: 2643468417208957592}
   actionsPanel: {fileID: 2569849638739861645}
   skillPanel: {fileID: 15121216827755569}
@@ -10885,6 +10976,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc739e4778724dcc9b8bb95e2feccbbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Explorations.ExplorationTask
+--- !u!225 &-8493796567467420767
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659947979833385333}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8741837807920216654
 GameObject:
   m_ObjectHideFlags: 0

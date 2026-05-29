@@ -24,8 +24,10 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             else
                 yield return new WaitForSeconds(0.1f);
 
+            cast.Cm.View.canvas.alpha = 0;
+            cast.Cm.Arena.ActionCamera.SetActive(true);
             cast.User.PlayAnimation?.Invoke("Attack", 0);
-            
+
             var hits = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
             var routines = new List<Coroutine>();
 
@@ -37,6 +39,10 @@ namespace TurnBasedRPG.Skills.SkillAnimations {
             foreach (var exe in routines)
                 yield return exe;
 
+            cast.Cm.Arena.ActionCamera.SetActive(false);
+            yield return new WaitForSeconds(.25f);
+            cast.Cm.View.canvas.alpha = 1;
+            
             if(hitCount.y > 1) Debug.Log(hits + " Hits");
         }
 

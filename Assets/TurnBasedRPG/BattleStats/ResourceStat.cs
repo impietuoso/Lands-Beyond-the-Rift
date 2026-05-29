@@ -6,42 +6,42 @@ namespace TurnBasedRPG.BattleStats {
     public class ResourceStat {
         public delegate void OnChangedHandle(ResourceStat stat, int delta);
 
-        [SerializeField] private int _max;
-        [SerializeField] private int _current;
+        [SerializeField] private int max;
+        [SerializeField] private int current;
         public float Normalized => Current / (float)Max;
         public event OnChangedHandle OnChanged;
         public event OnChangedHandle OnMaxChanged;
 
         public int Max {
-            get => _max;
+            get => max;
             set {
-                var delta = value - _max;
+                var delta = value - max;
                 if (delta == 0) return;
-                _max = value;
+                max = value;
                 if (value < Current) Current = value;
                 OnMaxChanged?.Invoke(this, delta);
             }
         }
 
         public int Current {
-            get => _current;
+            get => current;
             set {
-                value = Math.Clamp(value, 0, _max);
-                var delta = value - _current;
+                value = Math.Clamp(value, 0, max);
+                var delta = value - current;
                 if (delta == 0) return;
-                _current = value;
+                current = value;
                 OnChanged?.Invoke(this, delta);
             }
         }
 
         public Result Add(int value) {
-            value = Math.Clamp(_current + value, 0, _max);
-            var delta = value - _current;
-            if (delta == 0) return new (_current);
+            value = Math.Clamp(current + value, 0, max);
+            var delta = value - current;
+            if (delta == 0) return new (current);
         
-            _current = value;
+            current = value;
             OnChanged?.Invoke(this, delta);
-            return new Result(_current, delta);
+            return new Result(current, delta);
         }
 
         public class Result {

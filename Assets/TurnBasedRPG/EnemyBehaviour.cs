@@ -36,13 +36,13 @@ namespace TurnBasedRPG {
                 else if(choice == 1)
                     selectedSkill = currentEnemy.basicAttack;
                 else
-                    selectedSkill = cm.BasicDefense;
+                    selectedSkill = currentEnemy.member.BasicDefense;
             }
             else {
                 // Ataca (80%) ou Defende (20%)
                 var choice = GetWeightedRandomIndex(new float[] { 80, 20 });
                 var attack = currentEnemy.basicAttack;
-                selectedSkill = choice == 0 ? attack : cm.BasicDefense;
+                selectedSkill = choice == 0 ? attack : currentEnemy.member.BasicDefense;
             }
 
             yield return new WaitForSeconds(.25f);

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace TurnBasedRPG.Editor
+namespace Editor
 {
     [CustomPropertyDrawer(typeof(ShowEquipmentTypeAtribute), true)]
     public class ShowEquipmentType : PropertyDrawer {

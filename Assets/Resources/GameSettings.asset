@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
   <ClickSfx>k__BackingField: {fileID: 8300000, guid: 9c694acba65f94d41a8eff6006a66f2e, type: 3}
   <ClickBlockSfx>k__BackingField: {fileID: 8300000, guid: 5ed0384241e9e3947af3d2235f367c97, type: 3}
+  <BasicDefense>k__BackingField: {fileID: 11400000, guid: 127865cc1fecd3a46a72ca3625092cca, type: 2}
   equipmentArrayOrder:
   - {fileID: 11400000, guid: 25617ff5ff885b742b9ab6a5fbd84654, type: 2}
   - {fileID: 11400000, guid: 55798d5937659d9458b8be88af3772ae, type: 2}

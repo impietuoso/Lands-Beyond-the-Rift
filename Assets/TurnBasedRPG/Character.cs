@@ -13,6 +13,7 @@ namespace TurnBasedRPG {
             this.cm = cm;
             this.member = member;
             team = teamName;
+            pName = member.CharName;
             Allies = allies;
             Enemies = enemies;
             Element = member.Element;
@@ -28,6 +29,7 @@ namespace TurnBasedRPG {
         public IReadOnlyList<Character> Enemies { get; }
 
         [Header("Advancement Info")]
+        [SerializeField, HideInInspector] private string pName;
         public IPartyMember member;
         public string team;
         public Element Element;

@@ -42,12 +42,15 @@ namespace Data {
         public Sprite CharacterSprite => characterSprite;
         public Sprite UISprite => uiSprite;
         public Animator Prefab => prefab;
-        public ISkill BasicAttack => equips[0] is Weapon w ? w.Attack : profession.BasicAttack;
+
+        public ISkill BasicAttack => equips[0] is Weapon w ? w.Attack ?? profession.BasicAttack : profession.BasicAttack;
+        public ISkill BasicDefense => Game.Settings.BasicDefense;
 
         public IEnumerable<IPassive> GetPassives() {
             foreach (var e in equips)
-            foreach (var p in e.GetPassives())
-                yield return p;
+                if(e)
+                    foreach (var p in e.GetPassives())
+                        yield return p;
         }
 
         public IEnumerable<ISkill> GetSkills() {
@@ -56,7 +59,7 @@ namespace Data {
                     yield return s;
 
             foreach (var e in equips)
-                if(e.ActiveSkill != null)
+                if(e && e.ActiveSkill != null)
                     yield return e.ActiveSkill;
         }
 

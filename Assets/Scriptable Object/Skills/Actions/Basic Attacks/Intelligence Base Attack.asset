@@ -48,7 +48,7 @@ MonoBehaviour:
     - rid: 5967445995023237231
       type: {class: MultiHit, ns: TurnBasedRPG.Skills.SkillAnimations, asm: TurnBasedRPG}
       data:
-        castParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        castParticle: {fileID: 0}
         skillParticle: {fileID: 1159766142003876151, guid: f74792c182c90a3419ce0e1f02b02f0a, type: 3}
         hitCount: {x: 1, y: 1}
         damageDelay: 1

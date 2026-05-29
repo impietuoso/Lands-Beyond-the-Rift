@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::RPG.EnemyInfo
   charName: Slime
-  level: 0
+  level: 1
   exp: 2
   element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
   portrait: {fileID: 0}
   prefab: {fileID: 3134276080824390833, guid: 9a55278c364ff894b92282631896a12e, type: 3}
+  basicAttack: {fileID: 0}
   attributes:
     strength: 0
     intelligence: 0
@@ -40,6 +41,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 81492b8b38e9e42418807179b0324a40, type: 2}
   drops:
   - <Item>k__BackingField: {fileID: 11400000, guid: 16b839efbbb8a0b42857c52262a33ce4, type: 2}
-    <Chance>k__BackingField: 0
+    <Chance>k__BackingField: 0.5
   - <Item>k__BackingField: {fileID: 11400000, guid: 684c6c1f93c7cd746850094dec5724af, type: 2}
-    <Chance>k__BackingField: 0
+    <Chance>k__BackingField: 0.5

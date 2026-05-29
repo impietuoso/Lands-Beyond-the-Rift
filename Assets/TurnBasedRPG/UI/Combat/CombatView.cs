@@ -14,6 +14,7 @@ namespace TurnBasedRPG.UI.Combat {
         public ListView skillsView;
         public IInventoryView consumablesView;
 
+        public CanvasGroup canvas;
         public GameObject combatPanel;
         public GameObject actionsPanel;
         public GameObject skillPanel;
@@ -95,7 +96,7 @@ namespace TurnBasedRPG.UI.Combat {
 
         public void PrepareDefenseForCurrentPlayer() {
             var currentPlayer = Data.CurrentCharacter;
-            PrepareSkill(Data.BasicDefense, currentPlayer);
+            PrepareSkill(currentPlayer.member.BasicDefense, currentPlayer);
         }
 
         public void PrepareSkillForCurrentPlayer(IItemView itemView) {
