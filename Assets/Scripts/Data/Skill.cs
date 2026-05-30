@@ -23,6 +23,7 @@ namespace Data {
 
         public string SkillName => displayName;
         public string Description => description;
+        public string BriefDesc => description;
         public override int maxStack => 1;
         public int Cost => cost;
         public Sprite Icon => sprite;

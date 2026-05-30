@@ -42,6 +42,7 @@ namespace TurnBasedRPG {
             _loopPhases.Add(new CombatEvents());
             _loopPhases.Add(new CheckResultPhase());
             _endPhases.Add(new ResultPhase());
+            Everyone = Allies.Concat(Enemies);
         }
 
         public void StartCombat(CombatConfig config) {
@@ -51,7 +52,6 @@ namespace TurnBasedRPG {
 
             Allies.Clear();
             Enemies.Clear();
-            Everyone = Allies.Concat(Enemies);
             Consumables = new();
 
             foreach (var member in config.Allies)
@@ -68,6 +68,7 @@ namespace TurnBasedRPG {
             foreach (var character in Everyone)
                 character.SubscribePassives();
 
+            StopAllCoroutines();
             _currentPhase = StartCoroutine(CombatLoop());
             View.SetData(this);
             Arena.SetData(this);
@@ -97,8 +98,7 @@ namespace TurnBasedRPG {
         [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]
         public void SkipTurn() {
             SelectedAction = null;
-            View.combatPanel.SetActive(false);
-            View.actionsPanel.SetActive(false);
+            View.HideActions();;
         }
 
         public void ReloadScene() {

@@ -76,7 +76,7 @@ namespace TurnBasedRPG.UI.Combat {
             var color = status.Source.TextColor;
             var dName = status.Source.DisplayName;
             var pos = Data.cm.View.transform;
-            var statusPopup = Data.cm.View.callPopup.Pop(dName, color, transform.position, 0.5f);
+            var statusPopup = Data.cm.View.CallPopup.Pop(dName, color, transform.position, 0.5f);
             Data.cm.CombatEvents.Enqueue(statusPopup);
         }
     }

@@ -42,7 +42,7 @@ namespace TurnBasedRPG.UI.Combat {
             var view = Data.cm.View;
             var color = status.Source.TextColor;
             var dName = status.Source.DisplayName;
-            StartCoroutine(view.callPopup.Pop(dName, color, transform.position, 0.5f));
+            StartCoroutine(view.CallPopup.Pop(dName, color, transform.position, 0.5f));
         }
 
         private void DamagePopup(CombatArgs args) {
@@ -78,7 +78,7 @@ namespace TurnBasedRPG.UI.Combat {
                     popupText += "\nResist";
             }
 
-            StartCoroutine(view.callPopup.Pop(popupText, damageColor, transform.position, 0));
+            StartCoroutine(view.CallPopup.Pop(popupText, damageColor, transform.position, 0));
             if(args.result.IsFatal) _animator.Play("Die", 0, 0);
             if(args.result.IsRevive) _animator.Play("Spawn", 0, 0);
         }

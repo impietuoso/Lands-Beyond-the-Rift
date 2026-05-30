@@ -46,8 +46,8 @@ namespace TurnBasedRPG {
 
         public IEnumerator Execute(CombatManager cm) {
             var character = cm.CurrentCharacter;
-            cm.View.skillPanel.gameObject.SetActive(false);
-            cm.View.consumablesView.gameObject.SetActive(false);
+            cm.View.SkillsView.gameObject.SetActive(false);
+            cm.View.ItemsView.gameObject.SetActive(false);
             cm.SelectedAction = cm.WaitFlag;
             character.OnStartTurn?.Invoke(character);
 
@@ -64,8 +64,7 @@ namespace TurnBasedRPG {
             else {
                 //Vez do Player
                 Debug.Log("Player Turn: " + character.characterName);
-                cm.View.combatPanel.SetActive(true);
-                cm.View.ShowSkills(character);
+                cm.View.ShowActions(character);
                 yield return new WaitUntil(() => cm.SelectedAction != cm.WaitFlag);
             }
 
@@ -81,10 +80,8 @@ namespace TurnBasedRPG {
             var affected = a.Skill.Targeting.GetAffectedTargets(a.User, a.Target);
 
             // Prepare UI
-            cm.View.selectTargetPanel.SetActive(false);
-            cm.View.combatPanel.SetActive(false);
-            cm.View.actionsPanel.SetActive(false);
-            cm.View.ShowCurrentAction(a.User.characterName, a.Skill.SkillName);
+            cm.View.Info.Show($"{a.User.characterName} uses {a.Skill.SkillName}");
+            cm.View.HideActions();
             cm.Arena.ClearTargets();
             cm.Arena.TargetCharacters(affected);
             Debug.Log("Target Selected: " + a.Target?.characterName);
@@ -114,7 +111,7 @@ namespace TurnBasedRPG {
             var lose = cm.Allies.All(c => c.Dead);
             if(!win && !lose) yield break;
 
-            cm.View.gameOverPanel.SetActive(true);
+            cm.View.GameOverPanel.SetActive(true);
             cm.FinishCombat(!lose);
         }
     }
@@ -126,7 +123,7 @@ namespace TurnBasedRPG {
                 c.member.CurrentMp = c.Mana.Current;
             }
 
-            cm.View.gameOverPanel.SetActive(true);
+            cm.View.GameOverPanel.SetActive(true);
             yield return new WaitForSeconds(1f);
 
             Debug.Log(cm.CombatWon ? "Combat Won!" : "Combat Lost :c");

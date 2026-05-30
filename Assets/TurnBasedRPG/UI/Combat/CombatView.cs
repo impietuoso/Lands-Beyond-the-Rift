@@ -1,75 +1,78 @@
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
-using TurnBasedRPG.UI.Views;
 using UnityEngine;
 
 namespace TurnBasedRPG.UI.Combat {
     public class CombatView : DataView<CombatManager> {
         [Header("UI Components")]
-        public ListView alliesView;
-        public ListView enemiesView;
-        public ListView skillsView;
-        public IInventoryView consumablesView;
-
-        public CanvasGroup canvas;
-        public GameObject combatPanel;
-        public GameObject actionsPanel;
-        public GameObject skillPanel;
-        public GameObject itemsPanel;
-        public GameObject selectTargetPanel;
-        public GameObject currentActionPanel;
-        public GameObject gameOverPanel;
-
-        public TMP_Text currentActionText;
-        public TMP_Text currentSkillNameText;
-        public TMP_Text currentSkillDescriptionText;
+        [field: SerializeField] public CanvasGroup Canvas { get; private set; }
+        [field: SerializeField] public ListView AlliesView { get; private set; }
+        [field: SerializeField] public ListView EnemiesView { get; private set; }
+        [field: SerializeField] public GameObject ActionsPanel { get; private set; }
+        [field: SerializeField] public GameObject ListsPanel { get; private set; }
+        [field: SerializeField] public ListView SkillsView { get; private set; }
+        [field: SerializeField] public IInventoryView ItemsView { get; private set; }
+        [field: SerializeField] public InfoPanel Info { get; private set; }
+        [field: SerializeField] public GameObject GameOverPanel { get; private set; }
+        [field: SerializeField] public CallPopupText CallPopup { get; private set; }
 
         public IEnumerable<CharacterView> Everyone { get; private set; }
 
-        public CallPopupText callPopup;
-        public StatusEffectListView statusEffectsDescription;
         private SkillArgs _preparation;
 
         private void Start() {
-            Everyone = alliesView.templateList.Concat(enemiesView.templateList).OfType<CharacterView>();
+            Everyone = AlliesView.templateList.Concat(EnemiesView.templateList).OfType<CharacterView>();
         }
 
         protected override void Subscribe() {
-            alliesView.SetData(Data.Allies);
-            enemiesView.SetData(Data.Enemies);
-            consumablesView.SetData(Data.Consumables);
-            
-            currentActionPanel.SetActive(false);
-            actionsPanel.SetActive(false);
-            combatPanel.SetActive(false);
-            skillPanel.SetActive(false);
-            itemsPanel.SetActive(false);
+            AlliesView.SetData(Data.Allies);
+            EnemiesView.SetData(Data.Enemies);
+            ItemsView.SetData(Data.Consumables);
+
+            GameOverPanel.SetActive(false);
+            ActionsPanel.SetActive(false);
+            ListsPanel.SetActive(false);
+            SkillsView.gameObject.SetActive(false);
+            ItemsView.gameObject.SetActive(false);
             gameObject.SetActive(true);
         }
 
         protected override void Unsubscribe() {
-            alliesView.SetData(null);
-            enemiesView.SetData(null);
-            
+            AlliesView.SetData(null);
+            EnemiesView.SetData(null);
+
             gameObject.SetActive(false);
         }
 
-        public void ShowSkills(Character character) => skillsView.SetData(character.skills.Select(s => (character, s)));
         public void SelectSkill(AvailableSkillView view) => PrepareSkill(view.Data.s, view.Data.c);
+
+        public void ShowActions(Character character) {
+            if(character != null)
+                SkillsView.SetData(character.skills.Select(s => (character, s)));
+            ListsPanel.SetActive(true);
+            ActionsPanel.SetActive(true);
+            SkillsView.gameObject.SetActive(true);
+            ItemsView.gameObject.SetActive(false);
+            Info.Hide();
+        }
+        
+        public void HideActions() {
+            ListsPanel.SetActive(false);
+            ActionsPanel.SetActive(false);
+            SkillsView.gameObject.SetActive(false);
+            ItemsView.gameObject.SetActive(false);
+        }
 
         private void PrepareSkill(ISkill skill, Character user) {
             if(!skill.Available(user)) return;
 
-            skillPanel.SetActive(false);
-            selectTargetPanel.SetActive(true);
-            currentSkillNameText.text = "[" + skill.SkillName + "]";
-            currentSkillDescriptionText.text = skill.Description;
+            SkillsView.gameObject.SetActive(false);
+            Info.Show($"Select Target - {skill.SkillName}: {skill.BriefDesc}");
 
             _preparation = new(skill, user, null);
-            
+
             if(skill.Targeting.SkipSelection) {
                 SelectTarget(user);
                 return;
@@ -86,9 +89,12 @@ namespace TurnBasedRPG.UI.Combat {
             Data.SelectedAction = _preparation;
             _preparation = null;
             Data.Arena.ClearTargets();
+            Info.Hide();
         }
-        
+
         public void CancelPreparation() {
+            Info.Hide();
+            ShowActions(null);
             _preparation = null;
             Data.Arena.ClearTargets();
         }
@@ -106,17 +112,6 @@ namespace TurnBasedRPG.UI.Combat {
         public void PrepareSkillForCurrentPlayer(IItemView itemView) {
             var currentPlayer = Data.CurrentCharacter;
             PrepareSkill(((IConsumable)itemView.Data).Skill, currentPlayer);
-        }
-
-        public void ShowCurrentStatusEffects(StatusEffectListView statusEffectListView) {
-            statusEffectsDescription.SetData(statusEffectListView.owner);
-        }
-
-        public void ShowCurrentAction(string userName, string actionName) {
-            if(currentActionPanel.activeInHierarchy)
-                currentActionPanel.SetActive(false);
-            currentActionPanel.SetActive(true);
-            currentActionText.text = userName + " uses " + actionName;
         }
     }
 }
