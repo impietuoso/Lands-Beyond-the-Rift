@@ -12,10 +12,8 @@ namespace TurnBasedRPG.UI.Views {
         private float _progress;
         private bool _shrinking;
         private float _height;
-        private float _spacing;
 
         private void Awake() {
-            _spacing = layout.spacing;
             _height = buttons[0].rect.height;
         }
 
@@ -34,7 +32,6 @@ namespace TurnBasedRPG.UI.Views {
             _progress += delta / duration;
             _progress = Mathf.Clamp01(_progress);
 
-            _spacing = layout.spacing * (1 - _progress);
             cancel.SetSizeWithCurrentAnchors(Vertical, _height * _progress);
             foreach (var button in buttons)
                 button.SetSizeWithCurrentAnchors(Vertical, _height * (1 - _progress));

@@ -3,6 +3,7 @@ using System.Linq;
 using TurnBasedRPG.Data;
 using TurnBasedRPG.Skills;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TurnBasedRPG.UI.Combat {
     public class CombatView : DataView<CombatManager> {
@@ -17,6 +18,8 @@ namespace TurnBasedRPG.UI.Combat {
         [field: SerializeField] public InfoPanel Info { get; private set; }
         [field: SerializeField] public GameObject GameOverPanel { get; private set; }
         [field: SerializeField] public CallPopupText CallPopup { get; private set; }
+        [SerializeField] private UnityEvent onShowActions;
+        [SerializeField] private UnityEvent onHideActions;
 
         public IEnumerable<CharacterView> Everyone { get; private set; }
 
@@ -56,19 +59,19 @@ namespace TurnBasedRPG.UI.Combat {
             SkillsView.gameObject.SetActive(true);
             ItemsView.gameObject.SetActive(false);
             Info.Hide();
+            onShowActions.Invoke();
         }
-        
+
         public void HideActions() {
             ListsPanel.SetActive(false);
             ActionsPanel.SetActive(false);
             SkillsView.gameObject.SetActive(false);
             ItemsView.gameObject.SetActive(false);
+            onHideActions.Invoke();
         }
 
         private void PrepareSkill(ISkill skill, Character user) {
             if(!skill.Available(user)) return;
-
-            SkillsView.gameObject.SetActive(false);
             Info.Show($"Select Target - {skill.SkillName}: {skill.BriefDesc}");
 
             _preparation = new(skill, user, null);

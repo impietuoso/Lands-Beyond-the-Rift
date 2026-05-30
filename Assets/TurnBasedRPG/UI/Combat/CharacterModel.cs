@@ -46,7 +46,8 @@ namespace TurnBasedRPG.UI.Combat {
         }
 
         private void DamagePopup(CombatArgs args) {
-            _animator.Play("Hit", 0);
+            if(args.result.TotalDamage > 0)
+                _animator.Play("Hit", 0);
 
             var damageColor = args.result switch
             {
