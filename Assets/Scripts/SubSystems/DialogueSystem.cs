@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour {
@@ -9,6 +11,9 @@ public class DialogueSystem : MonoBehaviour {
     public Image leftPortrait;
     public Image rightPortrait;
     public GameObject dialoguePanel;
+    public AudioSource source;
+    public List<AudioClip>  typeSound;
+    public AudioClip closeSound;
     public float textDelay = 0.025f;
     private bool skip;
     private bool nextClicked;
@@ -38,6 +43,7 @@ public class DialogueSystem : MonoBehaviour {
             yield return TypeDialogue(VARIABLE);
             if(skip) break;
         }
+        if(closeSound) source.PlayOneShot(closeSound);
         dialoguePanel.SetActive(false);
     }
     
@@ -51,7 +57,8 @@ public class DialogueSystem : MonoBehaviour {
         var parsedText = dialogueText.GetParsedText();
         foreach (char letter in parsedText) {
             if(skip) yield break;
-            
+            var id = Random.Range(0, typeSound.Count);
+            if(typeSound.Count > 0) source.PlayOneShot(typeSound[id]);
             dialogueText.maxVisibleCharacters++;
             if(nextClicked) {
                 nextClicked = false;

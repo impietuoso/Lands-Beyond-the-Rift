@@ -18,7 +18,9 @@ MonoBehaviour:
     leftCharacter: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
     rightCharacter: {fileID: 0}
   - characterName: Red
-    dialogueText: "T\xF4, o q foi? Encontrou alguma coisa?"
+    dialogueText: "T\xF4, o q foi? Encontrou alguma coisa?\nasdiashdiahishidhasiudhaisdhisahdiusahduiashidhsaiudhiuashdashdhuashdiashdihasidhiashdiahsidhasidhahsidhasid
+      haisuhd iasuhd asuidhasiudh asiudh said sa diiasuhd iusahdasuidh asiudhas iudhas
+      duisahd aisuhdasuiiusa "
     leftCharacter: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
     rightCharacter: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
   - characterName: Red
