@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe8d301d8ee4853bdad178b5ee2815c, type: 3}
+  m_Name: Day 1
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - characterName: Blue
+    dialogueText: Ei, vc ta ai?
+    leftCharacter: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
+    rightCharacter: {fileID: 0}
+  - characterName: Red
+    dialogueText: "T\xF4, o q foi? Encontrou alguma coisa?"
+    leftCharacter: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
+    rightCharacter: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
+  - characterName: Red
+    dialogueText: Ei, perae, pra onde vc ta aindo?
+    leftCharacter: {fileID: 0}
+    rightCharacter: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}

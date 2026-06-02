@@ -1,0 +1,1 @@
+Saul: Esse é um texto teste que deve ser mostrado aos poucos, porém, devido a quantidade de characteres a serem mostrados, este texte deve ter um tempo disponível ao usuário para poder ser cancelado, na verdade, skipado, tornando o processo do diálogo, uma ação skipavel.
