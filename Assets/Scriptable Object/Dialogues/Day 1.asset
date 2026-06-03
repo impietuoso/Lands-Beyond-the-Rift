@@ -14,16 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - characterName: Blue
-    dialogueText: Ei, vc ta ai?
-    leftCharacter: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
+    dialogueText: ds adssa sad as sad a  asd sad sad sads ada s a asa sa assa  asd
+      ads asd asd s sad asd ad asd sad af sgh dhdsfh dg ds
+    effect:
+      rid: 6334168903588511846
+    leftCharacter: {fileID: 0}
     rightCharacter: {fileID: 0}
   - characterName: Red
-    dialogueText: "T\xF4, o q foi? Encontrou alguma coisa?\nasdiashdiahishidhasiudhaisdhisahdiusahduiashidhsaiudhiuashdashdhuashdiashdihasidhiashdiahsidhasidhahsidhasid
-      haisuhd iasuhd asuidhasiudh asiudh said sa diiasuhd iusahdasuidh asiudhas iudhas
-      duisahd aisuhdasuiiusa "
-    leftCharacter: {fileID: 11400000, guid: 543ca0b48b9f44b46bbeb741ebafa50b, type: 2}
-    rightCharacter: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
-  - characterName: Red
-    dialogueText: Ei, perae, pra onde vc ta aindo?
+    dialogueText: uia iaah iasihdasioud hasdas dansadiunsa diusand as dnsa uidnsad
+      isaun dsa dnasundsadiunasidnas dinas uidnasudinlsa d sauidnu n nuas uda nsdn
+      asnd  asn as ndans dds
+    effect:
+      rid: -2
     leftCharacter: {fileID: 0}
-    rightCharacter: {fileID: 11400000, guid: 259c93d0e7476a542b9a79deb67decaa, type: 2}
+    rightCharacter: {fileID: 0}
+  - characterName: Red
+    dialogueText: i asiod jkd so asdjodsa saljsad jlkasd  ljkasd jklasd j ad ad asd
+      sad asdjas jkldas dlksajdsa dlksaj dlsa jdj as jdsaj dsa jdj aslkdj askl jdlksa
+      jdkas
+    effect:
+      rid: -2
+    leftCharacter: {fileID: 0}
+    rightCharacter: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 6334168903588511846
+      type: {class: ShakeDialogueBox, ns: DialogueSystem.DialogueEffects, asm: DialogueSystem}
+      data: 
