@@ -6018,6 +6018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4136794964612132454, guid: 505cf9d232de47d45b8d179ba975ba44, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 39.999756
+      objectReference: {fileID: 0}
     - target: {fileID: 5996816639417099161, guid: 505cf9d232de47d45b8d179ba975ba44, type: 3}
       propertyPath: m_Pivot.x
       value: 0

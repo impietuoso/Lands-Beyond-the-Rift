@@ -17,30 +17,42 @@ MonoBehaviour:
     dialogueText: ds adssa sad as sad a  asd sad sad sads ada s a asa sa assa  asd
       ads asd asd s sad asd ad asd sad af sgh dhdsfh dg ds
     effect:
-      rid: 6334168903588511846
-    leftCharacter: {fileID: 0}
+      rid: 6334168903588511895
+    leftCharacter: {fileID: 11400000, guid: 0c9f7023c1ffb584d9a885e81cd1f151, type: 2}
     rightCharacter: {fileID: 0}
   - characterName: Red
     dialogueText: uia iaah iasihdasioud hasdas dansadiunsa diusand as dnsa uidnsad
       isaun dsa dnasundsadiunasidnas dinas uidnasudinlsa d sauidnu n nuas uda nsdn
       asnd  asn as ndans dds
     effect:
-      rid: -2
-    leftCharacter: {fileID: 0}
-    rightCharacter: {fileID: 0}
+      rid: 6334168903588511891
+    leftCharacter: {fileID: 11400000, guid: 0c9f7023c1ffb584d9a885e81cd1f151, type: 2}
+    rightCharacter: {fileID: 11400000, guid: 50bd6e9535e7d0e46ba71b282c445ec7, type: 2}
   - characterName: Red
     dialogueText: i asiod jkd so asdjodsa saljsad jlkasd  ljkasd jklasd j ad ad asd
       sad asdjas jkldas dlksajdsa dlksaj dlsa jdj as jdsaj dsa jdj aslkdj askl jdlksa
       jdkas
     effect:
-      rid: -2
+      rid: 6334168903588511896
     leftCharacter: {fileID: 0}
-    rightCharacter: {fileID: 0}
+    rightCharacter: {fileID: 11400000, guid: 50bd6e9535e7d0e46ba71b282c445ec7, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 6334168903588511846
+    - rid: 6334168903588511891
+      type: {class: ShakePortrait, ns: DialogueSystem.DialogueEffects, asm: DialogueSystem}
+      data:
+        magnitude: 12
+        duration: 1.2
+        target: 2
+    - rid: 6334168903588511895
+      type: {class: FlashRed, ns: DialogueSystem.DialogueEffects, asm: DialogueSystem}
+      data:
+        duration: 0.5
+        flashes: 2
+        target: 0
+    - rid: 6334168903588511896
       type: {class: ShakeDialogueBox, ns: DialogueSystem.DialogueEffects, asm: DialogueSystem}
-      data: 
+      data:
+        magnitude: 12
+        duration: 1.2

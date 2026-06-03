@@ -25,15 +25,19 @@ namespace DialogueSystem {
 
             position.y += position.height + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.PropertyField(position, rightChar);
-            
-            position.y += position.height + EditorGUIUtility.standardVerticalSpacing;
-            position.height = EditorGUI.GetPropertyHeight(effect, true) + EditorGUIUtility.standardVerticalSpacing;
-            DrawEffectSelector(position, effect);
 
             position.y += position.height + EditorGUIUtility.standardVerticalSpacing;
-            EditorGUI.LabelField(position, content);
+            DrawEffectSelector(position, effect);
+            
+            if (effect.managedReferenceValue != null) {
+                position.height = EditorGUI.GetPropertyHeight(effect, true) + EditorGUIUtility.standardVerticalSpacing;
+                EditorGUI.PropertyField(position, effect, GUIContent.none, true);
+            }
             
             position.y += position.height + EditorGUIUtility.standardVerticalSpacing;
+            position.height = EditorGUIUtility.singleLineHeight;
+            EditorGUI.LabelField(position, content);
+            
             position.height = EditorGUI.GetPropertyHeight(diag);
             EditorGUI.PropertyField(position, diag, GUIContent.none);
         }
@@ -61,11 +65,6 @@ namespace DialogueSystem {
                 }
                 menu.ShowAsContext();
             }
-
-            if (effect.managedReferenceValue != null) {
-                position.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-                EditorGUI.PropertyField(position, effect, GUIContent.none, true);
-            }
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
@@ -77,13 +76,13 @@ namespace DialogueSystem {
             
             // Start with fixed-height fields: characterName, leftChar, rightChar, characterCount label
             float height = (lineHeight + spacing) * 4;
-
-            // Add Effect Selector height (always a single line button)
-            height += lineHeight + spacing;
             
-            // Add Effect property field height if it's not null
             if (effect.managedReferenceValue != null) {
+                // Add Effect property field height if it's not null
                 height += EditorGUI.GetPropertyHeight(effect, true) + spacing;
+            } else {
+                // Add Effect Selector height (always a single line button)
+                height += lineHeight + spacing;
             }
 
             // Add Dialogue text height
